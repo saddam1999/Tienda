@@ -15,16 +15,16 @@ class CreateArticulosTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('id_marca');
-            $table->string('descripcion');
-            $table->string('existencia');
-            $table->integer('precio');
-            $table->string('imagena');
-            $table->string('imagenb');
-            $table->string('imagenc');
-            $table->string('imagend');
-            $table->float('descuento');
+            $table->string('nombre')->nullable();
+            $table->string('id_marca')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->string('existencia')->nullable();
+            $table->integer('precio')->nullable();
+            $table->string('imagena')->nullable();
+            $table->string('imagenb')->nullable();
+            $table->string('imagenc')->nullable();
+            $table->string('imagend')->nullable();
+            $table->float('descuento')->nullable();
             $table->timestamps();
         });
     }

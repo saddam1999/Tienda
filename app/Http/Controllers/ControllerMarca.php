@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
-
+use \App\Models\User;
+use App\Models\Articulo;
 class ControllerMarca extends Controller
 {
     /**
@@ -75,7 +76,12 @@ class ControllerMarca extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $marca= \App\Models\Marca::find($id);
+        $marca->nombre=$request->get('nombre1');
+        $marca->logo = "--";
+        $marca->descripcion = $request->get('descripcion1');
+        $marca->save();
+        return back();
     }
 
     /**
@@ -86,6 +92,8 @@ class ControllerMarca extends Controller
      */
     public function destroy($id)
     {
-        //
+        $marca= \App\Models\Marca::find($id);
+        $marca->delete();
+        return back();
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use \App\Models\User;
 use App\Models\Articulo;
 
-class ControllerArticulo extends Controller
+class ControllerUsuario extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ControllerArticulo extends Controller
      */
     public function index()
     {
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -36,24 +36,14 @@ class ControllerArticulo extends Controller
      */
     public function store(Request $request)
     {
-        $articulo = new \App\Models\Articulo();
-        $articulo->nombre = $request->get('nombre');
-        $articulo->id_marca =  $request->get('id_marca');
-        $articulo->existencia = $request->get('existencia');
-        $articulo->descripcion = $request->get('descripcion');
-
-        $temporal = $request->get('descuento');
-        $temporal2 = $request->get('precio');
-
-        if ($temporal != 0 || $temporal > 0) {
-            $descuento = ($temporal * $temporal2)/100;
-            $articulo->precio  = $temporal2 - $descuento;
-            $articulo->descuento = $temporal;
-        } else {
-            $articulo->descuento = $temporal;
-            $articulo->precio = $request->get('precio');
-        }
-        $articulo->save();
+        $setting=  new \App\Models\User;
+        $setting->name=$request->get('name');
+        $setting->email=$request->get('email');
+        $contraseñaantigua=$request->get('password');
+        $setting->password=bcrypt($contraseñaantigua);
+        $setting->rol=$request->get('rol');
+        $setting->status=$request->get('status');
+        $setting->save();
         return back();
     }
 
@@ -65,7 +55,7 @@ class ControllerArticulo extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -76,7 +66,7 @@ class ControllerArticulo extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -88,14 +78,14 @@ class ControllerArticulo extends Controller
      */
     public function update(Request $request, $id)
     {
-        $articulo= \App\Models\Articulo::find($id);
-        $articulo->nombre=$request->get('nombre1');
-        $articulo->descripcion=$request->get('descripcion1');
-        $articulo->precio=$request->get('precio1');
-        $articulo->descuento=$request->get('descuento1');
-        $articulo->existencia=$request->get('existencia1');
-        $articulo->calificacion=$request->get('calificacion1');
-        $articulo->save();
+        $admin= \App\Models\User::find($id);
+        $admin->name=$request->get('name1');
+        $admin->email=$request->get('email1');
+        //$contraseñaantigua=$request->get('password1');
+       // $admin->password=bcrypt($contraseñaantigua);
+        $admin->rol=$request->get('rol1');
+        $admin->status=$request->get('estatus1');
+        $admin->save();
         return back();
     }
 
@@ -105,10 +95,10 @@ class ControllerArticulo extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id) 
     {
-        $articulo= \App\Models\Articulo::find($id);
-        $articulo->delete();
+        $admin= \App\Models\User::find($id);
+        $admin->delete();
         return back();
     }
 }

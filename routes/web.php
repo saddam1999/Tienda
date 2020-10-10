@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerArticulo;
 use App\Http\Controllers\ControllerMarca;
+use App\Http\Controllers\ControllerUsuario;
 use App\Http\Controllers\FileUploadController;
 
 /*
@@ -19,12 +20,22 @@ use App\Http\Controllers\FileUploadController;
 Route::get('/', function () {
     return view('welcome');
 });
+//Usuario
+Route::get('/addusuario', [ControllerUsuario::class, 'store']);
+Route::get('/editusuario/{id}', [ControllerUsuario::class, 'update']);
+Route::get('/deleteusuario/{id}', [ControllerUsuario::class, 'destroy']);
+//Articulo
 Route::get('/store', [ControllerArticulo::class, 'store']);
+Route::get('/editararticulo/{id}', [ControllerArticulo::class, 'update']);
+Route::get('/deletearticulo/{id}', [ControllerArticulo::class, 'destroy']);
+//Marca
 Route::get('/marca', [ControllerMarca::class, 'marca']);
-//Route::get('/marca','ControllerMarca@marca');
+Route::get('/editmarca/{id}', [ControllerUsuario::class, 'update']);
+Route::get('/deletemarca/{id}', [ControllerMarca::class, 'destroy']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()]);
+    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all()]);
 
 })->name('dashboard');
 

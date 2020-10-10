@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="https://kit.fontawesome.com/373a927467.js"></script>
 
         @livewireStyles
 
