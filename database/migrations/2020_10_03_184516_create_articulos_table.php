@@ -20,6 +20,7 @@ class CreateArticulosTable extends Migration
             $table->string('descripcion')->nullable();
             $table->string('existencia')->nullable();
             $table->integer('precio')->nullable();
+            $table->integer('precioOriginal')->nullable();
             $table->string('imagena')->nullable();
             $table->string('imagenb')->nullable();
             $table->string('imagenc')->nullable();

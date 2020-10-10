@@ -41,12 +41,12 @@ class ControllerArticulo extends Controller
         $articulo->id_marca =  $request->get('id_marca');
         $articulo->existencia = $request->get('existencia');
         $articulo->descripcion = $request->get('descripcion');
-
+        $articulo->precioOriginal = $request->get('precio');
         $temporal = $request->get('descuento');
         $temporal2 = $request->get('precio');
 
         if ($temporal != 0 || $temporal > 0) {
-            $descuento = ($temporal * $temporal2)/100;
+            $descuento = ($temporal * $temporal2) / 100;
             $articulo->precio  = $temporal2 - $descuento;
             $articulo->descuento = $temporal;
         } else {
@@ -65,7 +65,6 @@ class ControllerArticulo extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -88,13 +87,29 @@ class ControllerArticulo extends Controller
      */
     public function update(Request $request, $id)
     {
-        $articulo= \App\Models\Articulo::find($id);
-        $articulo->nombre=$request->get('nombre1');
-        $articulo->descripcion=$request->get('descripcion1');
-        $articulo->precio=$request->get('precio1');
-        $articulo->descuento=$request->get('descuento1');
-        $articulo->existencia=$request->get('existencia1');
-        $articulo->calificacion=$request->get('calificacion1');
+        $articulo = \App\Models\Articulo::find($id);
+        $articulo->nombre = $request->get('nombre1');
+        $articulo->descripcion = $request->get('descripcion1');
+        $articulo->id_marca = $request->get('id_marca1');
+        $temporal = $request->get('descuento1');
+        $temporal2 = $articulo->precioOriginal;
+
+        // en caso de que modifiquen el precio ya con descuento
+        //restablecer el precio original
+        //modificar el descuento
+        if ($temporal != 0 || $temporal > 0) {
+            $descuento = ($temporal * $temporal2) / 100;
+            $articulo->precio  = $temporal2 - $descuento;
+            $articulo->descuento = $temporal;
+            $articulo->precioOriginal = $request->get('precio1');
+        } else if ($temporal == 0) { //en caso de que descuento este en 0 restablece precio
+            // no modificar nada
+            $articulo->descuento = 0;
+            $articulo->precio = $articulo->precioOriginal;
+        }
+
+
+        $articulo->existencia = $request->get('existencia1');
         $articulo->save();
         return back();
     }
@@ -107,7 +122,7 @@ class ControllerArticulo extends Controller
      */
     public function destroy($id)
     {
-        $articulo= \App\Models\Articulo::find($id);
+        $articulo = \App\Models\Articulo::find($id);
         $articulo->delete();
         return back();
     }

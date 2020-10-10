@@ -64,7 +64,6 @@
                                             <th>Descuento(individual)</th>
                                             <th>Precio(MXN)</th>
                                             <th>Existencia</th>
-                                            <th>Calificacion</th>
                                             <th>Opciones</th>
                                         </tr>
                                     </thead>
@@ -75,10 +74,8 @@
                                             <td>{{$articulo->nombre}}</td>
                                             <td>{{$articulo->descripcion}}</td>
                                             @foreach($Marca as $marca)
-                                            @if($articulo->id_marca == $marca->id)
+                                            @if($articulo->id_marca ==$marca->id)
                                             <td>{{$marca->nombre}}</td>
-                                            @else
-                                            <td>N/A</td>
                                             @endif
                                             @endforeach
                                             @if($articulo->descuento==0)
@@ -92,15 +89,15 @@
                                             @else
                                             <td class="text-danger">{{$articulo->existencia}}</td>
                                             @endif
-                                            <td>{{$articulo->calificacion}}</td>
-                                            <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id={{$articulo->id}} data-nombre={{$articulo->nombre}}
-                                                    data-id_marca={{$articulo->id_marca}}
-                                                    data-precio={{$articulo->precio}}
-                                                    data-descuento={{$articulo->descuento}}
-                                                    data-descripcion={{$articulo->descripcion}}
-                                                    data-existencia={{$articulo->existencia}}
-                                                    data-calificacion={{$articulo->calificacion}}>
+                                            <td><a href="" data-toggle="modal" data-target="#modaleditararticulo"
+                                                    data-id="{{$articulo->id}}" data-nombre="{{$articulo->nombre}}"
+                                                    data-id_marca="{{$articulo->id_marca}}"
+                                                    data-precio="{{$articulo->precio}}"
+                                                    data-descuento="{{$articulo->descuento}}"
+                                                    data-descripcion="{{$articulo->descripcion}}"
+                                                    data-existencia="{{$articulo->existencia}}"
+                                                    data-calificacion="{{$articulo->calificacion}}"
+            >
                                                     <i class="fas fa-edit"></i></a>
                                                 <a href="/deletearticulo/{{$articulo->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
@@ -143,8 +140,8 @@
                                             <td>{{$marca->nombre}}</td>
                                             <td>{{$marca->descripcion}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id={{$marca->id}} data-nombre={{$marca->nombre}}
-                                                    data-descripcion={{$marca->descripcion}}><i
+                                                    data-id="{{$marca->id}}" data-nombre="{{$marca->nombre}}"
+                                                    data-descripcion="{{$marca->descripcion}}"><i
                                                         class="fas fa-edit"></i></a>
                                                 <a href="/deletemarca/{{$marca->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
@@ -196,9 +193,9 @@
                                             <td>{{$usuario->status}}</td>
                                             <td>{{$usuario->created_at}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id={{$usuario->id}} data-name={{$usuario->name}}
-                                                    data-email={{$usuario->email}} data-rol={{$usuario->rol}}
-                                                    data-estatus={{$usuario->status}}><i class="fas fa-edit"></i></a>
+                                                    data-id="{{$usuario->id}}" data-name="{{$usuario->name}}"
+                                                    data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"
+                                                    data-estatus="{{$usuario->status}}"><i class="fas fa-edit"></i></a>
                                                 <a href="/deleteusuario/{{$usuario->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
@@ -345,6 +342,134 @@
         </div>
     </div>
 </div>
+
+<!-- Modal  Editar Articulo-->
+<div class="modal fade" id="modaleditararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Editar Articulo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form name="editararticulo" id="editararticulo"action="/editararticulo">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-6-md">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="descripcion">Descripcion</label>
+                                    <textarea class="form-control" rows="10" cols="50" name="descripcion1"
+                                        id="descripcion1" required></textarea>
+
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="precio1">Precio Neto</label>
+
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">$</span>
+                                        <input type="text" class="form-control" name="precio1" id="precio1" value="">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="existencia1">Existencia</label>
+                                    <input type="text" class="form-control" name="existencia1" id="existencia1" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="alert alert-warning" role="alert">
+                                        <h4 class="alert-heading">Importante!</h4>
+                                        <p>Si pones un precio con descuento el precio final del articulo cambiara al
+                                            precio con el descuento es decir el precio final sera ya con el descuento
+                                            aplicado,si no seleccionas esta opcion el precio final sera sin descuento
+                                        </p>
+                                        <hr>
+                                        <label for="descuento1">Descuento</label>
+                                        <div class="inputDiv">
+                                            <div id="etiqueta"></div>
+                                            <input id="descuento1" name="descuento1" type="range" value="0" min="0"
+                                                max="100" autocomplete="off">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Imagen Principal</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imagena1" name="imagena1">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Imagen Galleria #1</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imagenb1" name="imagenb1">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Imagen Galleria #2</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imagenc1" name="imagenc1">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Imagen Galleria #3</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="imagend1" name="imagend1">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Marca</label>
+                                        <select class="form-control" id="id_marca1" name="id_marca1" required>
+                                            <option value="0" selected>Seleciona una Marca</option>
+                                            @foreach($Marca as $marca)
+                                            <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal  Agregar Marca-->
 <div class="modal fade" id="modal_agregarmarca" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -570,6 +695,50 @@
         var id = $(e.relatedTarget).data().creditos;
         $(e.currentTarget).find('#creditos1').val(id);
         $("#creditos1").attr("placeholder", id);
+    });
+</script>
+<!-- Scripts-->
+<script>
+    ////////////////modal editar articulo
+    $('#modaleditararticulo').on('show.bs.modal', function(e) {
+        $('#id1').html($(e.relatedTarget).data('id'));
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        $("#editararticulo").attr("action", '/editararticulo/' + id);
+
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+
+        var id = $(e.relatedTarget).data().nombre;
+        $(e.currentTarget).find('#nombre1').val(id);
+
+        var id = $(e.relatedTarget).data().descripcion;
+        $(e.currentTarget).find('#descripcion1').val(id);
+
+        var id = $(e.relatedTarget).data().precio;
+        $(e.currentTarget).find('#precio1').val(id);
+
+
+        var id = $(e.relatedTarget).data().descuento;
+        $(e.currentTarget).find('#descuento1').val(id);
+        if(id==0)
+        {
+            $( "#precio1" ).prop( "disabled", false );
+
+        }else{
+            $( "#precio1" ).prop( "disabled", true );
+
+        }
+
+        var id = $(e.relatedTarget).data().id_marca;
+        $(e.currentTarget).find('#id_marca1').val(id);
+
+        var id = $(e.relatedTarget).data().calificacion;
+        $(e.currentTarget).find('#calificacion1').val(id);
+
+        var id = $(e.relatedTarget).data().existencia;
+        $(e.currentTarget).find('#existencia1').val(id);
+
     });
 </script>
 <script>
