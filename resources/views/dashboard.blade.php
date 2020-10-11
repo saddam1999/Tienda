@@ -43,8 +43,9 @@
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Vender</button>
 
+        <div class="tab-pane fade show active" id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -213,8 +214,61 @@
 
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
-</x-app-layout>
 
+
+        <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
+
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+                            <center><img style="border-radius: 10%; width:20%; heigth:20%;" class="card-img-top"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1vs60mbPD8PHWNVhG5IPFx9vhbgvj4816Ww&usqp=CAU"
+                                    alt="tienda"></center>
+                            <div class="card-body">
+                                <h4 class="card-title">Servicios</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Descripcion</th>
+                                            <th>Precio</th>
+                                            <th>Tiempo</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Servicio as $servicio)
+                                        <tr>
+                                            <td>{{$servicio->id}}</td>
+                                            <td>{{$servicio->nombre}}</td>
+                                            <td>{{$servicio->descripcion}}</td>
+                                            <td>${{$servicio->precio}}</td>
+                                            <td>{{$servicio->tiempo}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modaleditarservicio"
+                                                    data-id="{{$servicio->id}}"
+                                                    data-nombre="{{$servicio->nombre}}"
+                                                    data-descripcion="{{$servicio->descripcion}}"
+                                                    data-precio="{{$servicio->precio}}"
+                                                    data-tiempo="{{$servicio->tiempo}}"
+            >
+                                                    <i class="fas fa-edit"></i></a>
+                                                <a href="/deleteservicio/{{$servicio->id}}"><i
+                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</x-app-layout>
 <!-- Modal Agregar Articulo -->
 <div class="modal fade" id="modal_agregararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -342,7 +396,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal  Editar Articulo-->
 <div class="modal fade" id="modaleditararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -469,8 +522,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- Modal  Agregar Marca-->
 <div class="modal fade" id="modal_agregarmarca" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -520,7 +571,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal editar usuario -->
 <div class="modal fade" id="modaleditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -599,7 +649,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal  Agregar usuario-->
 <div class="modal fade" id="modalagregar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -673,6 +722,142 @@
         </div>
     </div>
 </div>
+<!-- Modal Editar Servicio -->
+<div class="modal fade" id="modaleditarservicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Editar Servicio</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form name="editarservicio" id="editarservicio" action="/editarservicio">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre1" id="nombre1" required>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Descripcion</label>
+                                    <textarea name="descripcion1" class="form-control" rows="10" cols="50"
+                                        name="descripcion1" id="descripcion1" required></textarea>
+                                </div>
+                                <div class="col-4-md">
+                                    <div class="input-group-prepend">
+                                        <label for="precio1">Precio</label><br>
+                                        <span class="input-group-text" id="basic-addon1">$</span>
+                                        <input type="text" class="form-control" name="precio1" id="precio1" required>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="tiempo1">Tiempo</label>
+                                        <select class="form-control" id="tiempo1" name="tiempo1" required>
+                                            <option value="Null" selected>Tiempo Estimado</option>
+                                            <option value="Instantaneo">Instantaneo</option>
+                                            <option value="15 minutos">15 Minutos</option>
+                                            <option value="30 minutos">30 Minutos</option>
+                                            <option value="1 Hora">1 Hora</option>
+                                            <option value="1:30">1:30 Hora con 30 minutos</option>
+                                            <option value="2:30">2:30 Horas con 30 minutos</option>
+                                            <option value="5:00">5:00 Horas</option>
+                                            <option value="1 Dia">1 Dia</option>
+                                            <option value="Se notificara cuando este listo">Notificar cuando este listo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Logo</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="logo1" name="logo1">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+<!-- Modal  Agregar servicio-->
+<div class="modal fade" id="modalagregarservicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Agregar Servicio</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarservicio">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Descripcion</label>
+                                    <textarea name="descripcion" class="form-control" rows="10" cols="50"
+                                        name="descripcion" id="descripcion" required></textarea>
+                                </div>
+                                <div class="col-4-md">
+                                    <div class="input-group-prepend">
+                                        <label for="precio">Precio</label><br>
+                                        <span class="input-group-text" id="basic-addon1">$</span>
+                                        <input type="text" class="form-control" name="precio" id="precio" required>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo</label>
+                                        <select class="form-control" id="tiempo" name="tiempo" required>
+                                            <option value="Null" selected>Tiempo Estimado</option>
+                                            <option value="Instantaneo">Instantaneo</option>
+                                            <option value="15 minutos">15 Minutos</option>
+                                            <option value="30 minutos">30 Minutos</option>
+                                            <option value="1 Hora">1 Hora</option>
+                                            <option value="1:30">1:30 Hora con 30 minutos</option>
+                                            <option value="2:30">2:30 Horas con 30 minutos</option>
+                                            <option value="5:00">5:00 Horas</option>
+                                            <option value="1 Dia">1 Dia</option>
+                                            <option value="Se notificara cuando este listo">Notificar cuando este listo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="imagen1">Logo</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="logo" name="logo">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
 <!-- Scripts-->
 <script>
@@ -697,7 +882,34 @@
         $("#creditos1").attr("placeholder", id);
     });
 </script>
-<!-- Scripts-->
+<!-- Scripts Editar-->
+<script>
+    ////////////////modal editar Servicio
+    $('#modaleditarservicio').on('show.bs.modal', function(e) {
+        $('#id1').html($(e.relatedTarget).data('id'));
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        $("#editarservicio").attr("action", '/editservicio/' + id);
+
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+
+        var id = $(e.relatedTarget).data().nombre;
+        $(e.currentTarget).find('#nombre1').val(id);
+
+        var id = $(e.relatedTarget).data().descripcion;
+        $(e.currentTarget).find('#descripcion1').val(id);
+
+        var id = $(e.relatedTarget).data().precio;
+        $(e.currentTarget).find('#precio1').val(id);
+
+
+        var id = $(e.relatedTarget).data().tiempo;
+        $(e.currentTarget).find('#tiempo1').val(id);
+
+    });
+</script>
+
 <script>
     ////////////////modal editar articulo
     $('#modaleditararticulo').on('show.bs.modal', function(e) {

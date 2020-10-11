@@ -108,6 +108,11 @@
                                 Agregar Usuario
                             </div>
                         </a>
+                        <a href="" data-toggle="modal" data-target="#modalagregarservicio">
+                            <div class="block px-4 py-2 text-xs text-blue-400">
+                                Agregar Servicio
+                            </div>
+                        </a>
                         <div class="border-t border-blue-100"></div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerArticulo;
 use App\Http\Controllers\ControllerMarca;
 use App\Http\Controllers\ControllerUsuario;
+use App\Http\Controllers\ControllerServicio;
+
 use App\Http\Controllers\FileUploadController;
 
 /*
@@ -32,11 +34,15 @@ Route::get('/deletearticulo/{id}', [ControllerArticulo::class, 'destroy']);
 Route::get('/marca', [ControllerMarca::class, 'marca']);
 Route::get('/editmarca/{id}', [ControllerUsuario::class, 'update']);
 Route::get('/deletemarca/{id}', [ControllerMarca::class, 'destroy']);
+//Servicio
+Route::get('/agregarservicio', [ControllerServicio::class, 'store']);
+Route::get('/editservicio/{id}', [ControllerServicio::class, 'update']);
+Route::get('/deleteservicio/{id}', [ControllerServicio::class, 'destroy']);
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all()]);
-
+    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all()]);
 })->name('dashboard');
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');
