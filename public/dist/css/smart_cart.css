@@ -1,4 +1,4 @@
-/*! 
+/*!
  * jQuery Smart Cart v3.x
  * The smart interactive jQuery Shopping Cart plugin with PayPal payment support
  * http://www.techlaboratory.net/smartcart
@@ -62,8 +62,7 @@
     font-size: 1.5em;
 }
 
-.sc-cart-subtotal {
-}
+.sc-cart-subtotal {}
 
 .sc-cart-toolbar {
     margin-top: 10px;
@@ -92,7 +91,6 @@
     from {
         background: #faebcc;
     }
-
     to {
         background: none;
     }
@@ -102,7 +100,6 @@
     from {
         background: #faebcc;
     }
-
     to {
         background: none;
     }
@@ -112,7 +109,8 @@
     position: relative;
 }
 
-.sc-product-item:after, .sc-product-item:before {
+.sc-product-item:after,
+.sc-product-item:before {
     -webkit-transition: all 0.2s ease-in-out 0s;
     transition: all 0.2s ease-in-out 0s;
 }
@@ -146,11 +144,10 @@
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
-    border-color: rgba(255,255,255,0) #5cb85c rgba(255,255,255,0) rgba(255,255,255,0);
+    border-color: rgba(255, 255, 255, 0) #5cb85c rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 
-.sc-button-checkout-default {
-}
+.sc-button-checkout-default {}
 
 .sc-button-checkout-paypal {
     border: 0;
