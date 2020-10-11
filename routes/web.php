@@ -20,7 +20,7 @@ use App\Http\Controllers\FileUploadController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all()]);
 });
 //Usuario
 Route::get('/addusuario', [ControllerUsuario::class, 'store']);
