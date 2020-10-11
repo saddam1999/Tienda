@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('rol')->nullable();//
             $table->string('banco')->nullable();
             $table->string('direccion')->nullable();
+            $table->string('telegram');
+            $table->string('whatsapp');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
