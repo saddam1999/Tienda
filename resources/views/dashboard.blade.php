@@ -22,7 +22,7 @@
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
+            <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
                 aria-controls="articulos" aria-selected="true">Articulos
             </a>
         </li>
@@ -999,7 +999,7 @@
                                     <div class="form-group">
                                         <label for="marca">Tiempo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido" id="fecha_recibido">
+                                            name="fecha_recibido" id="fecha_recibido" value="<?php echo date('Y-m-d'); ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1247,6 +1247,7 @@
 </script>
 <script>
     $(document).ready(function(){
+
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
         });
