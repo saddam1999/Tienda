@@ -15,10 +15,10 @@ class CreatePagosTable extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->integer('status');
-            $table->string('descripcion');
-            $table->string('cuenta');
+            $table->string('nombre')->nullable();
+            $table->integer('status')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->string('cuenta')->nullable();
             $table->timestamps();
         });
     }

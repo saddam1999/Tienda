@@ -15,11 +15,14 @@ class CreatePromocionsTable extends Migration
     {
         Schema::create('promocions', function (Blueprint $table) {
             $table->id();
-            $table->string('titulo');
-            $table->string('bannera');
-            $table->string('bannerb');
-            $table->string('bannerc');
-            $table->string('bannerd');
+            $table->string('titulo')->nullable();
+            $table->string('titulo_banner_principal')->nullable();
+            $table->string('descripcion_banner_principal')->nullable();
+            $table->string('descuento_banner_principal')->nullable();
+            $table->string('bannera')->nullable();
+            $table->string('bannerb')->nullable();
+            $table->string('bannerc')->nullable();
+            $table->string('bannerd')->nullable();
             $table->timestamps();
         });
     }

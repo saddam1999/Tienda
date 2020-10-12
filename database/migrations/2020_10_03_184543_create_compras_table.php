@@ -15,13 +15,13 @@ class CreateComprasTable extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_usuario');
-            $table->integer('id_articulo');
-            $table->integer('id_metodo');
-            $table->integer('id_pago');
-            $table->date('fecha');
-            $table->integer('id_guia');
-            $table->integer('status'); //0 no avalaible 1 avalaible 2 pending 3suspended 4 success
+            $table->integer('id_usuario')->nullable();
+            $table->integer('id_articulo')->nullable();
+            $table->integer('id_metodo')->nullable();
+            $table->integer('id_pago')->nullable();
+            $table->date('fecha')->nullable();
+            $table->integer('id_guia')->nullable();
+            $table->integer('status')->nullable(); //0 no avalaible 1 avalaible 2 pending 3suspended 4 success
             $table->timestamps();
         });
     }

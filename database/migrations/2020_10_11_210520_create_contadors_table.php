@@ -15,11 +15,11 @@ class CreateContadorsTable extends Migration
     {
         Schema::create('contadors', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->integer('id_articulo');
-            $table->integer('id_marca');
-            $table->string('anterior');
-            $table->string('actual');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_articulo')->nullable();
+            $table->integer('id_marca')->nullable();
+            $table->string('anterior')->nullable();
+            $table->string('actual')->nullable();
             $table->timestamps();
         });
     }

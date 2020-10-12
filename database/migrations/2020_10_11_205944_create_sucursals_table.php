@@ -15,12 +15,12 @@ class CreateSucursalsTable extends Migration
     {
         Schema::create('sucursals', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('email');
-            $table->string('telegram');
-            $table->string('whatsapp');
+            $table->string('nombre')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->timestamps();
         });
     }

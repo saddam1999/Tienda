@@ -47,12 +47,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (session('nav')=='Usuarios') active  @endif" id="usuarios-tab" data-toggle="tab"
+            <a class="nav-link" id="usuarios-tab" data-toggle="tab"
                 href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  @if (session('nav')=='Sucursal') active  @endif" id="sucursal-tab" data-toggle="tab"
+            <a class="nav-link" id="sucursal-tab" data-toggle="tab"
                 href="#sucursal" role="tab" aria-controls="sucursal" aria-selected="false">Sucursal
             </a>
         </li>
@@ -100,11 +100,16 @@
                                             @endif
                                             @endforeach
                                             @if($articulo->descuento==0)
-                                            <td> 0% </td>
+                                            <td class="text-info"> 0% </td>
                                             @else
                                             <td class="text-warning">{{$articulo->descuento}}%</td>
                                             @endif
-                                            <td>${{$articulo->precio}}</td>
+                                            @if($articulo->descuento==0)
+                                            <td class="text-info">${{$articulo->precio}}</td>
+                                            @else
+                                            <td class="text-danger">${{$articulo->precio}}</td>
+                                            @endif
+
                                             @if($articulo->existencia>0)
                                             <td>{{$articulo->existencia}}</td>
                                             @else

@@ -15,10 +15,10 @@ class CreatePreferidosTable extends Migration
     {
         Schema::create('preferidos', function (Blueprint $table) {
             $table->id();
-            $table->string('id_usuario');
-            $table->string('id_articulo');
-            $table->string('valoracion');
-            $table->string('descripcion');
+            $table->string('id_usuario')->nullable();
+            $table->string('id_articulo')->nullable();
+            $table->string('valoracion')->nullable();
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }

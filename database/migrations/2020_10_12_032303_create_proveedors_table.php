@@ -15,16 +15,16 @@ class CreateProveedorsTable extends Migration
     {
         Schema::create('proveedors', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('email');
-            $table->string('telegram');
-            $table->integer('whatsapp');
-            $table->string('credito');//Acepta credito
-            $table->float('saldo');//saldo pendiente o a favor
-            $table->string('RFC');//RFC
-            $table->string('status');//RFC
+            $table->string('nombre')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('email')->nullable();
+            $table->string('telegram')->nullable();
+            $table->integer('whatsapp')->nullable();
+            $table->string('credito')->nullable();//Acepta credito
+            $table->float('saldo')->nullable();//saldo pendiente o a favor
+            $table->string('RFC')->nullable();//RFC
+            $table->string('status')->nullable();//RFC
             $table->timestamps();
         });
     }
