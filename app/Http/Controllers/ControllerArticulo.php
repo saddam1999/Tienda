@@ -54,7 +54,8 @@ class ControllerArticulo extends Controller
             $articulo->precio = $request->get('precio');
         }
         $articulo->save();
-        return back();
+        \Session::flash('nav', 'Articulo');
+        return back()->with('nav', "Articulo");
     }
 
     /**
@@ -107,11 +108,10 @@ class ControllerArticulo extends Controller
             $articulo->descuento = 0;
             $articulo->precio = $articulo->precioOriginal;
         }
-
-
         $articulo->existencia = $request->get('existencia1');
         $articulo->save();
-        return back();
+        \Session::flash('nav', 'Articulo');
+        return back()->with('nav', "Articulo");
     }
 
     /**
@@ -124,6 +124,7 @@ class ControllerArticulo extends Controller
     {
         $articulo = \App\Models\Articulo::find($id);
         $articulo->delete();
-        return back();
+        \Session::flash('nav', 'Articulo');
+        return back()->with('nav', "Articulo");
     }
 }

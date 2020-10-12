@@ -42,7 +42,8 @@ class ControllerMarca extends Controller
         $marca->logo = "--";
         $marca->descripcion = $request->get('descripcion');
         $marca->save();
-        return back()->with('success', 'You have successfully file uplaod.');
+        \Session::flash('nav', 'Marca');
+        return back()->with('nav', "Marca");
     }
 
     /**
@@ -81,7 +82,8 @@ class ControllerMarca extends Controller
         $marca->logo = "--";
         $marca->descripcion = $request->get('descripcion1');
         $marca->save();
-        return back();
+        \Session::flash('nav', 'Marca');
+        return back()->with('nav', "Marca");
     }
 
     /**
@@ -94,6 +96,7 @@ class ControllerMarca extends Controller
     {
         $marca= \App\Models\Marca::find($id);
         $marca->delete();
-        return back();
+        \Session::flash('nav', 'Marca');
+        return back()->with('nav', "Marca");
     }
 }

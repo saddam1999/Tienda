@@ -103,14 +103,19 @@
                                 Agregar Marca
                             </div>
                         </a>
-                        <a href="" data-toggle="modal" data-target="#modalagregar">
-                            <div class="block px-4 py-2 text-xs text-blue-400">
-                                Agregar Usuario
-                            </div>
-                        </a>
                         <a href="" data-toggle="modal" data-target="#modalagregarservicio">
                             <div class="block px-4 py-2 text-xs text-blue-400">
                                 Agregar Servicio
+                            </div>
+                        </a>
+                        <a href="" data-toggle="modal" data-target="#modalagregarsucursal">
+                            <div class="block px-4 py-2 text-xs text-blue-400">
+                                Agregar Sucursal
+                            </div>
+                        </a>
+                        <a href="" data-toggle="modal" data-target="#modalagregar">
+                            <div class="block px-4 py-2 text-xs text-blue-400">
+                                Agregar Usuario
                             </div>
                         </a>
                         <div class="border-t border-blue-100"></div>

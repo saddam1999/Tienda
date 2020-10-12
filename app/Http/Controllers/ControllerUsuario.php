@@ -44,7 +44,9 @@ class ControllerUsuario extends Controller
         $setting->rol=$request->get('rol');
         $setting->status=$request->get('status');
         $setting->save();
-        return back();
+        \Session::flash('nav', 'Usuario');
+
+        return back()->with('nav', "Usuario");
     }
 
     /**
@@ -86,7 +88,9 @@ class ControllerUsuario extends Controller
         $admin->rol=$request->get('rol1');
         $admin->status=$request->get('estatus1');
         $admin->save();
-        return back();
+        \Session::flash('nav', 'Usuario');
+
+        return back()->with('nav', "Usuario");
     }
 
     /**
@@ -95,10 +99,11 @@ class ControllerUsuario extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) 
+    public function destroy($id)
     {
         $admin= \App\Models\User::find($id);
         $admin->delete();
-        return back();
+        \Session::flash('nav', 'Usuario');
+        return back()->with('nav', "Usuario");
     }
 }

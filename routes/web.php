@@ -5,7 +5,7 @@ use App\Http\Controllers\ControllerArticulo;
 use App\Http\Controllers\ControllerMarca;
 use App\Http\Controllers\ControllerUsuario;
 use App\Http\Controllers\ControllerServicio;
-
+use App\Http\Controllers\ControllerSucursal;
 use App\Http\Controllers\FileUploadController;
 
 /*
@@ -20,7 +20,7 @@ use App\Http\Controllers\FileUploadController;
 */
 
 Route::get('/', function () {
-    return view('welcome', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all()]);
+    return view('welcome', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()]);
 });
 //Usuario
 Route::get('/addusuario', [ControllerUsuario::class, 'store']);
@@ -38,11 +38,13 @@ Route::get('/deletemarca/{id}', [ControllerMarca::class, 'destroy']);
 Route::get('/agregarservicio', [ControllerServicio::class, 'store']);
 Route::get('/editservicio/{id}', [ControllerServicio::class, 'update']);
 Route::get('/deleteservicio/{id}', [ControllerServicio::class, 'destroy']);
-
-
+//Sucursal
+Route::get('/agregarsucursal', [ControllerSucursal::class, 'store']);
+Route::get('/editsucursal/{id}', [ControllerSucursal::class, 'update']);
+Route::get('/deletesucursal/{id}', [ControllerSucursal::class, 'destroy']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all()]);
+    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()]);
 })->name('dashboard');
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');

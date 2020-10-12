@@ -23,27 +23,38 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link active" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                aria-controls="articulos" aria-selected="true">Articulos</a>
+                aria-controls="articulos" aria-selected="true">Articulos
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
-                aria-selected="false">Marcas</a>
+                aria-selected="false">Marcas
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="modelos-tab" data-toggle="tab" href="#modelos" role="tab" aria-controls="modelos"
+                aria-selected="false">Modelos
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
-                aria-controls="servicios" aria-selected="false">Servicios</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="equipos-tab" data-toggle="tab" href="#equipos" role="tab" aria-controls="equipos"
-                aria-selected="false">Equipos</a>
+                aria-controls="servicios" aria-selected="false">Servicios
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
-                aria-selected="false">Ventas</a>
+                aria-selected="false">Ventas
+            </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios"
-                aria-selected="false">Usuarios</a>
+            <a class="nav-link @if (session('nav')=='Usuarios') active  @endif" id="usuarios-tab" data-toggle="tab"
+                href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  @if (session('nav')=='Sucursal') active  @endif" id="sucursal-tab" data-toggle="tab"
+                href="#sucursal" role="tab" aria-controls="sucursal" aria-selected="false">Sucursal
+            </a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -61,9 +72,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-                            <center><img style="border-radius: 10%; width:20%; heigth:20%;" class="card-img-top"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1vs60mbPD8PHWNVhG5IPFx9vhbgvj4816Ww&usqp=CAU"
-                                    alt="tienda"></center>
+
                             <div class="card-body">
                                 <h4 class="card-title">Productos</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -130,9 +139,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-                            <center><img style="border-radius: 10%; width:20%; heigth:20%;" class="card-img-top"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpv-dlwvpHhmFS_g7sblKdHxnh5ePOFub-fg&usqp=CAU"
-                                    alt="tienda"></center>
+
                             <div class="card-body">
                                 <h4 class="card-title">Marca</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -176,9 +183,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-                            <center><img style="border-radius: 10%; width:20%; heigth:20%;" class="card-img-top"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1vs60mbPD8PHWNVhG5IPFx9vhbgvj4816Ww&usqp=CAU"
-                                    alt="tienda"></center>
+
                             <div class="card-body">
                                 <h4 class="card-title">Usuarios</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -231,9 +236,7 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-                            <center><img style="border-radius: 10%; width:20%; heigth:20%;" class="card-img-top"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT1vs60mbPD8PHWNVhG5IPFx9vhbgvj4816Ww&usqp=CAU"
-                                    alt="tienda"></center>
+
                             <div class="card-body">
                                 <h4 class="card-title">Servicios</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -262,6 +265,62 @@
                                                     data-tiempo="{{$servicio->tiempo}}">
                                                     <i class="fas fa-edit"></i></a>
                                                 <a href="/deleteservicio/{{$servicio->id}}"><i
+                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade show " id="sucursal" role="tabpanel" aria-labelledby="sucursal-tab">
+
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Sucursales</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Direccion</th>
+                                            <th>Telefono</th>
+                                            <th>Email</th>
+                                            <th>Telegram</th>
+                                            <th>Whatsapp</th>
+                                            <th>Opciones</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Sucursal as $sucursal)
+                                        <tr>
+                                            <td>{{$sucursal->id}}</td>
+                                            <td>{{$sucursal->nombre}}</td>
+                                            <td>{{$sucursal->direccion}}</td>
+                                            <td>{{$sucursal->telefono}}</td>
+                                            <td>{{$sucursal->email}}</td>
+                                            <td>{{$sucursal->telegram}}</td>
+                                            <td>{{$sucursal->whatsapp}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modaleditarsucursal"
+                                                    data-id="{{$sucursal->id}}" data-nombre="{{$sucursal->nombre}}"
+                                                    data-email="{{$sucursal->email}}"
+                                                    data-direccion="{{$sucursal->direccion}}"
+                                                    data-telefono="{{$sucursal->telefono}}"
+                                                    data-telegram="{{$sucursal->telegram}}"
+                                                    data-whatsapp="{{$sucursal->whatsapp}}">
+                                                    <i class="fas fa-edit"></i></a>
+                                                <a href="/deletesucursal/{{$sucursal->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
                                         </tr>
@@ -643,7 +702,7 @@
                             <select class="form-control" name="rol1" id="rol1">
                                 <option value="admin">Admin</option>
                                 <option value="tecnico" selected>Tecnico</option>
-                                <option value="customer">Cliente</option>
+                                <option value="cliente">Cliente</option>
                             </select>
                         </div>
                     </div>
@@ -716,7 +775,7 @@
                                 <select class="form-control" name="rol">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
-                                    <option value="customer" selected>Customer</option>
+                                    <option value="cliente">Cliente</option>
                                 </select>
                             </div>
                         </div>
@@ -883,78 +942,204 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal Vender-->
 <div class="modal fade" id="modalvender" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Punto de Venta</h5>
+            <div class="modal-header bg-success">
+                <h5 class="modal-title text-white">Punto de Venta</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body ">
                 <div class="container-fluid">
-                    <div class="row">
-                        <!-- BEGIN PRODUCTS -->
-                        <div class="col-md-12 col-sm-6">
-                            <table class="table table-striped table-inverse table-responsive">
-                                <thead class="thead-inverse">
-                                    <tr>
-                                        <th>Producto</th>
-                                        <th>Precio</th>
-                                        <th>Existencia</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($Servicio as $servicio)
-                                    <tr class="sc-product-item">
-                                        <td>
-                                            <div class="sc-product-item">
-                                                <!-- PRODUCT IMAGE, identified by data-name="product_image"  -->
-                                                <img data-name="product_image"
-                                                    src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1"
-                                                    alt="...">
-                                        </td>
-                                        <!-- PRODUCT NAME, identified by data-name="product_name" or can be an element with name="product_name"-->
-                                        <td>
-                                            <h4 data-name="product_name">{{$servicio->nombre}}</h4>
-                                        </td>
-                                        <!-- PRODUCT DESCRIPTION, identified by data-name="product_desc" or can be an element with name="product_desc"-->
-                                        <td>
-                                            <p data-name="product_desc">{{$servicio->descripcion}}</p>
-                                        </td>
-                                        <!-- PRODUCT PRICE, identified by name="product_price" or can be an element with data-name="product_price"-->
-                                        <td><input name="product_price" value="{{$servicio->precio}}" type="hidden" />
-                                        </td>
-                                        <!-- PRODUCT ID, identified by name="product_id" or can be an element with data-name="product_id"-->
-                                        <td> <input name="product_id" value="{{$servicio->id}}" type="hidden" /></td>
-                                        <!-- ADD TO CART BUTTON, identified by class="sc-add-to-cart"  -->
-                                        <td> <button class="sc-add-to-cart btn btn-success">Agregar Carrito</button>
-                                        </td>
+                    <form action="/agregarservicio">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Cliente</label>
+                                    <select class="form-control" id="nombre" name="nombre" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=='cliente')
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Tecnico</label>
+                                    <select class="form-control" id="nombre" name="nombre" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=="tecnico")
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Servicio</label>
+                                    <select class="form-control" id="servicio" name="servicio" required>
+                                        @foreach ($Servicio as $servicio)
+                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Sucursal</label>
+                                    <select class="form-control" id="servicio" name="servicio" required>
+                                        @foreach ($Sucursal as $sucursal)
+                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Recibido</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_recibido" id="fecha_recibido">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Entrega</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_entrega" id="fecha_entrega">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="status" id="status" value="Pendiente">
+                                <input type="hidden" name="pago" id="pago" value="0">
+
+                            </div>
                         </div>
-                        <!-- END PRODUCT CONTAINER 1 -->
-                    </div>
-                    </td>
-                    <tr>
-                        @endforeach
-                        </tbody>
-                        </table>
-                        <form action="results.php" method="POST">
-                            <!-- SmartCart element -->
-                            <div id="smartcart"></div>
-                        </form>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+</div>
+
+<!-- Modal Agregar Sucursal -->
+<div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Sucursal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarsucursal">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-6-md">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="descripcion">Direccion</label>
+                                    <textarea class="form-control" rows="10" cols="50" name="direccion" id="direccion"
+                                        required></textarea>
+
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="telephone" class="form-control" name="telefono" id="telefono" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="telegram">Telegram</label>
+                                    <input type="text" class="form-control" name="telegram" id="telegram" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="">
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
     </div>
-    </form>
 </div>
-</div>
+
+<!-- Modal Editar Sucursal -->
+<div class="modal fade" id="modaleditarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Sucursal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="" name="editarsucursal" id="editarsucursal">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-6-md">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="descripcion">Direccion</label>
+                                    <textarea class="form-control" rows="10" cols="50" name="direccion1" id="direccion1"
+                                        required></textarea>
+
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" name="email1" id="email1" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="telefono">Telefono</label>
+                                    <input type="telephone" class="form-control" name="telefono1" id="telefono1"
+                                        value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="telegram">Telegram</label>
+                                    <input type="text" class="form-control" name="telegram1" id="telegram1" value="">
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    <input type="text" class="form-control" name="whatsapp1" id="whatsapp1" value="">
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
 </div>
 <!-- Scripts-->
 <script>
@@ -977,6 +1162,31 @@
         var id = $(e.relatedTarget).data().creditos;
         $(e.currentTarget).find('#creditos1').val(id);
         $("#creditos1").attr("placeholder", id);
+    });
+</script>
+
+<!-- Scripts sucursal-->
+<script>
+    ////////////////modal editar sucursal
+    $('#modaleditarsucursal').on('show.bs.modal', function(e) {
+        $('#id1').html($(e.relatedTarget).data('id'));
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        $("#editarsucursal").attr("action", '/editsucursal/' + id);
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        var id = $(e.relatedTarget).data().nombre;
+        $(e.currentTarget).find('#nombre1').val(id);
+        var id = $(e.relatedTarget).data().email;
+        $(e.currentTarget).find('#email1').val(id);
+        var id = $(e.relatedTarget).data().telefono;
+        $(e.currentTarget).find('#telefono1').val(id);
+        var id = $(e.relatedTarget).data().whatsapp;
+        $(e.currentTarget).find('#whatsapp1').val(id);
+        var id = $(e.relatedTarget).data().telegram;
+        $(e.currentTarget).find('#telegram1').val(id);
+        var id = $(e.relatedTarget).data().direccion;
+        $(e.currentTarget).find('#direccion1').val(id);
     });
 </script>
 <!-- Scripts Editar-->
@@ -1034,14 +1244,15 @@
     $(document).ready(function() {
         $('#smartcart').smartCart();
     });
-    var elInput = document.querySelector('#input');
-    if (elInput) {
-        var etiqueta = document.querySelector('#etiqueta');
-        if (etiqueta) {
-            etiqueta.innerHTML = elInput.value + "%";
-            elInput.addEventListener('input', function() {
-                etiqueta.innerHTML = elInput.value + "%";
-            }, false);
-        }
-    }
 </script>
+<script>
+    $(document).ready(function(){
+        $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+            localStorage.setItem('activeTab', $(e.target).attr('href'));
+        });
+        var activeTab = localStorage.getItem('activeTab');
+        if(activeTab){
+            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        }
+    });
+    </script>

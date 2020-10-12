@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Servicio;
+use App\Models\Sucursal;
 
-class ControllerServicio extends Controller
+class ControllerSucursal extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,15 +35,16 @@ class ControllerServicio extends Controller
      */
     public function store(Request $request)
     {
-        $servicio = new \App\Models\Servicio();
-        $servicio->nombre = $request->get('nombre');
-        $servicio->descripcion = $request->get('descripcion');
-        $servicio->precio = $request->get('precio');
-        $servicio->tiempo = $request->get('tiempo');
-        $servicio->save();
-        \Session::flash('nav', 'Servicio');
-        return back()->with('nav', "Servicio");
-
+        $sucursal=  new \App\Models\Sucursal;
+        $sucursal->nombre=$request->get('nombre');
+        $sucursal->direccion = $request->get('direccion');
+        $sucursal->telefono=$request->get('telefono');
+        $sucursal->email=$request->get('email');
+        $sucursal->telegram=$request->get('telegram');
+        $sucursal->whatsapp=$request->get('whatsapp');
+        $sucursal->save();
+        \Session::flash('nav', "Sucursal");
+        return back()->with('nav', "Sucursal");
     }
 
     /**
@@ -77,15 +78,16 @@ class ControllerServicio extends Controller
      */
     public function update(Request $request, $id)
     {
-        $servicio= \App\Models\Servicio::find($id);
-        $servicio->nombre=$request->get('nombre1');
-        $servicio->descripcion = $request->get('descripcion1');
-        $servicio->precio=$request->get('precio1');
-        $servicio->tiempo=$request->get('tiempo1');
-        $servicio->save();
-        \Session::flash('nav', 'Servicio');
-
-        return back()->with('nav', "Servicio");
+        $sucursal= \App\Models\Sucursal::find($id);
+        $sucursal->nombre=$request->get('nombre1');
+        $sucursal->direccion = $request->get('direccion1');
+        $sucursal->telefono=$request->get('telefono1');
+        $sucursal->email=$request->get('email1');
+        $sucursal->telegram=$request->get('telegram1');
+        $sucursal->whatsapp=$request->get('whatsapp1');
+        $sucursal->save();
+        \Session::flash('nav', 'Sucursal');
+        return back()->with('nav', "Sucursal");
     }
 
     /**
@@ -96,9 +98,9 @@ class ControllerServicio extends Controller
      */
     public function destroy($id)
     {
-        $servicio= \App\Models\Servicio::find($id);
-        $servicio->delete();
-        \Session::flash('nav', 'Servicio');
-        return back()->with('nav', "Servicio");
+        $sucursal= \App\Models\Sucursal::find($id);
+        $sucursal->delete();
+        \Session::flash('nav', 'Sucursal');
+        return back()->with('nav', "Sucursal");
     }
 }
