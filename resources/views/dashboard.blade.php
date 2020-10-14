@@ -16,6 +16,7 @@
     </script>
     <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -23,49 +24,97 @@
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                aria-controls="articulos" aria-selected="true">Articulos
+                aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                </svg>Articulos
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
-                aria-selected="false">Marcas
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
+                </svg>Marcas
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="modelos-tab" data-toggle="tab" href="#modelos" role="tab" aria-controls="modelos"
-                aria-selected="false">Modelos
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-newspaper"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
+                    <path
+                        d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+                </svg>Modelos
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
-                aria-controls="servicios" aria-selected="false">Servicios
+                aria-controls="servicios" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Servicios
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
-                aria-selected="false">Ventas
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                </svg>Ventas
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="usuarios-tab" data-toggle="tab"
-                href="#usuarios" role="tab" aria-controls="usuarios" aria-selected="false">Usuarios
+            <a class="nav-link" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+                </svg>Usuarios
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="sucursal-tab" data-toggle="tab"
-                href="#sucursal" role="tab" aria-controls="sucursal" aria-selected="false">Sucursal
+            <a class="nav-link" id="sucursal-tab" data-toggle="tab" href="#sucursal" role="tab" aria-controls="sucursal"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                </svg>Sucursal
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-toggles2"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 4a2 2 0 0 1 2-2h8a2 2 0 1 1 0 4H4a2 2 0 0 1-2-2zm2-1a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2H4z" />
+                    <path d="M14 4a4 4 0 1 1-8 0 4 4 0 0 1 8 0z" />
+                    <path fill-rule="evenodd"
+                        d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z" />
+                    <path fill-rule="evenodd" d="M6 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
+                </svg>Opciones
             </a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
         <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
-            data-keyboard="false" class="btn btn-success btn-lg btn-block"><svg width="1em" height="1em"
-                viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
-                <path fill-rule="evenodd"
-                    d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-            </svg>Punto de Venta</button>
+            data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg width="2em"
+                    height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
+                    <path fill-rule="evenodd"
+                        d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                </svg></center></button>
 
         <div class="tab-pane fade show active" id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
@@ -86,6 +135,18 @@
                                             <th>Precio(MXN)</th>
                                             <th>Existencia</th>
                                             <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modal_agregararticulo" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,6 +188,7 @@
                                                 <a href="/deletearticulo/{{$articulo->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
+                                            <td></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -154,6 +216,18 @@
                                             <th>Marca</th>
                                             <th>Descripcion</th>
                                             <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modal_agregarmarca" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -169,6 +243,7 @@
                                                 <a href="/deletemarca/{{$marca->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
+                                            <td></td>
                                         </tr>
 
                                         @endforeach
@@ -201,6 +276,18 @@
                                             <th>Status</th>
                                             <th>Fecha Agregado</th>
                                             <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal" data-target="#modalagregar"
+                                                    data-backdrop="static" data-keyboard="false"
+                                                    class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -220,6 +307,7 @@
                                                 <a href="/deleteusuario/{{$usuario->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
+                                            <td></td>
                                         </tr>
 
                                         @endforeach
@@ -253,6 +341,18 @@
                                             <th>Precio</th>
                                             <th>Tiempo</th>
                                             <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modalagregarservicio" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -272,6 +372,7 @@
                                                 <a href="/deleteservicio/{{$servicio->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
+                                            <td></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -304,7 +405,18 @@
                                             <th>Telegram</th>
                                             <th>Whatsapp</th>
                                             <th>Opciones</th>
-
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modalagregarsucursal" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -328,11 +440,134 @@
                                                 <a href="/deletesucursal/{{$sucursal->id}}"><i
                                                         class="fas fa-trash-alt text-danger"></i></a>
                                             </td>
+                                            <td></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show " id="settings" role="tabpanel" aria-labelledby="settings-tab">
+
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h4 class="card-title">Settings</h4>
+                                <div class="wrapper">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                                aria-orientation="vertical">
+                                                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
+                                                    href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+                                                    aria-selected="true">Logotipos/Nombres</a>
+                                                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+                                                    href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                                    aria-selected="false">Diseño</a>
+                                                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
+                                                    href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+                                                    aria-selected="false">Promociones</a>
+                                                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill"
+                                                    href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+                                                    aria-selected="false">Banners</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="tab-content" id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                                                    aria-labelledby="v-pills-home-tab">
+                                                    <div class="card text-left">
+                                                        <div class="card-body">
+                                                            <form action="/agregarsettings">
+                                                                @csrf
+                                                                @method('post')
+                                                                <label for="setting_nombre">Nombre del Negocio/ Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_nombre"
+                                                                    id="setting_nombre" value="" required>
+                                                                <label for="setting_direccion">Direccion del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_direccion"
+                                                                    id="setting_direccion" required>
+                                                                <label for="setting_telefono">Telefono del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_telefono"
+                                                                    id="setting_telefono" required>
+                                                                <label for="setting_logo">Logo del Negocio/ Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_logo"
+                                                                    id="setting_logo" required>
+                                                                <label for="setting_contacto">Contacto del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_contacto"
+                                                                    id="setting_contacto" required>
+                                                                    <label for="setting_abierto">Horario del Negocio/
+                                                                        Empresa</label>
+                                                                    <input class="form-control" type="setting_text" name="setting_abierto"
+                                                                        id="setting_abierto" required>
+                                                                <label for="setting_descripcion">Descripcion del Negocio/
+                                                                    Empresa</label>
+                                                                <textarea class="form-control" name="setting_descripcion"
+                                                                    id="setting_descripcion" cols="30" rows="3"></textarea>
+                                                                <label for="setting_moneda">Selecciona la moneda que
+                                                                    requieres:</label>
+                                                                <select class="form-control" name="setting_moneda" required>
+                                                                    <option class="form-control" value="Dollar/s">Dolar
+                                                                    </option>
+                                                                    <option class="form-control" value="Euro/s">Euro
+                                                                    </option>
+                                                                    <option class="form-control" value="Peso/s MXN"
+                                                                        selected>Peso Mexicano
+                                                                    </option>
+                                                                    <option class="form-control" value="Libra/s">Libra
+                                                                    </option>
+                                                                    <option class="form-control" value="Rupia/s">Rupia
+                                                                    </option>
+                                                                </select>
+                                                                <label for="setting_rfc">RFC del Negocio/ Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_rfc"
+                                                                    id="setting_rfc" required>
+                                                                <label for="setting_banner">Banner del Negocio/ Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_banner"
+                                                                    id="setting_banner" required>
+                                                                <label for="setting_url">URL del Negocio/ Empresa</label>
+                                                                <input class="form-control" type="text" name="setting_url"
+                                                                    id="setting_url" value="https://{{$_SERVER['HTTP_HOST']}}"
+                                                                    required>
+
+                                                                <button type="submit" data-backdrop="static"
+                                                                    data-keyboard="false"
+                                                                    class="btn btn-info btn-lg btn-block mt-1">Guardar
+                                                                    <center><svg width="1em" height="1em"
+                                                                            viewBox="0 0 16 16" class="bi bi-hdd"
+                                                                            fill="currentColor"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M14 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1zM2 8a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z" />
+                                                                            <path
+                                                                                d="M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M4.094 4a.5.5 0 0 0-.44.26l-2.47 4.532A1.5 1.5 0 0 0 1 9.51v.99H0v-.99c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198v.99h-1v-.99a1.5 1.5 0 0 0-.183-.718L12.345 4.26a.5.5 0 0 0-.439-.26H4.094z" />
+                                                                        </svg></center></button> </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                                    aria-labelledby="v-pills-profile-tab">...</div>
+                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                                                    aria-labelledby="v-pills-messages-tab">...</div>
+                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                                                    aria-labelledby="v-pills-settings-tab">...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -359,7 +594,7 @@
                             <div class="container">
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" value="">
+                                    <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="descripcion">Descripcion</label>
@@ -372,12 +607,12 @@
 
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" name="precio" id="precio" value="">
+                                        <input type="text" class="form-control" name="precio" id="precio" value=""required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="existencia">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia" id="existencia" value="">
+                                    <input type="text" class="form-control" name="existencia" id="existencia" value="" required>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="alert alert-warning" role="alert">
@@ -952,7 +1187,15 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-success">
-                <h5 class="modal-title text-white">Punto de Venta</h5>
+                <h5 class="modal-title text-white">Punto de Venta<center><svg width="2em" height="2em"
+                            viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
+                            <path fill-rule="evenodd"
+                                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                        </svg></center>
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1004,7 +1247,8 @@
                                     <div class="form-group">
                                         <label for="marca">Tiempo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido" id="fecha_recibido" value="<?php echo date('Y-m-d'); ?>" disabled>
+                                            name="fecha_recibido" id="fecha_recibido"
+                                            value="<?php echo date('Y-m-d'); ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1169,7 +1413,6 @@
         $("#creditos1").attr("placeholder", id);
     });
 </script>
-
 <!-- Scripts sucursal-->
 <script>
     ////////////////modal editar sucursal
@@ -1251,14 +1494,13 @@
     });
 </script>
 <script>
-    $(document).ready(function(){
-
+    $(document).ready(function() {
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
         });
         var activeTab = localStorage.getItem('activeTab');
-        if(activeTab){
+        if (activeTab) {
             $('#myTab a[href="' + activeTab + '"]').tab('show');
         }
     });
-    </script>
+</script>

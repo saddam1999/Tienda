@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
+ @foreach ($Settings as $setting)
 
+ @endforeach
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+<title>@if($setting!=''){{$setting->setting_nombre}}@endif</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -62,9 +62,9 @@
     <div id="content mt-5">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="/">
-                <img src="https://i.pinimg.com/736x/89/10/8e/89108e533640fd9d0731e0623699c57c.jpg" width="30"
+                <img src=" @if($setting!=''){{$setting->setting_logo}}@endif" width="30"
                     height="30" class="d-inline-block align-top" alt="">
-                {{ config('app.name', 'Laravel') }}
+                    @if($setting!='') {{$setting->setting_nombre}}@endif
             </a>
             <div class="container">
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
@@ -206,12 +206,12 @@
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                     @foreach ($Marca as $marca)
-                                    @if($marca->id==$producto->id_marca)
+                                    @if($marca->id===$producto->id_marca)
                                     <div class="bbb_deals_item_category"><a href="#">{{$marca->nombre}}</a></div>
                                     @endif
                                     @endforeach
 
-                                    <div class="bbb_deals_item_price_a ml-auto">${{$producto->precioOriginal}}</div>
+                                    <div class="bbb_deals_item_price_a ml-auto">${{$producto->precioOriginal}} {{$setting->setting_moneda}}</div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                     <div class="form-group">
@@ -219,7 +219,7 @@
                                             data-name="product_desc" rows="8">{{$producto->descripcion}}</textarea>
                                     </div>
 
-                                    <div class="bbb_deals_item_price ml-auto">${{$producto->precio}}</div>
+                                    <div class="bbb_deals_item_price ml-auto">${{$producto->precio}} {{$setting->setting_moneda}}</div>
                                     <input name="product_price" value="{{$producto->precio}}" type="hidden" />
                                     <input name="product_id" value="{{$producto->id}}" type="hidden" />
                                 </div>
@@ -312,12 +312,11 @@
         <hr class="featurette-divider">
         <!-- /END THE FEATURETTES -->
     </div><!-- /.container -->
-
     <!-- FOOTER -->
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">Privacy</a> &middot; <a
-                href="#">Terms</a></p>
+        <p>&copy; 2017-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">{{$setting->setting_direccion}}</a> &middot; <a
+                href="#">Contactanos:</a>{{$setting->setting_contacto}} </p><p>Abierto de :{{$setting->setting_abierto}}</p>
     </footer>
 </main>
 
@@ -381,5 +380,5 @@
     });
 </script>
 </body>
-
 </html>
+

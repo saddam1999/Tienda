@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('direccion')->nullable();
             $table->string('telegram')->nullable();
             $table->string('whatsapp')->nullable();
+            $table->string('id_sucursal')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
