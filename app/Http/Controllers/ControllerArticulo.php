@@ -41,6 +41,10 @@ class ControllerArticulo extends Controller
         $articulo->id_marca =  $request->get('id_marca');
         $articulo->existencia = $request->get('existencia');
         $articulo->descripcion = $request->get('descripcion');
+        $articulo->categoria = $request->get('categoria');
+        $articulo->talla = $request->get('talla');
+        $articulo->IDlocal = $request->get('IDlocal');
+
         $articulo->precioOriginal = $request->get('precio');
         $temporal = $request->get('descuento');
         $temporal2 = $request->get('precio');
@@ -92,6 +96,9 @@ class ControllerArticulo extends Controller
         $articulo->nombre = $request->get('nombre1');
         $articulo->descripcion = $request->get('descripcion1');
         $articulo->id_marca = $request->get('id_marca1');
+        $articulo->categoria = $request->get('categoria1');
+        $articulo->talla = $request->get('talla1');
+        //$articulo->IDlocal = $request->get('IDlocal1');
         $temporal = $request->get('descuento1');
         $temporal2 = $articulo->precioOriginal;
 
@@ -102,17 +109,18 @@ class ControllerArticulo extends Controller
             $descuento = ($temporal * $temporal2) / 100;
             $articulo->precio  = $temporal2 - $descuento;
             $articulo->descuento = $temporal;
-            $articulo->precioOriginal = $request->get('precio1');
+           // $articulo->precioOriginal = $request->get('precio1');
         } else if ($temporal == 0) { //en caso de que descuento este en 0 restablece precio
             // no modificar nada
             $articulo->descuento = 0;
-            $articulo->precio = $articulo->precioOriginal;
+            $articulo->precio = $temporal2;
         }
         $articulo->existencia = $request->get('existencia1');
         $articulo->save();
         \Session::flash('nav', 'Articulo');
         return back()->with('nav', "Articulo");
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -123,8 +131,12 @@ class ControllerArticulo extends Controller
     public function destroy($id)
     {
         $articulo = \App\Models\Articulo::find($id);
-        $articulo->delete();
-        \Session::flash('nav', 'Articulo');
-        return back()->with('nav', "Articulo");
+        if ($articulo != null) {
+            $articulo->delete();
+            \Session::flash('nav', 'Articulo');
+            return back()->with('nav', "Articulo");
+        } else {
+            return back()->with('nav', "Articulo");
+        }
     }
 }

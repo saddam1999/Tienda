@@ -3,11 +3,14 @@
  @foreach ($Settings as $setting)
 
  @endforeach
+ @foreach ($Promocion as $promocion)
+
+ @endforeach
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>@if($setting!=''){{$setting->setting_nombre}}@endif</title>
+<title>@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
@@ -19,6 +22,27 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
+    <style style="text/css">
+        div.slide-left {
+          width:100%;
+          overflow:hidden;
+        }
+        div.slide-left p {
+          animation: slide-left 10s;
+        }
+
+        @keyframes slide-left {
+          from {
+            margin-left: 100%;
+            width: 300%;
+          }
+
+          to {
+            margin-left: 0%;
+            width: 100%;
+          }
+        }
+        </style>
       <!-- Custom styles for this template -->
       <link href="https://getbootstrap.com/docs/4.5/examples/carousel/carousel.css" rel="stylesheet">
       <!-- Bootstrap CSS CDN -->
@@ -44,29 +68,19 @@
 </head>
 <header>
 
-    <div class="wrapper">
-        <!-- Sidebar  -->
-        <nav id="sidebar" style="background-color:white; opacity:95%;">
-            <div id="dismiss">
-                <i class="fas fa-arrow-left"></i>
-            </div>
 
-            <form action="results.php" method="POST">
-                <div class="sidebar-header text-dark" style="background-color:white; color:dark;" id="smartcart">
-                    <h3 class="text-dark">Carrito de Compras</h3>
-                    <!-- SmartCart element -->
-            </form>
-        </nav>
-    </div>
     <!-- Page Content  -->
-    <div id="content mt-5">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="content mt-2">
+
+        <nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="navbarmanual">
             <a class="navbar-brand" href="/">
-                <img src=" @if($setting!=''){{$setting->setting_logo}}@endif" width="30"
-                    height="30" class="d-inline-block align-top" alt="">
-                    @if($setting!='') {{$setting->setting_nombre}}@endif
+                <img style="border-radius:70%;" src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="50"
+                    height="50" class="d-inline-block align-top" alt="">
+                    @if($Settings->isEmpty()) @else <h5> {{$setting->setting_nombre}}</h5> @endif
             </a>
+
             <div class="container">
+
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -118,56 +132,64 @@
                         d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                 </svg>
             </button>
+
+
+
+
+            <div class="wrapper">
+                <!-- Sidebar  -->
+                <nav  class="sticky-top"  id="sidebar" style="background-color:white; opacity:95%;">
+                    <div id="dismiss" class="mt-5">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <form action="results.php" method="POST">
+                        <div class="sidebar-header text-dark " style="background-color:white; color:dark;" id="smartcart">
+                            <h3 class="text-dark"><br> Carrito</h3>
+                            <!-- SmartCart element -->
+                    </form>
+                </nav>
+            </div>
         </nav>
 
 </header>
 
 <main role="main">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin-top:10%;" >
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
 
-        <div class="carousel-inner">
+        <div class="carousel-inner" >
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                    <rect width="100%" height="100%" fill="#777" /></svg>
+                <img class="bd-placeholder-img"  src="{{$promocion->bannera}}" width="100%" height="100%" alt="">
+
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>Example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        <h1>{{$promocion->texto_bannera}}</h1>
+                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
                     </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                    <rect width="100%" height="100%" fill="#777" /></svg>
+                <img class="bd-placeholder-img"  src="{{$promocion->bannerb}}" width="100%" height="100%" alt="">
+
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        <h1>{{$promocion->texto_bannerb}}</h1>
+                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice" focusable="false" role="img">
-                    <rect width="100%" height="100%" fill="#777" /></svg>
+                <img class="bd-placeholder-img"  src="{{$promocion->bannerc}}" width="100%" height="100%" alt="">
+
                 <div class="container">
                     <div class="carousel-caption text-right">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                            gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        <h1>{{$promocion->texto_bannerc}}</h1>
+                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
                     </div>
                 </div>
             </div>
@@ -186,16 +208,22 @@
 ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
+    <div class="container marketing" >
 
         <div class="row">
+
             <!-- BEGIN PRODUCTS -->
             @foreach ($Articulo as $producto)
-            <div class="col-md-4">
+            @if($producto->descuento!=0)
+            <div class="col-md-4" style="border-radius:10px;">
+                <div class="alert alert-warning" role="alert">
+                  <h4 class="alert-heading">{{$promocion->titulo}}</h4>
+
+                </div>
                 <!-- bbb_deals -->
-                <div class="bbb_deals sc-product-item">
+                <div class="bbb_deals sc-product-item" style="border-radius:40px;">
                     @if($producto->descuento!=0)
-                    <div class="ribbon ribbon-top-right"><span> {{$producto->descuento}}%</span></div>
+                    <div class="ribbon ribbon-top-right"><span>Oferta -{{$producto->descuento}}%</span></div>
                     @endif
                     <div class="bbb_deals_title" data-name="product_name">{{$producto->nombre}}</div>
                     <div class="bbb_deals_slider_container">
@@ -210,8 +238,14 @@
                                     <div class="bbb_deals_item_category"><a href="#">{{$marca->nombre}}</a></div>
                                     @endif
                                     @endforeach
-
-                                    <div class="bbb_deals_item_price_a ml-auto">${{$producto->precioOriginal}} {{$setting->setting_moneda}}</div>
+                                    <small class="text-muted">{{$producto->categoria}}</small>
+                                    <div class="bbb_deals_item_price_a ml-auto">
+                                        @if($producto->descuento!=0)
+                                        <del>${{$producto->precioOriginal}}</del>
+                                        @else
+                                        ${{$producto->precioOriginal}}
+                                        @endif
+                                        @if($Settings->isEmpty()) @else {{$setting->setting_moneda}} @endif</div>
                                 </div>
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                     <div class="form-group">
@@ -219,7 +253,7 @@
                                             data-name="product_desc" rows="8">{{$producto->descripcion}}</textarea>
                                     </div>
 
-                                    <div class="bbb_deals_item_price ml-auto">${{$producto->precio}} {{$setting->setting_moneda}}</div>
+                                    <div class="bbb_deals_item_price ml-auto">${{$producto->precio}} @if($Settings->isEmpty()) @else {{$setting->setting_moneda}} @endif</div>
                                     <input name="product_price" value="{{$producto->precio}}" type="hidden" />
                                     <input name="product_id" value="{{$producto->id}}" type="hidden" />
                                 </div>
@@ -237,9 +271,75 @@
                     </div>
                 </div>
             </div>
-
+                @endif
             @endforeach
+     <!-- BEGIN PRODUCTS -->
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <div class="alert alert-success" role="alert">
+                  <h4 class="alert-heading">Articulos</h4>
+                </div>
+            </div>
+        </div>
+     </div>
 
+     @foreach ($Articulo as $producto)
+     @if($producto->descuento==0)
+     <div class="col-md-4">
+         <!-- bbb_deals -->
+         <div class="bbb_deals sc-product-item mt-3" style="border-radius:40px;">
+             @if($producto->descuento!=0)
+             <div class="ribbon ribbon-top-right"><span>Oferta -{{$producto->descuento}}%</span></div>
+             @endif
+             <div class="bbb_deals_title" data-name="product_name">{{$producto->nombre}}</div>
+             <div class="bbb_deals_slider_container">
+                 <div class=" bbb_deals_item">
+                     <div class="bbb_deals_image"><img data-name="product_image"
+                             src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
+                             alt=""></div>
+                     <div class="bbb_deals_content">
+                         <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                             @foreach ($Marca as $marca)
+                             @if($marca->id===$producto->id_marca)
+                             <div class="bbb_deals_item_category"><a href="#">{{$marca->nombre}}</a></div>
+                             @endif
+                             @endforeach
+                             <small class="text-muted">{{$producto->categoria}}</small>
+                             <div class="bbb_deals_item_price_a ml-auto">
+                                 @if($producto->descuento!=0)
+                                 <del>${{$producto->precioOriginal}}</del>
+                                 @else
+                                 ${{$producto->precioOriginal}}
+                                 @endif
+                                 @if($Settings->isEmpty()) @else {{$setting->setting_moneda}} @endif</div>
+                         </div>
+                         <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
+                             <div class="form-group">
+                                 <textarea class="form-control bbb_deals_item_name" disabled
+                                     data-name="product_desc" rows="8">{{$producto->descripcion}}</textarea>
+                             </div>
+
+                             <div class="bbb_deals_item_price ml-auto">${{$producto->precio}} @if($Settings->isEmpty()) @else {{$setting->setting_moneda}} @endif</div>
+                             <input name="product_price" value="{{$producto->precio}}" type="hidden" />
+                             <input name="product_id" value="{{$producto->id}}" type="hidden" />
+                         </div>
+                         <div class="available">
+                             <div class="available_line d-flex flex-row justify-content-start">
+                                 <div class="available_title">Disponible:
+                                     <span>{{$producto->existencia}}</span></div>
+                                 <div class="sold_title ml-auto">Already sold: <span>28</span></div>
+                             </div>
+                             <button class="sc-add-to-cart btn btn-success">Agregar Carrito</button>
+                             <div class="available_bar"><span style="width:17%"></span></div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     @endif
+     @endforeach
         </div>
 
         <!-- /.row -->
@@ -249,13 +349,20 @@
         <hr class="featurette-divider">
 
         <div class="row featurette">
+            @if($Settings->isEmpty()) @else
+            @if($setting->setting_banner!='')
+                <div class="alert alert-warning fixed-top item-1"  style="opacity: 77%;" role="alert">
+                <a href="#" class="alert-link "><center>@if($Settings->isEmpty()) @else <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                  </svg> {{$setting->setting_banner}} !!@endif</center></a>
+              </div>
 
+              @endif
+              @endif
             <div class="col-md-7">
-                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your
-                        mind.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                    tellus ac cursus commodo.</p>
+                <h2 class="featurette-heading">{{$promocion->titulo}} </h2>
+                <p class="lead">{{$promocion->titulo_banner_principal}}</p>
             </div>
 
             <div class="col-md-5">
@@ -308,6 +415,7 @@
                         dy=".3em">500x500</text>
                 </svg>
             </div>
+
         </div>
         <hr class="featurette-divider">
         <!-- /END THE FEATURETTES -->
@@ -315,8 +423,8 @@
     <!-- FOOTER -->
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">{{$setting->setting_direccion}}</a> &middot; <a
-                href="#">Contactanos:</a>{{$setting->setting_contacto}} </p><p>Abierto de :{{$setting->setting_abierto}}</p>
+        <p>&copy; 2017-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">@if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif </a> &middot; <a
+                href="#">Contactanos:</a>@if($Settings->isEmpty()) @else {{$setting->setting_contacto}} @endif </p><p>Abierto de : @if($Settings->isEmpty()) @else {{$setting->setting_abierto}} @endif</p>
     </footer>
 </main>
 
@@ -360,6 +468,7 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function() {
+
         $("#sidebar").mCustomScrollbar({
             theme: "minimal"
         });

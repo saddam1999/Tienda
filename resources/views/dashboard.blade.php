@@ -2,6 +2,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
+            @foreach ($Settings as $setting)@endforeach
+            @foreach ($Promocion as $promocion)@endforeach
+
         </h2>
     </x-slot>
     <!-- JS, Popper.js, and jQuery -->
@@ -41,27 +44,29 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="modelos-tab" data-toggle="tab" href="#modelos" role="tab" aria-controls="modelos"
-                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-newspaper"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
-                    <path
-                        d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
-                </svg>Modelos
+            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                  </svg>Categorias
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
-                aria-controls="servicios" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
-                    <path fill-rule="evenodd"
-                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-                </svg>Servicios
-            </a>
-        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                <path fill-rule="evenodd"
+                    d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+            </svg>Taller</a>
+            <div class="dropdown-menu">
+                    <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
+                        aria-controls="servicios" aria-selected="false">Area de Servicios
+                    </a>
+                    <div class="dropdown-divider"></div>
+              <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
+            </div>
+          </li>
+
         <li class="nav-item">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4"
@@ -104,19 +109,32 @@
                 </svg>Opciones
             </a>
         </li>
+
     </ul>
     <div class="tab-content" id="myTabContent">
-        <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
-            data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg width="2em"
-                    height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
-                    <path fill-rule="evenodd"
-                        d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                </svg></center></button>
+        <div class="row">
+            <div class="col-md-4 m-auto" style="margin-top:10%;">
+                <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
+                data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg width="2em"
+                        height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
+                        <path fill-rule="evenodd"
+                            d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                    </svg></center></button>
+            </div>
+            <div class="col-md-4 m-auto mt-1" style="margin-top:10%;">
+                <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
+                data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
+                  </svg></center></button>
+            </div>
 
-        <div class="tab-pane fade show active" id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
+        </div>
+
+
+        <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -131,6 +149,9 @@
                                             <th>Nombre</th>
                                             <th>Descripcion</th>
                                             <th>Marca</th>
+                                            <th>Categoria</th>
+                                            <th>Talla</th>
+                                            <th>ID Local</th>
                                             <th>Descuento(individual)</th>
                                             <th>Precio(MXN)</th>
                                             <th>Existencia</th>
@@ -160,6 +181,9 @@
                                             <td>{{$marca->nombre}}</td>
                                             @endif
                                             @endforeach
+                                            <td>{{$articulo->categoria}}</td>
+                                            <td>{{$articulo->talla}}</td>
+                                            <td>{{$articulo->IDlocal}}</td>
                                             @if($articulo->descuento==0)
                                             <td class="text-info"> 0% </td>
                                             @else
@@ -177,16 +201,25 @@
                                             <td class="text-danger">{{$articulo->existencia}}</td>
                                             @endif
                                             <td><a href="" data-toggle="modal" data-target="#modaleditararticulo"
-                                                    data-id="{{$articulo->id}}" data-nombre="{{$articulo->nombre}}"
+                                                    data-id="{{$articulo->id}}"
+                                                    data-nombre="{{$articulo->nombre}}"
                                                     data-id_marca="{{$articulo->id_marca}}"
+                                                    data-categoria="{{$articulo->categoria}}"
+                                                    data-talla="{{$articulo->talla}}"
+                                                    data-IDlocal="{{$articulo->IDlocal}}"
                                                     data-precio="{{$articulo->precio}}"
                                                     data-descuento="{{$articulo->descuento}}"
                                                     data-descripcion="{{$articulo->descripcion}}"
                                                     data-existencia="{{$articulo->existencia}}"
                                                     data-calificacion="{{$articulo->calificacion}}">
-                                                    <i class="fas fa-edit"></i></a>
-                                                <a href="/deletearticulo/{{$articulo->id}}"><i
-                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deletearticulo/{{$articulo->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -200,8 +233,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
-
+        <div class="tab-pane fade show" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -238,10 +270,14 @@
                                             <td>{{$marca->descripcion}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
                                                     data-id="{{$marca->id}}" data-nombre="{{$marca->nombre}}"
-                                                    data-descripcion="{{$marca->descripcion}}"><i
-                                                        class="fas fa-edit"></i></a>
-                                                <a href="/deletemarca/{{$marca->id}}"><i
-                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                                    data-descripcion="{{$marca->descripcion}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deletemarca/{{$marca->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -303,9 +339,14 @@
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
                                                     data-id="{{$usuario->id}}" data-name="{{$usuario->name}}"
                                                     data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"
-                                                    data-estatus="{{$usuario->status}}"><i class="fas fa-edit"></i></a>
-                                                <a href="/deleteusuario/{{$usuario->id}}"><i
-                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                                    data-estatus="{{$usuario->status}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deleteusuario/{{$usuario->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -320,7 +361,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
 
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
@@ -368,9 +409,14 @@
                                                     data-descripcion="{{$servicio->descripcion}}"
                                                     data-precio="{{$servicio->precio}}"
                                                     data-tiempo="{{$servicio->tiempo}}">
-                                                    <i class="fas fa-edit"></i></a>
-                                                <a href="/deleteservicio/{{$servicio->id}}"><i
-                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deleteservicio/{{$servicio->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -436,9 +482,74 @@
                                                     data-telefono="{{$sucursal->telefono}}"
                                                     data-telegram="{{$sucursal->telegram}}"
                                                     data-whatsapp="{{$sucursal->whatsapp}}">
-                                                    <i class="fas fa-edit"></i></a>
-                                                <a href="/deletesucursal/{{$sucursal->id}}"><i
-                                                        class="fas fa-trash-alt text-danger"></i></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deletesucursal/{{$sucursal->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade show " id="categoria" role="tabpanel" aria-labelledby="categoria-tab">
+
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Categoria</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modal_categoria" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Categoria as $categoria)
+                                        <tr>
+                                            <td>{{$categoria->id}}</td>
+                                            <td>{{$categoria->nombre_categoria}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
+                                                    data-id="{{$categoria->id}}" data-nombre_categoria="{{$categoria->nombre_categoria}}"
+                                                    >
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deletecategoria/{{$categoria->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -453,7 +564,6 @@
             </div>
         </div>
         <div class="tab-pane fade show " id="settings" role="tabpanel" aria-labelledby="settings-tab">
-
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -485,60 +595,122 @@
                                                     aria-labelledby="v-pills-home-tab">
                                                     <div class="card text-left">
                                                         <div class="card-body">
-                                                            <form action="/agregarsettings">
+                                                            <form action="@if($Settings->isEmpty()) /agregarsettings @else /editsettings/1 @endif">
                                                                 @csrf
                                                                 @method('post')
                                                                 <label for="setting_nombre">Nombre del Negocio/ Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_nombre"
-                                                                    id="setting_nombre" value="" required>
+                                                            id="setting_nombre" value="@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif" required>
                                                                 <label for="setting_direccion">Direccion del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_direccion"
-                                                                    id="setting_direccion" required>
+                                                                    id="setting_direccion" value="@if($Settings->isEmpty()) @else {{$setting->setting_direccion}}@endif" required>
                                                                 <label for="setting_telefono">Telefono del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_telefono"
-                                                                    id="setting_telefono" required>
+                                                                    id="setting_telefono" value="@if($Settings->isEmpty()) @else {{$setting->setting_telefono}}@endif"required>
                                                                 <label for="setting_logo">Logo del Negocio/ Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_logo"
-                                                                    id="setting_logo" required>
+                                                                    id="setting_logo" value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" required>
                                                                 <label for="setting_contacto">Contacto del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_contacto"
-                                                                    id="setting_contacto" required>
+                                                                    id="setting_contacto" value="@if($Settings->isEmpty()) @else {{$setting->setting_contacto}}@endif" required>
                                                                     <label for="setting_abierto">Horario del Negocio/
                                                                         Empresa</label>
                                                                     <input class="form-control" type="setting_text" name="setting_abierto"
-                                                                        id="setting_abierto" required>
+                                                                        id="setting_abierto"  value="@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}@endif" required>
                                                                 <label for="setting_descripcion">Descripcion del Negocio/
                                                                     Empresa</label>
                                                                 <textarea class="form-control" name="setting_descripcion"
-                                                                    id="setting_descripcion" cols="30" rows="3"></textarea>
+                                                                    id="setting_descripcion" cols="30" rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
                                                                 <label for="setting_moneda">Selecciona la moneda que
                                                                     requieres:</label>
-                                                                <select class="form-control" name="setting_moneda" required>
-                                                                    <option class="form-control" value="Dollar/s">Dolar
+                                                                <select class="form-control" name="setting_moneda" value="@if($Settings->isEmpty()) @else {{$setting->setting_moneda}}@endif" required>
+                                                                    <option class="form-control" value="Dollar">Dolar
                                                                     </option>
-                                                                    <option class="form-control" value="Euro/s">Euro
+                                                                    <option class="form-control" value="Euro">Euro
                                                                     </option>
-                                                                    <option class="form-control" value="Peso/s MXN"
+                                                                    <option class="form-control" value="MXN"
                                                                         selected>Peso Mexicano
                                                                     </option>
-                                                                    <option class="form-control" value="Libra/s">Libra
+                                                                    <option class="form-control" value="Libra">Libra
                                                                     </option>
-                                                                    <option class="form-control" value="Rupia/s">Rupia
+                                                                    <option class="form-control" value="Rupia">Rupia
                                                                     </option>
                                                                 </select>
                                                                 <label for="setting_rfc">RFC del Negocio/ Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_rfc"
-                                                                    id="setting_rfc" required>
+                                                                    id="setting_rfc" value="@if($Settings->isEmpty()) @else {{$setting->setting_rfc}}@endif" required>
                                                                 <label for="setting_banner">Banner del Negocio/ Empresa</label>
                                                                 <input class="form-control" type="text" name="setting_banner"
-                                                                    id="setting_banner" required>
+                                                                    id="setting_banner" value="@if($Settings->isEmpty()) @else {{$setting->setting_banner}}@endif" >
                                                                 <label for="setting_url">URL del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_url"
-                                                                    id="setting_url" value="https://{{$_SERVER['HTTP_HOST']}}"
+                                                                <input class="form-control" type="url" value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif" name="setting_url"
+                                                                    id="setting_url" value="https:// {{$_SERVER['HTTP_HOST']}}"
                                                                     required>
+
+                                                                <button type="submit" data-backdrop="static"
+                                                                    data-keyboard="false"
+                                                                    class="btn btn-info btn-lg btn-block mt-1">Guardar
+                                                                    <center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                                      </svg></center></button> </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                                                    aria-labelledby="v-pills-profile-tab">
+                                                    <div class="card text-left">
+                                                        <div class="card-body">
+                                                            <form action="@if($Promocion->isEmpty()) /agregarpromocion @else /editpromocion/1 @endif">
+                                                                @csrf
+                                                                @method('post')
+                                                                <label for="titulo">Titulo</label>
+                                                                <input class="form-control" type="text" name="titulo"
+                                                            id="titulo" value="@if($Promocion->isEmpty()) @else {{$promocion->titulo}}@endif" required>
+
+                                                                <label for="titulo_banner_principal">Titulo Banner Principal</label>
+                                                                <input class="form-control" type="text" name="titulo_banner_principal"
+                                                                    id="titulo_banner_principal" value="@if($Promocion->isEmpty()) @else {{$promocion->titulo_banner_principal}}@endif" required>
+
+                                                                <label for="descuento_banner_principal">Descuento Banner Principal</label>
+                                                                <input class="form-control" type="text" name="descuento_banner_principal"
+                                                                    id="descuento_banner_principal" value="@if($Promocion->isEmpty()) @else {{$promocion->descuento_banner_principal}}@endif"required>
+
+                                                                <label for="bannera">Primer Banner</label>
+                                                                <input class="form-control" type="text" name="bannera"
+                                                                    id="bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->bannera}}@endif" required>
+
+                                                                    <label for="texto_bannera">Texto del primer Banner</label>
+                                                                <input class="form-control" type="text" name="texto_bannera"
+                                                                    id="texto_bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannera}}@endif" required>
+
+                                                                    <label for="bannerb">Segundo Banner</label>
+                                                                    <input class="form-control" type="text" name="bannerb"
+                                                                        id="bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->bannerb}}@endif" required>
+
+                                                                        <label for="texto_bannera">Texto del Segundo Banner</label>
+                                                                    <input class="form-control" type="text" name="texto_bannerb"
+                                                                        id="texto_bannerb" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerb}}@endif" required>
+
+                                                                        <label for="bannerc">Tercer Banner</label>
+                                                                        <input class="form-control" type="text" name="bannerc"
+                                                                            id="bannerc" value="@if($Promocion->isEmpty()) @else {{$promocion->bannerc}}@endif" required>
+
+                                                                            <label for="texto_bannerc">Texto del tercer Banner</label>
+                                                                        <input class="form-control" type="text" name="texto_bannerc"
+                                                                            id="texto_bannerc" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerc}}@endif" required>
+
+                                                                                <label for="fecha_inicio">Fecha Inicio Promocion</label>
+                                                                            <input class="form-control" data-provide="datepicker" type="date" name="fecha_inicio"
+                                                                                id="fecha_inicio" value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}}@endif" required>
+
+                                                                                <label for="fecha_final">Fecha Final Promocion</label>
+                                                                            <input class="form-control" data-provide="datepicker" type="date" name="fecha_final"
+                                                                                id="fecha_final" value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_final}}@endif" required>
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
@@ -557,17 +729,70 @@
 
                                                         </div>
                                                     </div>
+
+
+
                                                 </div>
-                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                                    aria-labelledby="v-pills-profile-tab">...</div>
-                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                                    aria-labelledby="v-pills-messages-tab">...</div>
-                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                                    aria-labelledby="v-pills-settings-tab">...</div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h4 class="card-title">Taller</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modal_categoria" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Categoria as $categoria)
+                                        <tr>
+                                            <td>{{$categoria->id}}</td>
+                                            <td>{{$categoria->nombre_categoria}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
+                                                    data-id="{{$categoria->id}}" data-nombre_categoria="{{$categoria->nombre_categoria}}"
+                                                    ><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                      </svg></a>
+                                                <a href="/deletecategoria/{{$categoria->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                  </svg></a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -604,7 +829,6 @@
                                 </div>
                                 <div class="col-6-md">
                                     <label for="precio">Precio Neto</label>
-
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
                                         <input type="text" class="form-control" name="precio" id="precio" value=""required>
@@ -690,8 +914,36 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Categoria</label>
+                                        <select class="form-control" id="categoria" name="categoria" required>
+                                            <option value="N/A" selected>Seleciona una Categoria</option>
+                                            @foreach($Categoria as $categoria)
+                                            <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Talla</label>
+                                        <select class="form-control" id="talla" name="talla"  required>
+                                            <option value="N/A" selected>Seleciona una Talla</option>
+                                            <option value="xs" >XS</option>
+                                            <option value="s" >S</option>
+                                            <option value="m" >M</option>
+                                            <option value="l" >L</option>
+                                            <option value="xl" >XL</option>
+                                            <option value="xxl" >XXL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="IDlocal">Codigo Local</label>
+                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal">
+                                </div>
                             </div>
-
                         </div>
                 </div>
             </div>
@@ -818,8 +1070,36 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Categoria</label>
+                                        <select class="form-control" id="categoria1" name="categoria1"  required>
+                                            <option value="N/A" selected>Seleciona una Categoria</option>
+                                            @foreach($Categoria as $categoria)
+                                            <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Talla</label>
+                                        <select class="form-control" id="talla1" name="talla1" required>
+                                            <option value="N/A" >Seleciona una Talla</option>
+                                            <option value="xs" >XS</option>
+                                            <option value="s" >S</option>
+                                            <option value="m" >M</option>
+                                            <option value="l" >L</option>
+                                            <option value="xl" >XL</option>
+                                            <option value="xxl" >XXL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <label for="IDlocal1">Codigo Local</label>
+                                    <input type="text" class="form-control" name="IDlocal1" id="IDlocal1">
+                                </div>
                             </div>
-
                         </div>
                 </div>
             </div>
@@ -1390,6 +1670,72 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Agregar Categoria-->
+<div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Agregar Categoria</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarcategoria">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-6-md">
+                                    <label for="nombre">Nombre Categoria</label>
+                                    <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" value="" required>
+                                </div>
+                            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Categoria -->
+<div class="modal fade" id="modal_editarcategoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Editar Categoria</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form name="editarcategoria" id="editarcategoria" action=" ">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-6-md">
+                                    <label for="nombre">Nombre Categoria</label>
+                                    <input type="text" class="form-control" name="nombre_categoria1" id="nombre_categoria1" value="" required>
+                                </div>
+                            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+
 <!-- Scripts-->
 <script>
     ////////////////modal editar usuario
@@ -1411,6 +1757,21 @@
         var id = $(e.relatedTarget).data().creditos;
         $(e.currentTarget).find('#creditos1').val(id);
         $("#creditos1").attr("placeholder", id);
+    });
+</script>
+
+<script>
+    ////////////////modal editar categoria
+    $('#modal_editarcategoria').on('show.bs.modal', function(e) {
+        $('#id1').html($(e.relatedTarget).data('id'));
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        $("#editarcategoria").attr("action", '/editarcategoria/' + id);
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id1').val(id);
+        var id = $(e.relatedTarget).data().nombre_categoria1;
+        $(e.currentTarget).find('#nombre_categoria1').val(id);
+
     });
 </script>
 <!-- Scripts sucursal-->
@@ -1475,6 +1836,15 @@
         $(e.currentTarget).find('#precio1').val(id);
         var id = $(e.relatedTarget).data().descuento;
         $(e.currentTarget).find('#descuento1').val(id);
+
+        var id = $(e.relatedTarget).data().IDlocal;
+        $(e.currentTarget).find('#IDlocal1').val(id);
+
+        var id = $(e.relatedTarget).data().categoria;
+        $(e.currentTarget).find('#categoria1').val(id);
+
+        var id = $(e.relatedTarget).data().talla;
+        $(e.currentTarget).find('#talla1').val(id);
         if (id == 0) {
             $("#precio1").prop("disabled", false);
         } else {
@@ -1482,6 +1852,7 @@
         }
         var id = $(e.relatedTarget).data().id_marca;
         $(e.currentTarget).find('#id_marca1').val(id);
+
         var id = $(e.relatedTarget).data().calificacion;
         $(e.currentTarget).find('#calificacion1').val(id);
         var id = $(e.relatedTarget).data().existencia;

@@ -17,6 +17,9 @@ class CreateArticulosTable extends Migration
             $table->id();
             $table->string('nombre')->nullable();
             $table->string('id_marca')->nullable();
+            $table->string('categoria')->nullable();//categoria
+            $table->string('IDlocal')->nullable();//id local del articulo
+            $table->string('talla')->nullable();//talla
             $table->string('descripcion')->nullable();
             $table->string('existencia')->nullable();
             $table->float('precio')->nullable();
