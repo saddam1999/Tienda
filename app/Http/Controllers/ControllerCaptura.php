@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Equipo;
 
-class ControllerEquipo extends Controller
+class ControllerCaptura extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,19 +34,14 @@ class ControllerEquipo extends Controller
      */
     public function store(Request $request)
     {
-       $equipo = new \App\Models\Equipo();
-       $equipo->id_user=$request->get('id_user');
-       $equipo->id_cliente=$request->get('id_cliente');
-       $equipo->id_servicio=$request->get('id_servicio');
-       $equipo->serial=$request->get('serial');
-       $equipo->imei=$request->get('imei');
-       $equipo->id_captura=$request->get('id_captura');
-       $equipo->id_comentario=$request->get('id_comentario');
-       $equipo->fecha_recibido=$request->get('fecha_recibido');
-       $equipo->fecha_entrega=$request->get('fecha_entrega');
-       $equipo->status=$request->get('status');
-       $equipo->save();
-    return back();
+        $captura = new \App\Models\Captura();
+        $captura->id_user=$request->get('id_user');
+        $captura->id_equipo=$request->get('id_equipo');
+        $captura->captura=$request->get('captura');
+        $captura->descripcion=$request->get('descripcion');
+        $captura->fecha=$request->get('fecha');
+        $captura->save();
+        return back();
     }
 
     /**
@@ -92,9 +86,6 @@ class ControllerEquipo extends Controller
      */
     public function destroy($id)
     {
-        $equipo= \App\Models\Equipo::find($id);
-        $equipo->delete();
-        \Session::flash('nav', 'Equipo');
-        return back()->with('nav', "Equipo");
+        //
     }
 }

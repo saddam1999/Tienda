@@ -20,7 +20,6 @@
     <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
     <link href="../css/main.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="camara.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -45,28 +44,31 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab" aria-controls="categoria"
-                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
-                  </svg>Categorias
+            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                </svg>Categorias
             </a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
-                <path fill-rule="evenodd"
-                    d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-            </svg>Taller</a>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Taller</a>
             <div class="dropdown-menu">
-                    <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
-                        aria-controls="servicios" aria-selected="false">Area de Servicios
-                    </a>
-                    <div class="dropdown-divider"></div>
-              <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
+                <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
+                    aria-controls="servicios" aria-selected="false">Area de Servicios
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
             </div>
-          </li>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
@@ -116,24 +118,26 @@
         <div class="row">
             <div class="col-md-4 m-auto" style="margin-top:10%;">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
-                data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg width="2em"
-                        height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
-                        <path fill-rule="evenodd"
-                            d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                    </svg></center></button>
+                    data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg
+                            width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
+                            <path fill-rule="evenodd"
+                                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                        </svg></center></button>
             </div>
             <div class="col-md-4 m-auto mt-1" style="margin-top:10%;">
                 <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-                data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
-                  </svg></center></button>
+                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white">Taller<center><svg
+                            width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                        </svg></center></button>
             </div>
 
         </div>
-
 
         <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
@@ -202,8 +206,7 @@
                                             <td class="text-danger">{{$articulo->existencia}}</td>
                                             @endif
                                             <td><a href="" data-toggle="modal" data-target="#modaleditararticulo"
-                                                    data-id="{{$articulo->id}}"
-                                                    data-nombre="{{$articulo->nombre}}"
+                                                    data-id="{{$articulo->id}}" data-nombre="{{$articulo->nombre}}"
                                                     data-id_marca="{{$articulo->id_marca}}"
                                                     data-categoria="{{$articulo->categoria}}"
                                                     data-talla="{{$articulo->talla}}"
@@ -213,14 +216,22 @@
                                                     data-descripcion="{{$articulo->descripcion}}"
                                                     data-existencia="{{$articulo->existencia}}"
                                                     data-calificacion="{{$articulo->calificacion}}">
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deletearticulo/{{$articulo->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-pencil-square" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deletearticulo/{{$articulo->id}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -270,14 +281,22 @@
                                             <td>{{$marca->descripcion}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
                                                     data-id="{{$marca->id}}" data-nombre="{{$marca->nombre}}"
-                                                    data-descripcion="{{$marca->descripcion}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deletemarca/{{$marca->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    data-descripcion="{{$marca->descripcion}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deletemarca/{{$marca->id}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -338,14 +357,22 @@
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
                                                     data-id="{{$usuario->id}}" data-name="{{$usuario->name}}"
                                                     data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"
-                                                    data-estatus="{{$usuario->status}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deleteusuario/{{$usuario->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    data-estatus="{{$usuario->status}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deleteusuario/{{$usuario->id}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -360,7 +387,7 @@
                 </div>
             </div>
 
-         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
 
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
@@ -408,14 +435,22 @@
                                                     data-descripcion="{{$servicio->descripcion}}"
                                                     data-precio="{{$servicio->precio}}"
                                                     data-tiempo="{{$servicio->tiempo}}">
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deleteservicio/{{$servicio->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-pencil-square" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deleteservicio/{{$servicio->id}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -481,14 +516,22 @@
                                                     data-telefono="{{$sucursal->telefono}}"
                                                     data-telegram="{{$sucursal->telegram}}"
                                                     data-whatsapp="{{$sucursal->whatsapp}}">
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deletesucursal/{{$sucursal->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-pencil-square" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deletesucursal/{{$sucursal->id}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -502,7 +545,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="tab-pane fade show " id="categoria" role="tabpanel" aria-labelledby="categoria-tab">
 
@@ -519,9 +561,9 @@
                                             <th>#</th>
                                             <th>Nombre</th>
                                             <th>Opciones</th>
-                                            <th><button type="button" data-toggle="modal"
-                                                    data-target="#modal_categoria" data-backdrop="static"
-                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                            <th><button type="button" data-toggle="modal" data-target="#modal_categoria"
+                                                    data-backdrop="static" data-keyboard="false"
+                                                    class="btn btn-success btn-lg btn-block">
                                                     <center><svg width="1em" height="1em" viewBox="0 0 16 16"
                                                             class="bi bi-clipboard-plus" fill="currentColor"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -539,16 +581,24 @@
                                             <td>{{$categoria->id}}</td>
                                             <td>{{$categoria->nombre_categoria}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
-                                                    data-id="{{$categoria->id}}" data-nombre_categoria="{{$categoria->nombre_categoria}}"
-                                                    >
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deletecategoria/{{$categoria->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    data-id="{{$categoria->id}}"
+                                                    data-nombre_categoria="{{$categoria->nombre_categoria}}">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-pencil-square" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deletecategoria/{{$categoria->id}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -594,68 +644,101 @@
                                                     aria-labelledby="v-pills-home-tab">
                                                     <div class="card text-left">
                                                         <div class="card-body">
-                                                            <form action="@if($Settings->isEmpty()) /agregarsettings @else /editsettings/1 @endif">
+                                                            <form
+                                                                action="@if($Settings->isEmpty()) /agregarsettings @else /editsettings/1 @endif">
                                                                 @csrf
                                                                 @method('post')
-                                                                <label for="setting_nombre">Nombre del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_nombre"
-                                                            id="setting_nombre" value="@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif" required>
+                                                                <label for="setting_nombre">Nombre del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_nombre" id="setting_nombre"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif"
+                                                                    required>
                                                                 <label for="setting_direccion">Direccion del Negocio/
                                                                     Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_direccion"
-                                                                    id="setting_direccion" value="@if($Settings->isEmpty()) @else {{$setting->setting_direccion}}@endif" required>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_direccion" id="setting_direccion"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_direccion}}@endif"
+                                                                    required>
                                                                 <label for="setting_telefono">Telefono del Negocio/
                                                                     Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_telefono"
-                                                                    id="setting_telefono" value="@if($Settings->isEmpty()) @else {{$setting->setting_telefono}}@endif"required>
-                                                                <label for="setting_logo">Logo del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_logo"
-                                                                    id="setting_logo" value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" required>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_telefono" id="setting_telefono"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_telefono}}@endif"
+                                                                    required>
+                                                                <label for="setting_logo">Logo del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_logo" id="setting_logo"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif"
+                                                                    required>
                                                                 <label for="setting_contacto">Contacto del Negocio/
                                                                     Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_contacto"
-                                                                    id="setting_contacto" value="@if($Settings->isEmpty()) @else {{$setting->setting_contacto}}@endif" required>
-                                                                    <label for="setting_abierto">Horario del Negocio/
-                                                                        Empresa</label>
-                                                                    <input class="form-control" type="setting_text" name="setting_abierto"
-                                                                        id="setting_abierto"  value="@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}@endif" required>
-                                                                <label for="setting_descripcion">Descripcion del Negocio/
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_contacto" id="setting_contacto"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_contacto}}@endif"
+                                                                    required>
+                                                                <label for="setting_abierto">Horario del Negocio/
                                                                     Empresa</label>
-                                                                <textarea class="form-control" name="setting_descripcion"
-                                                                    id="setting_descripcion" cols="30" rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
+                                                                <input class="form-control" type="setting_text"
+                                                                    name="setting_abierto" id="setting_abierto"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}@endif"
+                                                                    required>
+                                                                <label for="setting_descripcion">Descripcion del
+                                                                    Negocio/
+                                                                    Empresa</label>
+                                                                <textarea class="form-control"
+                                                                    name="setting_descripcion" id="setting_descripcion"
+                                                                    cols="30"
+                                                                    rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
                                                                 <label for="setting_moneda">Selecciona la moneda que
                                                                     requieres:</label>
-                                                                <select class="form-control" name="setting_moneda" value="@if($Settings->isEmpty()) @else {{$setting->setting_moneda}}@endif" required>
+                                                                <select class="form-control" name="setting_moneda"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_moneda}}@endif"
+                                                                    required>
                                                                     <option class="form-control" value="Dollar">Dolar
                                                                     </option>
                                                                     <option class="form-control" value="Euro">Euro
                                                                     </option>
-                                                                    <option class="form-control" value="MXN"
-                                                                        selected>Peso Mexicano
+                                                                    <option class="form-control" value="MXN" selected>
+                                                                        Peso Mexicano
                                                                     </option>
                                                                     <option class="form-control" value="Libra">Libra
                                                                     </option>
                                                                     <option class="form-control" value="Rupia">Rupia
                                                                     </option>
                                                                 </select>
-                                                                <label for="setting_rfc">RFC del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_rfc"
-                                                                    id="setting_rfc" value="@if($Settings->isEmpty()) @else {{$setting->setting_rfc}}@endif" required>
-                                                                <label for="setting_banner">Banner del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="text" name="setting_banner"
-                                                                    id="setting_banner" value="@if($Settings->isEmpty()) @else {{$setting->setting_banner}}@endif" >
-                                                                <label for="setting_url">URL del Negocio/ Empresa</label>
-                                                                <input class="form-control" type="url" value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif" name="setting_url"
-                                                                    id="setting_url" value="https:// {{$_SERVER['HTTP_HOST']}}"
+                                                                <label for="setting_rfc">RFC del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_rfc" id="setting_rfc"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_rfc}}@endif"
                                                                     required>
+                                                                <label for="setting_banner">Banner del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="setting_banner" id="setting_banner"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_banner}}@endif">
+                                                                <label for="setting_url">URL del Negocio/
+                                                                    Empresa</label>
+                                                                <input class="form-control" type="url"
+                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif"
+                                                                    name="setting_url" id="setting_url"
+                                                                    value="https:// {{$_SERVER['HTTP_HOST']}}" required>
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
                                                                     class="btn btn-info btn-lg btn-block mt-1">Guardar
-                                                                    <center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                                      </svg></center></button> </form>
+                                                                    <center><svg width="2em" height="2em"
+                                                                            viewBox="0 0 16 16"
+                                                                            class="bi bi-pencil-square"
+                                                                            fill="currentColor"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path
+                                                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                                        </svg></center></button> </form>
 
                                                         </div>
                                                     </div>
@@ -664,52 +747,82 @@
                                                     aria-labelledby="v-pills-profile-tab">
                                                     <div class="card text-left">
                                                         <div class="card-body">
-                                                            <form action="@if($Promocion->isEmpty()) /agregarpromocion @else /editpromocion/1 @endif">
+                                                            <form
+                                                                action="@if($Promocion->isEmpty()) /agregarpromocion @else /editpromocion/1 @endif">
                                                                 @csrf
                                                                 @method('post')
                                                                 <label for="titulo">Titulo</label>
                                                                 <input class="form-control" type="text" name="titulo"
-                                                            id="titulo" value="@if($Promocion->isEmpty()) @else {{$promocion->titulo}}@endif" required>
+                                                                    id="titulo"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->titulo}}@endif"
+                                                                    required>
 
-                                                                <label for="titulo_banner_principal">Titulo Banner Principal</label>
-                                                                <input class="form-control" type="text" name="titulo_banner_principal"
-                                                                    id="titulo_banner_principal" value="@if($Promocion->isEmpty()) @else {{$promocion->titulo_banner_principal}}@endif" required>
+                                                                <label for="titulo_banner_principal">Titulo Banner
+                                                                    Principal</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="titulo_banner_principal"
+                                                                    id="titulo_banner_principal"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->titulo_banner_principal}}@endif"
+                                                                    required>
 
-                                                                <label for="descuento_banner_principal">Descuento Banner Principal</label>
-                                                                <input class="form-control" type="text" name="descuento_banner_principal"
-                                                                    id="descuento_banner_principal" value="@if($Promocion->isEmpty()) @else {{$promocion->descuento_banner_principal}}@endif"required>
+                                                                <label for="descuento_banner_principal">Descuento Banner
+                                                                    Principal</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="descuento_banner_principal"
+                                                                    id="descuento_banner_principal"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->descuento_banner_principal}}@endif"
+                                                                    required>
 
                                                                 <label for="bannera">Primer Banner</label>
                                                                 <input class="form-control" type="text" name="bannera"
-                                                                    id="bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->bannera}}@endif" required>
+                                                                    id="bannera"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->bannera}}@endif"
+                                                                    required>
 
-                                                                    <label for="texto_bannera">Texto del primer Banner</label>
-                                                                <input class="form-control" type="text" name="texto_bannera"
-                                                                    id="texto_bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannera}}@endif" required>
+                                                                <label for="texto_bannera">Texto del primer
+                                                                    Banner</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="texto_bannera" id="texto_bannera"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannera}}@endif"
+                                                                    required>
 
-                                                                    <label for="bannerb">Segundo Banner</label>
-                                                                    <input class="form-control" type="text" name="bannerb"
-                                                                        id="bannera" value="@if($Promocion->isEmpty()) @else {{$promocion->bannerb}}@endif" required>
+                                                                <label for="bannerb">Segundo Banner</label>
+                                                                <input class="form-control" type="text" name="bannerb"
+                                                                    id="bannera"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->bannerb}}@endif"
+                                                                    required>
 
-                                                                        <label for="texto_bannera">Texto del Segundo Banner</label>
-                                                                    <input class="form-control" type="text" name="texto_bannerb"
-                                                                        id="texto_bannerb" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerb}}@endif" required>
+                                                                <label for="texto_bannera">Texto del Segundo
+                                                                    Banner</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="texto_bannerb" id="texto_bannerb"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerb}}@endif"
+                                                                    required>
 
-                                                                        <label for="bannerc">Tercer Banner</label>
-                                                                        <input class="form-control" type="text" name="bannerc"
-                                                                            id="bannerc" value="@if($Promocion->isEmpty()) @else {{$promocion->bannerc}}@endif" required>
+                                                                <label for="bannerc">Tercer Banner</label>
+                                                                <input class="form-control" type="text" name="bannerc"
+                                                                    id="bannerc"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->bannerc}}@endif"
+                                                                    required>
 
-                                                                            <label for="texto_bannerc">Texto del tercer Banner</label>
-                                                                        <input class="form-control" type="text" name="texto_bannerc"
-                                                                            id="texto_bannerc" value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerc}}@endif" required>
+                                                                <label for="texto_bannerc">Texto del tercer
+                                                                    Banner</label>
+                                                                <input class="form-control" type="text"
+                                                                    name="texto_bannerc" id="texto_bannerc"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerc}}@endif"
+                                                                    required>
 
-                                                                                <label for="fecha_inicio">Fecha Inicio Promocion</label>
-                                                                            <input class="form-control" data-provide="datepicker" type="date" name="fecha_inicio"
-                                                                                id="fecha_inicio" value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}}@endif" required>
+                                                                <label for="fecha_inicio">Fecha Inicio Promocion</label>
+                                                                <input class="form-control" data-provide="datepicker"
+                                                                    type="date" name="fecha_inicio" id="fecha_inicio"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}}@endif"
+                                                                    required>
 
-                                                                                <label for="fecha_final">Fecha Final Promocion</label>
-                                                                            <input class="form-control" data-provide="datepicker" type="date" name="fecha_final"
-                                                                                id="fecha_final" value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_final}}@endif" required>
+                                                                <label for="fecha_final">Fecha Final Promocion</label>
+                                                                <input class="form-control" data-provide="datepicker"
+                                                                    type="date" name="fecha_final" id="fecha_final"
+                                                                    value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_final}}@endif"
+                                                                    required>
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
@@ -728,8 +841,6 @@
 
                                                         </div>
                                                     </div>
-
-
 
                                                 </div>
 
@@ -764,18 +875,7 @@
                                             <th>Fecha Entrega</th>
                                             <th>Fecha Status</th>
                                             <th>Opciones</th>
-                                            <th><button type="button" data-toggle="modal"
-                                                    data-target="#modal_categoria" data-backdrop="static"
-                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
-                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                            class="bi bi-clipboard-plus" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                                                            <path fill-rule="evenodd"
-                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-                                                        </svg></center>
-                                                </button></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -786,23 +886,45 @@
                                             <td>{{$equipo->id_cliente}}</td>
                                             <td>{{$equipo->serial}}</td>
                                             <td>{{$equipo->imei}}</td>
-                                            <td><img src="./fotos/{{$equipo->id_captura}}" alt="">
-                                                {{$equipo->id_captura}}</td>
+                                            <td><img src="./fotos/{{$equipo->id_captura}}" alt=""></td>
                                             <td>{{$equipo->id_comentario}}</td>
                                             <td>{{$equipo->fecha_recibido}}</td>
                                             <td>{{$equipo->fecha_entrega}}</td>
                                             <td>{{$equipo->status}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
-                                                    data-id="{{$equipo->id}}"
-                                                    data-id_user="{{$equipo->id_user}}"
-                                                    ><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                      </svg></a>
-                                                <a href="/deletecategoria/{{$equipo->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                  </svg></a>
+                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deleteequipo/{{$equipo->id}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
+                                                <a href="" data-toggle="modal" data-target="#modal_foto"><svg
+                                                        width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-camera" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                        <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                    </svg></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -848,12 +970,14 @@
                                     <label for="precio">Precio Neto</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" name="precio" id="precio" value=""required>
+                                        <input type="text" class="form-control" name="precio" id="precio" value=""
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="existencia">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia" id="existencia" value="" required>
+                                    <input type="text" class="form-control" name="existencia" id="existencia" value=""
+                                        required>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="alert alert-warning" role="alert">
@@ -937,7 +1061,8 @@
                                         <select class="form-control" id="categoria" name="categoria" required>
                                             <option value="N/A" selected>Seleciona una Categoria</option>
                                             @foreach($Categoria as $categoria)
-                                            <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
+                                            <option value="{{$categoria->nombre_categoria}}">
+                                                {{$categoria->nombre_categoria}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -945,14 +1070,14 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">Talla</label>
-                                        <select class="form-control" id="talla" name="talla"  required>
+                                        <select class="form-control" id="talla" name="talla" required>
                                             <option value="N/A" selected>Seleciona una Talla</option>
-                                            <option value="xs" >XS</option>
-                                            <option value="s" >S</option>
-                                            <option value="m" >M</option>
-                                            <option value="l" >L</option>
-                                            <option value="xl" >XL</option>
-                                            <option value="xxl" >XXL</option>
+                                            <option value="xs">XS</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                            <option value="xl">XL</option>
+                                            <option value="xxl">XXL</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1090,10 +1215,11 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">Categoria</label>
-                                        <select class="form-control" id="categoria1" name="categoria1"  required>
+                                        <select class="form-control" id="categoria1" name="categoria1" required>
                                             <option value="N/A" selected>Seleciona una Categoria</option>
                                             @foreach($Categoria as $categoria)
-                                            <option value="{{$categoria->nombre_categoria}}">{{$categoria->nombre_categoria}}</option>
+                                            <option value="{{$categoria->nombre_categoria}}">
+                                                {{$categoria->nombre_categoria}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -1102,13 +1228,13 @@
                                     <div class="form-group">
                                         <label for="marca">Talla</label>
                                         <select class="form-control" id="talla1" name="talla1" required>
-                                            <option value="N/A" >Seleciona una Talla</option>
-                                            <option value="xs" >XS</option>
-                                            <option value="s" >S</option>
-                                            <option value="m" >M</option>
-                                            <option value="l" >L</option>
-                                            <option value="xl" >XL</option>
-                                            <option value="xxl" >XXL</option>
+                                            <option value="N/A">Seleciona una Talla</option>
+                                            <option value="xs">XS</option>
+                                            <option value="s">S</option>
+                                            <option value="m">M</option>
+                                            <option value="l">L</option>
+                                            <option value="xl">XL</option>
+                                            <option value="xxl">XXL</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1181,7 +1307,7 @@
 <div class="modal fade" id="modaleditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-primary" >
+            <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white">Edit User</h5>
             </div>
             <div class="modal-body">
@@ -1576,9 +1702,11 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
-                  </svg></center>
+                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                            class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                        </svg></center>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -1610,6 +1738,18 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">IMEI</label>
+                                        <input class="form-control" type="text" name="imei" id="imei">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">SERIAL</label>
+                                        <input class="form-control" type="text" name="serial" id="serial">
+                                    </div>
+                                </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Servicio</label>
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
@@ -1632,7 +1772,7 @@
                                         <label for="marca">Tiempo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_recibido" id="fecha_recibido"
-                                            value="<?php echo date('Y-m-d'); ?>" disabled>
+                                            value="<?php echo date('Y-m-d'); ?>">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1644,18 +1784,22 @@
                                 </div>
                                 <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
                                 <p id="estado"></p>
+                                <br>
                             </div>
-                            <br>
                             <video muted="muted" id="video"></video>
                             <canvas id="canvas" style="display: none;"></canvas>
-                                <input type="hidden" name="status" id="status" value="Pendiente">
-                                <input type="hidden" name="pago" id="pago" value="0">
-                                <input type="hidden" name="id_captura" id="id_captura" value="">
-                                <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
-                                    <path fill-rule="evenodd" d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                                    <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
-                                  </svg></button>
+                            <input type="hidden" name="status" id="status" value="Pendiente">
+                            <input type="hidden" name="pago" id="pago" value="0">
+                            <input type="hidden" name="id_captura" id="id_captura" value="">
+                            <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
+                                    viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                    <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                </svg></button>
                         </div>
                 </div>
             </div>
@@ -1786,15 +1930,16 @@
 </div>
 
 <!-- Modal Agregar Categoria-->
-<div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-white">Agregar Categoria</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <form action="/agregarcategoria">
@@ -1804,29 +1949,33 @@
                             <div class="container">
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre Categoria</label>
-                                    <input type="text" class="form-control" name="nombre_categoria" id="nombre_categoria" value="" required>
+                                    <input type="text" class="form-control" name="nombre_categoria"
+                                        id="nombre_categoria" value="" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
         </div>
     </div>
 </div>
 
 <!-- Modal Editar Categoria -->
-<div class="modal fade" id="modal_editarcategoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_editarcategoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-white">Editar Categoria</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Editar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <form name="editarcategoria" id="editarcategoria" action=" ">
@@ -1836,19 +1985,74 @@
                             <div class="container">
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre Categoria</label>
-                                    <input type="text" class="form-control" name="nombre_categoria1" id="nombre_categoria1" value="" required>
+                                    <input type="text" class="form-control" name="nombre_categoria1"
+                                        id="nombre_categoria1" value="" required>
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_foto" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <center>
+                    <h5 class="modal-title text-white"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                            class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                            <path fill-rule="evenodd"
+                                d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                            <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                        </svg></h5>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarcaptura">
+                        <select name="listaDeDispositivos1" id="listaDeDispositivos1"></select>
+                        <p id="estado1"></p>
+                        <br>
+                </div>
+                <video muted="muted" id="video1"></video>
+                <canvas id="canvas1" style="display: none;"></canvas>
+                <input type="hidden" name="status" id="status" value="Pendiente">
+                <input type="hidden" name="id_captura" id="id_captura" value="">
+                <input type="hidden" name="id_user" id="id_user" value="">
+                <textarea class="border border-danger" name="descripcion" id="descripcion" cols="30" rows="10"
+                    placeholder="Inserte la descripcion de la foto aqui"></textarea>
+                <button type="button" class="btn btn-primary" id="boton1"><svg width="1em" height="1em"
+                        viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                        <path fill-rule="evenodd"
+                            d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                    </svg></button>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>
-
+</div>
+</div>
 
 <!-- Scripts-->
 <script>
@@ -1885,7 +2089,6 @@
         $(e.currentTarget).find('#id1').val(id);
         var id = $(e.relatedTarget).data().nombre_categoria1;
         $(e.currentTarget).find('#nombre_categoria1').val(id);
-
     });
 </script>
 <!-- Scripts sucursal-->
@@ -1950,13 +2153,10 @@
         $(e.currentTarget).find('#precio1').val(id);
         var id = $(e.relatedTarget).data().descuento;
         $(e.currentTarget).find('#descuento1').val(id);
-
         var id = $(e.relatedTarget).data().IDlocal;
         $(e.currentTarget).find('#IDlocal1').val(id);
-
         var id = $(e.relatedTarget).data().categoria;
         $(e.currentTarget).find('#categoria1').val(id);
-
         var id = $(e.relatedTarget).data().talla;
         $(e.currentTarget).find('#talla1').val(id);
         if (id == 0) {
@@ -1966,7 +2166,6 @@
         }
         var id = $(e.relatedTarget).data().id_marca;
         $(e.currentTarget).find('#id_marca1').val(id);
-
         var id = $(e.relatedTarget).data().calificacion;
         $(e.currentTarget).find('#calificacion1').val(id);
         var id = $(e.relatedTarget).data().existencia;
@@ -1975,167 +2174,307 @@
 </script>
 <script>
     $(document).ready(function() {
-        $('#smartcart').smartCart();
-
-$('#modaltaller').on('show.bs.modal', function(e) {
-    const tieneSoporteUserMedia = () =>
-    !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
-const _getUserMedia = (...arguments) =>
-    (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
-
-// Declaramos elementos del DOM
-const $video = document.querySelector("#video"),
-    $canvas = document.querySelector("#canvas"),
-    $estado = document.querySelector("#estado"),
-    $boton = document.querySelector("#boton"),
-    $listaDeDispositivos = document.querySelector("#listaDeDispositivos");
-
-const limpiarSelect = () => {
-    for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
-        $listaDeDispositivos.remove(x);
-};
-const obtenerDispositivos = () => navigator
-    .mediaDevices
-    .enumerateDevices();
-
-// La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
-// Lo que hace es llenar el select con los dispositivos obtenidos
-const llenarSelectConDispositivosDisponibles = () => {
-
-    limpiarSelect();
-    obtenerDispositivos()
-        .then(dispositivos => {
-            const dispositivosDeVideo = [];
-            dispositivos.forEach(dispositivo => {
-                const tipo = dispositivo.kind;
-                if (tipo === "videoinput") {
-                    dispositivosDeVideo.push(dispositivo);
-                }
-            });
-
-            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-            if (dispositivosDeVideo.length > 0) {
-                // Llenar el select
-                dispositivosDeVideo.forEach(dispositivo => {
-                    const option = document.createElement('option');
-                    option.value = dispositivo.deviceId;
-                    option.text = dispositivo.label;
-                    $listaDeDispositivos.appendChild(option);
-                });
-            }
-        });
-}
-
-(function() {
-    // Comenzamos viendo si tiene soporte, si no, nos detenemos
-    if (!tieneSoporteUserMedia()) {
-        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
-        $estado.innerHTML = "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
-        return;
-    }
-    //AquÃ­ guardaremos el stream globalmente
-    let stream;
-
-
-    // Comenzamos pidiendo los dispositivos
-    obtenerDispositivos()
-        .then(dispositivos => {
-            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
-            const dispositivosDeVideo = [];
-
-            // Recorrer y filtrar
-            dispositivos.forEach(function(dispositivo) {
-                const tipo = dispositivo.kind;
-                if (tipo === "videoinput") {
-                    dispositivosDeVideo.push(dispositivo);
-                }
-            });
-
-            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-            // y le pasamos el id de dispositivo
-            if (dispositivosDeVideo.length > 0) {
-                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
-                mostrarStream(dispositivosDeVideo[0].deviceId);
-            }
-        });
-
-
-
-    const mostrarStream = idDeDispositivo => {
-        _getUserMedia({
-                video: {
-                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
-                    deviceId: idDeDispositivo,
-                }
-            },
-            (streamObtenido) => {
-                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
-                // pues si no, no nos darÃ­a el nombre de los dispositivos
-                llenarSelectConDispositivosDisponibles();
-
-                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
-                $listaDeDispositivos.onchange = () => {
-                    // Detener el stream
-                    if (stream) {
-                        stream.getTracks().forEach(function(track) {
-                            track.stop();
-                        });
-                    }
-                    // Mostrar el nuevo stream con el dispositivo seleccionado
-                    mostrarStream($listaDeDispositivos.value);
-                }
-
-                // Simple asignaciÃ³n
-                stream = streamObtenido;
-
-                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
-                $video.srcObject = stream;
-                $video.play();
-
-                //Escuchar el click del botÃ³n para tomar la foto
-                //Escuchar el click del botÃ³n para tomar la foto
-                $boton.addEventListener("click", function() {
-
-                    //Pausar reproducciÃ³n
-                    $video.pause();
-
-                    //Obtener contexto del canvas y dibujar sobre Ã©l
-                    let contexto = $canvas.getContext("2d");
-                    $canvas.width = $video.videoWidth;
-                    $canvas.height = $video.videoHeight;
-                    contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
-
-                    let foto = $canvas.toDataURL(); //Esta es la foto, en base 64
-                    $estado.innerHTML = "Enviando foto. Por favor, espera...";
-                    fetch("./fotos/foto.php", {
-                            method: "POST",
-                            body: encodeURIComponent(foto),
-                            headers: {
-                                "Content-type": "application/x-www-form-urlencoded",
+        //$('#smartcart').smartCart();
+        $('#modal_foto').on('show.bs.modal', function(e) {
+            const tieneSoporteUserMedia = () =>
+                !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+            const _getUserMedia = (...arguments) =>
+                (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
+                    navigator, arguments);
+            // Declaramos elementos del DOM
+            const $video = document.querySelector("#video1"),
+                $canvas = document.querySelector("#canvas1"),
+                $estado = document.querySelector("#estado1"),
+                $boton = document.querySelector("#boton1"),
+                $listaDeDispositivos = document.querySelector("#listaDeDispositivos1");
+            const limpiarSelect = () => {
+                for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
+                    $listaDeDispositivos.remove(x);
+            };
+            const obtenerDispositivos = () => navigator
+                .mediaDevices
+                .enumerateDevices();
+            // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
+            // Lo que hace es llenar el select con los dispositivos obtenidos
+            const llenarSelectConDispositivosDisponibles = () => {
+                    limpiarSelect();
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            const dispositivosDeVideo = [];
+                            dispositivos.forEach(dispositivo => {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            if (dispositivosDeVideo.length > 0) {
+                                // Llenar el select
+                                dispositivosDeVideo.forEach(dispositivo => {
+                                    const option = document.createElement('option');
+                                    option.value = dispositivo.deviceId;
+                                    option.text = dispositivo.label;
+                                    $listaDeDispositivos.appendChild(option);
+                                });
                             }
-                        })
-                        .then(resultado => {
-                            // A los datos los decodificamos como texto plano
-                            return resultado.text()
-                        })
-                        .then(nombreDeLaFoto => {
-                            $('#id_captura').attr('value', nombreDeLaFoto);
-                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
-                            console.log("La foto fue enviada correctamente");
-                            $estado.innerHTML = `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
-                        })
-
-                    //Reanudar reproducciÃ³n
-                    $video.play();
-                });
-            }, (error) => {
-                console.log("Permiso denegado o error: ", error);
-                $estado.innerHTML = "No se puede acceder a la cÃ¡mara, o no diste permiso.";
-            });
-    }
-})();
-});
-});
+                        });
+                }
+                (function() {
+                    // Comenzamos viendo si tiene soporte, si no, nos detenemos
+                    if (!tieneSoporteUserMedia()) {
+                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                        $estado.innerHTML =
+                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                        return;
+                    }
+                    //AquÃ­ guardaremos el stream globalmente
+                    let stream;
+                    // Comenzamos pidiendo los dispositivos
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
+                            const dispositivosDeVideo = [];
+                            // Recorrer y filtrar
+                            dispositivos.forEach(function(dispositivo) {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            // y le pasamos el id de dispositivo
+                            if (dispositivosDeVideo.length > 0) {
+                                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
+                                mostrarStream(dispositivosDeVideo[0].deviceId);
+                            }
+                        });
+                    const mostrarStream = idDeDispositivo => {
+                        _getUserMedia({
+                                video: {
+                                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
+                                    deviceId: idDeDispositivo,
+                                }
+                            },
+                            (streamObtenido) => {
+                                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
+                                // pues si no, no nos darÃ­a el nombre de los dispositivos
+                                llenarSelectConDispositivosDisponibles();
+                                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
+                                $listaDeDispositivos.onchange = () => {
+                                    // Detener el stream
+                                    if (stream) {
+                                        stream.getTracks().forEach(function(track) {
+                                            track.stop();
+                                        });
+                                    }
+                                    // Mostrar el nuevo stream con el dispositivo seleccionado
+                                    mostrarStream($listaDeDispositivos.value);
+                                }
+                                // Simple asignaciÃ³n
+                                stream = streamObtenido;
+                                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
+                                $video.srcObject = stream;
+                                $video.play();
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                $boton.addEventListener("click", function() {
+                                    //Pausar reproducciÃ³n
+                                    $video.pause();
+                                    //Obtener contexto del canvas y dibujar sobre Ã©l
+                                    let contexto = $canvas.getContext("2d");
+                                    $canvas.width = $video.videoWidth;
+                                    $canvas.height = $video.videoHeight;
+                                    contexto.drawImage($video, 0, 0, $canvas.width,
+                                        $canvas.height);
+                                    let foto = $canvas
+                                        .toDataURL(); //Esta es la foto, en base 64
+                                    $estado.innerHTML =
+                                        "Enviando foto. Por favor, espera...";
+                                    fetch("./fotos/foto.php", {
+                                            method: "POST",
+                                            body: encodeURIComponent(foto),
+                                            headers: {
+                                                "Content-type": "application/x-www-form-urlencoded",
+                                            }
+                                        })
+                                        .then(resultado => {
+                                            // A los datos los decodificamos como texto plano
+                                            return resultado.text()
+                                        })
+                                        .then(nombreDeLaFoto => {
+$('#id_captura').attr('value',nombreDeLaFoto);
+        var id = $(e.relatedTarget).data().user_id;
+        $(e.currentTarget).find('#user_id').val(id);
+                                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
+                                            console.log(
+                                                "La foto fue enviada correctamente"
+                                            );
+                                            $estado.innerHTML =
+                                                `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
+                                        })
+                                    //Reanudar reproducciÃ³n
+                                    $video.play();
+                                });
+                            }, (error) => {
+                                console.log("Permiso denegado o error: ", error);
+                                $estado.innerHTML =
+                                    "No se puede acceder a la cÃ¡mara, o no diste permiso.";
+                            });
+                    }
+                })();
+        });
+        $('#modaltaller').on('show.bs.modal', function(e) {
+            const tieneSoporteUserMedia = () =>
+                !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+            const _getUserMedia = (...arguments) =>
+                (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
+                    navigator, arguments);
+            // Declaramos elementos del DOM
+            const $video = document.querySelector("#video"),
+                $canvas = document.querySelector("#canvas"),
+                $estado = document.querySelector("#estado"),
+                $boton = document.querySelector("#boton"),
+                $listaDeDispositivos = document.querySelector("#listaDeDispositivos");
+            const limpiarSelect = () => {
+                for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
+                    $listaDeDispositivos.remove(x);
+            };
+            const obtenerDispositivos = () => navigator
+                .mediaDevices
+                .enumerateDevices();
+            // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
+            // Lo que hace es llenar el select con los dispositivos obtenidos
+            const llenarSelectConDispositivosDisponibles = () => {
+                    limpiarSelect();
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            const dispositivosDeVideo = [];
+                            dispositivos.forEach(dispositivo => {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            if (dispositivosDeVideo.length > 0) {
+                                // Llenar el select
+                                dispositivosDeVideo.forEach(dispositivo => {
+                                    const option = document.createElement('option');
+                                    option.value = dispositivo.deviceId;
+                                    option.text = dispositivo.label;
+                                    $listaDeDispositivos.appendChild(option);
+                                });
+                            }
+                        });
+                }
+                (function() {
+                    // Comenzamos viendo si tiene soporte, si no, nos detenemos
+                    if (!tieneSoporteUserMedia()) {
+                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                        $estado.innerHTML =
+                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                        return;
+                    }
+                    //AquÃ­ guardaremos el stream globalmente
+                    let stream;
+                    // Comenzamos pidiendo los dispositivos
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
+                            const dispositivosDeVideo = [];
+                            // Recorrer y filtrar
+                            dispositivos.forEach(function(dispositivo) {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            // y le pasamos el id de dispositivo
+                            if (dispositivosDeVideo.length > 0) {
+                                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
+                                mostrarStream(dispositivosDeVideo[0].deviceId);
+                            }
+                        });
+                    const mostrarStream = idDeDispositivo => {
+                        _getUserMedia({
+                                video: {
+                                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
+                                    deviceId: idDeDispositivo,
+                                }
+                            },
+                            (streamObtenido) => {
+                                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
+                                // pues si no, no nos darÃ­a el nombre de los dispositivos
+                                llenarSelectConDispositivosDisponibles();
+                                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
+                                $listaDeDispositivos.onchange = () => {
+                                    // Detener el stream
+                                    if (stream) {
+                                        stream.getTracks().forEach(function(track) {
+                                            track.stop();
+                                        });
+                                    }
+                                    // Mostrar el nuevo stream con el dispositivo seleccionado
+                                    mostrarStream($listaDeDispositivos.value);
+                                }
+                                // Simple asignaciÃ³n
+                                stream = streamObtenido;
+                                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
+                                $video.srcObject = stream;
+                                $video.play();
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                $boton.addEventListener("click", function() {
+                                    //Pausar reproducciÃ³n
+                                    $video.pause();
+                                    //Obtener contexto del canvas y dibujar sobre Ã©l
+                                    let contexto = $canvas.getContext("2d");
+                                    $canvas.width = $video.videoWidth;
+                                    $canvas.height = $video.videoHeight;
+                                    contexto.drawImage($video, 0, 0, $canvas.width,
+                                        $canvas.height);
+                                    let foto = $canvas
+                                        .toDataURL(); //Esta es la foto, en base 64
+                                    $estado.innerHTML =
+                                        "Enviando foto. Por favor, espera...";
+                                    fetch("./fotos/foto.php", {
+                                            method: "POST",
+                                            body: encodeURIComponent(foto),
+                                            headers: {
+                                                "Content-type": "application/x-www-form-urlencoded",
+                                            }
+                                        })
+                                        .then(resultado => {
+                                            // A los datos los decodificamos como texto plano
+                                            return resultado.text()
+                                        })
+                                        .then(nombreDeLaFoto => {
+                                            $('#id_captura').attr('value',
+                                                nombreDeLaFoto);
+                                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
+                                            console.log(
+                                                "La foto fue enviada correctamente"
+                                            );
+                                            $estado.innerHTML =
+                                                `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
+                                        })
+                                    //Reanudar reproducciÃ³n
+                                    $video.play();
+                                });
+                            }, (error) => {
+                                console.log("Permiso denegado o error: ", error);
+                                $estado.innerHTML =
+                                    "No se puede acceder a la cÃ¡mara, o no diste permiso.";
+                            });
+                    }
+                })();
+        });
+    });
 </script>
 <script>
     $(document).ready(function() {

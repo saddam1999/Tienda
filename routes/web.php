@@ -10,6 +10,7 @@ use App\Http\Controllers\ControllerSettings;
 use App\Http\Controllers\ControllerCategoria;
 use App\Http\Controllers\ControllerPromocion;
 use App\Http\Controllers\ControllerEquipo;
+use App\Http\Controllers\ControllerCaptura;
 
 use App\Http\Controllers\FileUploadController;
 
@@ -27,7 +28,7 @@ use App\Http\Controllers\FileUploadController;
 Route::get('/', function () {
     return view('welcome', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all()
     ,'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all(),
-    'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all(),'Equipo' => App\Models\Equipo::all()]);
+    'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all(),'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()]);
 });
 //Usuario
 Route::get('/addusuario', [ControllerUsuario::class, 'store']);
@@ -67,12 +68,17 @@ Route::get('/deletepromocion/{id}', [ControllerPromocion::class, 'destroy']);
 Route::get('/agregarequipo', [ControllerEquipo::class, 'store']);
 Route::get('/editequipo/{id}', [ControllerEquipo::class, 'update']);
 Route::get('/deleteequipo/{id}', [ControllerEquipo::class, 'destroy']);
+//ControllerTaller ( EQUIPO)
+Route::get('/agregarcaptura', [ControllerCaptura::class, 'store']);
+Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);
+Route::get('/deletecaptura/{id}', [ControllerCaptura::class, 'destroy']);
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
     ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all(),'Equipo' => App\Models\Equipo::all()]);
+    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
+    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()]);
 })->name('dashboard');
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');
