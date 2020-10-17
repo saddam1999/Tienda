@@ -20,6 +20,7 @@
     <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
     <link href="../css/main.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="camara.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -125,7 +126,7 @@
                     </svg></center></button>
             </div>
             <div class="col-md-4 m-auto mt-1" style="margin-top:10%;">
-                <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
+                <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
                 data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
                   </svg></center></button>
@@ -238,7 +239,6 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-
                             <div class="card-body">
                                 <h4 class="card-title">Marca</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -294,7 +294,6 @@
         </div>
 
         <div class="tab-pane fade show " id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
-
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -755,7 +754,15 @@
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre</th>
+                                            <th>Tecnico</th>
+                                            <th>Cliente</th>
+                                            <th>Serial</th>
+                                            <th>IMEI</th>
+                                            <th>Captura</th>
+                                            <th>Comentario</th>
+                                            <th>Fecha Recibido</th>
+                                            <th>Fecha Entrega</th>
+                                            <th>Fecha Status</th>
                                             <th>Opciones</th>
                                             <th><button type="button" data-toggle="modal"
                                                     data-target="#modal_categoria" data-backdrop="static"
@@ -772,17 +779,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Categoria as $categoria)
+                                        @foreach($Equipo as $equipo)
                                         <tr>
-                                            <td>{{$categoria->id}}</td>
-                                            <td>{{$categoria->nombre_categoria}}</td>
+                                            <td>{{$equipo->id}}</td>
+                                            <td>{{$equipo->id_user}}</td>
+                                            <td>{{$equipo->id_cliente}}</td>
+                                            <td>{{$equipo->serial}}</td>
+                                            <td>{{$equipo->imei}}</td>
+                                            <td>{{$equipo->id_captura}}</td>
+                                            <td>{{$equipo->id_comentario}}</td>
+                                            <td>{{$equipo->fecha_recibido}}</td>
+                                            <td>{{$equipo->fecha_entrega}}</td>
+                                            <td>{{$equipo->status}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
-                                                    data-id="{{$categoria->id}}" data-nombre_categoria="{{$categoria->nombre_categoria}}"
+                                                    data-id="{{$categoria->id}}"
+                                                    data-id_user="{{$equipo->id_user}}"
                                                     ><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                                       </svg></a>
-                                                <a href="/deletecategoria/{{$categoria->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <a href="/deletecategoria/{{$equipo->id}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                                   </svg></a>
@@ -806,8 +822,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Articulo</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Articulo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -960,8 +976,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Articulo</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Editar Articulo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1116,8 +1132,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Marca</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Marca</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1164,8 +1180,8 @@
 <div class="modal fade" id="modaleditar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit User</h5>
+            <div class="modal-header bg-primary" >
+                <h5 class="modal-title text-white">Edit User</h5>
             </div>
             <div class="modal-body">
                 <form name="modaledit" id="modaledit" action="">
@@ -1242,8 +1258,8 @@
 <div class="modal fade" id="modalagregar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Usuario</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1317,8 +1333,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Servicio</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Editar Servicio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1392,8 +1408,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Servicio</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Servicio</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1462,7 +1478,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Vender-->
+<!-- Modal Punto de venta-->
 <div class="modal fade" id="modalvender" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
@@ -1554,13 +1570,105 @@
     </div>
 </div>
 
+<!-- Modal Taller-->
+<div class="modal fade" id="modaltaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg " role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z"/>
+                  </svg></center>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <form action="/agregarequipo">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Cliente</label>
+                                    <select class="form-control" id="nombre" name="nombre" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=='cliente')
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Tecnico</label>
+                                    <select class="form-control" id="nombre" name="nombre" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=="tecnico")
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Servicio</label>
+                                    <select class="form-control" id="servicio" name="servicio" required>
+                                        @foreach ($Servicio as $servicio)
+                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Sucursal</label>
+                                    <select class="form-control" id="servicio" name="servicio" required>
+                                        @foreach ($Sucursal as $sucursal)
+                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Recibido</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_recibido" id="fecha_recibido"
+                                            value="<?php echo date('Y-m-d'); ?>" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Entrega</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_entrega" id="fecha_entrega">
+                                    </div>
+                                </div>
+                                <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+                                <p id="estado"></p>
+                            </div>
+                            <br>
+                            <video muted="muted" id="video"></video>
+                            <canvas id="canvas" style="display: none;"></canvas>
+                                <input type="hidden" name="status" id="status" value="Pendiente">
+                                <input type="hidden" name="pago" id="pago" value="0">
+
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="boton">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Sucursal</h5>
+        <div class="modal-content ">
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Sucursal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1617,8 +1725,8 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Sucursal</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Editar Sucursal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1675,8 +1783,8 @@
 <div class="modal fade" id="modal_categoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title">Agregar Categoria</h5>
+                <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Agregar Categoria</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -1707,8 +1815,8 @@
 <div class="modal fade" id="modal_editarcategoria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title">Editar Categoria</h5>
+                <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Editar Categoria</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -1862,7 +1970,166 @@
 <script>
     $(document).ready(function() {
         $('#smartcart').smartCart();
-    });
+
+$('#modaltaller').on('show.bs.modal', function(e) {
+    const tieneSoporteUserMedia = () =>
+    !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+const _getUserMedia = (...arguments) =>
+    (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
+
+// Declaramos elementos del DOM
+const $video = document.querySelector("#video"),
+    $canvas = document.querySelector("#canvas"),
+    $estado = document.querySelector("#estado"),
+    $boton = document.querySelector("#boton"),
+    $listaDeDispositivos = document.querySelector("#listaDeDispositivos");
+
+const limpiarSelect = () => {
+    for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
+        $listaDeDispositivos.remove(x);
+};
+const obtenerDispositivos = () => navigator
+    .mediaDevices
+    .enumerateDevices();
+
+// La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
+// Lo que hace es llenar el select con los dispositivos obtenidos
+const llenarSelectConDispositivosDisponibles = () => {
+
+    limpiarSelect();
+    obtenerDispositivos()
+        .then(dispositivos => {
+            const dispositivosDeVideo = [];
+            dispositivos.forEach(dispositivo => {
+                const tipo = dispositivo.kind;
+                if (tipo === "videoinput") {
+                    dispositivosDeVideo.push(dispositivo);
+                }
+            });
+
+            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+            if (dispositivosDeVideo.length > 0) {
+                // Llenar el select
+                dispositivosDeVideo.forEach(dispositivo => {
+                    const option = document.createElement('option');
+                    option.value = dispositivo.deviceId;
+                    option.text = dispositivo.label;
+                    $listaDeDispositivos.appendChild(option);
+                });
+            }
+        });
+}
+
+(function() {
+    // Comenzamos viendo si tiene soporte, si no, nos detenemos
+    if (!tieneSoporteUserMedia()) {
+        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+        $estado.innerHTML = "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+        return;
+    }
+    //AquÃ­ guardaremos el stream globalmente
+    let stream;
+
+
+    // Comenzamos pidiendo los dispositivos
+    obtenerDispositivos()
+        .then(dispositivos => {
+            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
+            const dispositivosDeVideo = [];
+
+            // Recorrer y filtrar
+            dispositivos.forEach(function(dispositivo) {
+                const tipo = dispositivo.kind;
+                if (tipo === "videoinput") {
+                    dispositivosDeVideo.push(dispositivo);
+                }
+            });
+
+            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+            // y le pasamos el id de dispositivo
+            if (dispositivosDeVideo.length > 0) {
+                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
+                mostrarStream(dispositivosDeVideo[0].deviceId);
+            }
+        });
+
+
+
+    const mostrarStream = idDeDispositivo => {
+        _getUserMedia({
+                video: {
+                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
+                    deviceId: idDeDispositivo,
+                }
+            },
+            (streamObtenido) => {
+                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
+                // pues si no, no nos darÃ­a el nombre de los dispositivos
+                llenarSelectConDispositivosDisponibles();
+
+                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
+                $listaDeDispositivos.onchange = () => {
+                    // Detener el stream
+                    if (stream) {
+                        stream.getTracks().forEach(function(track) {
+                            track.stop();
+                        });
+                    }
+                    // Mostrar el nuevo stream con el dispositivo seleccionado
+                    mostrarStream($listaDeDispositivos.value);
+                }
+
+                // Simple asignaciÃ³n
+                stream = streamObtenido;
+
+                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
+                $video.srcObject = stream;
+                $video.play();
+
+                //Escuchar el click del botÃ³n para tomar la foto
+                //Escuchar el click del botÃ³n para tomar la foto
+                $boton.addEventListener("click", function() {
+
+                    //Pausar reproducciÃ³n
+                    $video.pause();
+
+                    //Obtener contexto del canvas y dibujar sobre Ã©l
+                    let contexto = $canvas.getContext("2d");
+                    $canvas.width = $video.videoWidth;
+                    $canvas.height = $video.videoHeight;
+                    contexto.drawImage($video, 0, 0, $canvas.width, $canvas.height);
+
+                    let foto = $canvas.toDataURL(); //Esta es la foto, en base 64
+                    $estado.innerHTML = "Enviando foto. Por favor, espera...";
+                    fetch("./fotos/foto.php", {
+                            method: "POST",
+                            body: encodeURIComponent(foto),
+                            headers: {
+                                "Content-type": "application/x-www-form-urlencoded",
+                            }
+                        })
+                        .then(resultado => {
+                            // A los datos los decodificamos como texto plano
+                            return resultado.text()
+                        })
+                        .then(nombreDeLaFoto => {
+
+                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
+                            console.log("La foto fue enviada correctamente");
+                            $estado.innerHTML = `Foto guardada con Ã©xito. Puedes verla <a target='_blank' href='./${nombreDeLaFoto}'> aquÃ­</a>`;
+                        })
+
+                    //Reanudar reproducciÃ³n
+                    $video.play();
+                });
+            }, (error) => {
+                console.log("Permiso denegado o error: ", error);
+                $estado.innerHTML = "No se puede acceder a la cÃ¡mara, o no diste permiso.";
+            });
+    }
+})();
+});
+});
 </script>
 <script>
     $(document).ready(function() {

@@ -15,12 +15,12 @@ class CreateComentariosTable extends Migration
     {
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user');
-            $table->string('id_equipo');
-            $table->string('id_proceso');
-            $table->string('id_favorito');
-            $table->string('comentario');
-            $table->date('fecha');
+            $table->string('id_user')->nullable();
+            $table->string('id_equipo')->nullable();
+            $table->string('id_proceso')->nullable();
+            $table->string('id_favorito')->nullable();
+            $table->string('comentario')->nullable();
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

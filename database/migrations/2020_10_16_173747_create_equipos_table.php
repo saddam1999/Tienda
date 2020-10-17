@@ -15,14 +15,16 @@ class CreateEquiposTable extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->string('serial');
-            $table->integer('imei');
-            $table->string('id_captura');
-            $table->date('id_comentario');
-            $table->date('fecha_recibido');
-            $table->date('fecha_entrega');
-            $table->string('status');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_cliente')->nullable();
+            $table->integer('id_sucursal')->nullable();
+            $table->string('serial')->nullable();
+            $table->integer('imei')->nullable();
+            $table->string('id_captura')->nullable();
+            $table->date('id_comentario')->nullable();
+            $table->date('fecha_recibido')->nullable();
+            $table->date('fecha_entrega')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

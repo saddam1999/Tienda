@@ -15,11 +15,11 @@ class CreateCapturasTable extends Migration
     {
         Schema::create('capturas', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user');
-            $table->string('id_equipo');
-            $table->string('captura');
-            $table->string('descripcion');
-            $table->date('fecha');
+            $table->string('id_user')->nullable();
+            $table->string('id_equipo')->nullable();
+            $table->string('captura')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

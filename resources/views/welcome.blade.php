@@ -72,7 +72,11 @@
     <!-- Page Content  -->
     <div id="content mt-2">
 
-        <nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="navbarmanual">
+        <nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="navbarmanual"
+      style="     border: solid .05em orange;
+
+        border-radius: 30px;"
+        >
             <a class="navbar-brand" href="/">
                 <img style="border-radius:70%;" src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="50"
                     height="50" class="d-inline-block align-top" alt="">
@@ -91,7 +95,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                            </svg>
+                        </button>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -125,13 +135,7 @@
                     </ul>
                 </div>
             </div>
-            <button type="button" id="sidebarCollapse" class="btn btn-info">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                </svg>
-            </button>
+
 
 
 
@@ -163,33 +167,33 @@
 
         <div class="carousel-inner" >
             <div class="carousel-item active">
-                <img class="bd-placeholder-img"  src="{{$promocion->bannera}}" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img"  src="  @if($Settings->isEmpty()) @else{{$promocion->bannera}} @endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption text-left">
-                        <h1>{{$promocion->texto_bannera}}</h1>
-                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
+                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h1>
+                        <p>De  @if($Settings->isEmpty()) @else {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
                     </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <img class="bd-placeholder-img"  src="{{$promocion->bannerb}}" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img"  src="  @if($Settings->isEmpty()) @else{{$promocion->bannerb}} @endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>{{$promocion->texto_bannerb}}</h1>
-                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
+                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h1>
+                        <p>De @if($Settings->isEmpty()) @else{{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="bd-placeholder-img"  src="{{$promocion->bannerc}}" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img"  src="@if($Settings->isEmpty()) @else{{$promocion->bannerc}}@endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption text-right">
-                        <h1>{{$promocion->texto_bannerc}}</h1>
-                        <p>De {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}}</p>
+                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannerc}}@endif</h1>
+                        <p>De  @if($Settings->isEmpty()) @else {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
                     </div>
                 </div>
             </div>
@@ -211,13 +215,12 @@
     <div class="container marketing" >
 
         <div class="row">
-
             <!-- BEGIN PRODUCTS -->
             @foreach ($Articulo as $producto)
             @if($producto->descuento!=0)
             <div class="col-md-4" style="border-radius:10px;">
                 <div class="alert alert-warning" role="alert">
-                  <h4 class="alert-heading">{{$promocion->titulo}}</h4>
+                  <h4 class="alert-heading">  @if($Promocion->isEmpty()) @else{{$promocion->titulo}} @endif</h4>
 
                 </div>
                 <!-- bbb_deals -->
@@ -361,8 +364,8 @@
               @endif
               @endif
             <div class="col-md-7">
-                <h2 class="featurette-heading">{{$promocion->titulo}} </h2>
-                <p class="lead">{{$promocion->titulo_banner_principal}}</p>
+                <h2 class="featurette-heading">  @if($Settings->isEmpty()) @else{{$promocion->titulo}}@endif </h2>
+                <p class="lead">  @if($Settings->isEmpty()) @else{{$promocion->titulo_banner_principal}} @endif</p>
             </div>
 
             <div class="col-md-5">
