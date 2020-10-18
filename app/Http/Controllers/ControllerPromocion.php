@@ -48,6 +48,8 @@ class ControllerPromocion extends Controller
         $promocion->fecha_inicio = $request->get('fecha_inicio');
         $promocion->fecha_final = $request->get('fecha_final');
         $promocion->save();
+        return back()->with('success', "Promocion Agregada: ".$promocion->titulo);
+
     }
 
     /**
@@ -95,7 +97,7 @@ class ControllerPromocion extends Controller
         $promocion->fecha_inicio = $request->get('fecha_inicio');
         $promocion->fecha_final = $request->get('fecha_final');
         $promocion->save();
-        return back();
+        return back()->with('success', "Promocion Editada: ".$promocion->titulo);
     }
 
     /**
@@ -109,10 +111,10 @@ class ControllerPromocion extends Controller
         $promocion = \App\Models\Promocion::find($id);
         if ($promocion != null) {
             $promocion->delete();
-            \Session::flash('nav', 'Promocion');
-            return back()->with('nav', "Promocion");
+            return back()->with('success', "Promocion Borrada: ".$promocion->titulo);
+
         } else {
-            return back()->with('nav', "Promocion");
+            return back()->with('success', "No se pudo borrar promocion intentar de nuevo");
         }
     }
 }

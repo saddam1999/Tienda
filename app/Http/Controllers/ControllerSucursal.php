@@ -43,8 +43,8 @@ class ControllerSucursal extends Controller
         $sucursal->telegram=$request->get('telegram');
         $sucursal->whatsapp=$request->get('whatsapp');
         $sucursal->save();
-        \Session::flash('nav', "Sucursal");
-        return back()->with('nav', "Sucursal");
+        return back()->with('success', "Sucursal agregada: ".$sucursal->nombre);
+
     }
 
     /**
@@ -86,8 +86,8 @@ class ControllerSucursal extends Controller
         $sucursal->telegram=$request->get('telegram1');
         $sucursal->whatsapp=$request->get('whatsapp1');
         $sucursal->save();
-        \Session::flash('nav', 'Sucursal');
-        return back()->with('nav', "Sucursal");
+        return back()->with('success', "Sucursal editada: ".$sucursal->nombre);
+
     }
 
     /**
@@ -99,8 +99,11 @@ class ControllerSucursal extends Controller
     public function destroy($id)
     {
         $sucursal= \App\Models\Sucursal::find($id);
-        $sucursal->delete();
-        \Session::flash('nav', 'Sucursal');
-        return back()->with('nav', "Sucursal");
+        if ($sucursal != null) {
+            $sucursal->delete();
+            return back()->with('success', "Sucursal Borrada: ".$sucursal->nombre);
+        } else {
+            return back()->with('success', "Sucursal No Borrada: ".$sucursal->nombre);
+        }
     }
 }

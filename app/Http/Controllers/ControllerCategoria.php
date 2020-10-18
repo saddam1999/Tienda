@@ -38,7 +38,7 @@ class ControllerCategoria extends Controller
         $categoria = new \App\Models\Categoria();
         $categoria->nombre_categoria = $request->get('nombre_categoria');
         $categoria->save();
-        return back()->with('nav', "Categoria");
+        return back()->with('success', "Categoria agregada".$categoria->nombre_categoria);
     }
 
     /**
@@ -75,7 +75,7 @@ class ControllerCategoria extends Controller
         $categoria = \App\Models\Categoria::find($id);
         $categoria->nombre_categoria = $request->get('nombre_categoria1');
         $categoria->save();
-        return back()->with('nav', "Categoria");
+        return back()->with('success','Categoria editada : ' . $categoria->nombre_categoria);
 
     }
 
@@ -88,8 +88,11 @@ class ControllerCategoria extends Controller
     public function destroy($id)
     {
         $categoria = \App\Models\Categoria::find($id);
-        $categoria->delete();
-        \Session::flash('nav', 'Categoria');
-        return back()->with('nav', "Categoria");
+        if ($categoria != null) {
+            $categoria->delete();
+            return back()->with('success', 'Categoria Borrada  : ' . $categoria->nombre_categoria);
+        } else {
+            return back()->with('success', 'Captura no se pudo Borrar : ' . $categoria->nombre_categoria);
+        }
     }
 }

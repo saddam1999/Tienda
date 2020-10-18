@@ -48,7 +48,7 @@ class ControllerSettings extends Controller
         $settings->setting_telefono=$request->get('setting_telefono');
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->save();
-        \Session::flash('nav', "settings");
+        return back()->with('success', "Haz realizado la configuracion de manera correcta");
         return back();
     }
 
@@ -96,8 +96,8 @@ class ControllerSettings extends Controller
         $settings->setting_telefono=$request->get('setting_telefono');
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->save();
-        \Session::flash('nav', 'settings');
-        return back()->with('nav', "settings");
+        return back()->with('success', "Configuracion Actualizado");
+
     }
 
     /**
@@ -109,8 +109,11 @@ class ControllerSettings extends Controller
     public function destroy($id)
     {
         $settings= \App\Models\Settings::find($id);
-        $settings->delete();
-        \Session::flash('nav', 'Settings');
-        return back()->with('nav', "Settings");
+        if ($settings != null) {
+            $settings->delete();
+            return back()->with('success', "Configurado Borrar ");
+        } else {
+            return back()->with('success', 'Configurado no se pudo Borrar : ' . $settings->nombre);
+        }
     }
 }

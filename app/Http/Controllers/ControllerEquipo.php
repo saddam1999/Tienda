@@ -47,7 +47,7 @@ class ControllerEquipo extends Controller
        $equipo->fecha_entrega=$request->get('fecha_entrega');
        $equipo->status=$request->get('status');
        $equipo->save();
-    return back();
+       return back()->with('success', "Equipo agregado");
     }
 
     /**
@@ -93,8 +93,11 @@ class ControllerEquipo extends Controller
     public function destroy($id)
     {
         $equipo= \App\Models\Equipo::find($id);
-        $equipo->delete();
-        \Session::flash('nav', 'Equipo');
-        return back()->with('nav', "Equipo");
+        if ($equipo != null) {
+            $equipo->delete();
+            return back()->with('success', "Equipo Borrado");
+        } else {
+            return back()->with('success', 'Equipo no se pudo Borrar : ' . $equipo->nombre);
+        }
     }
 }

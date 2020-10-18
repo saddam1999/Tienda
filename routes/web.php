@@ -68,9 +68,11 @@ Route::get('/deletepromocion/{id}', [ControllerPromocion::class, 'destroy']);
 Route::get('/agregarequipo', [ControllerEquipo::class, 'store']);
 Route::get('/editequipo/{id}', [ControllerEquipo::class, 'update']);
 Route::get('/deleteequipo/{id}', [ControllerEquipo::class, 'destroy']);
-//ControllerTaller ( EQUIPO)
+//ControllerCaptura ( EQUIPO)
 Route::get('/agregarcaptura', [ControllerCaptura::class, 'store']);
 Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);
+Route::post('/galleriacaptura/{id}', [ControllerCaptura::class, 'galleria']);
+
 Route::get('/deletecaptura/{id}', [ControllerCaptura::class, 'destroy']);
 
 

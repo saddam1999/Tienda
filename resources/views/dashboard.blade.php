@@ -8,12 +8,14 @@
         </h2>
     </x-slot>
     <!-- JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
@@ -879,55 +881,83 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Equipo as $equipo)
-                                        <tr>
-                                            <td>{{$equipo->id}}</td>
-                                            <td>{{$equipo->id_user}}</td>
-                                            <td>{{$equipo->id_cliente}}</td>
-                                            <td>{{$equipo->serial}}</td>
-                                            <td>{{$equipo->imei}}</td>
-                                            <td><img src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                            <td>{{$equipo->id_comentario}}</td>
-                                            <td>{{$equipo->fecha_recibido}}</td>
-                                            <td>{{$equipo->fecha_entrega}}</td>
-                                            <td>{{$equipo->status}}</td>
-                                            <td><a href="" data-toggle="modal" data-target="#modal_editarcategoria"
-                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                                    data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                    data-id_captura="{{$equipo->id_captura}}"
-                                                    data-id_comentario="{{$equipo->id_comentario}}"
-                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"><svg width="1em" height="1em"
-                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg></a>
-                                                <a href="/deleteequipo/{{$equipo->id}}"><svg width="1em" height="1em"
-                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                    </svg></a>
-                                                <a href="" data-toggle="modal" data-target="#modal_foto"><svg
-                                                        width="1em" height="1em" viewBox="0 0 16 16"
-                                                        class="bi bi-camera" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                                        <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                                    </svg></a>
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                            @foreach($Equipo as $equipo)
+                            <tr>
+                                <td>{{$equipo->id}}</td>
+                                @foreach ($Usuario as $user)
+                                @if($user->id==$equipo->id_user)
+                                <td>{{$user->name}}</td>
+                                @endif
+                                @endforeach
+                                @foreach ($Usuario as $user)
+                                @if($user->id==$equipo->id_cliente)
+                                <td>{{$user->name}}</td>
+                                @endif
+                                @endforeach
+                                <td>{{$equipo->serial}}</td>
+                                <td>{{$equipo->imei}}</td>
+                                <td><img src="./fotos/{{$equipo->id_captura}}" alt=""></td>
+                                <td>{{$equipo->id_comentario}}</td>
+                                <td>{{$equipo->fecha_recibido}}</td>
+                                <td>{{$equipo->fecha_entrega}}</td>
+                                <td>{{$equipo->status}}</td>
+                                <td><a href="" data-toggle="modal" data-target="#modal_editarequipo"
+                                        data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                        data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
+                                        data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+                                        data-id_comentario="{{$equipo->id_comentario}}"
+                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                        data-status="{{$equipo->status}}"><svg width="1em" height="1em"
+                                            viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg></a>
+                                    <a href="/deleteequipo/{{$equipo->id}}"><svg width="1em" height="1em"
+                                            viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                            <path fill-rule="evenodd"
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                        </svg></a>
+                                    <a href="" data-toggle="modal" data-target="#modal_foto"
+                                        data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                        data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
+                                        data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+                                        data-id_comentario="{{$equipo->id_comentario}}"
+                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                        data-status="{{$equipo->status}}"
+                                    ><svg width="1em"
+                                            height="1em" viewBox="0 0 16 16" class="bi bi-camera text-success"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                            <path fill-rule="evenodd"
+                                                d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                            <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                        </svg></a>
+                                    <a href="" data-toggle="modal" data-target="#modal-taller-galleria"
+                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                    data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
+                                    data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                    data-status="{{$equipo->status}}"
+                                    ><svg width="1em"
+                                            height="1em" viewBox="0 0 16 16" class="bi bi-film text-warning"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
+                                        </svg></a>
+                                </td>
+                                <td></td>
+                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -939,6 +969,7 @@
             </div>
         </div>
 </x-app-layout>
+<!-- Scripts Galleria-->
 
 <!-- Modal Agregar Articulo -->
 <div class="modal fade" id="modal_agregararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -1747,7 +1778,7 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                        <input class="form-control" type="text" name="serial" id="serial">
+                                         <input class="form-control" type="text" name="serial" id="serial">
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -1758,6 +1789,12 @@
                                             [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripcion</label><br>
+                                        <textarea class="form-control"name="descripcion" id="descripcion" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    </div>
                                 </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Sucursal</label>
@@ -2001,7 +2038,7 @@
     </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Foto -->
 <div class="modal fade" id="modal_foto" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -2029,10 +2066,11 @@
                 </div>
                 <video muted="muted" id="video1"></video>
                 <canvas id="canvas1" style="display: none;"></canvas>
-                <input type="hidden" name="status" id="status" value="Pendiente">
-                <input type="hidden" name="id_captura" id="id_captura" value="">
-                <input type="hidden" name="id_user" id="id_user" value="">
-                <textarea class="border border-danger" name="descripcion" id="descripcion" cols="30" rows="10"
+                <input type="hidden" name="status1" id="status1" value="Pendiente">
+                <input type="hidden" name="id_equipo1" id="id_equipo1" value="">
+                <input type="hidden" name="id_captura1" id="id_captura1" value="">
+            <input type="hidden" name="id_user1" id="id_user1" value="{{Auth::user()->id}}">
+                <textarea class="border border-danger" name="id_descripcion1" id="id_descripcion1" cols="30" rows="10"
                     placeholder="Inserte la descripcion de la foto aqui"></textarea>
                 <button type="button" class="btn btn-primary" id="boton1"><svg width="1em" height="1em"
                         viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -2053,10 +2091,56 @@
 </div>
 </div>
 </div>
+<!-- Modal Notificacion -->
+<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header bg-info">
+                        <h5 class="modal-title text-white">Notificacion</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    @if (session('success'))
+                    <div class="alert alert-success m-3">
+                     <?php echo '<html>'.session('success').'</html>' ?>
+                    </div>
+                    @endif                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal  Taller Galleria -->
+<div class="modal fade" id="modal-taller-galleria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">Galleria y Comentarios {{session('id')}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <?php echo'<html>'.session('id').'</html>' ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Scripts-->
+<!-- Scripts Editar Usuario-->
 <script>
-    ////////////////modal editar usuario
     $('#modaleditar').on('show.bs.modal', function(e) {
         $('#id1').html($(e.relatedTarget).data('id'));
         var id = $(e.relatedTarget).data().id;
@@ -2077,9 +2161,8 @@
         $("#creditos1").attr("placeholder", id);
     });
 </script>
-
+<!-- Scripr Editar Categoria-->
 <script>
-    ////////////////modal editar categoria
     $('#modal_editarcategoria').on('show.bs.modal', function(e) {
         $('#id1').html($(e.relatedTarget).data('id'));
         var id = $(e.relatedTarget).data().id;
@@ -2091,7 +2174,7 @@
         $(e.currentTarget).find('#nombre_categoria1').val(id);
     });
 </script>
-<!-- Scripts sucursal-->
+<!-- Scripts Editar sucursal-->
 <script>
     ////////////////modal editar sucursal
     $('#modaleditarsucursal').on('show.bs.modal', function(e) {
@@ -2115,9 +2198,8 @@
         $(e.currentTarget).find('#direccion1').val(id);
     });
 </script>
-<!-- Scripts Editar-->
+<!-- Scripts Editar Servicio-->
 <script>
-    ////////////////modal editar Servicio
     $('#modaleditarservicio').on('show.bs.modal', function(e) {
         $('#id1').html($(e.relatedTarget).data('id'));
         var id = $(e.relatedTarget).data().id;
@@ -2135,9 +2217,8 @@
         $(e.currentTarget).find('#tiempo1').val(id);
     });
 </script>
-
+<!-- Script editar articulo -->
 <script>
-    ////////////////modal editar articulo
     $('#modaleditararticulo').on('show.bs.modal', function(e) {
         $('#id1').html($(e.relatedTarget).data('id'));
         var id = $(e.relatedTarget).data().id;
@@ -2172,10 +2253,16 @@
         $(e.currentTarget).find('#existencia1').val(id);
     });
 </script>
+<!-- Script Camara Taller Equipo -->
 <script>
     $(document).ready(function() {
         //$('#smartcart').smartCart();
+
         $('#modal_foto').on('show.bs.modal', function(e) {
+         var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id_equipo1').val(id);
+
+
             const tieneSoporteUserMedia = () =>
                 !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
                     .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
@@ -2304,9 +2391,9 @@
                                             return resultado.text()
                                         })
                                         .then(nombreDeLaFoto => {
-$('#id_captura').attr('value',nombreDeLaFoto);
-        var id = $(e.relatedTarget).data().user_id;
-        $(e.currentTarget).find('#user_id').val(id);
+                                         $('#id_captura1').attr('value',nombreDeLaFoto);
+
+
                                             // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
                                             console.log(
                                                 "La foto fue enviada correctamente"
@@ -2476,6 +2563,7 @@ $('#id_captura').attr('value',nombreDeLaFoto);
         });
     });
 </script>
+<!-- Script Tabs -->
 <script>
     $(document).ready(function() {
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
@@ -2486,4 +2574,48 @@ $('#id_captura').attr('value',nombreDeLaFoto);
             $('#myTab a[href="' + activeTab + '"]').tab('show');
         }
     });
+</script>
+<!-- Script Notificaciones -->
+@if(session('success'))
+<script>
+    $('#modal_notificacion').modal('show');
+</script>
+@endif
+
+<script>
+    $('#modal-taller-galleria').on('show.bs.modal', function(e) {
+
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id_equipo1').val(id);
+
+        $.ajaxSetup({
+       headers: {
+       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       }
+       });
+       $.ajax({
+
+       url: 'galleriacaptura/' + id,
+       data: {
+       'id':id,
+       '_method': 'POST',
+       },
+       type: 'POST',
+       success: function(response) {
+
+    //alert(response);
+       //location.reload();
+       },
+       statusCode: {
+       404: function() {
+       //alert('web not found');
+       }
+       },
+       error: function(x, xs, xt) {
+      //window.open(JSON.stringify(x));
+     //  alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+       }
+       });
+
+       });
 </script>

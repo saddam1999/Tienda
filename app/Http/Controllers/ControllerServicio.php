@@ -41,8 +41,7 @@ class ControllerServicio extends Controller
         $servicio->precio = $request->get('precio');
         $servicio->tiempo = $request->get('tiempo');
         $servicio->save();
-        \Session::flash('nav', 'Servicio');
-        return back()->with('nav', "Servicio");
+        return back()->with('success', "Servicio agregado: ".$servicio->nombre);
 
     }
 
@@ -83,9 +82,8 @@ class ControllerServicio extends Controller
         $servicio->precio=$request->get('precio1');
         $servicio->tiempo=$request->get('tiempo1');
         $servicio->save();
-        \Session::flash('nav', 'Servicio');
+        return back()->with('success', "Servicio Editado: ".$servicio->nombre);
 
-        return back()->with('nav', "Servicio");
     }
 
     /**
@@ -97,8 +95,11 @@ class ControllerServicio extends Controller
     public function destroy($id)
     {
         $servicio= \App\Models\Servicio::find($id);
-        $servicio->delete();
-        \Session::flash('nav', 'Servicio');
-        return back()->with('nav', "Servicio");
+        if ($servicio != null) {
+            $servicio->delete();
+            return back()->with('success', "Servicio Borrado: ".$servicio->nombre);
+        } else {
+            return back()->with('success', 'Servicio no se pudo Borrar : ' . $servicio->nombre);
+        }
     }
 }

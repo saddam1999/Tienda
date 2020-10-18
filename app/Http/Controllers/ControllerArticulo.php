@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\User;
-use App\Models\Articulo; 
+use App\Models\Articulo;
 
 class ControllerArticulo extends Controller
 {
@@ -44,7 +44,6 @@ class ControllerArticulo extends Controller
         $articulo->categoria = $request->get('categoria');
         $articulo->talla = $request->get('talla');
         $articulo->IDlocal = $request->get('IDlocal');
-
         $articulo->precioOriginal = $request->get('precio');
         $temporal = $request->get('descuento');
         $temporal2 = $request->get('precio');
@@ -58,8 +57,12 @@ class ControllerArticulo extends Controller
             $articulo->precio = $request->get('precio');
         }
         $articulo->save();
-        \Session::flash('nav', 'Articulo');
-        return back()->with('nav', "Articulo");
+
+              // $request->session()->flash('notificacion', 'Task was successful!');
+              $data = $request->session()->all();
+              //dd($data);
+                return back()->with('success', "Articulo Agregado");
+
     }
 
     /**
@@ -117,8 +120,8 @@ class ControllerArticulo extends Controller
         }
         $articulo->existencia = $request->get('existencia1');
         $articulo->save();
-        \Session::flash('nav', 'Articulo');
-        return back()->with('nav', "Articulo");
+        return back()->with('success','Articulo editado : ' . $articulo->nombre);
+
     }
 
 
@@ -133,10 +136,9 @@ class ControllerArticulo extends Controller
         $articulo = \App\Models\Articulo::find($id);
         if ($articulo != null) {
             $articulo->delete();
-            \Session::flash('nav', 'Articulo');
-            return back()->with('nav', "Articulo");
+            return back()->with('success', 'Articulo Borrado : ' . $articulo->nombre);
         } else {
-            return back()->with('nav', "Articulo");
+            return back()->with('success', 'Articulo no se pudo Borrar : ' . $articulo->nombre);
         }
     }
 }

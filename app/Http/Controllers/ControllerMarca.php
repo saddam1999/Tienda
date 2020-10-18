@@ -42,8 +42,10 @@ class ControllerMarca extends Controller
         $marca->logo = "--";
         $marca->descripcion = $request->get('descripcion');
         $marca->save();
-        \Session::flash('nav', 'Marca');
-        return back()->with('nav', "Marca");
+        $data = $request->session()->all();
+
+        return back()->with('success', "Marca agregada".$marca->nombre);
+
     }
 
     /**
@@ -82,8 +84,9 @@ class ControllerMarca extends Controller
         $marca->logo = "--";
         $marca->descripcion = $request->get('descripcion1');
         $marca->save();
-        \Session::flash('nav', 'Marca');
-        return back()->with('nav', "Marca");
+
+        return back()->with('success', "Marca Editada".$marca->nombre);
+
     }
 
     /**
@@ -95,8 +98,11 @@ class ControllerMarca extends Controller
     public function destroy($id)
     {
         $marca= \App\Models\Marca::find($id);
-        $marca->delete();
-        \Session::flash('nav', 'Marca');
-        return back()->with('nav', "Marca");
+        if ($marca != null) {
+            $marca->delete();
+            return back()->with('success', "Marca Borrada : ".$marca->nombre);
+        } else {
+            return back()->with('success', 'Marca no se pudo Borrar : ' . $marca->nombre);
+        }
     }
 }

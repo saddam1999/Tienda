@@ -12,7 +12,7 @@ class CreateCapturasTable extends Migration
      * @return void
      */
     public function up()
-    {
+    { 
         Schema::create('capturas', function (Blueprint $table) {
             $table->id();
             $table->string('id_user')->nullable();

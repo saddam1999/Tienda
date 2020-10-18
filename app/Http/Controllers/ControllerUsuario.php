@@ -44,9 +44,8 @@ class ControllerUsuario extends Controller
         $setting->rol=$request->get('rol');
         $setting->status=$request->get('status');
         $setting->save();
-        \Session::flash('nav', 'Usuario');
+        return back()->with('success', "Usuario agregado : ".$setting->name);
 
-        return back()->with('nav', "Usuario");
     }
 
     /**
@@ -88,9 +87,8 @@ class ControllerUsuario extends Controller
         $admin->rol=$request->get('rol1');
         $admin->status=$request->get('estatus1');
         $admin->save();
-        \Session::flash('nav', 'Usuario');
+        return back()->with('success', "Usuario Editado : ".$admin->name);
 
-        return back()->with('nav', "Usuario");
     }
 
     /**
@@ -102,8 +100,11 @@ class ControllerUsuario extends Controller
     public function destroy($id)
     {
         $admin= \App\Models\User::find($id);
-        $admin->delete();
-        \Session::flash('nav', 'Usuario');
-        return back()->with('nav', "Usuario");
+        if ($admin != null) {
+            $admin->delete();
+            return back()->with('success', "Usuario Borrado: ".$admin->nombre);
+        } else {
+            return back()->with('success', "Usuario No Borrado: ".$admin->nombre);
+        }
     }
 }
