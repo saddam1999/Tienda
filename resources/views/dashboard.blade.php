@@ -118,9 +118,9 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="row">
-            <div class="col-md-4 m-auto" style="margin-top:10%;">
+            <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
-                    data-keyboard="false" class="btn btn-success btn-lg btn-block">Punto de Venta<center><svg
+                    data-keyboard="false" class="btn btn-success btn-lg btn-block mt-3">Punto de Venta<center><svg
                             width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -129,9 +129,9 @@
                                 d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                         </svg></center></button>
             </div>
-            <div class="col-md-4 m-auto mt-1" style="margin-top:10%;">
+            <div class="col-md-4 m-auto mt-1">
                 <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white">Taller<center><svg
+                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller<center><svg
                             width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -859,10 +859,10 @@
         <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning" >
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Taller</h4>
+                                    <h4 class="card-title">Taller</h4>
                                 <table class="table table-striped table-inverse table-responsive">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -900,64 +900,71 @@
                                 <td>{{$equipo->id_comentario}}</td>
                                 <td>{{$equipo->fecha_recibido}}</td>
                                 <td>{{$equipo->fecha_entrega}}</td>
-                                <td>{{$equipo->status}}</td>
-                                <td><a href="" data-toggle="modal" data-target="#modaledittaller"
-                                        data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                        data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
-                                        data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-                                        data-id_comentario="{{$equipo->id_comentario}}"
-                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                        data-status="{{$equipo->status}}"><svg width="1em" height="1em"
-                                            viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                            <path fill-rule="evenodd"
-                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                        </svg></a>
-                                    <a href="/deleteequipo/{{$equipo->id}}"><svg width="1em" height="1em"
-                                            viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                            <path fill-rule="evenodd"
-                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                        </svg></a>
-                                    <a href="" data-toggle="modal" data-target="#modal_foto"
-                                        data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                        data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
-                                        data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-                                        data-id_comentario="{{$equipo->id_comentario}}"
-                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                        data-status="{{$equipo->status}}"
-                                    ><svg width="1em"
-                                            height="1em" viewBox="0 0 16 16" class="bi bi-camera text-success"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-                                            <path fill-rule="evenodd"
-                                                d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                            <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                        </svg></a>
-                                    <a href="/galleria/{{$equipo->id}} " target="_blank"
-                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                    data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
-                                    data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-                                    data-id_comentario="{{$equipo->id_comentario}}"
-                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                    data-status="{{$equipo->status}}"
-                                    ><svg width="1em"
-                                            height="1em" viewBox="0 0 16 16" class="bi bi-film text-warning"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd"
-                                                d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
-                                        </svg></a>
-                                </td>
-                                <td></td>
-                            </tr>
+                                <td><a href="" data-id="{{$equipo->id}}" data-status="{{$equipo->status}}" data-toggle="modal" data-target="#modal_status" >
+                                   @if($equipo->status==0)
+                                   Recibido
+                                   @elseif($equipo->status==1)
+                                   En Revision
+                                   @elseif($equipo->status==2)
+                                   Cancelado
+                                   @elseif($equipo->status==3)
+                                   Espera
+                                   @elseif($equipo->status==4)
+                                   A espera de Cliente(Contactarse a Sucursal)
+                                   @elseif($equipo->status==5)
+                                    Listo(Para entregar)
+                                   @elseif($equipo->status==6)
+                                    Entregado
+                                   @endif
+
+                                </a></td>
+                                @if($equipo->status!=2 && $equipo->status !=6)
+                                <td><a href="" data-toggle="modal" data-target="#modaledittaller" data-id="{{$equipo->id}}"
+           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
+           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
+           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
+               height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
+               xmlns="http://www.w3.org/2000/svg">
+               <path
+                   d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+               <path fill-rule="evenodd"
+                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+           </svg></a>
+       <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash"
+               fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+               <path
+                   d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+               <path fill-rule="evenodd"
+                   d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+           </svg></a>
+       <a href="" data-toggle="modal" data-target="#modal_foto" data-id="{{$equipo->id}}"
+           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
+           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
+           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
+               height="2em" viewBox="0 0 16 16" class="bi bi-camera text-success" fill="currentColor"
+               xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd"
+                   d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+               <path fill-rule="evenodd"
+                   d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+               <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+           </svg></a>
+       <a href="/galleria/{{$equipo->id}} " target="_blank" data-id="{{$equipo->id}}"
+           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
+           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
+           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
+           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
+               height="2em" viewBox="0 0 16 16" class="bi bi-film text-warning" fill="currentColor"
+               xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd"
+                   d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
+           </svg></a>
+   </td>
+
+   <td></td>@endif
+   </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -1825,7 +1832,7 @@
                             </div>
                             <video muted="muted" id="video"></video>
                             <canvas id="canvas" style="display: none;"></canvas>
-                            <input type="hidden" name="status" id="status" value="Pendiente">
+                            <input type="hidden" name="status" id="status" value="0">
                             <input type="hidden" name="pago" id="pago" value="0">
                             <input type="hidden" name="id_captura" id="id_captura" value="">
                             <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
@@ -1916,6 +1923,20 @@
                                         <textarea class="form-control"name="descripcion2" id="descripcion2" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="status2">Status</label>
+                                        <select  class="form-control" name="status2" id="status2">
+                                            <option value="0">Recibido</option>
+                                            <option value="1">En Revision</option>
+                                            <option value="2">Cancelado</option>
+                                            <option value="3">Espera</option>
+                                            <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
+                                            <option value="5">Listo(Para entregar)</option>
+                                            <option value="6">Entregado</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Sucursal</label>
                                     <select class="form-control" id="id_sucursal2" name="id_sucursal2" required>
@@ -1945,7 +1966,6 @@
                             </div>
                             <video muted="muted" id="video2"></video>
                             <canvas id="canvas2" style="display: none;"></canvas>
-                            <input type="hidden" name="status2" id="status2" value="Pendiente">
                             <input type="hidden" name="pago2" id="pago2" value="0">
                             <input type="hidden" name="id_captura1" id="id_captura2" value="">
                             <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
@@ -2190,8 +2210,11 @@
                 <input type="hidden" name="id_equipo1" id="id_equipo1" value="">
                 <input type="hidden" name="id_captura1" id="id_captura1" value="">
             <input type="hidden" name="id_user1" id="id_user1" value="{{Auth::user()->id}}">
-                <textarea class="border border-danger" name="id_descripcion1" id="id_descripcion1" cols="30" rows="10"
-                    placeholder="Inserte la descripcion de la foto aqui"></textarea>
+            <label for="id_descripcion1">Inserte Descripcion de la Foto</label>
+                <textarea class="border border-danger mt-2" name="id_descripcion1" id="id_descripcion1" cols="30" rows="10"
+                placeholder="Inserte la descripcion de la foto aqui"></textarea>
+
+
                 <button type="button" class="btn btn-primary" id="boton1"><svg width="1em" height="1em"
                         viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -2260,7 +2283,57 @@
         </div>
     </div>
 </div>
+<!-- Modal Status -->
+<div class="modal fade" id="modal_status" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white">Cambiar Status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <label for="status">Status</label>
+                    <form name="cambio_status" id="cambio_status" action="">
+                    <select name="status3" id="status3">
+                        <option value="0">Recibido</option>
+                        <option value="1">En Revision</option>
+                        <option value="2">Cancelado</option>
+                        <option value="3">Espera</option>
+                        <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
+                        <option value="5">Listo(Para entregar)</option>
+                        <option value="6">Entregado
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
 
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts Status-->
+<script>
+$('#modal_status').on('show.bs.modal', function(e) {
+
+
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id3').val(id);
+        $("#cambio_status").attr("action", '/cambio_status/' + id);
+
+        var id = $(e.relatedTarget).data().status;
+        $(e.currentTarget).find('#status3').val(id);
+
+
+});
+</script>
 <!-- Scripts Editar Usuario-->
 <script>
     $('#modaleditar').on('show.bs.modal', function(e) {

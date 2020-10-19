@@ -47,6 +47,9 @@ class ControllerEquipo extends Controller
        $equipo->fecha_entrega=$request->get('fecha_entrega');
        $equipo->status=$request->get('status');
        $equipo->save();
+
+
+
        return back()->with('success', "Equipo agregado");
     }
 
@@ -94,6 +97,26 @@ class ControllerEquipo extends Controller
         $equipo->status=$request->get('status2');
         $equipo->save();
         return back()->with('success', "Equipo Editado");
+    }
+
+     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request, $id)
+    {
+        $equipo= \App\Models\Equipo::find($id);
+        if ($equipo != null) {
+            $equipo->status=$request->get('status3');
+            $equipo->save();
+        return back()->with('success', "Status Cambiado");
+        }else
+        {
+            return back()->with('success', 'Status no se pudo Cambiar intente de nuevo : ');
+        }
     }
 
     /**

@@ -74,7 +74,8 @@ Route::get('/deleteequipo/{id}', [ControllerEquipo::class, 'destroy']);
 Route::get('/agregarcaptura', [ControllerCaptura::class, 'store']);
 Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);
 Route::get('/deletecaptura/{id}', [ControllerCaptura::class, 'destroy']);
-//vista galleroa
+//status
+Route::get('/cambio_status/{id}', [ControllerEquipo::class, 'status']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
@@ -85,3 +86,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');
 Route::post('file-upload', [ FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
+Route::get('/imprimir', 'imprimirController@imprimir')->name('imprimir');

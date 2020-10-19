@@ -39,7 +39,7 @@ class ControllerCaptura extends Controller
         $captura->id_user=$request->get('id_user1');
         $captura->id_equipo=$request->get('id_equipo1');
         $captura->captura=$request->get('id_captura1');
-        $captura->descripcion=$request->get('descripcion1');
+        $captura->descripcion=$request->get('id_descripcion1');
         $captura->fecha=$request->get('fecha1');
         $captura->save();
         return back()->with('success','Captura Tomada'.$captura->captura);
