@@ -42,7 +42,7 @@ class ControllerEquipo extends Controller
        $equipo->serial=$request->get('serial');
        $equipo->imei=$request->get('imei');
        $equipo->id_captura=$request->get('id_captura');
-       $equipo->id_comentario=$request->get('id_comentario');
+       $equipo->id_comentario=$request->get('descripcion');
        $equipo->fecha_recibido=$request->get('fecha_recibido');
        $equipo->fecha_entrega=$request->get('fecha_entrega');
        $equipo->status=$request->get('status');
@@ -81,17 +81,17 @@ class ControllerEquipo extends Controller
      */
     public function update(Request $request, $id)
     {
-        $equipo = new \App\Models\Equipo();
-        $equipo->id_user=$request->get('id_user1');
-        $equipo->id_cliente=$request->get('id_cliente1');
-        $equipo->id_servicio=$request->get('id_servicio1');
-        $equipo->serial=$request->get('serial1');
-        $equipo->imei=$request->get('imei1');
-        $equipo->id_captura=$request->get('id_captura1');
-        $equipo->id_comentario=$request->get('id_comentario1');
-        $equipo->fecha_recibido=$request->get('fecha_recibido1');
-        $equipo->fecha_entrega=$request->get('fecha_entrega1');
-        $equipo->status=$request->get('status1');
+        $equipo= \App\Models\Equipo::find($id);
+        $equipo->id_user=$request->get('id_user2');
+        $equipo->id_cliente=$request->get('id_cliente2');
+        $equipo->id_servicio=$request->get('id_servicio2');
+        $equipo->serial=$request->get('serial2');
+        $equipo->imei=$request->get('imei2');
+//        $equipo->id_captura=$request->get('id_captura2');
+        $equipo->id_comentario=$request->get('descripcion2');
+        $equipo->fecha_recibido=$request->get('fecha_recibido2');
+        $equipo->fecha_entrega=$request->get('fecha_entrega2');
+        $equipo->status=$request->get('status2');
         $equipo->save();
         return back()->with('success', "Equipo Editado");
     }

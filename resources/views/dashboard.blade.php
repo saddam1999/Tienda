@@ -941,7 +941,7 @@
                                                 d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                             <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                                         </svg></a>
-                                    <a href="/galleria/{{$equipo->id}}"
+                                    <a href="/galleria/{{$equipo->id}} " target="_blank"
                                     data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
                                     data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
                                     data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
@@ -1870,7 +1870,7 @@
                             <div class="container">
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Cliente</label>
-                                    <select class="form-control" id="id_cliente1" name="id_cliente1" required>
+                                    <select class="form-control" id="id_cliente2" name="id_cliente2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -1881,7 +1881,7 @@
 
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Tecnico</label>
-                                    <select class="form-control" id="id_user1" name="id_user1" required>
+                                    <select class="form-control" id="id_user2" name="id_user2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=="tecnico")
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -1892,18 +1892,18 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">IMEI</label>
-                                        <input class="form-control" type="text" name="imei1" id="imei1">
+                                        <input class="form-control" type="text" name="imei2" id="imei2">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                         <input class="form-control" type="text" name="serial1" id="serial1">
+                                         <input class="form-control" type="text" name="serial2" id="serial2">
                                     </div>
                                 </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Servicio</label>
-                                    <select class="form-control" id="id_servicio1" name="id_servicio1" required>
+                                    <select class="form-control" id="id_servicio2" name="id_servicio2" required>
                                         @foreach ($Servicio as $servicio)
                                         <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
                                             [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
@@ -1913,12 +1913,12 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="descripcion">Descripcion</label><br>
-                                        <textarea class="form-control"name="descripcion1" id="descripcion1" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                        <textarea class="form-control"name="descripcion2" id="descripcion2" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal1" name="id_sucursal1" required>
+                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2" required>
                                         @foreach ($Sucursal as $sucursal)
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
                                         @endforeach
@@ -1928,7 +1928,7 @@
                                     <div class="form-group">
                                         <label for="marca">Tiempo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido1" id="fecha_recibido1"
+                                            name="fecha_recibido2" id="fecha_recibido2"
                                             value="<?php echo date('Y-m-d'); ?>">
                                     </div>
                                 </div>
@@ -1936,18 +1936,18 @@
                                     <div class="form-group">
                                         <label for="marca">Tiempo Entrega</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_entrega1" id="fecha_entrega1">
+                                            name="fecha_entrega2" id="fecha_entrega2">
                                     </div>
                                 </div>
-                                <select name="listaDeDispositivos1" id="listaDeDispositivos1"></select>
+                                <select name="listaDeDispositivos2" id="listaDeDispositivos2"></select>
                                 <p id="estado"></p>
                                 <br>
                             </div>
-                            <video muted="muted" id="video1"></video>
-                            <canvas id="canvas1" style="display: none;"></canvas>
-                            <input type="hidden" name="status1" id="status1" value="Pendiente1">
-                            <input type="hidden" name="pago1" id="pago1" value="0">
-                            <input type="hidden" name="id_captura1" id="id_captura1" value="">
+                            <video muted="muted" id="video2"></video>
+                            <canvas id="canvas2" style="display: none;"></canvas>
+                            <input type="hidden" name="status2" id="status2" value="Pendiente">
+                            <input type="hidden" name="pago2" id="pago2" value="0">
+                            <input type="hidden" name="id_captura1" id="id_captura2" value="">
                             <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
                                     viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -2696,27 +2696,27 @@
         $("#editequipo").attr("action", '/editequipo/' + id);
 
         var id = $(e.relatedTarget).data().id_user;
-        $(e.currentTarget).find('#id_user1').val(id);
+        $(e.currentTarget).find('#id_user2').val(id);
 
         var id = $(e.relatedTarget).data().id_cliente;
-        $(e.currentTarget).find('#id_cliente1').val(id);
+        $(e.currentTarget).find('#id_cliente2').val(id);
 
         var id = $(e.relatedTarget).data().serial;
-        $(e.currentTarget).find('#serial1').val(id);
+        $(e.currentTarget).find('#serial2').val(id);
 
         var id = $(e.relatedTarget).data().imei;
-        $(e.currentTarget).find('#imei1').val(id);
+        $(e.currentTarget).find('#imei2').val(id);
 
         var id = $(e.relatedTarget).data().id_captura;
-        $(e.currentTarget).find('#id_captura1').val(id);
+        $(e.currentTarget).find('#id_captura2').val(id);
         var id = $(e.relatedTarget).data().id_comentario;
-        $(e.currentTarget).find('#id_comentario1').val(id);
+        $(e.currentTarget).find('#id_comentario2').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;
-        $(e.currentTarget).find('#fecha_recibido1').val(id);
+        $(e.currentTarget).find('#fecha_recibido2').val(id);
         var id = $(e.relatedTarget).data().fecha_entrega;
-        $(e.currentTarget).find('#fecha_entrega1').val(id);
+        $(e.currentTarget).find('#fecha_entrega2').val(id);
         var id = $(e.relatedTarget).data().status;
-        $(e.currentTarget).find('#status1').val(id);
+        $(e.currentTarget).find('#status2').val(id);
 
         const tieneSoporteUserMedia = () =>
                 !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
@@ -2726,11 +2726,11 @@
                     .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
                     navigator, arguments);
             // Declaramos elementos del DOM
-            const $video = document.querySelector("#video1"),
-                $canvas = document.querySelector("#canvas1"),
-                $estado = document.querySelector("#estado1"),
-                $boton = document.querySelector("#boton1"),
-                $listaDeDispositivos = document.querySelector("#listaDeDispositivos1");
+            const $video = document.querySelector("#video2"),
+                $canvas = document.querySelector("#canvas2"),
+                $estado = document.querySelector("#estado2"),
+                $boton = document.querySelector("#boton2"),
+                $listaDeDispositivos = document.querySelector("#listaDeDispositivos2");
             const limpiarSelect = () => {
                 for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
                     $listaDeDispositivos.remove(x);
@@ -2846,7 +2846,7 @@
                                             return resultado.text()
                                         })
                                         .then(nombreDeLaFoto => {
-                                         $('#id_captura1').attr('value',nombreDeLaFoto);
+                                         $('#id_captura2').attr('value',nombreDeLaFoto);
 
 
                                             // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
