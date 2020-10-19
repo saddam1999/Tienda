@@ -96,9 +96,12 @@ class ControllerCaptura extends Controller
      */
     public function galleria(Request $request, $id)
     {
-        $captura = \App\Models\Captura::find($id);
-        $request->session()->flash('id',$id);
-        return back()->with('id','<img src='.$captura->captura.'></img>');
+        $captura = \App\Models\Captura::all();
+        $usuario = \App\Models\User::all();
+
+        return view('/galleria')->with('id',$id)->with('Captura',$captura)->with('Usuario',$usuario);
+        //return back('/galleria')->with('id',$id)->with('Captura',$captura);
+
     }
 
     /**

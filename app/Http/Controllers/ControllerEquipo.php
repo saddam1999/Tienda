@@ -81,7 +81,19 @@ class ControllerEquipo extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $equipo = new \App\Models\Equipo();
+        $equipo->id_user=$request->get('id_user1');
+        $equipo->id_cliente=$request->get('id_cliente1');
+        $equipo->id_servicio=$request->get('id_servicio1');
+        $equipo->serial=$request->get('serial1');
+        $equipo->imei=$request->get('imei1');
+        $equipo->id_captura=$request->get('id_captura1');
+        $equipo->id_comentario=$request->get('id_comentario1');
+        $equipo->fecha_recibido=$request->get('fecha_recibido1');
+        $equipo->fecha_entrega=$request->get('fecha_entrega1');
+        $equipo->status=$request->get('status1');
+        $equipo->save();
+        return back()->with('success', "Equipo Editado");
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Http\Controllers\ControllerCategoria;
 use App\Http\Controllers\ControllerPromocion;
 use App\Http\Controllers\ControllerEquipo;
 use App\Http\Controllers\ControllerCaptura;
+use Illuminate\Support\Facades\Input;
 
 use App\Http\Controllers\FileUploadController;
 
@@ -30,6 +31,7 @@ Route::get('/', function () {
     ,'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all(),
     'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all(),'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()]);
 });
+Route::get('/galleria/{id}', [ControllerCaptura::class, 'galleria']);
 //Usuario
 Route::get('/addusuario', [ControllerUsuario::class, 'store']);
 Route::get('/editusuario/{id}', [ControllerUsuario::class, 'update']);
@@ -71,16 +73,14 @@ Route::get('/deleteequipo/{id}', [ControllerEquipo::class, 'destroy']);
 //ControllerCaptura ( EQUIPO)
 Route::get('/agregarcaptura', [ControllerCaptura::class, 'store']);
 Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);
-Route::post('/galleriacaptura/{id}', [ControllerCaptura::class, 'galleria']);
-
 Route::get('/deletecaptura/{id}', [ControllerCaptura::class, 'destroy']);
-
+//vista galleroa
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
     ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
     ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()]);
+    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all(),'Galeria' => App\Models\Captura::all()]);
 })->name('dashboard');
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');

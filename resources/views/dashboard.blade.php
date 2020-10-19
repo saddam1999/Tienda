@@ -875,7 +875,7 @@
                                             <th>Comentario</th>
                                             <th>Fecha Recibido</th>
                                             <th>Fecha Entrega</th>
-                                            <th>Fecha Status</th>
+                                            <th>Status</th>
                                             <th>Opciones</th>
                                             <th></th>
                                         </tr>
@@ -901,7 +901,7 @@
                                 <td>{{$equipo->fecha_recibido}}</td>
                                 <td>{{$equipo->fecha_entrega}}</td>
                                 <td>{{$equipo->status}}</td>
-                                <td><a href="" data-toggle="modal" data-target="#modal_editarequipo"
+                                <td><a href="" data-toggle="modal" data-target="#modaledittaller"
                                         data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
                                         data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
                                         data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
@@ -941,7 +941,7 @@
                                                 d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                             <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                                         </svg></a>
-                                    <a href="" data-toggle="modal" data-target="#modal-taller-galleria"
+                                    <a href="/galleria/{{$equipo->id}}"
                                     data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
                                     data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
                                     data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
@@ -1848,6 +1848,126 @@
         </div>
     </div>
 </div>
+<!-- Modal Edit Taller-->
+<div class="modal fade" id="modaledittaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg " role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                            class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                        </svg></center>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ">
+                <div class="container-fluid">
+                    <form name="editequipo" id="editequipo" action="/editequipo">
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Cliente</label>
+                                    <select class="form-control" id="id_cliente1" name="id_cliente1" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=='cliente')
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col-4-md">
+                                    <label for="nombre">Nombre Tecnico</label>
+                                    <select class="form-control" id="id_user1" name="id_user1" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=="tecnico")
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">IMEI</label>
+                                        <input class="form-control" type="text" name="imei1" id="imei1">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">SERIAL</label>
+                                         <input class="form-control" type="text" name="serial1" id="serial1">
+                                    </div>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Servicio</label>
+                                    <select class="form-control" id="id_servicio1" name="id_servicio1" required>
+                                        @foreach ($Servicio as $servicio)
+                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="descripcion">Descripcion</label><br>
+                                        <textarea class="form-control"name="descripcion1" id="descripcion1" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Sucursal</label>
+                                    <select class="form-control" id="id_sucursal1" name="id_sucursal1" required>
+                                        @foreach ($Sucursal as $sucursal)
+                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Recibido</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_recibido1" id="fecha_recibido1"
+                                            value="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Entrega</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_entrega1" id="fecha_entrega1">
+                                    </div>
+                                </div>
+                                <select name="listaDeDispositivos1" id="listaDeDispositivos1"></select>
+                                <p id="estado"></p>
+                                <br>
+                            </div>
+                            <video muted="muted" id="video1"></video>
+                            <canvas id="canvas1" style="display: none;"></canvas>
+                            <input type="hidden" name="status1" id="status1" value="Pendiente1">
+                            <input type="hidden" name="pago1" id="pago1" value="0">
+                            <input type="hidden" name="id_captura1" id="id_captura1" value="">
+                            <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
+                                    viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                    <path fill-rule="evenodd"
+                                        d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                    <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                </svg></button>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="boton">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -2121,14 +2241,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title ">Galleria y Comentarios {{session('id')}}</h5>
+                <h5 class="modal-title ">Galleria y Comentarios</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <?php echo'<html>'.session('id').'</html>' ?>
+                    <FRAMESET>
+                        <FRAME  name="galeria" id="galeria" src="">
+                    </FRAMESET>
                 </div>
             </div>
             <div class="modal-footer">
@@ -2563,6 +2685,191 @@
         });
     });
 </script>
+
+<!-- Scripts Editar Equipo Taller-->
+<script>
+    $('#modaledittaller').on('show.bs.modal', function(e) {
+        $('#id1').html($(e.relatedTarget).data('id'));
+        var id = $(e.relatedTarget).data().id;
+
+        $(e.currentTarget).find('#id1').val(id);
+        $("#editequipo").attr("action", '/editequipo/' + id);
+
+        var id = $(e.relatedTarget).data().id_user;
+        $(e.currentTarget).find('#id_user1').val(id);
+
+        var id = $(e.relatedTarget).data().id_cliente;
+        $(e.currentTarget).find('#id_cliente1').val(id);
+
+        var id = $(e.relatedTarget).data().serial;
+        $(e.currentTarget).find('#serial1').val(id);
+
+        var id = $(e.relatedTarget).data().imei;
+        $(e.currentTarget).find('#imei1').val(id);
+
+        var id = $(e.relatedTarget).data().id_captura;
+        $(e.currentTarget).find('#id_captura1').val(id);
+        var id = $(e.relatedTarget).data().id_comentario;
+        $(e.currentTarget).find('#id_comentario1').val(id);
+        var id = $(e.relatedTarget).data().fecha_recibido;
+        $(e.currentTarget).find('#fecha_recibido1').val(id);
+        var id = $(e.relatedTarget).data().fecha_entrega;
+        $(e.currentTarget).find('#fecha_entrega1').val(id);
+        var id = $(e.relatedTarget).data().status;
+        $(e.currentTarget).find('#status1').val(id);
+
+        const tieneSoporteUserMedia = () =>
+                !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+            const _getUserMedia = (...arguments) =>
+                (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
+                    navigator, arguments);
+            // Declaramos elementos del DOM
+            const $video = document.querySelector("#video1"),
+                $canvas = document.querySelector("#canvas1"),
+                $estado = document.querySelector("#estado1"),
+                $boton = document.querySelector("#boton1"),
+                $listaDeDispositivos = document.querySelector("#listaDeDispositivos1");
+            const limpiarSelect = () => {
+                for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
+                    $listaDeDispositivos.remove(x);
+            };
+            const obtenerDispositivos = () => navigator
+                .mediaDevices
+                .enumerateDevices();
+            // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
+            // Lo que hace es llenar el select con los dispositivos obtenidos
+            const llenarSelectConDispositivosDisponibles = () => {
+                    limpiarSelect();
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            const dispositivosDeVideo = [];
+                            dispositivos.forEach(dispositivo => {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            if (dispositivosDeVideo.length > 0) {
+                                // Llenar el select
+                                dispositivosDeVideo.forEach(dispositivo => {
+                                    const option = document.createElement('option');
+                                    option.value = dispositivo.deviceId;
+                                    option.text = dispositivo.label;
+                                    $listaDeDispositivos.appendChild(option);
+                                });
+                            }
+                        });
+                }
+                (function() {
+                    // Comenzamos viendo si tiene soporte, si no, nos detenemos
+                    if (!tieneSoporteUserMedia()) {
+                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                        $estado.innerHTML =
+                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                        return;
+                    }
+                    //AquÃ­ guardaremos el stream globalmente
+                    let stream;
+                    // Comenzamos pidiendo los dispositivos
+                    obtenerDispositivos()
+                        .then(dispositivos => {
+                            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
+                            const dispositivosDeVideo = [];
+                            // Recorrer y filtrar
+                            dispositivos.forEach(function(dispositivo) {
+                                const tipo = dispositivo.kind;
+                                if (tipo === "videoinput") {
+                                    dispositivosDeVideo.push(dispositivo);
+                                }
+                            });
+                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                            // y le pasamos el id de dispositivo
+                            if (dispositivosDeVideo.length > 0) {
+                                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
+                                mostrarStream(dispositivosDeVideo[0].deviceId);
+                            }
+                        });
+                    const mostrarStream = idDeDispositivo => {
+                        _getUserMedia({
+                                video: {
+                                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
+                                    deviceId: idDeDispositivo,
+                                }
+                            },
+                            (streamObtenido) => {
+                                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
+                                // pues si no, no nos darÃ­a el nombre de los dispositivos
+                                llenarSelectConDispositivosDisponibles();
+                                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
+                                $listaDeDispositivos.onchange = () => {
+                                    // Detener el stream
+                                    if (stream) {
+                                        stream.getTracks().forEach(function(track) {
+                                            track.stop();
+                                        });
+                                    }
+                                    // Mostrar el nuevo stream con el dispositivo seleccionado
+                                    mostrarStream($listaDeDispositivos.value);
+                                }
+                                // Simple asignaciÃ³n
+                                stream = streamObtenido;
+                                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
+                                $video.srcObject = stream;
+                                $video.play();
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                //Escuchar el click del botÃ³n para tomar la foto
+                                $boton.addEventListener("click", function() {
+                                    //Pausar reproducciÃ³n
+                                    $video.pause();
+                                    //Obtener contexto del canvas y dibujar sobre Ã©l
+                                    let contexto = $canvas.getContext("2d");
+                                    $canvas.width = $video.videoWidth;
+                                    $canvas.height = $video.videoHeight;
+                                    contexto.drawImage($video, 0, 0, $canvas.width,
+                                        $canvas.height);
+                                    let foto = $canvas
+                                        .toDataURL(); //Esta es la foto, en base 64
+                                    $estado.innerHTML =
+                                        "Enviando foto. Por favor, espera...";
+                                    fetch("./fotos/foto.php", {
+                                            method: "POST",
+                                            body: encodeURIComponent(foto),
+                                            headers: {
+                                                "Content-type": "application/x-www-form-urlencoded",
+                                            }
+                                        })
+                                        .then(resultado => {
+                                            // A los datos los decodificamos como texto plano
+                                            return resultado.text()
+                                        })
+                                        .then(nombreDeLaFoto => {
+                                         $('#id_captura1').attr('value',nombreDeLaFoto);
+
+
+                                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
+                                            console.log(
+                                                "La foto fue enviada correctamente"
+                                            );
+                                            $estado.innerHTML =
+                                                `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
+                                        })
+                                    //Reanudar reproducciÃ³n
+                                    $video.play();
+                                });
+                            }, (error) => {
+                                console.log("Permiso denegado o error: ", error);
+                                $estado.innerHTML =
+                                    "No se puede acceder a la cÃ¡mara, o no diste permiso.";
+                            });
+                    }
+                })();
+    });
+</script>
+
+
 <!-- Script Tabs -->
 <script>
     $(document).ready(function() {
@@ -2587,6 +2894,7 @@
 
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id_equipo1').val(id);
+        $('#galeria').attr('src','galleria/'+id);
 
         $.ajaxSetup({
        headers: {
@@ -2595,7 +2903,7 @@
        });
        $.ajax({
 
-       url: 'galleriacaptura/' + id,
+       url: 'galleria/' + id,
        data: {
        'id':id,
        '_method': 'POST',
