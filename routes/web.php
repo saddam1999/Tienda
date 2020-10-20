@@ -37,7 +37,7 @@ Route::get('/addusuario', [ControllerUsuario::class, 'store']);
 Route::get('/editusuario/{id}', [ControllerUsuario::class, 'update']);
 Route::get('/deleteusuario/{id}', [ControllerUsuario::class, 'destroy']);
 //Articulo
-Route::get('/store', [ControllerArticulo::class, 'store']);
+Route::get('/store', [ControllerArticulo::class, 'store'])->name('subir');
 Route::get('/editararticulo/{id}', [ControllerArticulo::class, 'update']);
 Route::get('/deletearticulo/{id}', [ControllerArticulo::class, 'destroy']);
 //Marca

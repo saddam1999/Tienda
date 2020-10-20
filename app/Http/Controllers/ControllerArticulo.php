@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\S, torage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\ServiceProvider;
+use League\Flysystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use \App\Models\User;
 use App\Models\Articulo;
 
@@ -56,13 +61,22 @@ class ControllerArticulo extends Controller
             $articulo->descuento = $temporal;
             $articulo->precio = $request->get('precio');
         }
+        $articulo->imagena=  $request->file('imagena');
+
+        $articulo->imagenb =  $request->imagenb;
+
+        $articulo->imagenc =  $request->imagenc;
+
+        $articulo->imagend = $request->imagend;
+
+
+
         $articulo->save();
 
-              // $request->session()->flash('notificacion', 'Task was successful!');
-              $data = $request->session()->all();
-              //dd($data);
-                return back()->with('success', "Articulo Agregado");
-
+        // $request->session()->flash('notificacion', 'Task was successful!');
+        $data = $request->session()->all();
+        //dd($data);
+        return back()->with('success', "Articulo Agregado");
     }
 
     /**
@@ -112,16 +126,25 @@ class ControllerArticulo extends Controller
             $descuento = ($temporal * $temporal2) / 100;
             $articulo->precio  = $temporal2 - $descuento;
             $articulo->descuento = $temporal;
-           // $articulo->precioOriginal = $request->get('precio1');
+            // $articulo->precioOriginal = $request->get('precio1');
         } else if ($temporal == 0) { //en caso de que descuento este en 0 restablece precio
             // no modificar nada
             $articulo->descuento = 0;
             $articulo->precio = $temporal2;
         }
+        $articulo->imagena = $request->imagena;
+
+        $articulo->imagenb =  $request->imagenb;
+
+        $articulo->imagenc =  $request->imagenc;
+
+        $articulo->imagend = $request->imagend;
+
+
+
         $articulo->existencia = $request->get('existencia1');
         $articulo->save();
-        return back()->with('success','Articulo editado : ' . $articulo->nombre);
-
+        return back()->with('success', 'Articulo editado : ' . $articulo->nombre);
     }
 
 

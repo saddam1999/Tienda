@@ -25,7 +25,48 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <style>
+        ul.gallery{
+        margin-left: 3vw;
+        margin-right:3vw;
+        }
 
+        .zoom {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+        cursor: zoom-in;
+        }
+
+        .zoom:hover,
+        .zoom:active,
+        .zoom:focus {
+        /**adjust scale to desired size,
+        add browser prefixes**/
+        -ms-transform: scale(2.5);
+        -moz-transform: scale(2.5);
+        -webkit-transform: scale(2.5);
+        -o-transform: scale(2.5);
+        transform: scale(2.5);
+        position:relative;
+        z-index:100;
+        }
+
+        /**To keep upscaled images visible on mobile,
+        increase left & right margins a bit**/
+        @media only screen and (max-width: 768px) {
+        ul.gallery {
+        margin-left: 15vw;
+        margin-right: 15vw;
+        }
+
+        /**TIP: Easy escape for touch screens,
+        give gallery's parent container a cursor: pointer.**/
+        .DivName {cursor: pointer}
+        }
+        </style>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
@@ -896,7 +937,7 @@
                                 @endforeach
                                 <td>{{$equipo->serial}}</td>
                                 <td>{{$equipo->imei}}</td>
-                                <td><img src="./fotos/{{$equipo->id_captura}}" alt=""></td>
+                                <td><img class="thumbnail zoom"  style="border-radius:10px;" src="./fotos/{{$equipo->id_captura}}" alt=""></td>
                                 <td>{{$equipo->id_comentario}}</td>
                                 <td>{{$equipo->fecha_recibido}}</td>
                                 <td>{{$equipo->fecha_entrega}}</td>
@@ -991,7 +1032,9 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="/store">
+                    <form action="/store" accept-charset="UTF-8" enctype="multipart/form-data">
+                        @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
@@ -1040,10 +1083,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="imagena" name="imagena">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
+                                        <input class="form-control" type="file" name="imagena"  name="imagena" accept-charset="UTF-8" enctype="multipart/form-data" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1052,10 +1092,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="imagenb" name="imagenb">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
+                                            <input class="form-control" type="file" name="imagenb" id="imagenb"  accept-charset="UTF-8" enctype="multipart/form-data">
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1064,10 +1102,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="imagenc" name="imagenc">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
+                                            <input class="form-control" type="file" name="imagenc" id="imagenc" accept-charset="UTF-8" enctype="multipart/form-data" >
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1076,10 +1111,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="imagend" name="imagend">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
+                                            <input class="form-control" type="file" name="imagend" id="imagend"  accept-charset="UTF-8" enctype="multipart/form-data">
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1779,13 +1812,13 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">IMEI</label>
-                                        <input class="form-control" type="text" name="imei" id="imei">
+                                        <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                         <input class="form-control" type="text" name="serial" id="serial">
+                                         <input class="form-control" type="text" name="serial" id="serial" placeholder="Serial">
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -1813,7 +1846,7 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Tiempo Recibido</label>
+                                        <label for="marca">Dia de Equipo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_recibido" id="fecha_recibido"
                                             value="<?php echo date('Y-m-d'); ?>">
@@ -1821,7 +1854,7 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Tiempo Entrega</label>
+                                        <label for="marca">Dia Entrega Aproximado</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_entrega" id="fecha_entrega">
                                     </div>

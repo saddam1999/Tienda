@@ -19,8 +19,9 @@ class CreateComprasTable extends Migration
             $table->integer('id_articulo')->nullable();
             $table->integer('id_metodo')->nullable();
             $table->integer('id_pago')->nullable();
-            $table->date('fecha')->nullable();
+            $table->integer('id_sucursal')->nullable();
             $table->integer('id_guia')->nullable();
+            $table->date('fecha')->nullable();
             $table->integer('status')->nullable(); //0 no avalaible 1 avalaible 2 pending 3suspended 4 success
             $table->timestamps();
         });

@@ -22,6 +22,51 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+
+   <style>
+    ul.gallery{
+    margin-left: 3vw;
+    margin-right:3vw;
+    }
+
+    .zoom {
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+    }
+
+    .zoom:hover,
+    .zoom:active,
+    .zoom:focus {
+    /**adjust scale to desired size,
+    add browser prefixes**/
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    position:relative;
+    z-index:100;
+    }
+
+    /**To keep upscaled images visible on mobile,
+    increase left & right margins a bit**/
+    @media only screen and (max-width: 768px) {
+    ul.gallery {
+    margin-left: 15vw;
+    margin-right: 15vw;
+    }
+
+    /**TIP: Easy escape for touch screens,
+    give gallery's parent container a cursor: pointer.**/
+    .DivName {cursor: pointer}
+    }
+    </style>
+
     <style style="text/css">
         div.slide-left {
           width:100%;
@@ -64,7 +109,77 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<style>
+.text-box {
+    margin-left: 44vw;
+     margin-top: 42vh;
+}
 
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+</style>
 </head>
 <header>
 
@@ -73,14 +188,14 @@
     <div id="content mt-2">
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="navbarmanual"
-      style="     border: solid .05em orange;
-
-        border-radius: 30px;"
+      style="border: solid .05em orange;
+"
         >
             <a class="navbar-brand" href="/">
                 <img style="border-radius:70%;" src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="50"
                     height="50" class="d-inline-block align-top" alt="">
-                    @if($Settings->isEmpty()) @else <h5> {{$setting->setting_nombre}}</h5> @endif
+                    @if($Settings->isEmpty()) @else <h3 style="font-family: 'Ubuntu', sans-serif;
+                    "> {{$setting->setting_nombre}}</h3> @endif
             </a>
 
             <div class="container">
@@ -118,18 +233,18 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <x-jet-dropdown-link href="{{ route('dashboard') }}">
-                                    {{ Auth::user()->name }}
-                                </x-jet-dropdown-link>
-                                <div class="border-t border-blue-100"></div>
-                                <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+     <x-jet-dropdown-link href="{{ route('dashboard') }}">
+         {{ Auth::user()->name }}
+     </x-jet-dropdown-link>
+     <div class="border-t border-blue-100"></div>
+     <!-- Authentication -->
+     <form method="POST" action="{{ route('logout') }}">
+         @csrf
+         <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                     this.closest('form').submit();">
-                                        {{ __('Logout') }}
-                                    </x-jet-dropdown-link>
-                                </form>
+             {{ __('Logout') }}
+         </x-jet-dropdown-link>
+         </form>
                             </li>
                         @endguest
                     </ul>
@@ -142,12 +257,12 @@
 
             <div class="wrapper">
                 <!-- Sidebar  -->
-                <nav  class="sticky-top"  id="sidebar" style="background-color:white; opacity:95%;">
+                <nav  class="sticky-top shadow-lg "  id="sidebar" style="background-color:white; opacity:95%; border-radius:20px;">
                     <div id="dismiss" class="mt-5">
                         <i class="fas fa-arrow-left"></i>
                     </div>
                     <form action="results.php" method="POST">
-                        <div class="sidebar-header text-dark " style="background-color:white; color:dark;" id="smartcart">
+                        <div class="sidebar-header text-dark" style="background-color:white; color:dark; border-radius:20px; " id="smartcart">
                             <h3 class="text-dark"><br> Carrito</h3>
                             <!-- SmartCart element -->
                     </form>
@@ -167,7 +282,7 @@
 
         <div class="carousel-inner" >
             <div class="carousel-item active">
-                <img class="bd-placeholder-img"  src="  @if($Settings->isEmpty()) @else{{$promocion->bannera}} @endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img"    src="  @if($Settings->isEmpty()) @else{{$promocion->bannera}} @endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption text-left">
@@ -178,7 +293,7 @@
             </div>
 
             <div class="carousel-item">
-                <img class="bd-placeholder-img"  src="  @if($Settings->isEmpty()) @else{{$promocion->bannerb}} @endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img "  src="  @if($Settings->isEmpty()) @else{{$promocion->bannerb}} @endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption">
@@ -188,7 +303,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="bd-placeholder-img"  src="@if($Settings->isEmpty()) @else{{$promocion->bannerc}}@endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img "  src="@if($Settings->isEmpty()) @else{{$promocion->bannerc}}@endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption text-right">
@@ -231,8 +346,8 @@
                     <div class="bbb_deals_title" data-name="product_name">{{$producto->nombre}}</div>
                     <div class="bbb_deals_slider_container">
                         <div class=" bbb_deals_item">
-                            <div class="bbb_deals_image"><img data-name="product_image"
-                                    src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
+                            <div class="bbb_deals_image thumbnail zoom"><img data-name="product_image"
+                                    src="{{$producto->imagena}}"
                                     alt=""></div>
                             <div class="bbb_deals_content">
                                 <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
@@ -266,7 +381,7 @@
                                             <span>{{$producto->existencia}}</span></div>
                                         <div class="sold_title ml-auto">Already sold: <span>28</span></div>
                                     </div>
-                                    <button class="sc-add-to-cart btn btn-success">Agregar Carrito</button>
+                                    <button class="sc-add-to-cart btn btn-success btn btn-success btn-animate">Agregar Carrito</button>
                                     <div class="available_bar"><span style="width:17%"></span></div>
                                 </div>
                             </div>
@@ -298,9 +413,9 @@
              <div class="bbb_deals_title" data-name="product_name">{{$producto->nombre}}</div>
              <div class="bbb_deals_slider_container">
                  <div class=" bbb_deals_item">
-                     <div class="bbb_deals_image"><img data-name="product_image"
-                             src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png"
-                             alt=""></div>
+                     <div class="bbb_deals_image thumbnail zoom" ><img data-name="product_image"
+                        src="{{$producto->imagena}}"
+                        alt=""></div>
                      <div class="bbb_deals_content">
                          <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                              @foreach ($Marca as $marca)
@@ -333,8 +448,8 @@
                                      <span>{{$producto->existencia}}</span></div>
                                  <div class="sold_title ml-auto">Already sold: <span>28</span></div>
                              </div>
-                             <button class="sc-add-to-cart btn btn-success">Agregar Carrito</button>
-                             <div class="available_bar"><span style="width:17%"></span></div>
+                             <button class="sc-add-to-cart btn btn-success btn-animate">Agregar Carrito</button>
+
                          </div>
                      </div>
                  </div>
