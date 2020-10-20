@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagoEquiposTable extends Migration
+class CreateCortesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreatePagoEquiposTable extends Migration
      */
     public function up()
     {
-        Schema::create('pago__equipos', function (Blueprint $table) {
+        Schema::create('cortes', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->integer('id_cliente');
-            $table->string('id_equipo');
+            $table->string('id_user');
+            $table->string('id_pago');
             $table->string('id_sucursal');
-            $table->string('id_caja');
-            $table->string('id_corte');
-            $table->float('monto');
-            $table->float('adelanto');
-            $table->string('comentario');
+            $table->boolean('abierto');
+            $table->float('corte_total');
             $table->date('fecha');
             $table->timestamps();
         });
@@ -36,6 +32,6 @@ class CreatePagoEquiposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pago__equipos');
+        Schema::dropIfExists('cortes');
     }
 }

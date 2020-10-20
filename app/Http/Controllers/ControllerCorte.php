@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Caja;
 
-class ControllerCaja extends Controller
+class ControllerCorte extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,8 +34,7 @@ class ControllerCaja extends Controller
      */
     public function store(Request $request)
     {
-        $caja = new \App\Models\Caja();
-        $caja->save();
+        //
     }
 
     /**

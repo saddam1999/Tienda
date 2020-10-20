@@ -11,6 +11,8 @@ use App\Http\Controllers\ControllerCategoria;
 use App\Http\Controllers\ControllerPromocion;
 use App\Http\Controllers\ControllerEquipo;
 use App\Http\Controllers\ControllerCaptura;
+use App\Http\Controllers\ControllerCaja;
+
 use Illuminate\Support\Facades\Input;
 
 use App\Http\Controllers\FileUploadController;
@@ -78,7 +80,10 @@ Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);
 Route::get('/deletecaptura/{id}', [ControllerCaptura::class, 'destroy']);
 //status
 Route::get('/cambio_status/{id}', [ControllerEquipo::class, 'status']);
-
+//ControllerCaja
+Route::get('/agregarcaja', [ControllerCaja::class, 'store']);
+Route::get('/editcaja/{id}', [ControllerCaja::class, 'update']);
+Route::get('/deletecaja/{id}', [ControllerCaja::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
     ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
