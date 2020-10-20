@@ -70,6 +70,8 @@ Route::get('/deletepromocion/{id}', [ControllerPromocion::class, 'destroy']);
 Route::get('/agregarequipo', [ControllerEquipo::class, 'store']);
 Route::get('/editequipo/{id}', [ControllerEquipo::class, 'update']);
 Route::get('/deleteequipo/{id}', [ControllerEquipo::class, 'destroy']);
+Route::get('/cambio_servicio/{id}', [ControllerEquipo::class, 'cambio_servicio']);
+
 //ControllerCaptura ( EQUIPO)
 Route::get('/agregarcaptura', [ControllerCaptura::class, 'store']);
 Route::get('/editcaptura/{id}', [ControllerCaptura::class, 'update']);

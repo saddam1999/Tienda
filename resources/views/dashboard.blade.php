@@ -7,6 +7,8 @@
 
         </h2>
     </x-slot>
+@php date_default_timezone_set('UTC');
+@endphp
     <!-- JS, Popper.js, and jQuery -->
     <script
     src="https://code.jquery.com/jquery-3.5.1.js"
@@ -172,7 +174,7 @@
             </div>
             <div class="col-md-4 m-auto mt-1">
                 <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller<center><svg
+            data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller <center><svg
                             width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -898,125 +900,193 @@
             </div>
         </div>
         <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
-            <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning" >
-                        <div class="card text-left">
-                            <div class="card-body">
-                                    <h4 class="card-title">Taller</h4>
-                                <table class="table table-striped table-inverse table-responsive">
-                                    <thead class="thead-inverse">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Tecnico</th>
-                                            <th>Cliente</th>
-                                            <th>Serial</th>
-                                            <th>IMEI</th>
-                                            <th>Captura</th>
-                                            <th>Comentario</th>
-                                            <th>Fecha Recibido</th>
-                                            <th>Fecha Entrega</th>
-                                            <th>Status</th>
-                                            <th>Opciones</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                            @foreach($Equipo as $equipo)
-                            <tr>
-                                <td>{{$equipo->id}}</td>
-                                @foreach ($Usuario as $user)
-                                @if($user->id==$equipo->id_user)
-                                <td>{{$user->name}}</td>
-                                @endif
-                                @endforeach
-                                @foreach ($Usuario as $user)
-                                @if($user->id==$equipo->id_cliente)
-                                <td>{{$user->name}}</td>
-                                @endif
-                                @endforeach
-                                <td>{{$equipo->serial}}</td>
-                                <td>{{$equipo->imei}}</td>
-                                <td><img class="thumbnail zoom"  style="border-radius:10px;" src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                <td>{{$equipo->id_comentario}}</td>
-                                <td>{{$equipo->fecha_recibido}}</td>
-                                <td>{{$equipo->fecha_entrega}}</td>
-                                <td><a href="" data-id="{{$equipo->id}}" data-status="{{$equipo->status}}" data-toggle="modal" data-target="#modal_status" >
-                                   @if($equipo->status==0)
-                                   Recibido
-                                   @elseif($equipo->status==1)
-                                   En Revision
-                                   @elseif($equipo->status==2)
-                                   Cancelado
-                                   @elseif($equipo->status==3)
-                                   Espera
-                                   @elseif($equipo->status==4)
-                                   A espera de Cliente(Contactarse a Sucursal)
-                                   @elseif($equipo->status==5)
-                                    Listo(Para entregar)
-                                   @elseif($equipo->status==6)
-                                    Entregado
-                                   @endif
+           <div class="py-12">
+               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                   <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
+                       <div class="card text-left">
+                           <div class="card-body">
+                               <h4 class="card-title">Taller</h4>
+                               <table class="table table-striped table-inverse table-responsive">
+                                   <thead class="thead-inverse">
+                                       <tr>
+                                           <th>#</th>
+                                           <th>Tecnico</th>
+                                           <th>Cliente</th>
+                                           <th>Serial</th>
+                                           <th>IMEI</th>
+                                           <th>Captura</th>
+                                           <th>Comentario</th>
+                                           <th>Servicio</th>
+                                           <th>Fecha Recibido</th>
+                                           <th>Fecha Entrega</th>
+                                           <th>Status</th>
+                                           <th>Opciones</th>
+                                           <th></th>
+                                       </tr>
+                                   </thead>
+                                   <tbody>
+                                       @foreach($Equipo as $equipo)
+                                       <tr>
+                                           <td>{{$equipo->id}}</td>
+                                           @foreach ($Usuario as $user)
+                                           @if($user->id==$equipo->id_user)
+                                           <td>{{$user->name}}</td>
+                                           @endif
+                                           @endforeach
+                                           @foreach ($Usuario as $user)
+                                           @if($user->id==$equipo->id_cliente)
+                                           <td>{{$user->name}}</td>
+                                           @endif
+                                           @endforeach
+                                           <td>{{$equipo->serial}}</td>
+                                           <td>{{$equipo->imei}}</td>
+                                           <td><img class="thumbnail zoom" style="border-radius:10px;"
+                                                   src="./fotos/{{$equipo->id_captura}}" alt=""></td>
+                                           <td><textarea class="border border-dark" name="" id="" cols="10"
+                                                   rows="4">{{$equipo->id_comentario}}</textarea></td>
+                                           @foreach ($Servicio as $servicio)
+                                           @if($servicio->id==$equipo->id_servicio)
+                                           <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                   data-id_servicio="{{$equipo->id_servicio}}" data-toggle="modal"
+                                                   data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
+                                           @endif
+                                           @endforeach
+                                           <td><input class="text-secondary" type="date"
+                                                   value="{{$equipo->fecha_recibido}}"></td>
+                                           <td>
+                                               @php
+                                               $date1 = new DateTime("now");
+                                               $date2 = new DateTime($equipo->fecha_entrega);
+                                               @endphp
 
-                                </a></td>
-                                @if($equipo->status!=2 && $equipo->status !=6)
-                                <td><a href="" data-toggle="modal" data-target="#modaledittaller" data-id="{{$equipo->id}}"
-           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
-           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
-           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
-               height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor"
-               xmlns="http://www.w3.org/2000/svg">
-               <path
-                   d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-               <path fill-rule="evenodd"
-                   d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-           </svg></a>
-       <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash"
-               fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-               <path
-                   d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-               <path fill-rule="evenodd"
-                   d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-           </svg></a>
-       <a href="" data-toggle="modal" data-target="#modal_foto" data-id="{{$equipo->id}}"
-           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
-           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
-           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
-               height="2em" viewBox="0 0 16 16" class="bi bi-camera text-success" fill="currentColor"
-               xmlns="http://www.w3.org/2000/svg">
-               <path fill-rule="evenodd"
-                   d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-               <path fill-rule="evenodd"
-                   d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-               <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-           </svg></a>
-       <a href="/galleria/{{$equipo->id}} " target="_blank" data-id="{{$equipo->id}}"
-           data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
-           data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
-           data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
-           data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"><svg width="2em"
-               height="2em" viewBox="0 0 16 16" class="bi bi-film text-warning" fill="currentColor"
-               xmlns="http://www.w3.org/2000/svg">
-               <path fill-rule="evenodd"
-                   d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
-           </svg></a>
-   </td>
+                                               @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
+                                               <div class="input-group-prepend">
+                                                   <span class="input-group-text text-danger" id="basic-addon1"><svg
+                                                           width="1em" height="1em" viewBox="0 0 16 16"
+                                                           class="bi bi-alarm" fill="currentColor"
+                                                           xmlns="http://www.w3.org/2000/svg">
+                                                           <path fill-rule="evenodd"
+                                                               d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z" />
+                                                       </svg><input class="text-danger" type="date"
+                                                           value="{{$equipo->fecha_entrega}}">
+                                                   </span>
+                                               </div>
 
-   <td></td>@endif
-   </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</x-app-layout>
+                                               @else
+                                               <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
+
+                                               @endif
+                                           </td>
+                                           <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                   data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
+                                                   data-toggle="modal" data-target="#modal_status">
+                                                   @if($equipo->status==0)
+                                                   Recibido
+                                                   @elseif($equipo->status==1)
+                                                   En Revision
+                                                   @elseif($equipo->status==2)
+                                                   Cancelado
+                                                   @elseif($equipo->status==3)
+                                                   Espera
+                                                   @elseif($equipo->status==4)
+                                                   A espera de Cliente(Contactarse a Sucursal)
+                                                   @elseif($equipo->status==5)
+                                                   Listo(Para entregar)
+                                                   @elseif($equipo->status==6)
+                                                   Entregado
+                                                   @endif
+
+                                               </a></td>
+                                           @if($equipo->status!=2 && $equipo->status !=6)
+                                           <td><a href="" data-toggle="modal" data-target="#modaledittaller"
+                                                   data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                   data-servicio="{{$equipo->id_servicio}}"
+                                                   data-id_user="{{$equipo->id_user}}"
+                                                   data-id_cliente="{{$equipo->id_cliente}}"
+                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                   data-id_captura="{{$equipo->id_captura}}"
+                                                   data-id_comentario="{{$equipo->id_comentario}}"
+                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                       viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                       <path
+                                                           d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                       <path fill-rule="evenodd"
+                                                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                   </svg></a>
+                                               <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em"
+                                                       viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                       xmlns="http://www.w3.org/2000/svg">
+                                                       <path
+                                                           d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                       <path fill-rule="evenodd"
+                                                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                   </svg></a>
+                                               <a href="" data-toggle="modal" data-target="#modal_foto"
+                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                   data-servicio="{{$equipo->id_servicio}}"
+                                                   data-id_cliente="{{$equipo->id_cliente}}"
+                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                   data-id_captura="{{$equipo->id_captura}}"
+                                                   data-id_comentario="{{$equipo->id_comentario}}"
+                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                       viewBox="0 0 16 16" class="bi bi-camera text-success"
+                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                       <path fill-rule="evenodd"
+                                                           d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                                       <path fill-rule="evenodd"
+                                                           d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                       <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                   </svg></a>
+                                               <a href="/galleria/{{$equipo->id}} " target="_blank"
+                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                   data-id_cliente="{{$equipo->id_cliente}}"
+                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                   data-id_captura="{{$equipo->id_captura}}"
+                                                   data-id_comentario="{{$equipo->id_comentario}}"
+                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                       viewBox="0 0 16 16" class="bi bi-film text-warning"
+                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                       <path fill-rule="evenodd"
+                                                           d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
+                                                   </svg></a>
+                                               <a href="" data-toggle="modal" data-target="#modal_pago"
+                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                   data-id_cliente="{{$equipo->id_cliente}}"
+                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                   data-id_captura="{{$equipo->id_captura}}"
+                                                   data-id_comentario="{{$equipo->id_comentario}}"
+                                                   data-pago="{{$equipo->pago}}"
+                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                       viewBox="0 0 16 16" class="bi bi-cash text-info"
+                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                       <path fill-rule="evenodd"
+                                                           d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
+                                                       <path
+                                                           d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                                                   </svg></a>
+                                           </td>
+                                           <td> </td>
+                                           @endif
+                                       </tr>
+                                       @endforeach
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       </x-app-layout>
 <!-- Scripts Galleria-->
 
 <!-- Modal Agregar Articulo -->
@@ -1039,25 +1109,25 @@
                             <div class="container">
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" value="" required>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Agrega el nombre del articulo" value="" required>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="descripcion">Descripcion</label>
                                     <textarea class="form-control" rows="10" cols="50" name="descripcion"
-                                        id="descripcion" required></textarea>
+                                        id="descripcion" placeholder="Agrega la descripcion del Articulo" required></textarea>
 
                                 </div>
                                 <div class="col-6-md">
                                     <label for="precio">Precio Neto</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" name="precio" id="precio" value=""
+                                        <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value=""
                                             required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="existencia">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia" id="existencia" value=""
+                                    <input type="text" class="form-control" name="existencia" id="existencia" placeholder="Existencia" value=""
                                         required>
                                 </div>
                                 <div class="col-6-md">
@@ -1154,7 +1224,7 @@
                                 </div>
                                 <div class="col-6-md">
                                     <label for="IDlocal">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal">
+                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal" placeholder="Agrega el codigo que usas localmente para indentificar el producto">
                                 </div>
                             </div>
                         </div>
@@ -1678,7 +1748,7 @@
 </div>
 <!-- Modal Punto de venta-->
 <div class="modal fade" id="modalvender" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-xl " role="document">
         <div class="modal-content">
             <div class="modal-header bg-success">
                 <h5 class="modal-title text-white">Punto de Venta<center><svg width="2em" height="2em"
@@ -1696,74 +1766,81 @@
             </div>
             <div class="modal-body ">
                 <div class="container-fluid">
-                    <form action="/agregarservicio">
-                        <div class="row">
-                            <div class="container">
-                                <div class="col-4-md">
-                                    <label for="nombre">Nombre Cliente</label>
-                                    <select class="form-control" id="nombre" name="nombre" required>
-                                        @foreach ($Usuario as $user)
-                                        @if($user->rol=='cliente')
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="col-4-md">
-                                    <label for="nombre">Nombre Tecnico</label>
-                                    <select class="form-control" id="nombre" name="nombre" required>
-                                        @foreach ($Usuario as $user)
-                                        @if($user->rol=="tecnico")
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-4-md">
-                                    <label for="descripcion">Servicio</label>
-                                    <select class="form-control" id="servicio" name="servicio" required>
-                                        @foreach ($Servicio as $servicio)
-                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
-                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-4-md">
-                                    <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="servicio" name="servicio" required>
-                                        @foreach ($Sucursal as $sucursal)
-                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Recibido</label>
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido" id="fecha_recibido"
-                                            value="<?php echo date('Y-m-d'); ?>" disabled>
+                    <div class="row">
+                            <div class="col-md-6">
+                                prueba
+                            </div> 
+                            <div class="col-md-6">
+                                <form action="/agregarservicio">
+                                    <div class="row">
+                                        <div class="container">
+                                            <div class="col-4-md">
+                                                <label for="nombre">Nombre Cliente</label>
+                                                <select class="form-control" id="nombre" name="nombre" required>
+                                                    @foreach ($Usuario as $user)
+                                                    @if($user->rol=='cliente')
+                                                    <option value="{{$user->id}}" @php $temporal=$user->id; @endphp>{{$user->name}}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+            
+                                            <div class="col-4-md">
+                                                <label for="nombre">Nombre Tecnico</label>
+                                                <select class="form-control" id="nombre" name="nombre" required>
+                                                    @foreach ($Usuario as $user)
+                                                    @if($user->rol=="tecnico")
+                                                    <option value="{{$user->id}}" >{{$user->name}}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+            
+                                            <div class="col-4-md">
+                                                <label for="descripcion">Servicio</label>
+                                                <select class="form-control" id="servicio" name="servicio" required>
+                                                    @foreach ($Servicio as $servicio)
+                                                    <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                                        [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-4-md">
+                                                <label for="descripcion">Sucursal</label>
+                                                <select class="form-control" id="servicio" name="servicio" required>
+                                                    @foreach ($Sucursal as $sucursal)
+                                                    <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-4-md">
+                                                <div class="form-group">
+                                                    <label for="marca">Tiempo Recibido</label>
+                                                    <input class="form-control" data-provide="datepicker" type="date"
+                                                        name="fecha_recibido" id="fecha_recibido"
+                                                        value="<?php echo date('Y-m-d'); ?>" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-4-md">
+                                                <div class="form-group">
+                                                    <label for="marca">Tiempo Entrega</label>
+                                                    <input class="form-control" data-provide="datepicker" type="date"
+                                                        name="fecha_entrega" id="fecha_entrega">
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="status" id="status" value="Pendiente">
+                                            <input type="hidden" name="pago" id="pago" value="0">
+            
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Entrega</label>
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_entrega" id="fecha_entrega">
-                                    </div>
-                                </div>
-                                <input type="hidden" name="status" id="status" value="Pendiente">
-                                <input type="hidden" name="pago" id="pago" value="0">
-
                             </div>
-                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-            </form>
         </div>
     </div>
 </div>
@@ -2351,22 +2428,103 @@
     </div>
 </div>
 
+<!-- Modal Pago -->
+<div class="modal fade" id="modal_pago" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white">Pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                <label for="status">Pagado</label>
+                <form name="cambio_pago" id="cambio_pago" action="">
+                <input type="text" class="form-control" name="pago4" id="pago4">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Servicio -->
+<div class="modal fade" id="modal_servicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white">Servicio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="col-4-md">
+                        <form name="cambio_servicio" id="cambio_servicio" action="">
+                        <label for="descripcion">Servicio</label>
+                        <select class="form-control" id="id_servicio5" name="id_servicio5" required>
+                            @foreach ($Servicio as $servicio)
+                            <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+            </div>
+        </form>
+
+        </div>
+    </div>
+</div>
 
 <!-- Scripts Status-->
 <script>
 $('#modal_status').on('show.bs.modal', function(e) {
-
-
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id3').val(id);
         $("#cambio_status").attr("action", '/cambio_status/' + id);
-
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status3').val(id);
-
-
 });
 </script>
+
+<!-- Scripts Pago-->
+<script>
+    $('#modal_pago').on('show.bs.modal', function(e) {
+            var id = $(e.relatedTarget).data().id;
+            $(e.currentTarget).find('#id4').val(id);
+            $("#cambio_pago").attr("action", '/cambio_pago/' + id);
+            var id = $(e.relatedTarget).data().pago;
+            $(e.currentTarget).find('#pago4').val(id);
+    });
+    </script>
+
+<!-- Scripts Servisio-->
+<script>
+    $('#modal_servicio').on('show.bs.modal', function(e) {
+            var id = $(e.relatedTarget).data().id;
+            $(e.currentTarget).find('#id5').val(id);
+            $("#cambio_servicio").attr("action", '/cambio_servicio/' + id);
+            var id = $(e.relatedTarget).data().id_servicio;
+            $(e.currentTarget).find('#id_servicio5').val(id);
+
+
+    });
+    </script>
 <!-- Scripts Editar Usuario-->
 <script>
     $('#modaleditar').on('show.bs.modal', function(e) {
@@ -2816,7 +2974,7 @@ $('#modal_status').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id_captura;
         $(e.currentTarget).find('#id_captura2').val(id);
         var id = $(e.relatedTarget).data().id_comentario;
-        $(e.currentTarget).find('#id_comentario2').val(id);
+        $(e.currentTarget).find('#descripcion2').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;
         $(e.currentTarget).find('#fecha_recibido2').val(id);
         var id = $(e.relatedTarget).data().fecha_entrega;

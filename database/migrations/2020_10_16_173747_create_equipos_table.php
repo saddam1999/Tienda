@@ -24,6 +24,7 @@ class CreateEquiposTable extends Migration
             $table->string('id_servicio')->nullable();
             $table->date('id_comentario')->nullable();
             $table->date('anticipo')->nullable();
+            $table->date('pago')->nullable();
             $table->date('fecha_recibido')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->string('status')->nullable();

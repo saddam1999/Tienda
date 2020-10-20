@@ -41,6 +41,7 @@ class ControllerEquipo extends Controller
        $equipo->id_servicio=$request->get('id_servicio');
        $equipo->serial=$request->get('serial');
        $equipo->imei=$request->get('imei');
+       $equipo->pago=$request->get('pago');
        $equipo->id_captura=$request->get('id_captura');
        $equipo->id_comentario=$request->get('descripcion');
        $equipo->fecha_recibido=$request->get('fecha_recibido');
@@ -90,6 +91,7 @@ class ControllerEquipo extends Controller
         $equipo->id_servicio=$request->get('id_servicio2');
         $equipo->serial=$request->get('serial2');
         $equipo->imei=$request->get('imei2');
+        $equipo->pago=$request->get('pago2');
 //        $equipo->id_captura=$request->get('id_captura2');
         $equipo->id_comentario=$request->get('descripcion2');
         $equipo->fecha_recibido=$request->get('fecha_recibido2');
@@ -99,6 +101,21 @@ class ControllerEquipo extends Controller
         return back()->with('success', "Equipo Editado");
     }
 
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cambio_servicio(Request $request, $id)
+    {
+        $equipo= \App\Models\Equipo::find($id);
+        $equipo->id_servicio=$request->get('id_servicio5');
+        $equipo->save();
+        return back()->with('success', "Success Servicio Cambiado");
+    }
      /**
      * Update the specified resource in storage.
      *
