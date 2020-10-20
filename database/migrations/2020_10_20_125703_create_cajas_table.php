@@ -17,11 +17,10 @@ class CreateCajasTable extends Migration
             $table->id();
             $table->integer('id_user');
             $table->integer('id_sucursal');
-            $table->float('corte');
+            $table->float('id_corte');
             $table->string('status');
-            $table->string('comentario');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

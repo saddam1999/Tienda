@@ -16,6 +16,7 @@ class CreateCortesTable extends Migration
         Schema::create('cortes', function (Blueprint $table) {
             $table->id();
             $table->string('id_user');
+            $table->string('id_caja');
             $table->string('id_pago');
             $table->string('id_sucursal');
             $table->boolean('abierto');

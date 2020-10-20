@@ -592,15 +592,13 @@
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre</th>
-                                            <th>Direccion</th>
-                                            <th>Telefono</th>
-                                            <th>Email</th>
-                                            <th>Telegram</th>
-                                            <th>Whatsapp</th>
+                                            <th>Usuario</th>
+                                            <th>Sucursal</th>
+                                            <th>Corte</th>
+                                            <th>Status</th>
                                             <th>Opciones</th>
                                             <th><button type="button" data-toggle="modal"
-                                                    data-target="#modalagregarsucursal" data-backdrop="static"
+                                                    data-target="#modalagregarcaja" data-backdrop="static"
                                                     data-keyboard="false" class="btn btn-success btn-lg btn-block">
                                                     <center><svg width="1em" height="1em" viewBox="0 0 16 16"
                                                             class="bi bi-clipboard-plus" fill="currentColor"
@@ -614,22 +612,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Sucursal as $sucursal)
+                                        @foreach($Caja as $caja)
                                         <tr>
-                                            <td>{{$sucursal->id}}</td>
-                                            <td>{{$sucursal->nombre}}</td>
-                                            <td>{{$sucursal->direccion}}</td>
-                                            <td>{{$sucursal->telefono}}</td>
-                                            <td>{{$sucursal->email}}</td>
-                                            <td>{{$sucursal->telegram}}</td>
-                                            <td>{{$sucursal->whatsapp}}</td>
-                                            <td><a href="" data-toggle="modal" data-target="#modaleditarsucursal"
-                                                    data-id="{{$sucursal->id}}" data-nombre="{{$sucursal->nombre}}"
-                                                    data-email="{{$sucursal->email}}"
-                                                    data-direccion="{{$sucursal->direccion}}"
-                                                    data-telefono="{{$sucursal->telefono}}"
-                                                    data-telegram="{{$sucursal->telegram}}"
-                                                    data-whatsapp="{{$sucursal->whatsapp}}">
+                                            <td>{{$caja->id}}</td>
+                                            @foreach($Usuario as $usuario)
+                                            @if($caja->id_user==$usuario->id)
+                                            <td>{{$usuario->name}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach($Sucursal as $sucursal)
+                                            @if($caja->id_sucursal==$sucursal->id)
+                                            <td>{{$caja->id_sucursal}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach($Corte as $corte)
+                                            @if($corte->id_sucursal==$sucursal->id)
+                                            <td>{{$corte->monto}}</td>
+                                            @endif
+                                            @endforeach
+                                            <td>{{$caja->status}}</td>
+                                            <td><a href="" data-toggle="modal" 
+                                                    data-target="#modaleditarcaja"
+                                                    data-id="{{$caja->id}}" 
+                                                    data-id_user="{{$caja->id_user}}"
+                                                    data-id_sucursal="{{$caja->id_sucursal}}"
+                                                    data-id_corte="{{$caja->id_corte}}"
+                                                    data-status="{{$caja->status}}"
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                         class="bi bi-pencil-square" fill="currentColor"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -638,7 +648,7 @@
                                                         <path fill-rule="evenodd"
                                                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                     </svg></a>
-                                                <a href="/deletesucursal/{{$sucursal->id}}"><svg width="1em"
+                                                <a href="/deletesucursal/{{$caja->id}}"><svg width="1em"
                                                         height="1em" viewBox="0 0 16 16" class="bi bi-trash"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -655,9 +665,6 @@
                                 </p>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>

@@ -88,7 +88,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
     ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
     ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all(),'Galeria' => App\Models\Captura::all()]);
+    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
+    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all()]);
 })->name('dashboard');
 
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');

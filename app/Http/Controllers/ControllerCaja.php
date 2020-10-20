@@ -36,7 +36,14 @@ class ControllerCaja extends Controller
     public function store(Request $request)
     {
         $caja = new \App\Models\Caja();
+        $caja->id_user=$request->get('id_user');
+        $caja->id_sucursal=$request->get('id_sucursal');
+        $caja->corte=$request->get('corte');
+        $caja->status=$request->get('status');
+        $caja->comentario=$request->get('comentario');
         $caja->save();
+        return back()->with('success', "Caja Agregada");
+
     }
 
     /**
@@ -57,10 +64,10 @@ class ControllerCaja extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    { 
         //
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *
@@ -70,7 +77,15 @@ class ControllerCaja extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $caja = \App\Models\Caja::find($id);
+        $caja->id_user=$request->get('id_user');
+        $caja->id_sucursal=$request->get('id_sucursal');
+        $caja->corte=$request->get('corte');
+        $caja->status=$request->get('status');
+        $caja->comentario=$request->get('comentario');
+        $caja->save();
+        return back()->with('success', "Caja Actualizada");
+
     }
 
     /**
@@ -81,6 +96,12 @@ class ControllerCaja extends Controller
      */
     public function destroy($id)
     {
-        //
+        $caja = \App\Models\Caja::find($id);
+        if ($caja != null) {
+            $caja->delete();
+            return back()->with('success', 'Caja Borrada : ' . $caja->nombre);
+        } else {
+            return back()->with('success', 'Caja no se pudo Borrar : ' . $caja->nombre);
+        }
     }
 }
