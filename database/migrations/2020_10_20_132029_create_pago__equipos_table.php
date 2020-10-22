@@ -22,7 +22,8 @@ class CreatePagoEquiposTable extends Migration
             $table->string('id_sucursal')->nullable();
             $table->string('id_caja')->nullable();
             $table->string('id_corte')->nullable();
-            $table->float('monto')->nullable();
+            $table->float('monto')->nullable();//adelanto
+            $table->float('pagado')->nullable();//pagado
             $table->float('adelanto')->nullable();
             $table->string('comentario')->nullable();
             $table->date('fecha')->nullable();

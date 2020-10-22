@@ -70,33 +70,6 @@
         }
     </style>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                </svg>Articulos
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
-                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
-                </svg>Marcas
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                </svg>Categorias
-            </a>
-        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
@@ -105,7 +78,40 @@
                         d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
                     <path fill-rule="evenodd"
                         d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-                </svg>Taller</a>
+                </svg>Admin Punto de Venta</a>
+            <div class="dropdown-menu">
+            <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
+                aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                </svg>Articulos
+            </a>
+            <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
+                </svg>Marcas
+            </a>
+            <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                </svg>Categorias
+            </a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Admin Taller</a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
                     aria-controls="servicios" aria-selected="false">Area de Servicios
@@ -1017,7 +1023,7 @@
                                             <td>{{$user->name}}</td>
                                             @endif
                                             @endforeach
-                                            <td>{{$equipo->serial}}</td>
+                                            <td>{{$equipo->serial}} {{$equipo->id_pago}}</td>
                                             <td>{{$equipo->imei}}</td>
                                             <td><img class="thumbnail zoom" style="border-radius:10px;"
                                                     src="./fotos/{{$equipo->id_captura}}" alt=""></td>
@@ -1181,9 +1187,10 @@
                                             <th>Servicio</th>
                                             <th>Precio</th>
                                             <th>Sucursal</th>
-                                            <th>Monto</th>
+                                            <th>Adelanto</th>
+                                            <th>Monto a Pagar</th>
                                             <th>Fecha</th>
-                                            <th>Opciones</th>
+                                            <th>Pagado</th>
                                             <th><button type="button" data-toggle="modal"
                                                     data-target="#modalagregarservicio" data-backdrop="static"
                                                     data-keyboard="false" class="btn btn-success btn-lg btn-block">
@@ -1226,7 +1233,7 @@
                                             @foreach ($Servicio as $servicio)
                                             @if($Pago_Equipo->id_servicio==$servicio->id)
                                             <td>{{$servicio->nombre}}</td>
-                                            <td>{{$servicio->precio}}</td>
+                                            <td class="text-success">{{$servicio->precio}}</td>
                                             @endif
                                             @endforeach
 
@@ -1235,30 +1242,25 @@
                                             <td>{{$sucursal->nombre}}</td>
                                             @endif
                                             @endforeach
-                                            <td>{{$Pago_Equipo->monto}}</td>
-                                            <td>{{$Pago_Equipo->created_at}}</td>
-                                            <td><a href="" data-toggle="modal" data-target="#modaleditarservicio"
-                                                    data-id="{{$Pago_Equipo->id}}" data-nombre="{{$Pago_Equipo->nombre}}"
-                                                    data-descripcion="{{$Pago_Equipo->descripcion}}"
-                                                    data-precio="{{$Pago_Equipo->precio}}"
-                                                    data-tiempo="{{$Pago_Equipo->tiempo}}">
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                        class="bi bi-pencil-square" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg></a>
-                                                <a href="/deletepagoequipo/{{$Pago_Equipo->id}}"><svg width="1em"
-                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                    </svg></a>
+
+                                            @foreach ($Servicio as $servicio)
+                                            @if($Pago_Equipo->id_servicio==$servicio->id)
+                                            <td class="text-danger"><del>
+                                                @if($Pago_Equipo->monto!=$servicio->precio)
+                                                @php $temporal= $servicio->precio - $Pago_Equipo->monto; @endphp
+                                                {{$temporal}}
+                                                @endif </del>
                                             </td>
+                                            @endif
+                                            @endforeach
+
+                                            <td class="text-warning">{{$Pago_Equipo->monto}}</td>
+                                            <td>{{$Pago_Equipo->created_at}}</td>
+                                            @if($servicio->precio==$Pago_Equipo->monto)
+                                            <td class="text-success">Pagado</td>
+                                                @else
+                                            <td class="text-warning">Pendiente</td>
+                                                @endif
                                             <td></td>
                                         </tr>
                                         @endforeach
@@ -1274,13 +1276,59 @@
         </div>
 </x-app-layout>
 
+
+<!-- Modal Bienvenida-->
+<div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Bienvenido a HollyStore</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                        <div class="alert alert-success" role="alert">
+                            <h4 class="alert-heading">Gracias por tu Compra</h4>
+                            <p>Antes de comenzar necesitamos configurar algunas cosas importantes para el buen funcionamiento de la plataforma.</p>
+                            @if ($Sucursal->isEmpty())
+                             <a href=""  data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui defines en donde estas trabajando)</a><br>
+                            @else
+                           <del><a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas trabajando)</a><br></del>
+                            @endif
+
+                            @if ($Caja->isEmpty())
+                             <a href="" data-toggle="modal" data-target="#modalagregarcaja">2.-Agregar una Caja (Aqui recibiras los pagos de tu pagina)</a><br>
+                             @else
+                             <del><a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu pagina)</a><br></del>
+                              @endif
+
+                              @if ($Settings->isEmpty())
+                              <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
+                              aria-selected="false">3.-Configurar Tu Negocio</a><br>
+                              @else
+                              <del><a class="text-secondary" disabled>3.-Configurar Tu Negocio</a><br></del>
+                               @endif
+
+                            <hr>
+                            <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas contactame en twitter por @hollydev1</p>
+                          </div>                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Caja-->
 <div class="modal fade" id="modalagregarcaja" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Agregar Caja</h5>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Agregar Caja</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -3354,6 +3402,12 @@
 @if(session('success'))
 <script>
     $('#modal_notificacion').modal('show');
+</script>
+@endif
+
+@if($Sucursal->isEmpty()||$Caja->isEmpty()||$Settings->isEmpty()||$Caja->isEmpty())
+<script>
+    $('#modal_configurar').modal('show');
 </script>
 @endif
 
