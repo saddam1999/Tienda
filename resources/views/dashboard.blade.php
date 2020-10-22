@@ -445,7 +445,6 @@
 
         <div class="tab-pane fade" id="prueba" role="tabpanel" aria-labelledby="prueba-tab">...</div>
         </div>
-
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
 
             <div class="py-12">
@@ -1031,8 +1030,7 @@
                                                     data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
                                             @endif
                                             @endforeach
-                                            <td><input class="text-secondary" type="date"
-                                                    value="{{$equipo->fecha_recibido}}"></td>
+                                            <td><input class="text-secondary" type="date" value="{{$equipo->fecha_recibido}}"></td>
                                             <td>
                                                 @php
                                                 $date1 = new DateTime("now");
@@ -1051,10 +1049,8 @@
                                                             value="{{$equipo->fecha_entrega}}">
                                                     </span>
                                                 </div>
-
                                                 @else
                                                 <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
-
                                                 @endif
                                             </td>
                                             <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
@@ -1166,6 +1162,115 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="tab-pane fade show" id="ventas" role="tabpanel" aria-labelledby="ventas-tab">
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+
+                            <div class="card-body">
+                                <h4 class="card-title">Ventas</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Cajero</th>
+                                            <th>Cliente</th>
+                                            <th>Equipo</th>
+                                            <th>Servicio</th>
+                                            <th>Precio</th>
+                                            <th>Sucursal</th>
+                                            <th>Monto</th>
+                                            <th>Fecha</th>
+                                            <th>Opciones</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modalagregarservicio" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Pago_Equipo as $Pago_Equipo)
+                                        <tr>
+                                            <td>{{$Pago_Equipo->id}}</td>
+                                            @foreach ($Usuario as $usuario)
+                                            @if($Pago_Equipo->id_user==$usuario->id)
+                                            <td>{{$usuario->name}}</td>
+                                            @endif
+                                            @endforeach
+                                            @foreach ($Usuario as $usuario)
+                                            @if($Pago_Equipo->id_cliente==$usuario->id)
+                                            <td>{{$usuario->name}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($Equipo as $equipo)
+                                            @if($equipo->id==$Pago_Equipo->id_equipo)
+                                            @if($equipo->serial=='')
+                                            <td>{{$equipo->serial}}</td>
+                                            @else
+                                            <td>{{$equipo->imei}}</td>
+                                            @endif
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($Servicio as $servicio)
+                                            @if($Pago_Equipo->id_servicio==$servicio->id)
+                                            <td>{{$servicio->nombre}}</td>
+                                            <td>{{$servicio->precio}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($Sucursal as $sucursal)
+                                            @if($Pago_Equipo->id_sucursal==$sucursal->id)
+                                            <td>{{$sucursal->nombre}}</td>
+                                            @endif
+                                            @endforeach
+                                            <td>{{$Pago_Equipo->monto}}</td>
+                                            <td>{{$Pago_Equipo->created_at}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modaleditarservicio"
+                                                    data-id="{{$Pago_Equipo->id}}" data-nombre="{{$Pago_Equipo->nombre}}"
+                                                    data-descripcion="{{$Pago_Equipo->descripcion}}"
+                                                    data-precio="{{$Pago_Equipo->precio}}"
+                                                    data-tiempo="{{$Pago_Equipo->tiempo}}">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-pencil-square" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deletepagoequipo/{{$Pago_Equipo->id}}"><svg width="1em"
+                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 </x-app-layout>
 
@@ -1984,7 +2089,7 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                        <input class="form-control" type="text" name="serial" id="serial"
+                                         <input class="form-control" type="text" name="serial" id="serial"
                                             placeholder="Serial">
                                     </div>
                                 </div>
@@ -2015,6 +2120,13 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
+                                        <label for="marca">Anticipo</label>
+                                        <input class="form-control" type="text" name="pago" id="pago"
+                                            placeholder="Anticipo">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
                                         <label for="marca">Dia de Equipo Recibido</label>
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_recibido" id="fecha_recibido"
@@ -2035,7 +2147,6 @@
                             <video muted="muted" id="video"></video>
                             <canvas id="canvas" style="display: none;"></canvas>
                             <input type="hidden" name="status" id="status" value="0">
-                            <input type="hidden" name="pago" id="pago" value="0">
                             <input type="hidden" name="id_captura" id="id_captura" value="">
                             <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
                                     viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
@@ -2150,6 +2261,13 @@
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Anticipo</label>
+                                        <input class="form-control" type="text" name="pago2" id="pago2"
+                                            placeholder="Anticipo" disabled>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
@@ -3051,6 +3169,9 @@
 
         var id = $(e.relatedTarget).data().id_sucursal;
         $(e.currentTarget).find('#id_sucursal2').val(id);
+
+        var id = $(e.relatedTarget).data().pago;
+        $(e.currentTarget).find('#pago2').val(id);
 
         var id = $(e.relatedTarget).data().id_cliente;
         $(e.currentTarget).find('#id_cliente2').val(id);

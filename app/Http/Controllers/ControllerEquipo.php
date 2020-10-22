@@ -40,6 +40,7 @@ class ControllerEquipo extends Controller
        $equipo->id_user=$request->get('id_user');
        $equipo->id_cliente=$request->get('id_cliente');
        $equipo->id_servicio=$request->get('id_servicio');
+       $equipo->id_sucursal=$request->get('id_sucursal');
        $equipo->serial=$request->get('serial');
        $equipo->imei=$request->get('imei');
        $equipo->pago=$request->get('pago');
@@ -55,9 +56,12 @@ class ControllerEquipo extends Controller
        $pago->id_equipo=$equipo->id;
        $pago->id_cliente=$equipo->id_cliente;
        $pago->id_servicio=$equipo->id_servicio;
+       $pago->id_sucursal=$equipo->id_sucursal;
+
+       $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
+       $pago->id_caja=$sucursal->id_caja;
 
        $servicio = \App\Models\Servicio::find($equipo->id_servicio);
-       //$pago->id_sucursal=$equipo->id_sucursal;
        //$pago->id_caja=$equipo->id_caja;
        //$pago->id_corte=$equipo->id_corte;
        if($equipo->pago!=''){
@@ -67,6 +71,7 @@ class ControllerEquipo extends Controller
        {
         $pago->monto=$servicio->precio;
        }
+
        $pago->comentario=$equipo->comentario;
        $pago->fecha=$equipo->fecha;
        $pago->save();
