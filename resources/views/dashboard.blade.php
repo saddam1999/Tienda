@@ -7,13 +7,11 @@
 
         </h2>
     </x-slot>
-@php date_default_timezone_set('UTC');
-@endphp
+    @php date_default_timezone_set('UTC');
+    @endphp
     <!-- JS, Popper.js, and jQuery -->
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
@@ -27,48 +25,50 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <style>
-        ul.gallery{
-        margin-left: 3vw;
-        margin-right:3vw;
+    <style>
+        ul.gallery {
+            margin-left: 3vw;
+            margin-right: 3vw;
         }
 
         .zoom {
-        -webkit-transition: all 0.35s ease-in-out;
-        -moz-transition: all 0.35s ease-in-out;
-        transition: all 0.35s ease-in-out;
-        cursor: -webkit-zoom-in;
-        cursor: -moz-zoom-in;
-        cursor: zoom-in;
+            -webkit-transition: all 0.35s ease-in-out;
+            -moz-transition: all 0.35s ease-in-out;
+            transition: all 0.35s ease-in-out;
+            cursor: -webkit-zoom-in;
+            cursor: -moz-zoom-in;
+            cursor: zoom-in;
         }
 
         .zoom:hover,
         .zoom:active,
         .zoom:focus {
-        /**adjust scale to desired size,
+            /**adjust scale to desired size,
         add browser prefixes**/
-        -ms-transform: scale(2.5);
-        -moz-transform: scale(2.5);
-        -webkit-transform: scale(2.5);
-        -o-transform: scale(2.5);
-        transform: scale(2.5);
-        position:relative;
-        z-index:100;
+            -ms-transform: scale(2.5);
+            -moz-transform: scale(2.5);
+            -webkit-transform: scale(2.5);
+            -o-transform: scale(2.5);
+            transform: scale(2.5);
+            position: relative;
+            z-index: 100;
         }
 
         /**To keep upscaled images visible on mobile,
         increase left & right margins a bit**/
         @media only screen and (max-width: 768px) {
-        ul.gallery {
-        margin-left: 15vw;
-        margin-right: 15vw;
-        }
+            ul.gallery {
+                margin-left: 15vw;
+                margin-right: 15vw;
+            }
 
-        /**TIP: Easy escape for touch screens,
+            /**TIP: Easy escape for touch screens,
         give gallery's parent container a cursor: pointer.**/
-        .DivName {cursor: pointer}
+            .DivName {
+                cursor: pointer
+            }
         }
-        </style>
+    </style>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
@@ -174,7 +174,7 @@
             </div>
             <div class="col-md-4 m-auto mt-1">
                 <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-            data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller <center><svg
+                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller <center><svg
                             width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -362,7 +362,6 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-
                             <div class="card-body">
                                 <h4 class="card-title">Usuarios</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -372,6 +371,7 @@
                                             <th>Nombre</th>
                                             <th>Email</th>
                                             <th>Rol</th>
+                                            <th>Sucursal</th>
                                             <th>Status</th>
                                             <th>Fecha Agregado</th>
                                             <th>Opciones</th>
@@ -397,10 +397,21 @@
                                             <td>{{$usuario->name}}</td>
                                             <td>{{$usuario->email}}</td>
                                             <td>{{$usuario->rol}}</td>
-                                            <td>{{$usuario->status}}</td>
+                                            @foreach ($Sucursal as $sucursal)
+                                            @if($sucursal->id==$usuario->id_sucursal)
+                                            <td>{{$sucursal->nombre}}</td>
+                                            @endif
+                                            @endforeach
+                                            @if($usuario->status==1)
+                                            <td class="text-success">Activo</td>
+                                            @elseif($usuario->status==0)
+                                            <td class="text-danger">No activo</td>
+                                            @else
+                                            <td class="text-secondary">Sin status</td>
+                                            @endif
                                             <td>{{$usuario->created_at}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id="{{$usuario->id}}" data-name="{{$usuario->name}}"
+                                                    data-id="{{$usuario->id}}" data-id_sucursal="{{$usuario->id_sucursal}}" data-name="{{$usuario->name}}"
                                                     data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"
                                                     data-estatus="{{$usuario->status}}"><svg width="1em" height="1em"
                                                         viewBox="0 0 16 16" class="bi bi-pencil-square"
@@ -432,7 +443,7 @@
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="prueba" role="tabpanel" aria-labelledby="prueba-tab">...</div>
         </div>
 
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
@@ -511,7 +522,6 @@
         </div>
 
         <div class="tab-pane fade show " id="sucursal" role="tabpanel" aria-labelledby="sucursal-tab">
-
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -615,42 +625,33 @@
                                         @foreach($Caja as $caja)
                                         <tr>
                                             <td>{{$caja->id}}</td>
-                                            @foreach($Usuario as $usuario)
-                                            @if($caja->id_user==$usuario->id)
+                                            @foreach ($Usuario as $usuario)
+                                            @if($usuario->id==$caja->id_user)
                                             <td>{{$usuario->name}}</td>
                                             @endif
                                             @endforeach
-
-                                            @foreach($Sucursal as $sucursal)
-                                            @if($caja->id_sucursal==$sucursal->id)
-                                            <td>{{$caja->id_sucursal}}</td>
+                                            @foreach ($Sucursal as $sucursal)
+                                            @if($sucursal->id==$caja->id_sucursal)
+                                            <td>{{$sucursal->nombre}}</td>
                                             @endif
                                             @endforeach
-
-                                            @foreach($Corte as $corte)
-                                            @if($corte->id_sucursal==$sucursal->id)
-                                            <td>{{$corte->monto}}</td>
-                                            @endif
-                                            @endforeach
-                                            <td>{{$caja->status}}</td>
-                                            <td><a href="" data-toggle="modal" 
-                                                    data-target="#modaleditarcaja"
-                                                    data-id="{{$caja->id}}" 
-                                                    data-id_user="{{$caja->id_user}}"
+                                            <td>{{$caja->corte}}</td>
+                                            <td>{{$caja->id_corte}}</td>
+                                            <td><a href="" data-toggle="modal" data-target="#modaleditarcaja"
+                                                    data-id="{{$caja->id}}" data-id_user="{{$caja->id_user}}"
                                                     data-id_sucursal="{{$caja->id_sucursal}}"
-                                                    data-id_corte="{{$caja->id_corte}}"
-                                                    data-status="{{$caja->status}}"
+                                                    data-id_corte="{{$caja->id_corte}}" data-status="{{$caja->status}}"
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                        class="bi bi-pencil-square" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    class="bi bi-pencil-square" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                     </svg></a>
-                                                <a href="/deletesucursal/{{$caja->id}}"><svg width="1em"
-                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <a href="/deletecaja/{{$caja->id}}"><svg width="1em" height="1em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
                                                         <path fill-rule="evenodd"
@@ -979,194 +980,238 @@
             </div>
         </div>
         <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
-           <div class="py-12">
-               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                   <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
-                       <div class="card text-left">
-                           <div class="card-body">
-                               <h4 class="card-title">Taller</h4>
-                               <table class="table table-striped table-inverse table-responsive">
-                                   <thead class="thead-inverse">
-                                       <tr>
-                                           <th>#</th>
-                                           <th>Tecnico</th>
-                                           <th>Cliente</th>
-                                           <th>Serial</th>
-                                           <th>IMEI</th>
-                                           <th>Captura</th>
-                                           <th>Comentario</th>
-                                           <th>Servicio</th>
-                                           <th>Fecha Recibido</th>
-                                           <th>Fecha Entrega</th>
-                                           <th>Status</th>
-                                           <th>Opciones</th>
-                                           <th></th>
-                                       </tr>
-                                   </thead>
-                                   <tbody>
-                                       @foreach($Equipo as $equipo)
-                                       <tr>
-                                           <td>{{$equipo->id}}</td>
-                                           @foreach ($Usuario as $user)
-                                           @if($user->id==$equipo->id_user)
-                                           <td>{{$user->name}}</td>
-                                           @endif
-                                           @endforeach
-                                           @foreach ($Usuario as $user)
-                                           @if($user->id==$equipo->id_cliente)
-                                           <td>{{$user->name}}</td>
-                                           @endif
-                                           @endforeach
-                                           <td>{{$equipo->serial}}</td>
-                                           <td>{{$equipo->imei}}</td>
-                                           <td><img class="thumbnail zoom" style="border-radius:10px;"
-                                                   src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                           <td><textarea class="border border-dark" name="" id="" cols="10"
-                                                   rows="4">{{$equipo->id_comentario}}</textarea></td>
-                                           @foreach ($Servicio as $servicio)
-                                           @if($servicio->id==$equipo->id_servicio)
-                                           <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
-                                                   data-id_servicio="{{$equipo->id_servicio}}" data-toggle="modal"
-                                                   data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
-                                           @endif
-                                           @endforeach
-                                           <td><input class="text-secondary" type="date"
-                                                   value="{{$equipo->fecha_recibido}}"></td>
-                                           <td>
-                                               @php
-                                               $date1 = new DateTime("now");
-                                               $date2 = new DateTime($equipo->fecha_entrega);
-                                               @endphp
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h4 class="card-title">Taller</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tecnico</th>
+                                            <th>Cliente</th>
+                                            <th>Serial</th>
+                                            <th>IMEI</th>
+                                            <th>Captura</th>
+                                            <th>Comentario</th>
+                                            <th>Servicio</th>
+                                            <th>Fecha Recibido</th>
+                                            <th>Fecha Entrega</th>
+                                            <th>Status</th>
+                                            <th>Opciones</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($Equipo as $equipo)
+                                        <tr>
+                                            <td>{{$equipo->id}}</td>
+                                            @foreach ($Usuario as $user)
+                                            @if($user->id==$equipo->id_user)
+                                            <td>{{$user->name}}</td>
+                                            @endif
+                                            @endforeach
+                                            @foreach ($Usuario as $user)
+                                            @if($user->id==$equipo->id_cliente)
+                                            <td>{{$user->name}}</td>
+                                            @endif
+                                            @endforeach
+                                            <td>{{$equipo->serial}}</td>
+                                            <td>{{$equipo->imei}}</td>
+                                            <td><img class="thumbnail zoom" style="border-radius:10px;"
+                                                    src="./fotos/{{$equipo->id_captura}}" alt=""></td>
+                                            <td><textarea class="border border-dark" name="" id="" cols="10"
+                                                    rows="4">{{$equipo->id_comentario}}</textarea></td>
+                                            @foreach ($Servicio as $servicio)
+                                            @if($servicio->id==$equipo->id_servicio)
+                                            <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}" data-toggle="modal"
+                                                    data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
+                                            @endif
+                                            @endforeach
+                                            <td><input class="text-secondary" type="date"
+                                                    value="{{$equipo->fecha_recibido}}"></td>
+                                            <td>
+                                                @php
+                                                $date1 = new DateTime("now");
+                                                $date2 = new DateTime($equipo->fecha_entrega);
+                                                @endphp
 
-                                               @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
-                                               <div class="input-group-prepend">
-                                                   <span class="input-group-text text-danger" id="basic-addon1"><svg
-                                                           width="1em" height="1em" viewBox="0 0 16 16"
-                                                           class="bi bi-alarm" fill="currentColor"
-                                                           xmlns="http://www.w3.org/2000/svg">
-                                                           <path fill-rule="evenodd"
-                                                               d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z" />
-                                                       </svg><input class="text-danger" type="date"
-                                                           value="{{$equipo->fecha_entrega}}">
-                                                   </span>
-                                               </div>
+                                                @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-danger" id="basic-addon1"><svg
+                                                            width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-alarm" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z" />
+                                                        </svg><input class="text-danger" type="date"
+                                                            value="{{$equipo->fecha_entrega}}">
+                                                    </span>
+                                                </div>
 
-                                               @else
-                                               <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
+                                                @else
+                                                <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
 
-                                               @endif
-                                           </td>
-                                           <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
-                                                   data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
-                                                   data-toggle="modal" data-target="#modal_status">
-                                                   @if($equipo->status==0)
-                                                   Recibido
-                                                   @elseif($equipo->status==1)
-                                                   En Revision
-                                                   @elseif($equipo->status==2)
-                                                   Cancelado
-                                                   @elseif($equipo->status==3)
-                                                   Espera
-                                                   @elseif($equipo->status==4)
-                                                   A espera de Cliente(Contactarse a Sucursal)
-                                                   @elseif($equipo->status==5)
-                                                   Listo(Para entregar)
-                                                   @elseif($equipo->status==6)
-                                                   Entregado
-                                                   @endif
+                                                @endif
+                                            </td>
+                                            <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                    data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
+                                                    data-toggle="modal" data-target="#modal_status">
+                                                    @if($equipo->status==0)
+                                                    Recibido
+                                                    @elseif($equipo->status==1)
+                                                    En Revision
+                                                    @elseif($equipo->status==2)
+                                                    Cancelado
+                                                    @elseif($equipo->status==3)
+                                                    Espera
+                                                    @elseif($equipo->status==4)
+                                                    A espera de Cliente(Contactarse a Sucursal)
+                                                    @elseif($equipo->status==5)
+                                                    Listo(Para entregar)
+                                                    @elseif($equipo->status==6)
+                                                    Entregado
+                                                    @endif
 
-                                               </a></td>
-                                           @if($equipo->status!=2 && $equipo->status !=6)
-                                           <td><a href="" data-toggle="modal" data-target="#modaledittaller"
-                                                   data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
-                                                   data-servicio="{{$equipo->id_servicio}}"
-                                                   data-id_user="{{$equipo->id_user}}"
-                                                   data-id_cliente="{{$equipo->id_cliente}}"
-                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                   data-id_captura="{{$equipo->id_captura}}"
-                                                   data-id_comentario="{{$equipo->id_comentario}}"
-                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
-                                                       viewBox="0 0 16 16" class="bi bi-pencil-square"
-                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                       <path
-                                                           d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                       <path fill-rule="evenodd"
-                                                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                   </svg></a>
-                                               <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em"
-                                                       viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                                                       xmlns="http://www.w3.org/2000/svg">
-                                                       <path
-                                                           d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                       <path fill-rule="evenodd"
-                                                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                   </svg></a>
-                                               <a href="" data-toggle="modal" data-target="#modal_foto"
-                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                                   data-servicio="{{$equipo->id_servicio}}"
-                                                   data-id_cliente="{{$equipo->id_cliente}}"
-                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                   data-id_captura="{{$equipo->id_captura}}"
-                                                   data-id_comentario="{{$equipo->id_comentario}}"
-                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
-                                                       viewBox="0 0 16 16" class="bi bi-camera text-success"
-                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                       <path fill-rule="evenodd"
-                                                           d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-                                                       <path fill-rule="evenodd"
-                                                           d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                                       <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                                   </svg></a>
-                                               <a href="/galleria/{{$equipo->id}} " target="_blank"
-                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                                   data-id_cliente="{{$equipo->id_cliente}}"
-                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                   data-id_captura="{{$equipo->id_captura}}"
-                                                   data-id_comentario="{{$equipo->id_comentario}}"
-                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
-                                                       viewBox="0 0 16 16" class="bi bi-film text-warning"
-                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                       <path fill-rule="evenodd"
-                                                           d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
-                                                   </svg></a>
-                                               <a href="" data-toggle="modal" data-target="#modal_pago"
-                                                   data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                                   data-id_cliente="{{$equipo->id_cliente}}"
-                                                   data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                   data-id_captura="{{$equipo->id_captura}}"
-                                                   data-id_comentario="{{$equipo->id_comentario}}"
-                                                   data-pago="{{$equipo->pago}}"
-                                                   data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                   data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                   data-status="{{$equipo->status}}"><svg width="2em" height="2em"
-                                                       viewBox="0 0 16 16" class="bi bi-cash text-info"
-                                                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                       <path fill-rule="evenodd"
-                                                           d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
-                                                       <path
-                                                           d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-                                                   </svg></a>
-                                           </td>
-                                           <td> </td>
-                                           @endif
-                                       </tr>
-                                       @endforeach
-                                   </tbody>
-                               </table>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-       </x-app-layout>
-<!-- Scripts Galleria-->
+                                                </a></td>
+                                            @if($equipo->status!=2 && $equipo->status !=6)
+                                            <td><a href="" data-toggle="modal" data-target="#modaledittaller"
+                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                    data-servicio="{{$equipo->id_servicio}}"
+                                                    data-id_sucursal="{{Auth::user()->id_sucursal}}"
+                                                    data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
+                                                <a href="" data-toggle="modal" data-target="#modal_foto"
+                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-servicio="{{$equipo->id_servicio}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-camera text-success"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                        <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                    </svg></a>
+                                                <a href="/galleria/{{$equipo->id}} " target="_blank"
+                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-film text-warning"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
+                                                    </svg></a>
+                                                <a href="" data-toggle="modal" data-target="#modal_pago"
+                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-pago="{{$equipo->pago}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-cash text-info"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
+                                                        <path
+                                                            d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                                                    </svg></a>
+                                            </td>
+                                            <td> </td>
+                                            @endif
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</x-app-layout>
+
+<!-- Modal Caja-->
+<div class="modal fade" id="modalagregarcaja" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Caja</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarcaja">
+                        @method('POST')
+                        @csrf
+                        <label for="nombre">Nombre</label>
+                        <select class="form-control" name="id_user" id="id_user">
+                            @foreach($Usuario as $usuario)
+                            @if($usuario->rol=="tecnico"||$usuario->rol=="admin")
+                            <option class="form-control" value="{{$usuario->id}}">{{$usuario->name}}</option>
+                            @endif
+                            @endforeach
+                        </select>
+                        <input type="hidden" name="corte" id="corte" value="0">
+                        <input type="hidden" name="id_corte" id="id_corte" value="Activo">
+
+                        <label for="id_sucursal">Sucursal</label>
+                        <select class="form-control" name="id_sucursal" id="id_sucursal">
+                            @foreach ($Sucursal as $sucursal)
+                            <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                            @endforeach
+                        </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Modal Agregar Articulo -->
 <div class="modal fade" id="modal_agregararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -1188,26 +1233,28 @@
                             <div class="container">
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Agrega el nombre del articulo" value="" required>
+                                    <input type="text" class="form-control" name="nombre" id="nombre"
+                                        placeholder="Agrega el nombre del articulo" value="" required>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="descripcion">Descripcion</label>
                                     <textarea class="form-control" rows="10" cols="50" name="descripcion"
-                                        id="descripcion" placeholder="Agrega la descripcion del Articulo" required></textarea>
+                                        id="descripcion" placeholder="Agrega la descripcion del Articulo"
+                                        required></textarea>
 
                                 </div>
                                 <div class="col-6-md">
                                     <label for="precio">Precio Neto</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value=""
-                                            required>
+                                        <input type="text" class="form-control" name="precio" id="precio"
+                                            placeholder="Precio" value="" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="existencia">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia" id="existencia" placeholder="Existencia" value=""
-                                        required>
+                                    <input type="text" class="form-control" name="existencia" id="existencia"
+                                        placeholder="Existencia" value="" required>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="alert alert-warning" role="alert">
@@ -1232,7 +1279,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                        <input class="form-control" type="file" name="imagena"  name="imagena" accept-charset="UTF-8" enctype="multipart/form-data" required>
+                                        <input class="form-control" type="file" name="imagena" name="imagena"
+                                            accept-charset="UTF-8" enctype="multipart/form-data" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1241,7 +1289,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                            <input class="form-control" type="file" name="imagenb" id="imagenb"  accept-charset="UTF-8" enctype="multipart/form-data">
+                                        <input class="form-control" type="file" name="imagenb" id="imagenb"
+                                            accept-charset="UTF-8" enctype="multipart/form-data">
 
                                     </div>
                                 </div>
@@ -1251,7 +1300,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                            <input class="form-control" type="file" name="imagenc" id="imagenc" accept-charset="UTF-8" enctype="multipart/form-data" >
+                                        <input class="form-control" type="file" name="imagenc" id="imagenc"
+                                            accept-charset="UTF-8" enctype="multipart/form-data">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1260,7 +1310,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Upload</span>
                                         </div>
-                                            <input class="form-control" type="file" name="imagend" id="imagend"  accept-charset="UTF-8" enctype="multipart/form-data">
+                                        <input class="form-control" type="file" name="imagend" id="imagend"
+                                            accept-charset="UTF-8" enctype="multipart/form-data">
 
                                     </div>
                                 </div>
@@ -1303,7 +1354,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <label for="IDlocal">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal" placeholder="Agrega el codigo que usas localmente para indentificar el producto">
+                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal"
+                                        placeholder="Agrega el codigo que usas localmente para indentificar el producto">
                                 </div>
                             </div>
                         </div>
@@ -1528,34 +1580,35 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white">Edit User</h5>
+                <h5 class="modal-title text-white">Editar Usuario</h5>
             </div>
             <div class="modal-body">
-                <form name="modaledit" id="modaledit" action="">
-                    @method('POST')
-                    @csrf
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" name="name1" id="name1"
-                                class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
-                                value="{{ old('name') }}" autofocus>
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                <div class="container-fluid">
+                    <form name="modaledit" id="modaledit" action="">
+                        @method('POST')
+                        @csrf
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name1" id="name1"
+                                    class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
+                                    value="{{ old('name') }}" autofocus>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="Email"
-                                class="form-control  @error('email') is-invalid @enderror" name="email1" id="email1"
-                                value="{{ old('email') }}" required autocomplete="email">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" placeholder="Email"
+                                    class="form-control  @error('email') is-invalid @enderror" name="email1" id="email1"
+                                    value="{{ old('email') }}" required autocomplete="email">
+                            </div>
                         </div>
-                    </div>
-                    <!--
+                        <!--
                             <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Password</label>
@@ -1569,34 +1622,44 @@
                                 </div>
                             -->
 
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control" name="estatus1" id="estatus1">
-                                <option value="1">Active</option>
-                                <option value="0" selected>No Active</option>
-                            </select>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" name="estatus1" id="estatus1">
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">No Active</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Rol</label>
-                            <select class="form-control" name="rol1" id="rol1">
-                                <option value="admin">Admin</option>
-                                <option value="tecnico" selected>Tecnico</option>
-                                <option value="cliente">Cliente</option>
-                            </select>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sucursal</label>
+                             <select class="form-control" name="id_sucursal1" id="id_sucursal1">
+                                 @foreach ($Sucursal as $sucursal)
+                                 <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                                 @endforeach
+                             </select>
+                            </div>
                         </div>
-                    </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Rol</label>
+                                <select class="form-control" name="rol1" id="rol1">
+                                    <option value="admin">Admin</option>
+                                    <option value="tecnico">Tecnico</option>
+                                    <option value="cliente" selected>Cliente</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Edit User</button>
-                    </div>
-                    <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Edit User</button>
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+                </form>
             </div>
-            </form>
 
         </div>
     </div>
@@ -1648,17 +1711,24 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <input type="hidden" name="estatus" id="estatus" value="1">
-                        <input type="hidden" name="panic" id="panic" value="no">
-
+                        <input type="hidden" name="status" id="status" value="1">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Sucursal</label>
+                             <select class="form-control" name="id_sucursal" id="id_sucursal">
+                                 @foreach ($Sucursal as $sucursal)
+                                 <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                                 @endforeach
+                             </select>
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Rol</label>
                                 <select class="form-control" name="rol">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
-                                    <option value="cliente">Cliente</option>
+                                    <option value="cliente" selected>Cliente</option>
                                 </select>
                             </div>
                         </div>
@@ -1846,73 +1916,12 @@
             <div class="modal-body ">
                 <div class="container-fluid">
                     <div class="row">
-                            <div class="col-md-6">
-                                prueba
-                            </div> 
-                            <div class="col-md-6">
-                                <form action="/agregarservicio">
-                                    <div class="row">
-                                        <div class="container">
-                                            <div class="col-4-md">
-                                                <label for="nombre">Nombre Cliente</label>
-                                                <select class="form-control" id="nombre" name="nombre" required>
-                                                    @foreach ($Usuario as $user)
-                                                    @if($user->rol=='cliente')
-                                                    <option value="{{$user->id}}" @php $temporal=$user->id; @endphp>{{$user->name}}</option>
-                                                    @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
-            
-                                            <div class="col-4-md">
-                                                <label for="nombre">Nombre Tecnico</label>
-                                                <select class="form-control" id="nombre" name="nombre" required>
-                                                    @foreach ($Usuario as $user)
-                                                    @if($user->rol=="tecnico")
-                                                    <option value="{{$user->id}}" >{{$user->name}}</option>
-                                                    @endif
-                                                    @endforeach
-                                                </select>
-                                            </div>
-            
-                                            <div class="col-4-md">
-                                                <label for="descripcion">Servicio</label>
-                                                <select class="form-control" id="servicio" name="servicio" required>
-                                                    @foreach ($Servicio as $servicio)
-                                                    <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
-                                                        [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-4-md">
-                                                <label for="descripcion">Sucursal</label>
-                                                <select class="form-control" id="servicio" name="servicio" required>
-                                                    @foreach ($Sucursal as $sucursal)
-                                                    <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-4-md">
-                                                <div class="form-group">
-                                                    <label for="marca">Tiempo Recibido</label>
-                                                    <input class="form-control" data-provide="datepicker" type="date"
-                                                        name="fecha_recibido" id="fecha_recibido"
-                                                        value="<?php echo date('Y-m-d'); ?>" disabled>
-                                                </div>
-                                            </div>
-                                            <div class="col-4-md">
-                                                <div class="form-group">
-                                                    <label for="marca">Tiempo Entrega</label>
-                                                    <input class="form-control" data-provide="datepicker" type="date"
-                                                        name="fecha_entrega" id="fecha_entrega">
-                                                </div>
-                                            </div>
-                                            <input type="hidden" name="status" id="status" value="Pendiente">
-                                            <input type="hidden" name="pago" id="pago" value="0">
-            
-                                        </div>
-                                    </div>
-                            </div>
+                        <div class="col-md-6">
+                            prueba
+                        </div>
+                        <div class="col-md-6">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1954,7 +1963,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-
+                            <input type="hidden" name="id_sucursal" id="id_sucursal" value="{{Auth::user()->id_sucursal}}">
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Tecnico</label>
                                     <select class="form-control" id="id_user" name="id_user" required>
@@ -1968,13 +1977,15 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">IMEI</label>
-                                        <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
+                                        <input class="form-control" type="text" name="imei" id="imei"
+                                            placeholder="IMEI">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                         <input class="form-control" type="text" name="serial" id="serial" placeholder="Serial">
+                                        <input class="form-control" type="text" name="serial" id="serial"
+                                            placeholder="Serial">
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -1989,7 +2000,9 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="descripcion">Descripcion</label><br>
-                                        <textarea class="form-control"name="descripcion" id="descripcion" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
+                                            rows="10"
+                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -2045,7 +2058,8 @@
     </div>
 </div>
 <!-- Modal Edit Taller-->
-<div class="modal fade" id="modaledittaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modaledittaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
@@ -2074,6 +2088,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <input type="hidden" name="id_sucursal2" id="id_sucursal2" value="{{Auth::user()->id_sucursal}}">
 
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Tecnico</label>
@@ -2094,7 +2109,7 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                         <input class="form-control" type="text" name="serial2" id="serial2">
+                                        <input class="form-control" type="text" name="serial2" id="serial2">
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -2109,13 +2124,15 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="descripcion">Descripcion</label><br>
-                                        <textarea class="form-control"name="descripcion2" id="descripcion2" cols="20" rows="10" placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                        <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
+                                            rows="10"
+                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="status2">Status</label>
-                                        <select  class="form-control" name="status2" id="status2">
+                                        <select class="form-control" name="status2" id="status2">
                                             <option value="0">Recibido</option>
                                             <option value="1">En Revision</option>
                                             <option value="2">Cancelado</option>
@@ -2398,11 +2415,10 @@
                 <input type="hidden" name="status1" id="status1" value="Pendiente">
                 <input type="hidden" name="id_equipo1" id="id_equipo1" value="">
                 <input type="hidden" name="id_captura1" id="id_captura1" value="">
-            <input type="hidden" name="id_user1" id="id_user1" value="{{Auth::user()->id}}">
-            <label for="id_descripcion1">Inserte Descripcion de la Foto</label>
-                <textarea class="border border-danger mt-2" name="id_descripcion1" id="id_descripcion1" cols="30" rows="10"
-                placeholder="Inserte la descripcion de la foto aqui"></textarea>
-
+                <input type="hidden" name="id_user1" id="id_user1" value="{{Auth::user()->id}}">
+                <label for="id_descripcion1">Inserte Descripcion de la Foto</label>
+                <textarea class="border border-danger mt-2" name="id_descripcion1" id="id_descripcion1" cols="30"
+                    rows="10" placeholder="Inserte la descripcion de la foto aqui"></textarea>
 
                 <button type="button" class="btn btn-primary" id="boton1"><svg width="1em" height="1em"
                         viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -2424,22 +2440,23 @@
 </div>
 </div>
 <!-- Modal Notificacion -->
-<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header bg-info">
-                        <h5 class="modal-title text-white">Notificacion</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header bg-info">
+                <h5 class="modal-title text-white">Notificacion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     @if (session('success'))
                     <div class="alert alert-success m-3">
-                     <?php echo '<html>'.session('success').'</html>' ?>
+                        <?php echo '<html>'.session('success').'</html>' ?>
                     </div>
-                    @endif                </div>
+                    @endif </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -2461,7 +2478,7 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <FRAMESET>
-                        <FRAME  name="galeria" id="galeria" src="">
+                        <FRAME name="galeria" id="galeria" src="">
                     </FRAMESET>
                 </div>
             </div>
@@ -2486,22 +2503,22 @@
                 <div class="container-fluid">
                     <label for="status">Status</label>
                     <form name="cambio_status" id="cambio_status" action="">
-                    <select name="status3" id="status3">
-                        <option value="0">Recibido</option>
-                        <option value="1">En Revision</option>
-                        <option value="2">Cancelado</option>
-                        <option value="3">Espera</option>
-                        <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
-                        <option value="5">Listo(Para entregar)</option>
-                        <option value="6">Entregado
-                    </select>
+                        <select name="status3" id="status3">
+                            <option value="0">Recibido</option>
+                            <option value="1">En Revision</option>
+                            <option value="2">Cancelado</option>
+                            <option value="3">Espera</option>
+                            <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
+                            <option value="5">Listo(Para entregar)</option>
+                            <option value="6">Entregado
+                        </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </form>
+            </form>
 
         </div>
     </div>
@@ -2519,24 +2536,24 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                <label for="status">Pagado</label>
-                <form name="cambio_pago" id="cambio_pago" action="">
-                <input type="text" class="form-control" name="pago4" id="pago4">
+                    <label for="status">Pagado</label>
+                    <form name="cambio_pago" id="cambio_pago" action="">
+                        <input type="text" class="form-control" name="pago4" id="pago4">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
             </div>
-        </form>
+            </form>
 
         </div>
     </div>
 </div>
 
-
 <!-- Modal Servicio -->
-<div class="modal fade" id="modal_servicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_servicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -2549,22 +2566,22 @@
                 <div class="container-fluid">
                     <div class="col-4-md">
                         <form name="cambio_servicio" id="cambio_servicio" action="">
-                        <label for="descripcion">Servicio</label>
-                        <select class="form-control" id="id_servicio5" name="id_servicio5" required>
-                            @foreach ($Servicio as $servicio)
-                            <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
-                                [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
-                            @endforeach
-                        </select>
+                            <label for="descripcion">Servicio</label>
+                            <select class="form-control" id="id_servicio5" name="id_servicio5" required>
+                                @foreach ($Servicio as $servicio)
+                                <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
+                                    [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
+                                @endforeach
+                            </select>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
-            </form>
+                </form>
             </div>
-        </form>
+            </form>
 
         </div>
     </div>
@@ -2572,38 +2589,36 @@
 
 <!-- Scripts Status-->
 <script>
-$('#modal_status').on('show.bs.modal', function(e) {
+    $('#modal_status').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id3').val(id);
         $("#cambio_status").attr("action", '/cambio_status/' + id);
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status3').val(id);
-});
+    });
 </script>
 
 <!-- Scripts Pago-->
 <script>
     $('#modal_pago').on('show.bs.modal', function(e) {
-            var id = $(e.relatedTarget).data().id;
-            $(e.currentTarget).find('#id4').val(id);
-            $("#cambio_pago").attr("action", '/cambio_pago/' + id);
-            var id = $(e.relatedTarget).data().pago;
-            $(e.currentTarget).find('#pago4').val(id);
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id4').val(id);
+        $("#cambio_pago").attr("action", '/cambio_pago/' + id);
+        var id = $(e.relatedTarget).data().pago;
+        $(e.currentTarget).find('#pago4').val(id);
     });
-    </script>
+</script>
 
 <!-- Scripts Servisio-->
 <script>
     $('#modal_servicio').on('show.bs.modal', function(e) {
-            var id = $(e.relatedTarget).data().id;
-            $(e.currentTarget).find('#id5').val(id);
-            $("#cambio_servicio").attr("action", '/cambio_servicio/' + id);
-            var id = $(e.relatedTarget).data().id_servicio;
-            $(e.currentTarget).find('#id_servicio5').val(id);
-
-
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id5').val(id);
+        $("#cambio_servicio").attr("action", '/cambio_servicio/' + id);
+        var id = $(e.relatedTarget).data().id_servicio;
+        $(e.currentTarget).find('#id_servicio5').val(id);
     });
-    </script>
+</script>
 <!-- Scripts Editar Usuario-->
 <script>
     $('#modaleditar').on('show.bs.modal', function(e) {
@@ -2621,9 +2636,8 @@ $('#modal_status').on('show.bs.modal', function(e) {
         $(e.currentTarget).find('#password1').val(id);
         var id = $(e.relatedTarget).data().rol;
         $(e.currentTarget).find('#rol1').val(id);
-        var id = $(e.relatedTarget).data().creditos;
-        $(e.currentTarget).find('#creditos1').val(id);
-        $("#creditos1").attr("placeholder", id);
+        var id = $(e.relatedTarget).data().id_sucursal;
+        $(e.currentTarget).find('#id_sucursal1').val(id);
     });
 </script>
 <!-- Scripr Editar Categoria-->
@@ -2722,12 +2736,9 @@ $('#modal_status').on('show.bs.modal', function(e) {
 <script>
     $(document).ready(function() {
         //$('#smartcart').smartCart();
-
         $('#modal_foto').on('show.bs.modal', function(e) {
-         var id = $(e.relatedTarget).data().id;
-        $(e.currentTarget).find('#id_equipo1').val(id);
-
-
+            var id = $(e.relatedTarget).data().id;
+            $(e.currentTarget).find('#id_equipo1').val(id);
             const tieneSoporteUserMedia = () =>
                 !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
                     .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
@@ -2856,9 +2867,8 @@ $('#modal_status').on('show.bs.modal', function(e) {
                                             return resultado.text()
                                         })
                                         .then(nombreDeLaFoto => {
-                                         $('#id_captura1').attr('value',nombreDeLaFoto);
-
-
+                                            $('#id_captura1').attr('value',
+                                                nombreDeLaFoto);
                                             // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
                                             console.log(
                                                 "La foto fue enviada correctamente"
@@ -3034,22 +3044,20 @@ $('#modal_status').on('show.bs.modal', function(e) {
     $('#modaledittaller').on('show.bs.modal', function(e) {
         $('#id1').html($(e.relatedTarget).data('id'));
         var id = $(e.relatedTarget).data().id;
-
         $(e.currentTarget).find('#id1').val(id);
         $("#editequipo").attr("action", '/editequipo/' + id);
-
         var id = $(e.relatedTarget).data().id_user;
         $(e.currentTarget).find('#id_user2').val(id);
 
+        var id = $(e.relatedTarget).data().id_sucursal;
+        $(e.currentTarget).find('#id_sucursal2').val(id);
+
         var id = $(e.relatedTarget).data().id_cliente;
         $(e.currentTarget).find('#id_cliente2').val(id);
-
         var id = $(e.relatedTarget).data().serial;
         $(e.currentTarget).find('#serial2').val(id);
-
         var id = $(e.relatedTarget).data().imei;
         $(e.currentTarget).find('#imei2').val(id);
-
         var id = $(e.relatedTarget).data().id_captura;
         $(e.currentTarget).find('#id_captura2').val(id);
         var id = $(e.relatedTarget).data().id_comentario;
@@ -3060,158 +3068,154 @@ $('#modal_status').on('show.bs.modal', function(e) {
         $(e.currentTarget).find('#fecha_entrega2').val(id);
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
-
         const tieneSoporteUserMedia = () =>
-                !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
-                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
-            const _getUserMedia = (...arguments) =>
-                (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
-                    .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
-                    navigator, arguments);
-            // Declaramos elementos del DOM
-            const $video = document.querySelector("#video2"),
-                $canvas = document.querySelector("#canvas2"),
-                $estado = document.querySelector("#estado2"),
-                $boton = document.querySelector("#boton2"),
-                $listaDeDispositivos = document.querySelector("#listaDeDispositivos2");
-            const limpiarSelect = () => {
-                for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
-                    $listaDeDispositivos.remove(x);
-            };
-            const obtenerDispositivos = () => navigator
-                .mediaDevices
-                .enumerateDevices();
-            // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
-            // Lo que hace es llenar el select con los dispositivos obtenidos
-            const llenarSelectConDispositivosDisponibles = () => {
-                    limpiarSelect();
-                    obtenerDispositivos()
-                        .then(dispositivos => {
-                            const dispositivosDeVideo = [];
-                            dispositivos.forEach(dispositivo => {
-                                const tipo = dispositivo.kind;
-                                if (tipo === "videoinput") {
-                                    dispositivosDeVideo.push(dispositivo);
-                                }
-                            });
-                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-                            if (dispositivosDeVideo.length > 0) {
-                                // Llenar el select
-                                dispositivosDeVideo.forEach(dispositivo => {
-                                    const option = document.createElement('option');
-                                    option.value = dispositivo.deviceId;
-                                    option.text = dispositivo.label;
-                                    $listaDeDispositivos.appendChild(option);
-                                });
+            !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
+        const _getUserMedia = (...arguments) =>
+            (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
+                .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
+                navigator, arguments);
+        // Declaramos elementos del DOM
+        const $video = document.querySelector("#video2"),
+            $canvas = document.querySelector("#canvas2"),
+            $estado = document.querySelector("#estado2"),
+            $boton = document.querySelector("#boton2"),
+            $listaDeDispositivos = document.querySelector("#listaDeDispositivos2");
+        const limpiarSelect = () => {
+            for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
+                $listaDeDispositivos.remove(x);
+        };
+        const obtenerDispositivos = () => navigator
+            .mediaDevices
+            .enumerateDevices();
+        // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
+        // Lo que hace es llenar el select con los dispositivos obtenidos
+        const llenarSelectConDispositivosDisponibles = () => {
+                limpiarSelect();
+                obtenerDispositivos()
+                    .then(dispositivos => {
+                        const dispositivosDeVideo = [];
+                        dispositivos.forEach(dispositivo => {
+                            const tipo = dispositivo.kind;
+                            if (tipo === "videoinput") {
+                                dispositivosDeVideo.push(dispositivo);
                             }
+                        });
+                        // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                        if (dispositivosDeVideo.length > 0) {
+                            // Llenar el select
+                            dispositivosDeVideo.forEach(dispositivo => {
+                                const option = document.createElement('option');
+                                option.value = dispositivo.deviceId;
+                                option.text = dispositivo.label;
+                                $listaDeDispositivos.appendChild(option);
+                            });
+                        }
+                    });
+            }
+            (function() {
+                // Comenzamos viendo si tiene soporte, si no, nos detenemos
+                if (!tieneSoporteUserMedia()) {
+                    alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                    $estado.innerHTML =
+                        "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                    return;
+                }
+                //AquÃ­ guardaremos el stream globalmente
+                let stream;
+                // Comenzamos pidiendo los dispositivos
+                obtenerDispositivos()
+                    .then(dispositivos => {
+                        // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
+                        const dispositivosDeVideo = [];
+                        // Recorrer y filtrar
+                        dispositivos.forEach(function(dispositivo) {
+                            const tipo = dispositivo.kind;
+                            if (tipo === "videoinput") {
+                                dispositivosDeVideo.push(dispositivo);
+                            }
+                        });
+                        // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
+                        // y le pasamos el id de dispositivo
+                        if (dispositivosDeVideo.length > 0) {
+                            // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
+                            mostrarStream(dispositivosDeVideo[0].deviceId);
+                        }
+                    });
+                const mostrarStream = idDeDispositivo => {
+                    _getUserMedia({
+                            video: {
+                                // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
+                                deviceId: idDeDispositivo,
+                            }
+                        },
+                        (streamObtenido) => {
+                            // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
+                            // pues si no, no nos darÃ­a el nombre de los dispositivos
+                            llenarSelectConDispositivosDisponibles();
+                            // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
+                            $listaDeDispositivos.onchange = () => {
+                                // Detener el stream
+                                if (stream) {
+                                    stream.getTracks().forEach(function(track) {
+                                        track.stop();
+                                    });
+                                }
+                                // Mostrar el nuevo stream con el dispositivo seleccionado
+                                mostrarStream($listaDeDispositivos.value);
+                            }
+                            // Simple asignaciÃ³n
+                            stream = streamObtenido;
+                            // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
+                            $video.srcObject = stream;
+                            $video.play();
+                            //Escuchar el click del botÃ³n para tomar la foto
+                            //Escuchar el click del botÃ³n para tomar la foto
+                            $boton.addEventListener("click", function() {
+                                //Pausar reproducciÃ³n
+                                $video.pause();
+                                //Obtener contexto del canvas y dibujar sobre Ã©l
+                                let contexto = $canvas.getContext("2d");
+                                $canvas.width = $video.videoWidth;
+                                $canvas.height = $video.videoHeight;
+                                contexto.drawImage($video, 0, 0, $canvas.width,
+                                    $canvas.height);
+                                let foto = $canvas
+                                    .toDataURL(); //Esta es la foto, en base 64
+                                $estado.innerHTML =
+                                    "Enviando foto. Por favor, espera...";
+                                fetch("./fotos/foto.php", {
+                                        method: "POST",
+                                        body: encodeURIComponent(foto),
+                                        headers: {
+                                            "Content-type": "application/x-www-form-urlencoded",
+                                        }
+                                    })
+                                    .then(resultado => {
+                                        // A los datos los decodificamos como texto plano
+                                        return resultado.text()
+                                    })
+                                    .then(nombreDeLaFoto => {
+                                        $('#id_captura2').attr('value', nombreDeLaFoto);
+                                        // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
+                                        console.log(
+                                            "La foto fue enviada correctamente"
+                                        );
+                                        $estado.innerHTML =
+                                            `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
+                                    })
+                                //Reanudar reproducciÃ³n
+                                $video.play();
+                            });
+                        }, (error) => {
+                            console.log("Permiso denegado o error: ", error);
+                            $estado.innerHTML =
+                                "No se puede acceder a la cÃ¡mara, o no diste permiso.";
                         });
                 }
-                (function() {
-                    // Comenzamos viendo si tiene soporte, si no, nos detenemos
-                    if (!tieneSoporteUserMedia()) {
-                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
-                        $estado.innerHTML =
-                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
-                        return;
-                    }
-                    //AquÃ­ guardaremos el stream globalmente
-                    let stream;
-                    // Comenzamos pidiendo los dispositivos
-                    obtenerDispositivos()
-                        .then(dispositivos => {
-                            // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
-                            const dispositivosDeVideo = [];
-                            // Recorrer y filtrar
-                            dispositivos.forEach(function(dispositivo) {
-                                const tipo = dispositivo.kind;
-                                if (tipo === "videoinput") {
-                                    dispositivosDeVideo.push(dispositivo);
-                                }
-                            });
-                            // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-                            // y le pasamos el id de dispositivo
-                            if (dispositivosDeVideo.length > 0) {
-                                // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
-                                mostrarStream(dispositivosDeVideo[0].deviceId);
-                            }
-                        });
-                    const mostrarStream = idDeDispositivo => {
-                        _getUserMedia({
-                                video: {
-                                    // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
-                                    deviceId: idDeDispositivo,
-                                }
-                            },
-                            (streamObtenido) => {
-                                // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
-                                // pues si no, no nos darÃ­a el nombre de los dispositivos
-                                llenarSelectConDispositivosDisponibles();
-                                // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
-                                $listaDeDispositivos.onchange = () => {
-                                    // Detener el stream
-                                    if (stream) {
-                                        stream.getTracks().forEach(function(track) {
-                                            track.stop();
-                                        });
-                                    }
-                                    // Mostrar el nuevo stream con el dispositivo seleccionado
-                                    mostrarStream($listaDeDispositivos.value);
-                                }
-                                // Simple asignaciÃ³n
-                                stream = streamObtenido;
-                                // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
-                                $video.srcObject = stream;
-                                $video.play();
-                                //Escuchar el click del botÃ³n para tomar la foto
-                                //Escuchar el click del botÃ³n para tomar la foto
-                                $boton.addEventListener("click", function() {
-                                    //Pausar reproducciÃ³n
-                                    $video.pause();
-                                    //Obtener contexto del canvas y dibujar sobre Ã©l
-                                    let contexto = $canvas.getContext("2d");
-                                    $canvas.width = $video.videoWidth;
-                                    $canvas.height = $video.videoHeight;
-                                    contexto.drawImage($video, 0, 0, $canvas.width,
-                                        $canvas.height);
-                                    let foto = $canvas
-                                        .toDataURL(); //Esta es la foto, en base 64
-                                    $estado.innerHTML =
-                                        "Enviando foto. Por favor, espera...";
-                                    fetch("./fotos/foto.php", {
-                                            method: "POST",
-                                            body: encodeURIComponent(foto),
-                                            headers: {
-                                                "Content-type": "application/x-www-form-urlencoded",
-                                            }
-                                        })
-                                        .then(resultado => {
-                                            // A los datos los decodificamos como texto plano
-                                            return resultado.text()
-                                        })
-                                        .then(nombreDeLaFoto => {
-                                         $('#id_captura2').attr('value',nombreDeLaFoto);
-
-
-                                            // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
-                                            console.log(
-                                                "La foto fue enviada correctamente"
-                                            );
-                                            $estado.innerHTML =
-                                                `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
-                                        })
-                                    //Reanudar reproducciÃ³n
-                                    $video.play();
-                                });
-                            }, (error) => {
-                                console.log("Permiso denegado o error: ", error);
-                                $estado.innerHTML =
-                                    "No se puede acceder a la cÃ¡mara, o no diste permiso.";
-                            });
-                    }
-                })();
+            })();
     });
 </script>
-
 
 <!-- Script Tabs -->
 <script>
@@ -3234,39 +3238,34 @@ $('#modal_status').on('show.bs.modal', function(e) {
 
 <script>
     $('#modal-taller-galleria').on('show.bs.modal', function(e) {
-
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id_equipo1').val(id);
-        $('#galeria').attr('src','galleria/'+id);
-
+        $('#galeria').attr('src', 'galleria/' + id);
         $.ajaxSetup({
-       headers: {
-       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-       }
-       });
-       $.ajax({
-
-       url: 'galleria/' + id,
-       data: {
-       'id':id,
-       '_method': 'POST',
-       },
-       type: 'POST',
-       success: function(response) {
-
-    //alert(response);
-       //location.reload();
-       },
-       statusCode: {
-       404: function() {
-       //alert('web not found');
-       }
-       },
-       error: function(x, xs, xt) {
-      //window.open(JSON.stringify(x));
-     //  alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
-       }
-       });
-
-       });
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: 'galleria/' + id,
+            data: {
+                'id': id,
+                '_method': 'POST',
+            },
+            type: 'POST',
+            success: function(response) {
+                //alert(response);
+                //location.reload();
+            },
+            statusCode: {
+                404: function() {
+                    //alert('web not found');
+                }
+            },
+            error: function(x, xs, xt) {
+                //window.open(JSON.stringify(x));
+                //  alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+            }
+        });
+    });
 </script>

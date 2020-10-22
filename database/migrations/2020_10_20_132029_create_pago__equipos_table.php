@@ -15,16 +15,17 @@ class CreatePagoEquiposTable extends Migration
     {
         Schema::create('pago__equipos', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->integer('id_cliente');
-            $table->string('id_equipo');
-            $table->string('id_sucursal');
-            $table->string('id_caja');
-            $table->string('id_corte');
-            $table->float('monto');
-            $table->float('adelanto');
-            $table->string('comentario');
-            $table->date('fecha');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_cliente')->nullable();
+            $table->string('id_equipo')->nullable();
+            $table->string('id_servicio')->nullable();
+            $table->string('id_sucursal')->nullable();
+            $table->string('id_caja')->nullable();
+            $table->string('id_corte')->nullable();
+            $table->float('monto')->nullable();
+            $table->float('adelanto')->nullable();
+            $table->string('comentario')->nullable();
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

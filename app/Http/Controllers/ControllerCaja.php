@@ -39,8 +39,7 @@ class ControllerCaja extends Controller
         $caja->id_user=$request->get('id_user');
         $caja->id_sucursal=$request->get('id_sucursal');
         $caja->corte=$request->get('corte');
-        $caja->status=$request->get('status');
-        $caja->comentario=$request->get('comentario');
+        $caja->id_corte=$request->get('id_corte');
         $caja->save();
         return back()->with('success', "Caja Agregada");
 
@@ -64,10 +63,10 @@ class ControllerCaja extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    { 
+    {
         //
     }
- 
+
     /**
      * Update the specified resource in storage.
      *
@@ -78,11 +77,10 @@ class ControllerCaja extends Controller
     public function update(Request $request, $id)
     {
         $caja = \App\Models\Caja::find($id);
-        $caja->id_user=$request->get('id_user');
-        $caja->id_sucursal=$request->get('id_sucursal');
-        $caja->corte=$request->get('corte');
-        $caja->status=$request->get('status');
-        $caja->comentario=$request->get('comentario');
+        $caja->id_user=$request->get('id_user1');
+        $caja->id_sucursal=$request->get('id_sucursal1');
+        $caja->corte=$request->get('corte1');
+        $caja->id_corte=$request->get('id_corte1');
         $caja->save();
         return back()->with('success', "Caja Actualizada");
 

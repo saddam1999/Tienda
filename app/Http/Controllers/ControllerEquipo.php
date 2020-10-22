@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Equipo;
+use App\Models\Servicio;
 
 class ControllerEquipo extends Controller
 {
@@ -49,8 +50,26 @@ class ControllerEquipo extends Controller
        $equipo->status=$request->get('status');
        $equipo->save();
 
+       $pago = new \App\Models\Pago_Equipo();
+       $pago->id_user=$equipo->id_user;
+       $pago->id_equipo=$equipo->id;
+       $pago->id_cliente=$equipo->id_cliente;
+       $pago->id_servicio=$equipo->id_servicio;
 
-
+       $servicio = \App\Models\Servicio::find($equipo->id_servicio);
+       //$pago->id_sucursal=$equipo->id_sucursal;
+       //$pago->id_caja=$equipo->id_caja;
+       //$pago->id_corte=$equipo->id_corte;
+       if($equipo->pago!=''){
+       $pago->adelanto=$equipo->pago;//adelanto
+       $pago->monto=($servicio->precio - $pago->adelanto);
+       }else
+       {
+        $pago->monto=$servicio->precio;
+       }
+       $pago->comentario=$equipo->comentario;
+       $pago->fecha=$equipo->fecha;
+       $pago->save();
        return back()->with('success', "Equipo agregado");
     }
 

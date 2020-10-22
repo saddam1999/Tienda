@@ -15,10 +15,10 @@ class CreateCajasTable extends Migration
     {
         Schema::create('cajas', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user');
-            $table->integer('id_sucursal');
-            $table->float('id_corte');
-            $table->string('status');
+            $table->integer('id_user')->nullable();
+            $table->integer('id_sucursal')->nullable();
+            $table->integer('id_corte')->nullable();
+            $table->float('corte')->nullable();
             $table->timestamps();
         }); 
     }

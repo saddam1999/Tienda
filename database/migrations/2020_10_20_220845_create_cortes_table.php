@@ -15,13 +15,13 @@ class CreateCortesTable extends Migration
     {
         Schema::create('cortes', function (Blueprint $table) {
             $table->id();
-            $table->string('id_user');
-            $table->string('id_caja');
-            $table->string('id_pago');
-            $table->string('id_sucursal');
-            $table->boolean('abierto');
-            $table->float('corte_total');
-            $table->date('fecha');
+            $table->string('id_user')->nullable();
+            $table->string('id_caja')->nullable();
+            $table->string('id_pago')->nullable();
+            $table->string('id_sucursal')->nullable();
+            $table->boolean('abierto')->nullable();
+            $table->float('corte_total')->nullable();
+            $table->date('fecha')->nullable();
             $table->timestamps();
         });
     }

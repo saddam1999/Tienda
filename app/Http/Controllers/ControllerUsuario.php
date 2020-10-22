@@ -42,6 +42,7 @@ class ControllerUsuario extends Controller
         $contraseñaantigua=$request->get('password');
         $setting->password=bcrypt($contraseñaantigua);
         $setting->rol=$request->get('rol');
+        $setting->id_sucursal=$request->get('id_sucursal');
         $setting->status=$request->get('status');
         $setting->save();
         return back()->with('success', "Usuario agregado : ".$setting->name);
@@ -84,6 +85,8 @@ class ControllerUsuario extends Controller
         $admin->email=$request->get('email1');
         //$contraseñaantigua=$request->get('password1');
        // $admin->password=bcrypt($contraseñaantigua);
+       $admin->id_sucursal=$request->get('id_sucursal1');
+
         $admin->rol=$request->get('rol1');
         $admin->status=$request->get('estatus1');
         $admin->save();
