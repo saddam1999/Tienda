@@ -233,24 +233,23 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-     <x-jet-dropdown-link href="{{ route('dashboard') }}">
-         {{ Auth::user()->name }}
-     </x-jet-dropdown-link>
-     <div class="border-t border-blue-100"></div>
-     <!-- Authentication -->
-     <form method="POST" action="{{ route('logout') }}">
-         @csrf
-         <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
+                   <x-jet-dropdown-link href="{{ route('dashboard') }}">
+                       {{ Auth::user()->name }}
+                   </x-jet-dropdown-link>
+                   <div class="border-t border-blue-100"></div>
+                   <!-- Authentication -->
+                   <form method="POST" action="{{ route('logout') }}">
+                       @csrf
+                       <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                     this.closest('form').submit();">
-             {{ __('Logout') }}
-         </x-jet-dropdown-link>
-         </form>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-
+                           {{ __('Logout') }}
+                       </x-jet-dropdown-link>
+                   </form>
+               </li>
+               @endguest
+               </ul>
+               </div>
+               </div>
 
 
 
@@ -287,7 +286,7 @@
                 <div class="container">
                     <div class="carousel-caption text-left">
                         <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h1>
-                        <p>De  @if($Settings->isEmpty()) @else {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
+                        <p>De  @if($Settings->isEmpty()) @else @if($Promocion->isEmpty()) {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                     </div>
                 </div>
             </div>
@@ -335,7 +334,7 @@
             @if($producto->descuento!=0)
             <div class="col-md-4" style="border-radius:10px;">
                 <div class="alert alert-warning" role="alert">
-                  <h4 class="alert-heading">  @if($Promocion->isEmpty()) @else{{$promocion->titulo}} @endif</h4>
+                  <h4 class="alert-heading">  @if($Promocion->isEmpty()) @else {{$promocion->titulo}} @endif</h4>
 
                 </div>
                 <!-- bbb_deals -->

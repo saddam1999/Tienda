@@ -57,10 +57,8 @@ class ControllerEquipo extends Controller
        $pago->id_cliente=$equipo->id_cliente;
        $pago->id_servicio=$equipo->id_servicio;
        $pago->id_sucursal=$equipo->id_sucursal;
-
        $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
        $pago->id_caja=$sucursal->id_caja;
-
        $servicio = \App\Models\Servicio::find($equipo->id_servicio);
        //$caja = \App\Models\Caja::find($sucursal->id_caja);
        //$pago->id_caja=$equipo->id_caja;
@@ -117,7 +115,7 @@ class ControllerEquipo extends Controller
         $equipo->serial=$request->get('serial2');
         $equipo->imei=$request->get('imei2');
         $equipo->pago=$request->get('pago2');
-//        $equipo->id_captura=$request->get('id_captura2');
+        //$equipo->id_captura=$request->get('id_captura2');
         $equipo->id_comentario=$request->get('descripcion2');
         $equipo->fecha_recibido=$request->get('fecha_recibido2');
         $equipo->fecha_entrega=$request->get('fecha_entrega2');

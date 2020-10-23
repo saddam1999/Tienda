@@ -56,7 +56,7 @@ Route::get('/editsucursal/{id}', [ControllerSucursal::class, 'update']);
 Route::get('/deletesucursal/{id}', [ControllerSucursal::class, 'destroy']);
 //Settings
 Route::get('/agregarsettings', [ControllerSettings::class, 'store']);
-Route::get('/editsettings/{id}', [ControllerSettings::class, 'update']);
+Route::get('/editsettings/{id}', [ControllerSettings::class, 'update']); 
 Route::get('/deletesettings/{id}', [ControllerSettings::class, 'destroy']);
 //Categoria
 Route::get('/agregarcategoria', [ControllerCategoria::class, 'store']);

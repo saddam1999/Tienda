@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
+    .flash{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:#fff;
+    }
+
         ul.gallery {
             margin-left: 3vw;
             margin-right: 3vw;
@@ -1140,7 +1149,7 @@
                                                             d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
                                                     </svg></a>
                                                 <a href="" data-toggle="modal" data-target="#modal_pago"
-                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id="{{$equipo->id}}" data-id_servicio="{{$equipo->id_servicio}}" data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
@@ -2196,15 +2205,8 @@
                             <canvas id="canvas" style="display: none;"></canvas>
                             <input type="hidden" name="status" id="status" value="0">
                             <input type="hidden" name="id_captura" id="id_captura" value="">
-                            <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
-                                    viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-                                    <path fill-rule="evenodd"
-                                        d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                    <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                </svg></button>
+                            <button type="button" class="btn btn-primary" id="boton">
+                           <i class="fas fa-camera-retro"></i></button>
                         </div>
                 </div>
             </div>
@@ -2702,9 +2704,13 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <label for="status">Pagado</label>
-                    <form name="cambio_pago" id="cambio_pago" action="">
-                        <input type="text" class="form-control" name="pago4" id="pago4">
+                    <label for="status">Anticipo</label>
+                    <input type="text" class="form-control" name="pago4" id="pago4">
+                    <label for="status">Pendiente</label>
+                    <input type="text" class="form-control" name="pendiente4" id="pendiente4" value="" disabled>
+                    <label for="status">Pago</label>
+                    <input type="text" class="form-control" name="final4" id="final4" disabled>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -2770,9 +2776,18 @@
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id4').val(id);
         $("#cambio_pago").attr("action", '/cambio_pago/' + id);
+
         var id = $(e.relatedTarget).data().pago;
-        $(e.currentTarget).find('#pago4').val(id);
-    });
+        if(id==0){
+            $(e.currentTarget).find('#pago4').val(0);
+        }else{
+            $(e.currentTarget).find('#pago4').val(id);
+        }
+
+        var id = $(e.relatedTarget).data().id_servicio
+        $(e.currentTarget).find('#pendiente4').val(id);
+
+   });
 </script>
 
 <!-- Scripts Servisio-->
@@ -3389,6 +3404,18 @@
 <!-- Script Tabs -->
 <script>
     $(document).ready(function() {
+        function flash(e){
+  $('.flash')
+   .show()  //show the hidden div
+   .animate({opacity: 0.5}, 300)
+   .fadeOut(300)
+   .css({'opacity': 1});
+}
+
+$(document).ready(function() {
+  $('.flash').hide();
+  $(document).mouseup(function(e) { flash(e); });
+});
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
         });
