@@ -1040,9 +1040,10 @@
                                                     rows="4">{{$equipo->id_comentario}}</textarea></td>
                                             @foreach ($Servicio as $servicio)
                                             @if($servicio->id==$equipo->id_servicio)
-                                            <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
-                                                    data-id_servicio="{{$equipo->id_servicio}}" data-toggle="modal"
-                                                    data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
+                                            <td>
+                                            <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                            data-id_servicio="{{$equipo->id_servicio}}"
+                                            data-toggle="modal" data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
                                             @endif
                                             @endforeach
                                             <td><input class="text-secondary" type="date" value="{{$equipo->fecha_recibido}}"></td>
@@ -1089,9 +1090,11 @@
 
                                                 </a></td>
                                             @if($equipo->status!=2 && $equipo->status !=6)
-                                            <td><a href="" data-toggle="modal" data-target="#modaledittaller"
+                                            <td>
+                                                <a href="" data-toggle="modal" data-target="#modaledittaller"
                                                     data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
-                                                    data-servicio="{{$equipo->id_servicio}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}"
+                                                    data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
@@ -1148,11 +1151,17 @@
                                                         <path fill-rule="evenodd"
                                                             d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
                                                     </svg></a>
-                                                <a href="" data-toggle="modal" data-target="#modal_pago"
-                                                    data-id="{{$equipo->id}}" data-id_servicio="{{$equipo->id_servicio}}" data-id_user="{{$equipo->id_user}}"
+
+                                                    @foreach ($Servicio as $servicio)
+                                                    @if($servicio->id==$equipo->id_servicio)
+                                                    <a href="" data-toggle="modal" data-target="#modal_pago"
+                                                    data-id="{{$equipo->id}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}"
+                                                    data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
+                                                    data-precio="{{$servicio->precio}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-pago="{{$equipo->pago}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -1165,6 +1174,9 @@
                                                         <path
                                                             d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
                                                     </svg></a>
+                                                    @endif
+
+                                                    @endforeach
                                             </td>
                                             <td> </td>
                                             @endif
@@ -2316,7 +2328,7 @@
                                     <div class="form-group">
                                         <label for="marca">Anticipo</label>
                                         <input class="form-control" type="text" name="pago2" id="pago2"
-                                            placeholder="Anticipo" disabled>
+                                            placeholder="Anticipo">
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -2334,23 +2346,8 @@
                                             name="fecha_entrega2" id="fecha_entrega2">
                                     </div>
                                 </div>
-                                <select name="listaDeDispositivos2" id="listaDeDispositivos2"></select>
-                                <p id="estado"></p>
                                 <br>
                             </div>
-                            <video muted="muted" id="video2"></video>
-                            <canvas id="canvas2" style="display: none;"></canvas>
-                            <input type="hidden" name="pago2" id="pago2" value="0">
-                            <input type="hidden" name="id_captura1" id="id_captura2" value="">
-                            <button type="button" class="btn btn-primary" id="boton"><svg width="1em" height="1em"
-                                    viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
-                                    <path fill-rule="evenodd"
-                                        d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
-                                    <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                </svg></button>
                         </div>
                 </div>
             </div>
@@ -2703,16 +2700,37 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <label for="status">Anticipo</label>
-                    <input type="text" class="form-control" name="pago4" id="pago4">
-                    <label for="status">Pendiente</label>
-                    <input type="text" class="form-control" name="pendiente4" id="pendiente4" value="" disabled>
+            <div class="container-fluid">
+                <form action="agregarpago">
+                    @csrf
+                    @method('POST')
+                    <div class="card text-left">
+                      <div class="card-body">
+                          <label for="total">Total a Pagar</label>
+                          <input type="text" class="form-control" name="total" id="total" disabled>
+                        <label for="status">Anticipo</label>
+                        <input type="text" class="form-control" name="pago4" id="pago4" disabled>
+                        <label for="status">Pendiente</label>
+                        <input type="text" class="form-control" name="pendiente4" id="pendiente4" value="" disabled>
+                      </div>
+                    </div>
+                    <label for="metodo">Metodo de Pago</label>
+                    <select class="form-control" name="pago_id4" id="pago_id4" >
+                        <option value="1">Efectivo</option>
+                        <option value="2">Paypal</option>
+                        <option value="3">Tarjeta Debito/Credito (Paypal)</option>
+                    </select>
+                    <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_servicio4" id="id_servicio4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_sucursal4" id="id_sucursal4" value="" disabled>
+
                     <label for="status">Pago</label>
                     <input type="text" class="form-control" name="final4" id="final4" disabled>
-
-                </div>
+                </form>
             </div>
+        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -2773,19 +2791,24 @@
 <!-- Scripts Pago-->
 <script>
     $('#modal_pago').on('show.bs.modal', function(e) {
+
+
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id4').val(id);
-        $("#cambio_pago").attr("action", '/cambio_pago/' + id);
-
+        $("#cambio_pago").attr("action", '/agregarpago/' + id);
         var id = $(e.relatedTarget).data().pago;
+        anticipo=id;
         if(id==0){
             $(e.currentTarget).find('#pago4').val(0);
         }else{
             $(e.currentTarget).find('#pago4').val(id);
         }
-
-        var id = $(e.relatedTarget).data().id_servicio
-        $(e.currentTarget).find('#pendiente4').val(id);
+        var id = $(e.relatedTarget).data().precio
+        precio=id;
+        temporal=precio-anticipo;
+        total=precio;
+        $(e.currentTarget).find('#pendiente4').val(temporal);
+        $(e.currentTarget).find('#total').val(total);
 
    });
 </script>
@@ -3233,6 +3256,8 @@
         var id = $(e.relatedTarget).data().id_sucursal;
         $(e.currentTarget).find('#id_sucursal2').val(id);
 
+        var id = $(e.relatedTarget).data().id_servicio;
+        $(e.currentTarget).find('#id_servicio2').val(id);
         var id = $(e.relatedTarget).data().pago;
         $(e.currentTarget).find('#pago2').val(id);
 
@@ -3252,152 +3277,7 @@
         $(e.currentTarget).find('#fecha_entrega2').val(id);
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
-        const tieneSoporteUserMedia = () =>
-            !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
-                .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
-        const _getUserMedia = (...arguments) =>
-            (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices
-                .getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(
-                navigator, arguments);
-        // Declaramos elementos del DOM
-        const $video = document.querySelector("#video2"),
-            $canvas = document.querySelector("#canvas2"),
-            $estado = document.querySelector("#estado2"),
-            $boton = document.querySelector("#boton2"),
-            $listaDeDispositivos = document.querySelector("#listaDeDispositivos2");
-        const limpiarSelect = () => {
-            for (let x = $listaDeDispositivos.options.length - 1; x >= 0; x--)
-                $listaDeDispositivos.remove(x);
-        };
-        const obtenerDispositivos = () => navigator
-            .mediaDevices
-            .enumerateDevices();
-        // La funciÃ³n que es llamada despuÃ©s de que ya se dieron los permisos
-        // Lo que hace es llenar el select con los dispositivos obtenidos
-        const llenarSelectConDispositivosDisponibles = () => {
-                limpiarSelect();
-                obtenerDispositivos()
-                    .then(dispositivos => {
-                        const dispositivosDeVideo = [];
-                        dispositivos.forEach(dispositivo => {
-                            const tipo = dispositivo.kind;
-                            if (tipo === "videoinput") {
-                                dispositivosDeVideo.push(dispositivo);
-                            }
-                        });
-                        // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-                        if (dispositivosDeVideo.length > 0) {
-                            // Llenar el select
-                            dispositivosDeVideo.forEach(dispositivo => {
-                                const option = document.createElement('option');
-                                option.value = dispositivo.deviceId;
-                                option.text = dispositivo.label;
-                                $listaDeDispositivos.appendChild(option);
-                            });
-                        }
-                    });
-            }
-            (function() {
-                // Comenzamos viendo si tiene soporte, si no, nos detenemos
-                if (!tieneSoporteUserMedia()) {
-                    alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
-                    $estado.innerHTML =
-                        "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
-                    return;
-                }
-                //AquÃ­ guardaremos el stream globalmente
-                let stream;
-                // Comenzamos pidiendo los dispositivos
-                obtenerDispositivos()
-                    .then(dispositivos => {
-                        // Vamos a filtrarlos y guardar aquÃ­ los de vÃ­deo
-                        const dispositivosDeVideo = [];
-                        // Recorrer y filtrar
-                        dispositivos.forEach(function(dispositivo) {
-                            const tipo = dispositivo.kind;
-                            if (tipo === "videoinput") {
-                                dispositivosDeVideo.push(dispositivo);
-                            }
-                        });
-                        // Vemos si encontramos algÃºn dispositivo, y en caso de que si, entonces llamamos a la funciÃ³n
-                        // y le pasamos el id de dispositivo
-                        if (dispositivosDeVideo.length > 0) {
-                            // Mostrar stream con el ID del primer dispositivo, luego el usuario puede cambiar
-                            mostrarStream(dispositivosDeVideo[0].deviceId);
-                        }
-                    });
-                const mostrarStream = idDeDispositivo => {
-                    _getUserMedia({
-                            video: {
-                                // Justo aquÃ­ indicamos cuÃ¡l dispositivo usar
-                                deviceId: idDeDispositivo,
-                            }
-                        },
-                        (streamObtenido) => {
-                            // AquÃ­ ya tenemos permisos, ahora sÃ­ llenamos el select,
-                            // pues si no, no nos darÃ­a el nombre de los dispositivos
-                            llenarSelectConDispositivosDisponibles();
-                            // Escuchar cuando seleccionen otra opciÃ³n y entonces llamar a esta funciÃ³n
-                            $listaDeDispositivos.onchange = () => {
-                                // Detener el stream
-                                if (stream) {
-                                    stream.getTracks().forEach(function(track) {
-                                        track.stop();
-                                    });
-                                }
-                                // Mostrar el nuevo stream con el dispositivo seleccionado
-                                mostrarStream($listaDeDispositivos.value);
-                            }
-                            // Simple asignaciÃ³n
-                            stream = streamObtenido;
-                            // Mandamos el stream de la cÃ¡mara al elemento de vÃ­deo
-                            $video.srcObject = stream;
-                            $video.play();
-                            //Escuchar el click del botÃ³n para tomar la foto
-                            //Escuchar el click del botÃ³n para tomar la foto
-                            $boton.addEventListener("click", function() {
-                                //Pausar reproducciÃ³n
-                                $video.pause();
-                                //Obtener contexto del canvas y dibujar sobre Ã©l
-                                let contexto = $canvas.getContext("2d");
-                                $canvas.width = $video.videoWidth;
-                                $canvas.height = $video.videoHeight;
-                                contexto.drawImage($video, 0, 0, $canvas.width,
-                                    $canvas.height);
-                                let foto = $canvas
-                                    .toDataURL(); //Esta es la foto, en base 64
-                                $estado.innerHTML =
-                                    "Enviando foto. Por favor, espera...";
-                                fetch("./fotos/foto.php", {
-                                        method: "POST",
-                                        body: encodeURIComponent(foto),
-                                        headers: {
-                                            "Content-type": "application/x-www-form-urlencoded",
-                                        }
-                                    })
-                                    .then(resultado => {
-                                        // A los datos los decodificamos como texto plano
-                                        return resultado.text()
-                                    })
-                                    .then(nombreDeLaFoto => {
-                                        $('#id_captura2').attr('value', nombreDeLaFoto);
-                                        // nombreDeLaFoto trae el nombre de la imagen que le dio PHP
-                                        console.log(
-                                            "La foto fue enviada correctamente"
-                                        );
-                                        $estado.innerHTML =
-                                            `Foto guardada con Exito. Puedes verla <a target='_blank' href='./foto/${nombreDeLaFoto}'> aquÃ­</a>`;
-                                    })
-                                //Reanudar reproducciÃ³n
-                                $video.play();
-                            });
-                        }, (error) => {
-                            console.log("Permiso denegado o error: ", error);
-                            $estado.innerHTML =
-                                "No se puede acceder a la cÃ¡mara, o no diste permiso.";
-                        });
-                }
-            })();
+
     });
 </script>
 

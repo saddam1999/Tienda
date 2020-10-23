@@ -50,30 +50,6 @@ class ControllerEquipo extends Controller
        $equipo->fecha_entrega=$request->get('fecha_entrega');
        $equipo->status=$request->get('status');
        $equipo->save();
-
-       $pago = new \App\Models\Pago_Equipo();
-       $pago->id_user=$equipo->id_user;
-       $pago->id_equipo=$equipo->id;
-       $pago->id_cliente=$equipo->id_cliente;
-       $pago->id_servicio=$equipo->id_servicio;
-       $pago->id_sucursal=$equipo->id_sucursal;
-       $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
-       $pago->id_caja=$sucursal->id_caja;
-       $servicio = \App\Models\Servicio::find($equipo->id_servicio);
-       //$caja = \App\Models\Caja::find($sucursal->id_caja);
-       //$pago->id_caja=$equipo->id_caja;
-       //$pago->id_corte=$equipo->id_corte;
-       if($equipo->pago!=''){
-       $pago->adelanto=$equipo->pago;//adelanto
-       $pago->monto=($servicio->precio - $pago->adelanto);
-       }else
-       {
-        $pago->monto=$servicio->precio;
-       }
-
-       $pago->comentario=$equipo->comentario;
-       $pago->fecha=$equipo->fecha;
-       $pago->save();
        return back()->with('success', "Equipo agregado");
     }
 
@@ -121,34 +97,6 @@ class ControllerEquipo extends Controller
         $equipo->fecha_entrega=$request->get('fecha_entrega2');
         $equipo->status=$request->get('status2');
         $equipo->save();
-
-        $pago= \App\Models\Pago_Equipo::find($equipo->id_pago);
-        if($pago!=null){
-        $pago->id_user=$equipo->id_user;
-        $pago->id_equipo=$equipo->id;
-        $pago->id_cliente=$equipo->id_cliente;
-        $pago->id_servicio=$equipo->id_servicio;
-        $pago->id_sucursal=$equipo->id_sucursal;
-
-        $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
-        $pago->id_caja=$sucursal->id_caja;
-
-        $servicio = \App\Models\Servicio::find($equipo->id_servicio);
-        //$caja = \App\Models\Caja::find($sucursal->id_caja);
-        //$pago->id_caja=$equipo->id_caja;
-        //$pago->id_corte=$equipo->id_corte;
-        if($equipo->pago!=''){
-        $pago->adelanto=$equipo->pago;//adelanto
-        $pago->monto=($servicio->precio - $pago->adelanto);
-        }else
-        {
-         $pago->monto=$servicio->precio;
-        }
-
-        $pago->comentario=$equipo->comentario;
-        $pago->fecha=$equipo->fecha;
-    }
-
         return back()->with('success', "Equipo Editado");
     }
 
@@ -183,7 +131,7 @@ class ControllerEquipo extends Controller
         return back()->with('success', "Status Cambiado");
         }else
         {
-            return back()->with('success', 'Status no se pudo Cambiar intente de nuevo : ');
+            return back()->with('success', 'Status no se pudo Cambiar intente de nuevo ');
         }
     }
 
@@ -200,7 +148,7 @@ class ControllerEquipo extends Controller
             $equipo->delete();
             return back()->with('success', "Equipo Borrado");
         } else {
-            return back()->with('success', 'Equipo no se pudo Borrar : ' . $equipo->nombre);
+            return back()->with('success', 'Equipo no se pudo Borrar ');
         }
     }
 }

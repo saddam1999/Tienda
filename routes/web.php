@@ -12,6 +12,7 @@ use App\Http\Controllers\ControllerPromocion;
 use App\Http\Controllers\ControllerEquipo;
 use App\Http\Controllers\ControllerCaptura;
 use App\Http\Controllers\ControllerCaja;
+use App\Http\Controllers\ControllerPago_Equipo;
 
 use Illuminate\Support\Facades\Input;
 
@@ -56,7 +57,7 @@ Route::get('/editsucursal/{id}', [ControllerSucursal::class, 'update']);
 Route::get('/deletesucursal/{id}', [ControllerSucursal::class, 'destroy']);
 //Settings
 Route::get('/agregarsettings', [ControllerSettings::class, 'store']);
-Route::get('/editsettings/{id}', [ControllerSettings::class, 'update']); 
+Route::get('/editsettings/{id}', [ControllerSettings::class, 'update']);
 Route::get('/deletesettings/{id}', [ControllerSettings::class, 'destroy']);
 //Categoria
 Route::get('/agregarcategoria', [ControllerCategoria::class, 'store']);
@@ -84,8 +85,10 @@ Route::get('/cambio_status/{id}', [ControllerEquipo::class, 'status']);
 Route::get('/agregarcaja', [ControllerCaja::class, 'store']);
 Route::get('/editcaja/{id}', [ControllerCaja::class, 'update']);
 Route::get('/deletecaja/{id}', [ControllerCaja::class, 'destroy']);
-//ControllerPago( EQUIPO)
-Route::get('/deletepagoequipo/{id}', [ControllerPago_Equipo::class, 'destroy']);
+//ControllerPagoEquipo( EQUIPO)
+Route::get('/agregarpago', [ControllerPago_Equipo::class, 'store']);
+Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
+Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
