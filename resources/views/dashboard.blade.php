@@ -3295,7 +3295,7 @@
 $(document).ready(function() {
   $('.flash').hide();
   $(document).mouseup(function(e) { flash(e); });
-});
+
         $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
             localStorage.setItem('activeTab', $(e.target).attr('href'));
         });
@@ -3303,7 +3303,7 @@ $(document).ready(function() {
         if (activeTab) {
             $('#myTab a[href="' + activeTab + '"]').tab('show');
         }
-    });
+    }); });
 </script>
 <!-- Script Notificaciones -->
 @if(session('success'))

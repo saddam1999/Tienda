@@ -56,6 +56,8 @@ class ControllerPago_Equipo extends Controller
         $pago->comentario=$pago->comentario;
         $pago->fecha=$pago->fecha;
         $pago->save();
+
+
         return back()->with('success', "Equipo Pagado");
 
     }
