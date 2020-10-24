@@ -13,6 +13,7 @@ use App\Http\Controllers\ControllerEquipo;
 use App\Http\Controllers\ControllerCaptura;
 use App\Http\Controllers\ControllerCaja;
 use App\Http\Controllers\ControllerPago_Equipo;
+use App\Http\Controllers\imprimirController;
 
 use Illuminate\Support\Facades\Input;
 
@@ -89,6 +90,8 @@ Route::get('/deletecaja/{id}', [ControllerCaja::class, 'destroy']);
 Route::get('/agregarpago', [ControllerPago_Equipo::class, 'store']);
 Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
+//imprimirController
+Route::get('/imprimir/{id}', [imprimirController::class, 'update']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()

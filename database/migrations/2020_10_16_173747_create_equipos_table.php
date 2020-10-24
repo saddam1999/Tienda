@@ -29,6 +29,28 @@ class CreateEquiposTable extends Migration
             $table->date('fecha_recibido')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->string('status')->nullable();
+
+            $table->string('Camara')->nullable();
+            $table->string('Centro_Carga')->nullable();
+            $table->string('Señal')->nullable();
+            $table->string('LectorSD')->nullable();
+            $table->string('AltaVoz')->nullable();
+            $table->string('BotonHome')->nullable();
+            $table->string('Microfono')->nullable();
+            $table->string('Lector_SIM')->nullable();
+            $table->string('Volumenplus')->nullable();
+            $table->string('Volumenless')->nullable();
+            $table->string('Encendido')->nullable();
+            $table->string('Auxiliar')->nullable();
+            $table->string('LectorSD')->nullable();
+            $table->string('Auricular')->nullable();
+            $table->string('Touch')->nullable();
+            $table->string('Bateria')->nullable();
+            $table->string('Enciende')->nullable();
+            $table->string('Memoria')->nullable();
+            $table->string('SIM')->nullable();
+            $table->string('Golpes')->nullable();
+            $table->string('Tiene_Bateria')->nullable();
             $table->timestamps();
         });
     }

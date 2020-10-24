@@ -127,6 +127,20 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
+                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
+                </svg>Marcas
+            </a>
+            <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                </svg>Categorias
+            </a>
             </div>
         </li>
 
@@ -171,8 +185,27 @@
                     <path fill-rule="evenodd" d="M6 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
                 </svg>Opciones
             </a>
+            @foreach ($Caja as $caja)
+            @endforeach
         </li>
+            <div class="input-group-prepend bg-secondary">
+            <span class="input-group-text face text-secondary">Caja: $ {{$caja->corte}}</span>
+            </div>
+            <div class="input-group-prepend bg-secondary">
+                @php $count=0; @endphp
+                @foreach ($Equipo as $equipo)
+                @php
+                $date1 = new DateTime("now");
+                $date2 = new DateTime($equipo->fecha_entrega);
+                if($equipo->fecha_recibido <= $equipo->fecha_entrega)
+                {
+                $count++;
+                }
+                @endphp
+                @endforeach
+                     <span class="input-group-text face text-secondary">Ordenes: {{$count}}</span>
 
+                  </div>
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="row">
@@ -1015,7 +1048,7 @@
                                             <th>Fecha Entrega</th>
                                             <th>Status</th>
                                             <th>Opciones</th>
-                                            <th></th>
+                                            <th>Imprimir</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1103,7 +1136,34 @@
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-Camara="{{$equipo->Camara}}"
+                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                    data-Señal="{{$equipo->Señal}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                    data-BotonHome="{{$equipo->BotonHome}}"
+                                                    data-Microfono="{{$equipo->Microfono}}"
+                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-Volumenless="{{$equipo->Volumenless}}"
+                                                    data-Encendido="{{$equipo->Encendido}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-Auricular="{{$equipo->Auricular}}"
+                                                    data-Touch="{{$equipo->Touch}}"
+                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Enciende="{{$equipo->Enciende}}"
+                                                    data-Memoria="{{$equipo->Memoria}}"
+                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Golpes="{{$equipo->Golpes}}"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+
+                                                    >
+
+
+
+
+                                                    <svg width="2em" height="2em"
                                                         viewBox="0 0 16 16" class="bi bi-pencil-square"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -1178,7 +1238,19 @@
 
                                                     @endforeach
                                             </td>
-                                            <td> </td>
+                                            <td><a href="/imprimir/{{$equipo->id}}" target="_blank"
+                                                data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                data-id_servicio="{{$equipo->id_servicio}}"
+                                                data-precio="{{$equipo->precio}}"
+                                                data-id_sucursal="{{Auth::user()->id_sucursal}}"
+                                                data-id_user="{{$equipo->id_user}}"
+                                                data-id_cliente="{{$equipo->id_cliente}}"
+                                                data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                data-id_captura="{{$equipo->id_captura}}"
+                                                data-id_comentario="{{$equipo->id_comentario}}"
+                                                data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                data-status="{{$equipo->status}}"><i class="far fa-file-pdf text-warning h1"></i></a></td>
                                             @endif
                                         </tr>
                                         @endforeach
@@ -2125,6 +2197,8 @@
             <div class="modal-body ">
                 <div class="container-fluid">
                     <form action="/agregarequipo">
+                        @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
@@ -2171,12 +2245,120 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="col-4-md">
+                                    <label for="descripcion">Marca</label>
+                                    <select class="form-control" id="id_servicio" name="id_servicio" required>
+                                        @foreach ($Marca as $marca)
+                                        <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="descripcion">Descripcion</label><br>
+                                        <label for="descripcion">Descripcion <br>(En caso de tener Contraseña el equipo escribir aqui junto con los detalles por que motivo se ingresa el equipo)</label><br>
                                         <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
                                             rows="10"
                                             placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <div class="card text-left">
+                                            <div class="card-body">
+                                                <p class="card-title">Revision de componentes</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Camara" value="1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga" value="1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Señal" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="BotonHome" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Microfono" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenless" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Encendido" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auxiliar" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auricular" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Touch" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Bateria" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
+                                          </div>
+                                        </div>
+                                    </div>
+                                          <div class="card text-left">
+                                            <div class="card-body">
+                                                <p class="card-title">Detalles del equipo</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Enciende" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Memoria" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="SIM" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Golpes" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Bateria" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                                  </div>
+                                            </div>
+                                          </div>
                                     </div>
                                 </div>
                                 <div class="col-4-md">
@@ -2190,8 +2372,12 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">Anticipo</label>
-                                        <input class="form-control" type="text" name="pago" id="pago"
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <input class="form-control" type="number" name="pago" id="pago"
                                             placeholder="Anticipo">
+                                          </div>
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -2300,6 +2486,106 @@
                                         <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
                                             rows="10"
                                             placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <div class="card text-left">
+                                            <div class="card-body">
+                                                <p class="card-title">Revision de componentes</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Camara2" value="1">
+                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga2" value="1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Señal2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="BotonHome2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Microfono2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenless2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Encendido2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auxiliar2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auricular2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                          </div>
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Touch2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                          </div>
+
+                                          <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Bateria2" value="1" >
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
+                                          </div>
+                                        </div>
+                                    </div>
+                                          <div class="card text-left">
+                                            <div class="card-body">
+                                                <p class="card-title">Detalles del equipo</p>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Enciende2" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Memoria2" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="SIM2" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Golpes2" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                                  </div>
+                                                  <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2" value="1" >
+                                                    <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                                  </div>
+                                            </div>
+                                          </div>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -2721,10 +3007,10 @@
                         <option value="3">Tarjeta Debito/Credito (Paypal)</option>
                     </select>
                     <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
                     <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" disabled>
                     <input type="hidden" class="form-control" name="id_servicio4" id="id_servicio4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_sucursal4" id="id_sucursal4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_servicio4" id="serial4" value="" disabled>
+                    <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
 
                     <label for="status">Pago</label>
                     <input type="text" class="form-control" name="final4" id="final4" disabled>
@@ -2795,6 +3081,7 @@
 
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id4').val(id);
+
         $("#cambio_pago").attr("action", '/agregarpago/' + id);
         var id = $(e.relatedTarget).data().pago;
         anticipo=id;
@@ -2807,9 +3094,36 @@
         precio=id;
         temporal=precio-anticipo;
         total=precio;
+
         $(e.currentTarget).find('#pendiente4').val(temporal);
         $(e.currentTarget).find('#total').val(total);
 
+        var id = $(e.relatedTarget).data().id_cliente;
+        $(e.currentTarget).find('#id_cliente4').val(id);
+
+        var id = $(e.relatedTarget).data().id_servicio;
+        $(e.currentTarget).find('#id_servicio4').val(id);
+
+        var id = $(e.relatedTarget).data().serial;
+        $(e.currentTarget).find('#serial4').val(id);
+
+        var id = $(e.relatedTarget).data().imei;
+        $(e.currentTarget).find('#imei4').val(id);
+
+        var id = $(e.relatedTarget).data().pago;
+        $(e.currentTarget).find('#pago4').val(id);
+
+        var id = $(e.relatedTarget).data().descripcion;
+        $(e.currentTarget).find('#descripcion4').val(id);
+
+        var id = $(e.relatedTarget).data().fecha_recibido;
+        $(e.currentTarget).find('#fecha_recibido4').val(id);
+
+        var id = $(e.relatedTarget).data().fecha_entrega;
+        $(e.currentTarget).find('#fecha_entrega4').val(id);
+
+        var id = $(e.relatedTarget).data().status;
+        $(e.currentTarget).find('#status4').val(id);
    });
 </script>
 
@@ -3275,35 +3589,81 @@
         $(e.currentTarget).find('#fecha_recibido2').val(id);
         var id = $(e.relatedTarget).data().fecha_entrega;
         $(e.currentTarget).find('#fecha_entrega2').val(id);
+
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
 
+        var id = $(e.relatedTarget).data().Camara;
+        $(e.currentTarget).find('#Camara2').val(id);
+
+        var id = $(e.relatedTarget).data().Centro_Carga;
+        $(e.currentTarget).find('#Centro_Carga2').val(id);
+        var id = $(e.relatedTarget).data().Señal;
+        $(e.currentTarget).find('#Señal2').val(id);
+        var id = $(e.relatedTarget).data().LectorSD;
+        $(e.currentTarget).find('#LectorSD2').val(id);
+        var id = $(e.relatedTarget).data().AltaVoz;
+        $(e.currentTarget).find('#AltaVoz2').val(id);
+        var id = $(e.relatedTarget).data().BotonHome;
+        $(e.currentTarget).find('#BotonHome2').val(id);
+        var id = $(e.relatedTarget).data().Microfono;
+        $(e.currentTarget).find('#Microfono2').val(id);
+        var id = $(e.relatedTarget).data().Lector_SIM;
+        $(e.currentTarget).find('#Lector_SIM2').val(id);
+        var id = $(e.relatedTarget).data().Volumenplus;
+        $(e.currentTarget).find('#Volumenplus2').val(id);
+        var id = $(e.relatedTarget).data().Volumenless;
+        $(e.currentTarget).find('#Volumenless2').val(id);
+        var id = $(e.relatedTarget).data().Encendido;
+        $(e.currentTarget).find('#Encendido2').val(id);
+        var id = $(e.relatedTarget).data().LectorSD;
+        $(e.currentTarget).find('#LectorSD2').val(id);
+        var id = $(e.relatedTarget).data().Auricular;
+        $(e.currentTarget).find('#Auricular2').val(id);
+        var id = $(e.relatedTarget).data().Touch;
+        $(e.currentTarget).find('#Touch2').val(id);
+        var id = $(e.relatedTarget).data().Bateria;
+        $(e.currentTarget).find('#Bateria2').val(id);
+        var id = $(e.relatedTarget).data().Enciende;
+        $(e.currentTarget).find('#Enciende2').val(id);
+        var id = $(e.relatedTarget).data().Memoria;
+        $(e.currentTarget).find('#Memoria2').val(id);
+        var id = $(e.relatedTarget).data().SIM;
+        $(e.currentTarget).find('#SIM2').val(id);
+        var id = $(e.relatedTarget).data().Golpes;
+        $(e.currentTarget).find('#Golpes2').val(id);
+        var id = $(e.relatedTarget).data().Bateria;
+        $(e.currentTarget).find('#Tiene_Bateria2').val(id);
     });
 </script>
-
 <!-- Script Tabs -->
 <script>
     $(document).ready(function() {
-        function flash(e){
-  $('.flash')
-   .show()  //show the hidden div
-   .animate({opacity: 0.5}, 300)
-   .fadeOut(300)
-   .css({'opacity': 1});
-}
-
-$(document).ready(function() {
-  $('.flash').hide();
-  $(document).mouseup(function(e) { flash(e); });
-
-        $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-            localStorage.setItem('activeTab', $(e.target).attr('href'));
-        });
-        var activeTab = localStorage.getItem('activeTab');
-        if (activeTab) {
-            $('#myTab a[href="' + activeTab + '"]').tab('show');
+        function flash(e) {
+            $('.flash')
+                .show() //show the hidden div
+                .animate({
+                    opacity: 0.5
+                }, 300)
+                .fadeOut(300)
+                .css({
+                    'opacity': 1
+                });
         }
-    }); });
+        $(document).ready(function() {
+            $('.flash').hide();
+            $(document).mouseup(function(e) {
+                flash(e);
+            });
+            $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+            var activeTab = localStorage.getItem('activeTab');
+            if (activeTab) {
+                $('#myTab a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    });
 </script>
 <!-- Script Notificaciones -->
 @if(session('success'))
