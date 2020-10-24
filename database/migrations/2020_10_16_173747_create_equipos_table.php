@@ -42,7 +42,6 @@ class CreateEquiposTable extends Migration
             $table->string('Volumenless')->nullable();
             $table->string('Encendido')->nullable();
             $table->string('Auxiliar')->nullable();
-            $table->string('LectorSD')->nullable();
             $table->string('Auricular')->nullable();
             $table->string('Touch')->nullable();
             $table->string('Bateria')->nullable();

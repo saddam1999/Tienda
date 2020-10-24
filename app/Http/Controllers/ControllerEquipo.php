@@ -62,7 +62,6 @@ class ControllerEquipo extends Controller
         $equipo->Volumenplus = $request->get('Volumenplus');
         $equipo->Volumenless = $request->get('Volumenless');
         $equipo->Encendido = $request->get('Encendido');
-        $equipo->LectorSD = $request->get('LectorSD');
         $equipo->Auricular = $request->get('Auricular');
         $equipo->Touch = $request->get('Touch');
         $equipo->Bateria = $request->get('Bateria');
@@ -119,6 +118,26 @@ class ControllerEquipo extends Controller
        $equipo->fecha_recibido = $request->get('fecha_recibido2');
        $equipo->fecha_entrega = $request->get('fecha_entrega2');
        $equipo->status = $request->get('status2');
+       $equipo->Camara = $request->get('Camara2');
+       $equipo->Centro_Carga = $request->get('Centro_Carga2');
+       $equipo->Señal = $request->get('Señal2');
+       $equipo->LectorSD = $request->get('LectorSD2');
+       $equipo->AltaVoz = $request->get('AltaVoz2');
+       $equipo->BotonHome = $request->get('BotonHome2');
+       $equipo->Microfono = $request->get('Microfono2');
+       $equipo->Lector_SIM = $request->get('Lector_SIM2');
+       $equipo->Volumenplus = $request->get('Volumenplus2');
+       $equipo->Volumenless = $request->get('Volumenless2');
+       $equipo->Encendido = $request->get('Encendido2');
+       $equipo->Auricular = $request->get('Auricular2');
+       $equipo->Touch = $request->get('Touch2');
+       $equipo->Bateria = $request->get('Bateria2');
+       $equipo->Enciende = $request->get('Enciende2');
+       $equipo->Memoria = $request->get('Memoria2');
+       $equipo->SIM = $request->get('SIM2');
+       $equipo->Golpes = $request->get('Golpes2');
+       $equipo->Tiene_Bateria = $request->get('Tiene_Bateria2');
+
        $equipo->save();
         return back()->with('success', "Equipo Editado");
     }

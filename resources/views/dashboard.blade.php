@@ -189,7 +189,7 @@
             @endforeach
         </li>
             <div class="input-group-prepend bg-secondary">
-            <span class="input-group-text face text-secondary">Caja: $ {{$caja->corte}}</span>
+            <span class="input-group-text face text-secondary">Caja: $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif</span>
             </div>
             <div class="input-group-prepend bg-secondary">
                 @php $count=0; @endphp
@@ -1076,6 +1076,26 @@
                                             <td>
                                             <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
                                             data-id_servicio="{{$equipo->id_servicio}}"
+                                            data-Camara="{{$equipo->Camara}}"
+                                            data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                            data-Señal="{{$equipo->Señal}}"
+                                            data-LectorSD="{{$equipo->LectorSD}}"
+                                            data-AltaVoz="{{$equipo->AltaVoz}}"
+                                            data-BotonHome="{{$equipo->BotonHome}}"
+                                            data-Microfono="{{$equipo->Microfono}}"
+                                            data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                            data-Volumenplus="{{$equipo->Volumenplus}}"
+                                            data-Volumenless="{{$equipo->Volumenless}}"
+                                            data-Encendido="{{$equipo->Encendido}}"
+                                            data-Auricular="{{$equipo->Auricular}}"
+                                            data-Touch="{{$equipo->Touch}}"
+                                            data-Bateria="{{$equipo->Bateria}}"
+                                            data-Enciende="{{$equipo->Enciende}}"
+                                            data-Memoria="{{$equipo->Memoria}}"
+                                            data-SIM="{{$equipo->SIM}}"
+                                            data-Golpes="{{$equipo->Golpes}}"
+                                            data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+
                                             data-toggle="modal" data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
                                             @endif
                                             @endforeach
@@ -1104,9 +1124,29 @@
                                             </td>
                                             <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
                                                     data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
+                                                    data-Camara="{{$equipo->Camara}}"
+                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                    data-Señal="{{$equipo->Señal}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                    data-BotonHome="{{$equipo->BotonHome}}"
+                                                    data-Microfono="{{$equipo->Microfono}}"
+                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-Volumenless="{{$equipo->Volumenless}}"
+                                                    data-Encendido="{{$equipo->Encendido}}"
+                                                    data-Auricular="{{$equipo->Auricular}}"
+                                                    data-Touch="{{$equipo->Touch}}"
+                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Enciende="{{$equipo->Enciende}}"
+                                                    data-Memoria="{{$equipo->Memoria}}"
+                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Golpes="{{$equipo->Golpes}}"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
-                                                    Recibido
+                                                    Recibido {{$equipo->Camara}}
                                                     @elseif($equipo->status==1)
                                                     En Revision
                                                     @elseif($equipo->status==2)
@@ -1148,7 +1188,6 @@
                                                     data-Volumenplus="{{$equipo->Volumenplus}}"
                                                     data-Volumenless="{{$equipo->Volumenless}}"
                                                     data-Encendido="{{$equipo->Encendido}}"
-                                                    data-LectorSD="{{$equipo->LectorSD}}"
                                                     data-Auricular="{{$equipo->Auricular}}"
                                                     data-Touch="{{$equipo->Touch}}"
                                                     data-Bateria="{{$equipo->Bateria}}"
@@ -1250,7 +1289,8 @@
                                                 data-id_comentario="{{$equipo->id_comentario}}"
                                                 data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                 data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                data-status="{{$equipo->status}}"><i class="far fa-file-pdf text-warning h1"></i></a></td>
+                                                data-status="{{$equipo->status}}"
+                                                ><i class="far fa-file-pdf text-warning h1"></i></a></td>
                                             @endif
                                         </tr>
                                         @endforeach
@@ -1397,11 +1437,18 @@
                              <del><a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu pagina)</a><br></del>
                               @endif
 
-                              @if ($Settings->isEmpty())
-                              <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
-                              aria-selected="false">3.-Configurar Tu Negocio</a><br>
+                              @if($Marca->isEmpty())
+                              <a href="" class="nav-link" data-toggle="modal" data-target="#modal_agregarmarca"
+                                >3.-Agregar tu primera Marca Comercial</a><br>
                               @else
-                              <del><a class="text-secondary" disabled>3.-Configurar Tu Negocio</a><br></del>
+                              <del><a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br></del>
+                               @endif
+
+                              @if ($Settings->isEmpty())
+                              <a  class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
+                              aria-selected="false">4.-Configurar Tu Negocio</a><br>
+                              @else
+                              <del><a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br></del>
                                @endif
 
                             <hr>
@@ -2267,69 +2314,66 @@
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Camara" value="1">
+                                            <input class="form-check-input" type="checkbox" id="Camara" name="Camara" value="Camara">
                                             <label class="form-check-label" for="inlineCheckbox1">Camara</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Centro_Carga" value="1">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga" name="Centro_Carga" value="Centro_Carga">
                                             <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Señal" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Señal"  name="Señal"  value="Señal" >
                                             <label class="form-check-label" for="inlineCheckbox3">Señal</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="LectorSD" name="LectorSD"  value="LectorSD" >
                                             <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="AltaVoz" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz"  name="AltaVoz"  value="AltaVoz" >
                                             <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="BotonHome" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="BotonHome" name="BotonHome"  value="BotonHome" >
                                             <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Microfono" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Microfono" name="Microfono" value="Microfono" >
                                             <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Lector_SIM" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM" name="Lector_SIM" value="Lector_SIM" >
                                             <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus"  name="Volumenplus" value="Volumenplus" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenless" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenless" name="Volumenless" value="Volumenless" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Encendido" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Encendido" name="Encendido" value="Encendido" >
                                             <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auxiliar" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Auxiliar" name="Auxiliar"  value="Auxiliar" >
                                             <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
                                           </div>
+
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD" value="1" >
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auricular" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Auricular" name="Auricular" value="Auricular" >
                                             <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Touch" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Touch" name="Touch" value="Touch" >
                                             <label class="form-check-label" for="inlineCheckbox3">Touch</label>
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Bateria"  name="Bateria" value="Bateria" >
                                             <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
                                           </div>
                                         </div>
@@ -2338,23 +2382,23 @@
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Enciende" name="Enciende" value="Enciende" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Memoria" name="Memoria" value="Memoria" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="SIM" name="SIM" value="SIM" >
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Golpes"  name="Golpes" value="Golpes" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria" value="Bateria" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
                                                   </div>
                                             </div>
@@ -2435,6 +2479,8 @@
             <div class="modal-body ">
                 <div class="container-fluid">
                     <form name="editequipo" id="editequipo" action="/editequipo">
+                        @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
@@ -2494,69 +2540,65 @@
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Camara2" value="1">
+                                            <input class="form-check-input" type="checkbox" id="Camara2" name="Camara2" value="Camara">
                                             <label class="form-check-label" for="inlineCheckbox1">Camara</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Centro_Carga2" value="1">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga2" name="Centro_Carga2" value="Centro_Carga">
                                             <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Señal2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Señal2" name="Señal2" value="Señal" >
                                             <label class="form-check-label" for="inlineCheckbox3">Señal</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD2" value="1" >
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="AltaVoz2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz2" name="AltaVoz2" value="AltaVoz" >
                                             <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="BotonHome2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="BotonHome2" name="BotonHome2" value="BotonHome" >
                                             <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Microfono2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Microfono2"  name="Microfono2"  value="Microfono" >
                                             <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Lector_SIM2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM2" name="Lector_SIM2" value="Lector_SIM" >
                                             <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" name="Volumenplus2" value="Volumenplus" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenless2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenless2" name="Volumenless2" value="Volumenless" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Encendido2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Encendido2" name="Encendido2"  value="Encendido" >
                                             <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auxiliar2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Auxiliar2" name="Auxiliar2" value="Auxiliar" >
                                             <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="LectorSD2"  name="LectorSD2"  value="LectorSD" >
                                             <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auricular2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Auricular2" name="Auricular2" value="Auricular" >
                                             <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
                                           </div>
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Touch2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Touch2" name="Touch2"  value="Touch" >
                                             <label class="form-check-label" for="inlineCheckbox3">Touch</label>
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria2" value="1" >
+                                            <input class="form-check-input" type="checkbox" id="Bateria2" name="Bateria2" value="Bateria" >
                                             <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
                                           </div>
                                         </div>
@@ -2565,23 +2607,23 @@
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende2" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Enciende2" name="Enciende2" value="Enciende" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria2" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Memoria2"  name="Memoria2" value="Memoria" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM2" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="SIM2" name="SIM2"  value="SIM" >
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes2" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Golpes2" name="Golpes2" value="Golpes" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2" value="1" >
+                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2" name="Tiene_Bateria2" value="Tiene_Bateria" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
                                                   </div>
                                             </div>
@@ -3595,45 +3637,100 @@
 
         var id = $(e.relatedTarget).data().Camara;
         $(e.currentTarget).find('#Camara2').val(id);
-
+        if(id!=null){
+        document.getElementById("Camara2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Centro_Carga;
         $(e.currentTarget).find('#Centro_Carga2').val(id);
+        if(id!=null){
+        document.getElementById("Centro_Carga2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Señal;
         $(e.currentTarget).find('#Señal2').val(id);
+        if(id!=null){
+        document.getElementById("Señal2").checked = true;
+        }
         var id = $(e.relatedTarget).data().LectorSD;
         $(e.currentTarget).find('#LectorSD2').val(id);
+        if(id!=null){
+        document.getElementById("LectorSD2").checked = true;
+        }
         var id = $(e.relatedTarget).data().AltaVoz;
         $(e.currentTarget).find('#AltaVoz2').val(id);
+        if(id!=null){
+        document.getElementById("AltaVoz2").checked = true;
+        }
         var id = $(e.relatedTarget).data().BotonHome;
         $(e.currentTarget).find('#BotonHome2').val(id);
+        if(id!=null){
+        document.getElementById("BotonHome2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Microfono;
         $(e.currentTarget).find('#Microfono2').val(id);
+        if(id!=null){
+        document.getElementById("Microfono2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Lector_SIM;
         $(e.currentTarget).find('#Lector_SIM2').val(id);
+        if(id!=null){
+        document.getElementById("Lector_SIM2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Volumenplus;
         $(e.currentTarget).find('#Volumenplus2').val(id);
+        if(id!=null){
+        document.getElementById("Volumenplus2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Volumenless;
         $(e.currentTarget).find('#Volumenless2').val(id);
+        if(id!=null){
+        document.getElementById("Volumenless2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Encendido;
         $(e.currentTarget).find('#Encendido2').val(id);
-        var id = $(e.relatedTarget).data().LectorSD;
-        $(e.currentTarget).find('#LectorSD2').val(id);
+        if(id!=null){
+        document.getElementById("Encendido2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Auricular;
         $(e.currentTarget).find('#Auricular2').val(id);
+        if(id!=null){
+        document.getElementById("Auricular2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Touch;
         $(e.currentTarget).find('#Touch2').val(id);
+        if(id!=null){
+        document.getElementById("Touch2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Bateria;
         $(e.currentTarget).find('#Bateria2').val(id);
+        if(id!=null){
+        document.getElementById("Bateria2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Enciende;
         $(e.currentTarget).find('#Enciende2').val(id);
+        if(id!=null){
+        document.getElementById("Enciende2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Memoria;
         $(e.currentTarget).find('#Memoria2').val(id);
+        if(id!=null){
+        document.getElementById("Memoria2").checked = true;
+        }
         var id = $(e.relatedTarget).data().SIM;
         $(e.currentTarget).find('#SIM2').val(id);
+        if(id!=null){
+        document.getElementById("SIM2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Golpes;
         $(e.currentTarget).find('#Golpes2').val(id);
+        if(id!=null){
+        document.getElementById("Golpes2").checked = true;
+        }
         var id = $(e.relatedTarget).data().Bateria;
         $(e.currentTarget).find('#Tiene_Bateria2').val(id);
+        if(id!=null){
+        document.getElementById("Tiene_Bateria2").checked = true;
+        }
+
     });
 </script>
 <!-- Script Tabs -->
