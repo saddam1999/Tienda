@@ -51,7 +51,8 @@ class ControllerEquipo extends Controller
         $equipo->fecha_entrega = $request->get('fecha_entrega');
         $equipo->status = $request->get('status');
 
-        $equipo->Camara = $request->get('Camara');
+        $equipo->Tiene_Camara = $request->get('Tiene_Camara');
+
         $equipo->Centro_Carga = $request->get('Centro_Carga');
         $equipo->Señal = $request->get('Señal');
         $equipo->LectorSD = $request->get('LectorSD');
@@ -118,7 +119,7 @@ class ControllerEquipo extends Controller
        $equipo->fecha_recibido = $request->get('fecha_recibido2');
        $equipo->fecha_entrega = $request->get('fecha_entrega2');
        $equipo->status = $request->get('status2');
-       $equipo->Camara = $request->get('Camara2');
+       $equipo->Tiene_Camara = $request->get('Tiene_Camara2');
        $equipo->Centro_Carga = $request->get('Centro_Carga2');
        $equipo->Señal = $request->get('Señal2');
        $equipo->LectorSD = $request->get('LectorSD2');
@@ -137,7 +138,6 @@ class ControllerEquipo extends Controller
        $equipo->SIM = $request->get('SIM2');
        $equipo->Golpes = $request->get('Golpes2');
        $equipo->Tiene_Bateria = $request->get('Tiene_Bateria2');
-
        $equipo->save();
         return back()->with('success', "Equipo Editado");
     }

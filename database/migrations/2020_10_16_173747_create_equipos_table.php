@@ -30,7 +30,7 @@ class CreateEquiposTable extends Migration
             $table->date('fecha_entrega')->nullable();
             $table->string('status')->nullable();
 
-            $table->string('Camara')->nullable();
+            $table->string('Tiene_Camara')->nullable();
             $table->string('Centro_Carga')->nullable();
             $table->string('Señal')->nullable();
             $table->string('LectorSD')->nullable();

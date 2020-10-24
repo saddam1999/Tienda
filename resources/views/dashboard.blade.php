@@ -1076,25 +1076,6 @@
                                             <td>
                                             <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
                                             data-id_servicio="{{$equipo->id_servicio}}"
-                                            data-Camara="{{$equipo->Camara}}"
-                                            data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                                            data-Señal="{{$equipo->Señal}}"
-                                            data-LectorSD="{{$equipo->LectorSD}}"
-                                            data-AltaVoz="{{$equipo->AltaVoz}}"
-                                            data-BotonHome="{{$equipo->BotonHome}}"
-                                            data-Microfono="{{$equipo->Microfono}}"
-                                            data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                            data-Volumenplus="{{$equipo->Volumenplus}}"
-                                            data-Volumenless="{{$equipo->Volumenless}}"
-                                            data-Encendido="{{$equipo->Encendido}}"
-                                            data-Auricular="{{$equipo->Auricular}}"
-                                            data-Touch="{{$equipo->Touch}}"
-                                            data-Bateria="{{$equipo->Bateria}}"
-                                            data-Enciende="{{$equipo->Enciende}}"
-                                            data-Memoria="{{$equipo->Memoria}}"
-                                            data-SIM="{{$equipo->SIM}}"
-                                            data-Golpes="{{$equipo->Golpes}}"
-                                            data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
 
                                             data-toggle="modal" data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
                                             @endif
@@ -1124,29 +1105,10 @@
                                             </td>
                                             <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
                                                     data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
-                                                    data-Camara="{{$equipo->Camara}}"
-                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                                                    data-Señal="{{$equipo->Señal}}"
-                                                    data-LectorSD="{{$equipo->LectorSD}}"
-                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
-                                                    data-BotonHome="{{$equipo->BotonHome}}"
-                                                    data-Microfono="{{$equipo->Microfono}}"
-                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
-                                                    data-Volumenless="{{$equipo->Volumenless}}"
-                                                    data-Encendido="{{$equipo->Encendido}}"
-                                                    data-Auricular="{{$equipo->Auricular}}"
-                                                    data-Touch="{{$equipo->Touch}}"
-                                                    data-Bateria="{{$equipo->Bateria}}"
-                                                    data-Enciende="{{$equipo->Enciende}}"
-                                                    data-Memoria="{{$equipo->Memoria}}"
-                                                    data-SIM="{{$equipo->SIM}}"
-                                                    data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
 
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
-                                                    Recibido {{$equipo->Camara}}
+                                                    Recibido {{$equipo->Tiene_Camara}}
                                                     @elseif($equipo->status==1)
                                                     En Revision
                                                     @elseif($equipo->status==2)
@@ -1177,7 +1139,7 @@
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
                                                     data-status="{{$equipo->status}}"
-                                                    data-Camara="{{$equipo->Camara}}"
+                                                    data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
                                                     data-Centro_Carga="{{$equipo->Centro_Carga}}"
                                                     data-Señal="{{$equipo->Señal}}"
                                                     data-LectorSD="{{$equipo->LectorSD}}"
@@ -1195,14 +1157,7 @@
                                                     data-Memoria="{{$equipo->Memoria}}"
                                                     data-SIM="{{$equipo->SIM}}"
                                                     data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-
-                                                    >
-
-
-
-
-                                                    <svg width="2em" height="2em"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
                                                         viewBox="0 0 16 16" class="bi bi-pencil-square"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -2314,7 +2269,7 @@
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Camara" name="Camara" value="Camara">
+                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara" name="Tiene_Camara" value="Tiene_Camara">
                                             <label class="form-check-label" for="inlineCheckbox1">Camara</label>
                                           </div>
                                           <div class="form-check form-check-inline">
@@ -2540,7 +2495,7 @@
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Camara2" name="Camara2" value="Camara">
+                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara2" name="Tiene_Camara2" value="Tiene_Camara">
                                             <label class="form-check-label" for="inlineCheckbox1">Camara</label>
                                           </div>
                                           <div class="form-check form-check-inline">
@@ -3635,10 +3590,11 @@
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
 
-        var id = $(e.relatedTarget).data().Camara;
-        $(e.currentTarget).find('#Camara2').val(id);
+        var id = $(e.relatedTarget).data().Tiene_Camara;
+        $(e.currentTarget).find('#Tiene_Camara2').val(id);
+        alert(id);
         if(id!=null){
-        document.getElementById("Camara2").checked = true;
+        document.getElementById("Tiene_Camara2").checked = true;
         }
         var id = $(e.relatedTarget).data().Centro_Carga;
         $(e.currentTarget).find('#Centro_Carga2').val(id);
