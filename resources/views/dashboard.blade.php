@@ -151,7 +151,7 @@
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-                </svg>Ventas
+                </svg>Reportes
             </a>
         </li>
         <li class="nav-item">
@@ -898,7 +898,7 @@
                                                                 <input class="form-control" type="url"
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif"
                                                                     name="setting_url" id="setting_url"
-                                                                    value="https:// {{$_SERVER['HTTP_HOST']}}" required>
+                                                                    value="https:// @php echo $_SERVER['HTTP_HOST']; @endphp" >
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
@@ -1367,7 +1367,6 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
-
                             <div class="card-body">
                                 <h4 class="card-title">Ventas</h4>
                                 <table class="table table-striped table-inverse table-responsive">
@@ -1473,6 +1472,72 @@
                     </div>
                 </div>
             </div>
+
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <h4 class="card-title">Movimiento Caja</h4>
+                                <table class="table table-striped table-inverse table-responsive">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Cajero</th>
+                                            <th>Comentario</th>
+                                            <th>Monto</th>
+                                            <th>Movimiento</th>
+                                            <th>Fecha</th>
+                                            <th><button type="button" data-toggle="modal"
+                                                    data-target="#modalagregarservicio" data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-plus" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                        </svg></center>
+                                                </button></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($MovimientoCaja as $MovimientoCaja)
+                                        <tr>
+                                        <td>{{$MovimientoCaja->id}}</td>
+                                        @foreach ($Usuario as $usuario)
+                                        @if($usuario->id==$MovimientoCaja->id_user)
+                                        <td>{{$usuario->name}}</td>
+                                        @endif
+                                        @endforeach
+                                      
+                                        <td>{{$MovimientoCaja->comentario}}</td>
+                                        @if($MovimientoCaja->status=='deposito')
+                                        <td>{{$MovimientoCaja->monto}}</td>
+                                        @else
+                                        <td class="text-danger">
+                                        <del>{{$MovimientoCaja->monto}}</del></td>
+                                        @endif
+                                        @if($MovimientoCaja->status=='deposito')
+                                        <td class="text-success">Deposito</td>
+                                        @else
+                                        <td class="text-warning">Retiro</td>
+                                        @endif
+                                        <td>{{$MovimientoCaja->created_at}}</td>
+                                        <td></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
 
         </div>
 </x-app-layout>

@@ -25,10 +25,10 @@ class ControllerPago_Equipo extends Controller
     public function caja(Request $request)
     {
 
-        $pagocaja = new \App\Models\Pago_Equipo();
+        $pagocaja = new \App\Models\MovimientoCaja();
         $pagocaja->id_user = $request->get('id_user6');
-        $pagocaja->id_cliente = $request->get('id_cliente6');
-        $pagocaja->id_cliente = $request->get('id_cliente6');
+       // $pagocaja->id_cliente = $request->get('id_cliente6');
+       // $pagocaja->id_cliente = $request->get('id_cliente6');
         $pagocaja->id_equipo = $request->get('id_equipo6');
         $pagocaja->id_sucursal = $request->get('id_sucursal6');
         $pagocaja->id_caja = $request->get('id_caja6');
@@ -36,7 +36,7 @@ class ControllerPago_Equipo extends Controller
         $pagocaja->monto = $request->get('monto6');
         $pagocaja->pagado = $request->get('pagado6');
         $pagocaja->adelanto = $request->get('adelanto6');
-        $pagocaja->comentario = $request->get('comentario6');
+        $pagocaja->comentario = $request->get('descripcion6');
         $pagocaja->status = $request->get('status6');
 
         $caja = \App\Models\Caja::find($pagocaja->id_caja);
@@ -53,13 +53,17 @@ class ControllerPago_Equipo extends Controller
                 $caja->save();
                 return back()->with('success', "Depositado: $" . $pagocaja->monto . " Caja: $" . $caja->corte);
             } else {
-                $pagocaja->id_servicio = "Retiro en Caja";
+
                 $suma = $caja->corte - $pagocaja->monto;
                 $caja->corte = $suma;
-                $pagocaja->save();
-                $caja->save();
-
-                return back()->with('success', "Retirado: $" . $pagocaja->monto . " Caja: $" . $caja->corte);
+                if ($suma >= 0) {
+                    $pagocaja->id_servicio = "Retiro en Caja";
+                    $pagocaja->save();
+                    $caja->save();
+                    return back()->with('success', "Retirado: $" . $pagocaja->monto . " Caja: $" . $caja->corte);
+                } else {
+                    return back()->with('success', "No puedes retirar: $" . $pagocaja->monto . " Con saldo negativo te faltan: $" . $caja->corte);
+                }
             }
         }
     }
