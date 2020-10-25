@@ -190,7 +190,7 @@
             @endforeach
         </li>
             <div class="input-group-prepend bg-success" style="border-radius:12%;">
-            <span class="input-group-text face text-secondary">Caja: $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif</span>
+          <span class="input-group-text face text-secondary"><a href="" data-toggle="modal" data-target="#modal_caja">Caja: $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a>  </span>
             </div>
             <div class="input-group-prepend bg-warning"  style="border-radius:12%;">
                 @php $count=0; @endphp
@@ -1449,11 +1449,19 @@
 
                                             <td class="text-warning">{{$Pago_Equipo->monto}}</td>
                                             <td>{{$Pago_Equipo->created_at}}</td>
-                                            @if($servicio->precio==$Pago_Equipo->monto)
+                                            @if($Pago_Equipo->status=='deposito'||$Pago_Equipo->status=='retiro')
+                                            @if($Pago_Equipo->status=='deposito')
+                                            <td class="text-success">Deposito</td>
+                                                @elseif($Pago_Equipo->status=='retiro')
+                                            <td class="text-warning">Retiro</td>
+                                                @endif
+                                            @else
+                                            @if($servicio->precio==$Pago_Equipo->monto&&$servicio->precio>=0)
                                             <td class="text-success">Pagado</td>
                                                 @else
                                             <td class="text-warning">Pendiente</td>
                                                 @endif
+                                            @endif
                                             <td></td>
                                         </tr>
                                         @endforeach
@@ -2543,6 +2551,7 @@
                         @method('POST')
                         <div class="row">
                             <div class="container">
+
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Cliente</label>
                                     <select class="form-control" id="id_cliente2" name="id_cliente2" required>
@@ -3166,6 +3175,61 @@
     </div>
 </div>
 
+
+<!-- Modal Caja -->
+<div class="modal fade" id="modal_caja" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+         <h5 class="modal-title text-white">Caja: @foreach($Sucursal as $suc)@if(Auth::user()->id_sucursal ==
+             $suc->id) {{$suc->nombre}}@endif @endforeach<br> Cajero: {{Auth::user()->name}}</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+     </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarpagocaja">
+                        @csrf
+                        @method('POST')
+                    <div class="col-6-md">
+                        <label for="monto">Monto</label>
+                        <input class="form-control" type="number" name="monto6" id="monto6" placeholder="0.0">
+                    </div>
+                    <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
+                    <input type="hidden" name="id_cliente6" id="id_cliente6" value="0">
+                    <input type="hidden" name="id_equipo6" id="id_equipo6" value="0">
+               @foreach($Sucursal as $sucursal)
+               @foreach($Caja as $caja)
+               @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+               <input type="hidden" name="id_caja6" id="id_caja6" value="{{$caja->id}}">
+               @endif
+               @endforeach
+              @endforeach
+                    <div class="col-6-md">
+                        <label for="motivo">Motivo</label>
+                        <textarea name="descripcion6" class="form-control" id="descripcion6" cols="10"
+                            rows="10"></textarea>
+                    </div>
+
+                    <div class="col-6-md">
+                        <select class="form-control mt-2" name="status6" id="status6">
+                            <option value="deposito">Deposito</option>
+                            <option value="retiro">Retiro</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+
 <!-- Scripts Status-->
 <script>
     $('#modal_status').on('show.bs.modal', function(e) {
@@ -3686,6 +3750,7 @@
         $(e.currentTarget).find('#imei2').val(id);
         var id = $(e.relatedTarget).data().id_captura;
         $(e.currentTarget).find('#id_captura2').val(id);
+
         var id = $(e.relatedTarget).data().id_comentario;
         $(e.currentTarget).find('#descripcion2').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;

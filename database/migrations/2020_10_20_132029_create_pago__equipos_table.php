@@ -17,11 +17,11 @@ class CreatePagoEquiposTable extends Migration
             $table->id();
             $table->integer('id_user')->nullable();
             $table->integer('id_cliente')->nullable();
-            $table->string('id_equipo')->nullable();
-            $table->string('id_servicio')->nullable();
-            $table->string('id_sucursal')->nullable();
-            $table->string('id_caja')->nullable();
-            $table->string('id_corte')->nullable();
+            $table->integer('id_equipo')->nullable();
+            $table->integer('id_servicio')->nullable();
+            $table->integer('id_sucursal')->nullable();
+            $table->integer('id_caja')->nullable();
+            $table->integer('id_corte')->nullable();
             $table->float('monto')->nullable();//adelanto
             $table->float('pagado')->nullable();//pagado
             $table->float('adelanto')->nullable();

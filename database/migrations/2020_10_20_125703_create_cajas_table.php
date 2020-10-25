@@ -20,7 +20,7 @@ class CreateCajasTable extends Migration
             $table->integer('id_corte')->nullable();
             $table->float('corte')->nullable();
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

@@ -90,8 +90,10 @@ Route::get('/deletecaja/{id}', [ControllerCaja::class, 'destroy']);
 Route::get('/agregarpago', [ControllerPago_Equipo::class, 'store']);
 Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
-//imprimirController
+//imprimirController Ticket
 Route::get('/imprimir/{id}', [imprimirController::class, 'update']);
+//ControllerPago Caja
+Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
