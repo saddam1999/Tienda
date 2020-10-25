@@ -8,6 +8,7 @@
         </h2>
     </x-slot>
     @php date_default_timezone_set('UTC');
+    $contador=0;
     @endphp
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -188,26 +189,27 @@
             @foreach ($Caja as $caja)
             @endforeach
         </li>
-            <div class="input-group-prepend bg-secondary">
+            <div class="input-group-prepend bg-success" style="border-radius:12%;">
             <span class="input-group-text face text-secondary">Caja: $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif</span>
             </div>
-            <div class="input-group-prepend bg-secondary">
+            <div class="input-group-prepend bg-warning"  style="border-radius:12%;">
                 @php $count=0; @endphp
                 @foreach ($Equipo as $equipo)
                 @php
-                $date1 = new DateTime("now");
-                $date2 = new DateTime($equipo->fecha_entrega);
-                if($equipo->fecha_recibido <= $equipo->fecha_entrega)
+
+                if($equipo->status != 2 && $equipo->status != 6)
                 {
                 $count++;
                 }
                 @endphp
                 @endforeach
-                     <span class="input-group-text face text-secondary">Ordenes: {{$count}}</span>
-
+                    <span class="input-group-text face text-secondary">Pendientes: {{$count}}</span>
                   </div>
+                  <div class="input-group-prepend bg-primary"  style="border-radius:12%;">
+                  <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
+                    </div>
     </ul>
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content bg-black" id="myTabContent">
         <div class="row">
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
@@ -1076,7 +1078,25 @@
                                             <td>
                                             <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
                                             data-id_servicio="{{$equipo->id_servicio}}"
-
+                                            data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                            data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                            data-Señal="{{$equipo->Señal}}"
+                                            data-LectorSD="{{$equipo->LectorSD}}"
+                                            data-AltaVoz="{{$equipo->AltaVoz}}"
+                                            data-BotonHome="{{$equipo->BotonHome}}"
+                                            data-Microfono="{{$equipo->Microfono}}"
+                                            data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                            data-Volumenplus="{{$equipo->Volumenplus}}"
+                                            data-Volumenless="{{$equipo->Volumenless}}"
+                                            data-Encendido="{{$equipo->Encendido}}"
+                                            data-Auricular="{{$equipo->Auricular}}"
+                                            data-Touch="{{$equipo->Touch}}"
+                                            data-Bateria="{{$equipo->Bateria}}"
+                                            data-Enciende="{{$equipo->Enciende}}"
+                                            data-Memoria="{{$equipo->Memoria}}"
+                                            data-SIM="{{$equipo->SIM}}"
+                                            data-Golpes="{{$equipo->Golpes}}"
+                                            data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
                                             data-toggle="modal" data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
                                             @endif
                                             @endforeach
@@ -1088,6 +1108,7 @@
                                                 @endphp
 
                                                 @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
+                                                @php $contador++; @endphp
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text text-danger" id="basic-addon1"><svg
                                                             width="1em" height="1em" viewBox="0 0 16 16"
@@ -1103,12 +1124,13 @@
                                                 <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
                                                 @endif
                                             </td>
-                                            <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
-                                                    data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
-
+                                            <td><a href="" class="btn btn-dark"
+                                                    data-id="{{$equipo->id}}"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-pago="{{$equipo->pago}}"
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
-                                                    Recibido {{$equipo->Tiene_Camara}}
+                                                    Recibido
                                                     @elseif($equipo->status==1)
                                                     En Revision
                                                     @elseif($equipo->status==2)
@@ -1127,11 +1149,56 @@
                                             @if($equipo->status!=2 && $equipo->status !=6)
                                             <td>
                                                 <a href="" data-toggle="modal" data-target="#modaledittaller"
-                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                    data-id="{{$equipo->id}}"
+                                                    data-pago="{{$equipo->pago}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-tiene_camara="{{$equipo->Tiene_Camara}}"
+                                                    data-centro_carga="{{$equipo->Centro_Carga}}"
+                                                    data-señal="{{$equipo->Señal}}"
+                                                    data-lectorsd="{{$equipo->LectorSD}}"
+                                                    data-altavoz="{{$equipo->AltaVoz}}"
+                                                    data-botonhome="{{$equipo->BotonHome}}"
+                                                    data-microfono="{{$equipo->Microfono}}"
+                                                    data-lector_sim="{{$equipo->Lector_SIM}}"
+                                                    data-volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-volumenless="{{$equipo->Volumenless}}"
+                                                    data-encendido="{{$equipo->Encendido}}"
+                                                    data-auricular="{{$equipo->Auricular}}"
+                                                    data-touch="{{$equipo->Touch}}"
+                                                    data-bateria="{{$equipo->Bateria}}"
+                                                    data-enciende="{{$equipo->Enciende}}"
+                                                    data-memoria="{{$equipo->Memoria}}"
+                                                    data-sim="{{$equipo->SIM}}"
+                                                    data-golpes="{{$equipo->Golpes}}"
+                                                    data-tiene_bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg></a>
+                                                <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em"
+                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg></a>
+                                                <a href="" data-toggle="modal" data-target="#modal_foto"
+                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-servicio="{{$equipo->id_servicio}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
@@ -1157,32 +1224,9 @@
                                                     data-Memoria="{{$equipo->Memoria}}"
                                                     data-SIM="{{$equipo->SIM}}"
                                                     data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
-                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg></a>
-                                                <a href="/deleteequipo/{{$equipo->id}}"><svg width="2em" height="2em"
-                                                        viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                    </svg></a>
-                                                <a href="" data-toggle="modal" data-target="#modal_foto"
-                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
-                                                    data-servicio="{{$equipo->id_servicio}}"
-                                                    data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                    data-id_captura="{{$equipo->id_captura}}"
-                                                    data-id_comentario="{{$equipo->id_comentario}}"
-                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+                                                    ><svg width="2em" height="2em"
+
                                                         viewBox="0 0 16 16" class="bi bi-camera text-success"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
@@ -1199,7 +1243,27 @@
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                    data-Señal="{{$equipo->Señal}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                    data-BotonHome="{{$equipo->BotonHome}}"
+                                                    data-Microfono="{{$equipo->Microfono}}"
+                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-Volumenless="{{$equipo->Volumenless}}"
+                                                    data-Encendido="{{$equipo->Encendido}}"
+                                                    data-Auricular="{{$equipo->Auricular}}"
+                                                    data-Touch="{{$equipo->Touch}}"
+                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Enciende="{{$equipo->Enciende}}"
+                                                    data-Memoria="{{$equipo->Memoria}}"
+                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Golpes="{{$equipo->Golpes}}"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+                                                    ><svg width="2em" height="2em"
                                                         viewBox="0 0 16 16" class="bi bi-film text-warning"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
@@ -1220,7 +1284,27 @@
                                                     data-pago="{{$equipo->pago}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"><svg width="2em" height="2em"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                    data-Señal="{{$equipo->Señal}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                    data-BotonHome="{{$equipo->BotonHome}}"
+                                                    data-Microfono="{{$equipo->Microfono}}"
+                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-Volumenless="{{$equipo->Volumenless}}"
+                                                    data-Encendido="{{$equipo->Encendido}}"
+                                                    data-Auricular="{{$equipo->Auricular}}"
+                                                    data-Touch="{{$equipo->Touch}}"
+                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Enciende="{{$equipo->Enciende}}"
+                                                    data-Memoria="{{$equipo->Memoria}}"
+                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Golpes="{{$equipo->Golpes}}"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+                                                    ><svg width="2em" height="2em"
                                                         viewBox="0 0 16 16" class="bi bi-cash text-info"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
@@ -1245,7 +1329,28 @@
                                                 data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                 data-fecha_entrega="{{$equipo->fecha_entrega}}"
                                                 data-status="{{$equipo->status}}"
-                                                ><i class="far fa-file-pdf text-warning h1"></i></a></td>
+                                                data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                                data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                data-Señal="{{$equipo->Señal}}"
+                                                data-LectorSD="{{$equipo->LectorSD}}"
+                                                data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                data-BotonHome="{{$equipo->BotonHome}}"
+                                                data-Microfono="{{$equipo->Microfono}}"
+                                                data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                data-Volumenless="{{$equipo->Volumenless}}"
+                                                data-Encendido="{{$equipo->Encendido}}"
+                                                data-Auricular="{{$equipo->Auricular}}"
+                                                data-Touch="{{$equipo->Touch}}"
+                                                data-Bateria="{{$equipo->Bateria}}"
+                                                data-Enciende="{{$equipo->Enciende}}"
+                                                data-Memoria="{{$equipo->Memoria}}"
+                                                data-SIM="{{$equipo->SIM}}"
+                                                data-Golpes="{{$equipo->Golpes}}"
+                                                data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
+                                                ><i class="far fa-file-pdf text-warning h1"></i>Ticket</a>
+
+                                            </td>
                                             @endif
                                         </tr>
                                         @endforeach
@@ -1366,7 +1471,7 @@
 
 
 <!-- Modal Bienvenida-->
-<div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" >
     <div class="modal-dialog" role="document">
         <div class="modal-content">
                 <div class="modal-header bg-primary">
@@ -2302,7 +2407,7 @@
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus"  name="Volumenplus" value="Volumenplus" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus"  name="Volumenplus" value="volumenplus" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
                                           </div>
                                           <div class="form-check form-check-inline">
@@ -2312,10 +2417,6 @@
                                           <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="Encendido" name="Encendido" value="Encendido" >
                                             <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auxiliar" name="Auxiliar"  value="Auxiliar" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
                                           </div>
 
                                           <div class="form-check form-check-inline">
@@ -2333,6 +2434,10 @@
                                           </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                                    <div class="col-6-md">
+                                        <div class="form-group">
                                           <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
@@ -2349,11 +2454,11 @@
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes"  name="Golpes" value="Golpes" >
+                                                    <input class="form-check-input" type="checkbox" id="Golpes"  name="Golpes" value="golpes" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
                                                   </div>
                                                   <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria" value="Bateria" >
+                                                    <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria" value="Tiene_Bateria" >
                                                     <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
                                                   </div>
                                             </div>
@@ -2524,7 +2629,7 @@
                                           </div>
 
                                           <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" name="Volumenplus2" value="Volumenplus" >
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" name="Volumenplus2" value="volumenplus" >
                                             <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
                                           </div>
                                           <div class="form-check form-check-inline">
@@ -2535,10 +2640,7 @@
                                             <input class="form-check-input" type="checkbox" id="Encendido2" name="Encendido2"  value="Encendido" >
                                             <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
                                           </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auxiliar2" name="Auxiliar2" value="Auxiliar" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Auxiliar</label>
-                                          </div>
+
                                           <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="LectorSD2"  name="LectorSD2"  value="LectorSD" >
                                             <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
@@ -2558,6 +2660,10 @@
                                           </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                                    <div class="col-6-md">
+                                        <div class="form-group">
                                           <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
@@ -2601,7 +2707,7 @@
                                 </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2" required>
+                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2" value="{{Auth::user()->id_sucursal}}" required>
                                         @foreach ($Sucursal as $sucursal)
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
                                         @endforeach
@@ -2888,7 +2994,7 @@
 </div>
 </div>
 <!-- Modal Notificacion -->
-<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" style="border-radius:12%;"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -3590,102 +3696,108 @@
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
 
-        var id = $(e.relatedTarget).data().Tiene_Camara;
-        $(e.currentTarget).find('#Tiene_Camara2').val(id);
-        alert(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().tiene_camara;
+        $(e.currentTarget).find('Tiene_Camara2').val(id);
+        if(id=='Tiene_Camara'){
         document.getElementById("Tiene_Camara2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Centro_Carga;
-        $(e.currentTarget).find('#Centro_Carga2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().centro_carga;
+        $(e.currentTarget).find('Centro_Carga2').val(id);
+        if(id=='Centro_Carga'){
         document.getElementById("Centro_Carga2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Señal;
-        $(e.currentTarget).find('#Señal2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().señal;
+        $(e.currentTarget).find('Señal2').val(id);
+        if(id=='Señal'){
         document.getElementById("Señal2").checked = true;
         }
-        var id = $(e.relatedTarget).data().LectorSD;
-        $(e.currentTarget).find('#LectorSD2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().lectorsd;
+        $(e.currentTarget).find('LectorSD2').val(id);
+        if(id=='LectorSD'){
         document.getElementById("LectorSD2").checked = true;
         }
-        var id = $(e.relatedTarget).data().AltaVoz;
-        $(e.currentTarget).find('#AltaVoz2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().altavoz;
+        $(e.currentTarget).find('AltaVoz2').val(id);
+        if(id=='AltaVoz'){
         document.getElementById("AltaVoz2").checked = true;
         }
-        var id = $(e.relatedTarget).data().BotonHome;
-        $(e.currentTarget).find('#BotonHome2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().botonhome;
+        $(e.currentTarget).find('BotonHome2').val(id);
+        if(id=='BotonHome'){
         document.getElementById("BotonHome2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Microfono;
-        $(e.currentTarget).find('#Microfono2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().microfono;
+        $(e.currentTarget).find('Microfono2').val(id);
+        if(id=='Microfono'){
         document.getElementById("Microfono2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Lector_SIM;
-        $(e.currentTarget).find('#Lector_SIM2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().lector_sim;
+        $(e.currentTarget).find('Lector_SIM2').val(id);
+        if(id=='Lector_SIM'){
         document.getElementById("Lector_SIM2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Volumenplus;
-        $(e.currentTarget).find('#Volumenplus2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().volumenplus;
+
+        $(e.currentTarget).find('Volumenplus2').val(id);
+        if(id=='volumenplus'){
         document.getElementById("Volumenplus2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Volumenless;
-        $(e.currentTarget).find('#Volumenless2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().volumenless;
+        $(e.currentTarget).find('Volumenless2').val(id);
+        if(id=='Volumenless'){
         document.getElementById("Volumenless2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Encendido;
-        $(e.currentTarget).find('#Encendido2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().encendido;
+        $(e.currentTarget).find('Encendido2').val(id);
+        if(id=='Encendido'){
         document.getElementById("Encendido2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Auricular;
-        $(e.currentTarget).find('#Auricular2').val(id);
-        if(id!=null){
+
+        var id = $(e.relatedTarget).data().auricular;
+        $(e.currentTarget).find('Auricular2').val(id);
+        if(id=='Auricular'){
         document.getElementById("Auricular2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Touch;
-        $(e.currentTarget).find('#Touch2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().touch;
+        $(e.currentTarget).find('Touch2').val(id);
+        if(id=='Touch'){
         document.getElementById("Touch2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Bateria;
-        $(e.currentTarget).find('#Bateria2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().bateria;
+        $(e.currentTarget).find('Bateria2').val(id);
+        if(id=='Bateria'){
         document.getElementById("Bateria2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Enciende;
-        $(e.currentTarget).find('#Enciende2').val(id);
-        if(id!=null){
+        var id = $(e.relatedTarget).data().enciende;
+        $(e.currentTarget).find('Enciende2').val(id);
+        if(id=='Enciende'){
         document.getElementById("Enciende2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Memoria;
-        $(e.currentTarget).find('#Memoria2').val(id);
-        if(id!=null){
+
+        var id = $(e.relatedTarget).data().memoria;
+        $(e.currentTarget).find('Memoria2').val(id);
+        if(id=='Memoria'){
         document.getElementById("Memoria2").checked = true;
         }
-        var id = $(e.relatedTarget).data().SIM;
-        $(e.currentTarget).find('#SIM2').val(id);
-        if(id!=null){
+
+        var id = $(e.relatedTarget).data().sim;
+        $(e.currentTarget).find('SIM2').val(id);
+        if(id=='SIM'){
         document.getElementById("SIM2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Golpes;
-        $(e.currentTarget).find('#Golpes2').val(id);
-        if(id!=null){
+
+        var id = $(e.relatedTarget).data().golpes;
+        $(e.currentTarget).find('Golpes2').val(id);
+        if(id=="Golpes"){
         document.getElementById("Golpes2").checked = true;
         }
-        var id = $(e.relatedTarget).data().Bateria;
-        $(e.currentTarget).find('#Tiene_Bateria2').val(id);
-        if(id!=null){
+
+        var id = $(e.relatedTarget).data().tiene_bateria;
+        $(e.currentTarget).find('Tiene_Bateria2').val(id);
+        if(id=="Tiene_Bateria"){
         document.getElementById("Tiene_Bateria2").checked = true;
         }
+
 
     });
 </script>
