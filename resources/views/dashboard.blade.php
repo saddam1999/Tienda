@@ -1484,21 +1484,18 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Cajero</th>
+                                            <th>Sucursal</th>
                                             <th>Comentario</th>
                                             <th>Monto</th>
                                             <th>Movimiento</th>
                                             <th>Fecha</th>
                                             <th><button type="button" data-toggle="modal"
-                                                    data-target="#modalagregarservicio" data-backdrop="static"
-                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
-                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                            class="bi bi-clipboard-plus" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                                                            <path fill-rule="evenodd"
-                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-                                                        </svg></center>
+                                                    data-target="#modal_caja" 
+                                                    data-backdrop="static"
+                                                    data-keyboard="false" class="btn btn-warning btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wallet2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                                                      </svg></center>
                                                 </button></th>
                                         </tr>
                                     </thead>
@@ -1512,6 +1509,12 @@
                                         @endif
                                         @endforeach
                                       
+                                        @foreach ($Sucursal as $sucursal)
+                                        @if($MovimientoCaja->id_sucursal==$sucursal->id)
+                                        <td>{{$sucursal->nombre}}</td>
+                                        @endif
+                                        @endforeach
+
                                         <td>{{$MovimientoCaja->comentario}}</td>
                                         @if($MovimientoCaja->status=='deposito')
                                         <td>{{$MovimientoCaja->monto}}</td>
@@ -3262,6 +3265,7 @@
                         <input class="form-control" type="number" name="monto6" id="monto6" placeholder="0.0">
                     </div>
                     <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
+                    <input type="hidden" name="id_sucursal6" id="id_sucursal6" value="{{Auth::user()->id_sucursal}}">
                     <input type="hidden" name="id_cliente6" id="id_cliente6" value="0">
                     <input type="hidden" name="id_equipo6" id="id_equipo6" value="0">
                @foreach($Sucursal as $sucursal)
