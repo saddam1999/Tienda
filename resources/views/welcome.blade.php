@@ -188,9 +188,7 @@
     <div id="content mt-2">
 
         <nav class="navbar navbar-expand-lg navbar-light navbar-default fixed-top" id="navbarmanual"
-      style="border: solid .05em orange;
-"
-        >
+      style="border: solid .05em orange;">
             <a class="navbar-brand" href="/">
                 <img style="border-radius:70%;" src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="50"
                     height="50" class="d-inline-block align-top" alt="">
@@ -281,33 +279,33 @@
 
         <div class="carousel-inner" >
             <div class="carousel-item active">
-                <img class="bd-placeholder-img"    src="  @if($Settings->isEmpty()) @else{{$promocion->bannera}} @endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img"    src="  @if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif" width="100%" height="100%" alt="">
 
-                <div class="container">
+                <div class="contaier">
                     <div class="carousel-caption text-left">
-                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h1>
-                        <p>De  @if($Settings->isEmpty()) @else @if($Promocion->isEmpty()) {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
+                        <h1>  @if($Promocion->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h1>
+                        <p>De  @if($Promocion->isEmpty()) @else @if($Promocion->isEmpty()) {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                     </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <img class="bd-placeholder-img "  src="  @if($Settings->isEmpty()) @else{{$promocion->bannerb}} @endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img "  src="  @if($Promocion->isEmpty()) @else{{$promocion->bannerb}} @endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h1>
-                        <p>De @if($Settings->isEmpty()) @else{{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
+                        <h1>  @if($Promocion->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h1>
+                        <p>De @if($Promocion->isEmpty()) @else{{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="bd-placeholder-img "  src="@if($Settings->isEmpty()) @else{{$promocion->bannerc}}@endif" width="100%" height="100%" alt="">
+                <img class="bd-placeholder-img "  src="@if($Promocion->isEmpty()) @else{{$promocion->bannerc}}@endif" width="100%" height="100%" alt="">
 
                 <div class="container">
                     <div class="carousel-caption text-right">
-                        <h1>  @if($Settings->isEmpty()) @else{{$promocion->texto_bannerc}}@endif</h1>
-                        <p>De  @if($Settings->isEmpty()) @else {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
+                        <h1>  @if($Promocion->isEmpty()) @else{{$promocion->texto_bannerc}}@endif</h1>
+                        <p>De  @if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif</p>
                     </div>
                 </div>
             </div>
@@ -478,8 +476,8 @@
               @endif
               @endif
             <div class="col-md-7">
-                <h2 class="featurette-heading">  @if($Settings->isEmpty()) @else{{$promocion->titulo}}@endif </h2>
-                <p class="lead">  @if($Settings->isEmpty()) @else{{$promocion->titulo_banner_principal}} @endif</p>
+                <h2 class="featurette-heading">  @if($Promocion->isEmpty()) @else{{$promocion->titulo}}@endif </h2>
+                <p class="lead">  @if($Promocion->isEmpty()) @else{{$promocion->titulo_banner_principal}} @endif</p>
             </div>
 
             <div class="col-md-5">

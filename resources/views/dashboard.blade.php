@@ -13,6 +13,8 @@
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
@@ -79,7 +81,7 @@
             }
         }
     </style>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <ul class="nav nav-tabs bg-ligth " id="myTab" role="tablist">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
@@ -186,12 +188,17 @@
                     <path fill-rule="evenodd" d="M6 15a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
                 </svg>Opciones
             </a>
-            @foreach ($Caja as $caja)
-            @endforeach
         </li>
+        @foreach ($Caja as $caja)
+        @if(Auth::user()->id_sucursal==$caja->id_sucursal)
             <div class="input-group-prepend bg-success" style="border-radius:12%;">
-          <span class="input-group-text face text-secondary"><a href="" data-toggle="modal" data-target="#modal_caja">Caja: $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a>  </span>
+      <span class="input-group-text face text-secondary"><a href="" data-toggle="modal" data-target="#modal_caja">Caja:
+              $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a> </span>
             </div>
+            @endif
+    @endforeach
+
+
             <div class="input-group-prepend bg-warning"  style="border-radius:12%;">
                 @php $count=0; @endphp
                 @foreach ($Equipo as $equipo)
@@ -1071,8 +1078,7 @@
                                             <td>{{$equipo->imei}}</td>
                                             <td><img class="thumbnail zoom" style="border-radius:10px;"
                                                     src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                            <td><textarea class="border border-dark" name="" id="" cols="10"
-                                                    rows="4">{{$equipo->id_comentario}}</textarea></td>
+                                            <td><textarea class="border border-dark" name="" id="" cols="auto" rows="auto" disabled>{{$equipo->id_comentario}}</textarea></td>
                                             @foreach ($Servicio as $servicio)
                                             @if($servicio->id==$equipo->id_servicio)
                                             <td>
@@ -1348,7 +1354,9 @@
                                                 data-SIM="{{$equipo->SIM}}"
                                                 data-Golpes="{{$equipo->Golpes}}"
                                                 data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                                ><i class="far fa-file-pdf text-warning h1"></i>Ticket</a>
+                                                ><i class="far fa-file-pdf text-warning h1 face" alt="Imprime archivo PDF"></i></a>
+                                                <a href="/QR/{{$equipo->id}}" target="_blank"><h1><i class="fas fa-qrcode face" alt="Imprime QR"></i></h1>
+                                                </a>
 
                                             </td>
                                             @endif
@@ -1425,7 +1433,7 @@
                                             @foreach ($Servicio as $servicio)
                                             @if($Pago_Equipo->id_servicio==$servicio->id)
                                             <td>{{$servicio->nombre}}</td>
-                                            <td class="text-success">{{$servicio->precio}}</td>
+                                            <td class="text-success">${{$servicio->precio}}</td>
                                             @endif
                                             @endforeach
 
@@ -1440,13 +1448,13 @@
                                             <td class="text-danger"><del>
                                                 @if($Pago_Equipo->monto!=$servicio->precio)
                                                 @php $temporal= $servicio->precio - $Pago_Equipo->monto; @endphp
-                                                {{$temporal}}
+                                                ${{$temporal}}
                                                 @endif </del>
                                             </td>
                                             @endif
                                             @endforeach
 
-                                            <td class="text-warning">{{$Pago_Equipo->monto}}</td>
+                                            <td class="text-warning">${{$Pago_Equipo->monto}}</td>
                                             <td>{{$Pago_Equipo->created_at}}</td>
                                             @if($Pago_Equipo->status=='deposito'||$Pago_Equipo->status=='retiro')
                                             @if($Pago_Equipo->status=='deposito')
@@ -1490,7 +1498,7 @@
                                             <th>Movimiento</th>
                                             <th>Fecha</th>
                                             <th><button type="button" data-toggle="modal"
-                                                    data-target="#modal_caja" 
+                                                    data-target="#modal_caja"
                                                     data-backdrop="static"
                                                     data-keyboard="false" class="btn btn-warning btn-lg btn-block">
                                                     <center><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wallet2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1508,19 +1516,20 @@
                                         <td>{{$usuario->name}}</td>
                                         @endif
                                         @endforeach
-                                      
+
                                         @foreach ($Sucursal as $sucursal)
                                         @if($MovimientoCaja->id_sucursal==$sucursal->id)
                                         <td>{{$sucursal->nombre}}</td>
                                         @endif
                                         @endforeach
 
-                                        <td>{{$MovimientoCaja->comentario}}</td>
+                                        <td><textarea name="" id="" cols="auto" rows="auto" disabled>{{$MovimientoCaja->comentario}}</textarea>
+                                            </td>
                                         @if($MovimientoCaja->status=='deposito')
-                                        <td>{{$MovimientoCaja->monto}}</td>
+                                        <td class="text-success">+ {{$MovimientoCaja->monto}}</td>
                                         @else
                                         <td class="text-danger">
-                                        <del>{{$MovimientoCaja->monto}}</del></td>
+                                        <del>- {{$MovimientoCaja->monto}}</del></td>
                                         @endif
                                         @if($MovimientoCaja->status=='deposito')
                                         <td class="text-success">Deposito</td>
@@ -1540,7 +1549,7 @@
                 </div>
             </div>
 
-            
+
 
         </div>
 </x-app-layout>
@@ -3283,8 +3292,8 @@
 
                     <div class="col-6-md">
                         <select class="form-control mt-2" name="status6" id="status6">
-                            <option value="deposito">Deposito</option>
-                            <option value="retiro">Retiro</option>
+                            <option  value="deposito">Deposito +</option>
+                            <option  value="retiro">Retiro -</option>
                         </select>
                     </div>
 

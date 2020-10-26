@@ -92,6 +92,8 @@ Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
 //imprimirController Ticket
 Route::get('/imprimir/{id}', [imprimirController::class, 'update']);
+Route::get('/QR/{id}', [imprimirController::class, 'QR']);
+
 //ControllerPago Caja
 Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
 
