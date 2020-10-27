@@ -29,6 +29,8 @@ class CreateArticulosTable extends Migration
             $table->string('imagenc')->nullable();
             $table->string('imagend')->nullable();
             $table->float('descuento')->nullable();
+            $table->float('iva')->nullable();
+            $table->float('id_proveedor')->nullable();
             $table->timestamps();
         });
     }

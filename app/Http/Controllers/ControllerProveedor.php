@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
-
 use Illuminate\Http\Request;
-use \App\Models\User;
-use App\Models\Articulo;
-class ControllerMarca extends Controller
+
+class ControllerProveedor extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,17 +32,9 @@ class ControllerMarca extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function marca(Request $request)
+    public function store(Request $request)
     {
-        $marca = new \App\Models\Marca();
-        $marca->nombre = $request->get('nombre');
-        $marca->logo = "--";
-        $marca->descripcion = $request->get('descripcion');
-        $marca->save();
-        $data = $request->session()->all();
-
-        return back()->with('success', "Marca agregada".$marca->nombre);
-
+        //
     }
 
     /**
@@ -79,15 +68,7 @@ class ControllerMarca extends Controller
      */
     public function update(Request $request, $id)
     {
-        $marca= \App\Models\Marca::find($id);
-        $marca->nombre=$request->get('nombre1');
-        $marca->logo = "--";
-        $marca->tipo = $request->get('tipo1');
-        $marca->descripcion = $request->get('descripcion1');
-        $marca->save();
-
-        return back()->with('success', "Marca Editada".$marca->nombre);
-
+        //
     }
 
     /**
@@ -98,12 +79,6 @@ class ControllerMarca extends Controller
      */
     public function destroy($id)
     {
-        $marca= \App\Models\Marca::find($id);
-        if ($marca != null) {
-            $marca->delete();
-            return back()->with('success', "Marca Borrada : ".$marca->nombre);
-        } else {
-            return back()->with('success', 'Marca no se pudo Borrar : ' . $marca->nombre);
-        }
+        //
     }
 }

@@ -906,7 +906,42 @@
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif"
                                                                     name="setting_url" id="setting_url"
                                                                     value="https:// @php echo $_SERVER['HTTP_HOST']; @endphp" >
+                                                                    <label for="iva">IVA</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">%</span>
+                                                                          <input type="text" class="form-control"  name="setting_iva" id="setting_iva" value="@if($Settings->isEmpty()) @else {{$setting->setting_iva}} @endif" >
+                                                                        </div>
+                                                                    </div>
 
+                                                                    <label for="setting_descuento_1">Descuento 1</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">%</span>
+                                                                          <input type="text" class="form-control"  name="setting_descuento_1" id="setting_descuento_1" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_1}} @endif " >
+                                                                        </div>
+                                                                    </div>
+                                                                    <label for="setting_descuento_2">Descuento 2</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">%</span>
+                                                                          <input type="text" class="form-control"  name="setting_descuento_2" id="setting_descuento_2" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_2}} @endif" >
+                                                                        </div>
+                                                                    </div>
+                                                                    <label for="setting_descuento_3">Descuento 3</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">%</span>
+                                                                          <input type="text" class="form-control"  name="setting_descuento_3" id="setting_descuento_3" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_3}} @endif" >
+                                                                        </div>
+                                                                    </div>
+                                                                    <label for="setting_descuento_4">Descuento 4</label>
+                                                                    <div class="input-group mb-3">
+                                                                        <div class="input-group-prepend">
+                                                                          <span class="input-group-text">%</span>
+                                                                          <input type="text" class="form-control"  name="setting_descuento_4" id="setting_descuento_4" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_4}} @endif" >
+                                                                        </div>
+                                                                    </div>
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
                                                                     class="btn btn-info btn-lg btn-block mt-1">Guardar
@@ -2355,17 +2390,47 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            prueba
+                            <div class="row">
+                                <!-- BEGIN PRODUCTS -->
+                                <table class="table table-striped table-inverse table-responsive sc-product-item">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Articulo</th>
+                                            <th>Imagen</th>
+                                            <th>Descripcion</th>
+                                            <th>Precio</th>
+                                            <td>Comprar</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($Articulo as $articulo)
+                                            <tr>
+                                            <td scope="row" name="product_id" >{{$articulo->id}}</td>
+                                                <td><img data-name="product_image" src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1" alt="..." class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></td>
+                                                <td data-name="product_name">{{$articulo->nombre}}</td>
+                                                <td data-name="product_desc">{{$articulo->descripcion}}</td>
+                                                <td name="product_price" >{{$articulo->precio}}</td>
+                                                <td name="product_price" >{{$articulo->precio}}</td>
+                                                <td><button class="sc-add-to-cart btn btn-success">Add to cart</button></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="col-md-6">
-
+                            <form action="/agregarpago">
+                                @csrf
+                                @method('POST')
+                                <div id="smartcart"></div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
@@ -2395,13 +2460,16 @@
                             <div class="container">
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Cliente</label>
-                                    <select class="form-control" id="id_cliente" name="id_cliente" required>
-                                        @foreach ($Usuario as $user)
-                                        @if($user->rol=='cliente')
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <div class="input-group-append">
+                                        <select class="form-control" id="id_cliente" name="id_cliente" required>
+                                            @foreach ($Usuario as $user)
+                                            @if($user->rol=='cliente')
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                        <a href=""  data-toggle="modal" data-target="#modalagregar"><span class="input-group-text">Agregar Cliente</span></a>
+                                      </div>
                                 </div>
                             <input type="hidden" name="id_sucursal" id="id_sucursal" value="{{Auth::user()->id_sucursal}}">
                                 <div class="col-4-md">
@@ -2428,15 +2496,22 @@
                                             placeholder="Serial">
                                     </div>
                                 </div>
+
                                 <div class="col-4-md">
-                                    <label for="descripcion">Servicio</label>
+                                    <label for="descripcion">Servicio (En caso de no existir el servicio deseado agregar segun el cliente)</label>
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
                                         @foreach ($Servicio as $servicio)
                                         <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
                                             [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
                                         @endforeach
                                     </select>
+                                    <a href="" data-toggle="modal"
+                                    data-target="#modalagregarservicio" >
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Agregar Servicio</span>
+                                      </div></a>
                                 </div>
+
                                 <div class="col-4-md">
                                     <label for="descripcion">Marca</label>
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
@@ -2664,13 +2739,16 @@
                                     </div>
                                 </div>
                                 <div class="col-4-md">
-                                    <label for="descripcion">Servicio</label>
+                                    <label for="descripcion">Servicio (En caso de no existir el servicio deseado agregar segun el cliente)</label>
+                                    <div class="input-group-append">
                                     <select class="form-control" id="id_servicio2" name="id_servicio2" required>
                                         @foreach ($Servicio as $servicio)
                                         <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
                                             [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
                                         @endforeach
                                     </select>
+
+                                </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
@@ -3163,49 +3241,116 @@
         </div>
     </div>
 </div>
-
 <!-- Modal Pago -->
 <div class="modal fade" id="modal_pago" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
-                <h5 class="modal-title text-white">Pago</h5>
+                <h5 class="modal-title text-white">Pagar Equipo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <div class="container-fluid">
-                <form action="agregarpago">
-                    @csrf
-                    @method('POST')
-                    <div class="card text-left">
-                      <div class="card-body">
-                          <label for="total">Total a Pagar</label>
-                          <input type="text" class="form-control" name="total" id="total" disabled>
-                        <label for="status">Anticipo</label>
-                        <input type="text" class="form-control" name="pago4" id="pago4" disabled>
-                        <label for="status">Pendiente</label>
-                        <input type="text" class="form-control" name="pendiente4" id="pendiente4" value="" disabled>
-                      </div>
-                    </div>
-                    <label for="metodo">Metodo de Pago</label>
-                    <select class="form-control" name="pago_id4" id="pago_id4" >
-                        <option value="1">Efectivo</option>
-                        <option value="2">Paypal</option>
-                        <option value="3">Tarjeta Debito/Credito (Paypal)</option>
-                    </select>
-                    <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_servicio4" id="id_servicio4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_servicio4" id="serial4" value="" disabled>
-                    <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
+                <div class="container-fluid">
+                    <form action="agregarpago">
+                        @csrf
+                        @method('POST')
+                        <div class="card text-left">
+                            <div class="card-body">
+                                <label for="total">Total a Pagar</label>
+                                <input type="text" class="form-control" name="total" id="total" disabled>
+                                <label for="status">Anticipo</label>
+                                <input type="text" class="form-control" name="pago4" id="pago4" disabled>
+                                <label for="status">Pendiente</label>
+                                <input type="text" class="form-control" name="pendiente4" id="pendiente4" value=""
+                                    disabled>
+                            </div>
+                        </div>
+                        <label for="metodo">Metodo de Pago</label>
+                        <select class="form-control" name="pago_id4" id="pago_id4">
+                            <option value="1">Efectivo</option>
+                            <option value="2">Paypal</option>
+                            <option value="3">Tarjeta Debito/Credito (Paypal)</option>
+                        </select>
+                        <label for="status">Pago</label>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control" name="final4" id="final4">
 
-                    <label for="status">Pago</label>
-                    <input type="text" class="form-control" name="final4" id="final4" disabled>
-                </form>
+                          </div>
+                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" disabled>
+                        <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" disabled>
+                        <input type="hidden" class="form-control" name="id_servicio4" id="id_servicio4" value=""
+                            disabled>
+                        <input type="hidden" class="form-control" name="id_servicio4" id="serial4" value="" disabled>
+                        <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="iva">IVA</label>
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">%</span>
+                                    <input disabled type="text" name="iva" max="2" class="form-control" id="iva"
+                                    value="@if($Settings->isEmpty())@else{{$setting->setting_iva}}" @endif>
+                                </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="status">Cambio</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                        <input disabled type="text" class="form-control" name="subtotal" id="subtotal">
+
+                                      </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="status">Total</label>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                        <input disabled type="text" class="form-control" name="total_final" id="total_final">
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card text-left">
+                                      <div class="card-body">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="setting_descuento_1"
+                                                name="setting_descuento_1" value="setting_descuento_1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 1</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="setting_descuento_2"
+                                                name="setting_descuento_2" value="setting_descuento_1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 2</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="setting_descuento_3"
+                                                name="setting_descuento_3" value="setting_descuento_1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 3</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="setting_descuento_4"
+                                                name="setting_descuento_4" value="setting_descuento_1">
+                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 4</label>
+                                        </div>
+
+                                      </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -3318,60 +3463,72 @@
         $(e.currentTarget).find('#status3').val(id);
     });
 </script>
-
 <!-- Scripts Pago-->
 <script>
     $('#modal_pago').on('show.bs.modal', function(e) {
-
-
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id4').val(id);
-
         $("#cambio_pago").attr("action", '/agregarpago/' + id);
         var id = $(e.relatedTarget).data().pago;
-        anticipo=id;
-        if(id==0){
+        anticipo = id;
+        if (id == 0) {
             $(e.currentTarget).find('#pago4').val(0);
-        }else{
+        } else {
             $(e.currentTarget).find('#pago4').val(id);
         }
-        var id = $(e.relatedTarget).data().precio
-        precio=id;
-        temporal=precio-anticipo;
-        total=precio;
 
+        var id = $(e.relatedTarget).data().precio
+        precio = id;
+        temporal = precio - anticipo;
+        total = precio;
         $(e.currentTarget).find('#pendiente4').val(temporal);
         $(e.currentTarget).find('#total').val(total);
-
         var id = $(e.relatedTarget).data().id_cliente;
         $(e.currentTarget).find('#id_cliente4').val(id);
-
         var id = $(e.relatedTarget).data().id_servicio;
         $(e.currentTarget).find('#id_servicio4').val(id);
-
         var id = $(e.relatedTarget).data().serial;
         $(e.currentTarget).find('#serial4').val(id);
-
         var id = $(e.relatedTarget).data().imei;
         $(e.currentTarget).find('#imei4').val(id);
-
         var id = $(e.relatedTarget).data().pago;
         $(e.currentTarget).find('#pago4').val(id);
-
         var id = $(e.relatedTarget).data().descripcion;
         $(e.currentTarget).find('#descripcion4').val(id);
-
         var id = $(e.relatedTarget).data().fecha_recibido;
         $(e.currentTarget).find('#fecha_recibido4').val(id);
-
         var id = $(e.relatedTarget).data().fecha_entrega;
         $(e.currentTarget).find('#fecha_entrega4').val(id);
-
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status4').val(id);
-   });
+        $('#final4').on('input', function(e) {
+            iva = document.getElementById("iva").value;
+            pago=document.getElementById("final4").value;
+            var tasa = iva;
+            var monto = $("input[name=total]").val();
+            var anticipo = $("input[name=pendiente4]").val();
+            if(anticipo!=0){
+            cambio=pago-anticipo;
+            }else{
+            cambio=pago-precio;
+            }
+            if (tasa == 0.0) {
+                $("input[name=subtotal]").val(parseInt(cambio));
+                $("input[name=total_final]").val(parseInt(monto));
+            } else {
+                var monto = $("input[name=total]").val();
+                var iva = (monto * tasa) / 100;
+                $("input[name=subtotal]").val(parseInt(cambio));
+                $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
+            }
+            if (tasa == null) {
+                var monto = $("input[name=total]").val();
+                document.getElementById("total_final").monto;
+                $("input[name=subtotal]").val(parseInt(cambio));
+            }
+        });
+    });
 </script>
-
 <!-- Scripts Servisio-->
 <script>
     $('#modal_servicio').on('show.bs.modal', function(e) {
@@ -3947,6 +4104,13 @@
 <!-- Script Tabs -->
 <script>
     $(document).ready(function() {
+        // Initialize the leaveStep event
+$("#smartcart").on("cartEmpty", function(e) {
+  // alert("Cart is empty");
+});
+
+// Initialize Smart Cart
+$('#smartcart').smartCart();
         function flash(e) {
             $('.flash')
                 .show() //show the hidden div
@@ -4019,3 +4183,4 @@
         });
     });
 </script>
+

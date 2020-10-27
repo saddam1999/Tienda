@@ -25,6 +25,11 @@ class CreateSettingsTable extends Migration
             $table->string('setting_contacto')->nullable();
             $table->string('setting_url')->nullable();
             $table->string('setting_telefono')->nullable();
+            $table->float('setting_iva')->nullable();
+            $table->float('setting_descuento_1')->nullable();
+            $table->float('setting_descuento_2')->nullable();
+            $table->float('setting_descuento_3')->nullable();
+            $table->float('setting_descuento_4')->nullable();
             $table->string('setting_moneda')->nullable();
             $table->timestamps();
         });
