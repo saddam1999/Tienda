@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Equipo;
-use App\Models\Servicio;
 
-
-class ControllerEquipo extends Controller
+class ControllerPresupuestoEquipo extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,7 +34,7 @@ class ControllerEquipo extends Controller
      */
     public function store(Request $request)
     {
-        $equipo = new \App\Models\Equipo();
+        $equipo = new \App\Models\PresupuestoEquipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
         $equipo->id_servicio = $request->get('id_servicio');
@@ -104,7 +101,7 @@ class ControllerEquipo extends Controller
      */
     public function update(Request $request, $id)
     {
-        $equipo = \App\Models\Equipo::find($id);
+        $equipo = \App\Models\PresupuestoEquipo::find($id);
         $equipo->id_user = $request->get('id_user2');
        $equipo->id_cliente = $request->get('id_cliente2');
        $equipo->id_servicio = $request->get('id_servicio2');
@@ -139,8 +136,7 @@ class ControllerEquipo extends Controller
         return back()->with('success', "Equipo Editado");
     }
 
-
-    /**
+       /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -149,12 +145,13 @@ class ControllerEquipo extends Controller
      */
     public function cambio_servicio(Request $request, $id)
     {
-        $equipo = \App\Models\Equipo::find($id);
+        $equipo = \App\Models\PresupuestoEquipo::find($id);
         $equipo->id_servicio = $request->get('id_servicio5');
         $equipo->save();
         return back()->with('success', "Success Servicio Cambiado");
     }
-    /**
+
+        /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -163,7 +160,7 @@ class ControllerEquipo extends Controller
      */
     public function status(Request $request, $id)
     {
-        $equipo = \App\Models\Equipo::find($id);
+        $equipo = \App\Models\PresupuestoEquipo::find($id);
         if ($equipo != null) {
             $equipo->status = $request->get('status3');
             $equipo->save();
@@ -172,8 +169,7 @@ class ControllerEquipo extends Controller
             return back()->with('success', 'Status no se pudo Cambiar intente de nuevo ');
         }
     }
-
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -181,7 +177,7 @@ class ControllerEquipo extends Controller
      */
     public function destroy($id)
     {
-        $equipo = \App\Models\Equipo::find($id);
+        $equipo = \App\Models\PresupuestoEquipo::find($id);
         if ($equipo != null) {
             $equipo->delete();
             return back()->with('success', "Equipo Borrado");

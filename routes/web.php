@@ -108,3 +108,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');
 Route::post('file-upload', [ FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
 Route::get('/imprimir', 'imprimirController@imprimir')->name('imprimir');
+Route::get('/carrito', function () {
+    return view('carrito',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
+    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
+    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
+    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
+    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
+});
