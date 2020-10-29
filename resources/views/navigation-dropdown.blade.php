@@ -1,9 +1,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@900&display=swap" rel="stylesheet">    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top" style="opacity: 0.95;">
+ 
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top background:url(../img/backgrounds.jpeg)">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
+                <div class="flex-shrink-0 flex items-center face">
                     <a  href="{{ route('dashboard') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
@@ -11,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-white">
-                    <x-jet-nav-link class=" text-white" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="font-family: 'Grenze Gotisch', cursive;
+                    <x-jet-nav-link class=" text-white face" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="font-family: 'Grenze Gotisch', cursive;
 
                         ">
                        Holly Store Pro

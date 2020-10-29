@@ -1,4 +1,6 @@
-<x-guest-layout>
+<link href="../css/login.css" rel="stylesheet">
+
+<x-guest-layout class="background:url(../img/backgrounds.jpeg)" style="opacity:12%;   border-radius: 25px;">
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

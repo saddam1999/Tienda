@@ -75,10 +75,9 @@ class ControllerEquipo extends Controller
 
         $setting = \App\Models\Settings::find(1);
         $pago = new \App\Models\Pago_Equipo();
-        $cajaT = \App\Models\Caja::all();
-        foreach ($cajaT as $cajatemp) {
-            $caja = \App\Models\Sucursal::find($cajatemp->id_sucursal);
-        }
+        //$cajaT = \App\Models\Caja::all();
+        $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
+        $caja = \App\Models\Caja::find($sucursal->id);
         $pago->id_user = $equipo->id_user;
         $pago->id_equipo = $equipo->id;
         $pago->iva = $setting->setting_iva;
@@ -98,29 +97,38 @@ class ControllerEquipo extends Controller
             //900*16=144
             $total = $temporal + $iva;
             $pago->total = $total;
-
+            $cajaTemp = $pago->adelanto + $caja->corte;
+            $caja->corte = $cajaTemp;
         } else if ($pago->adelanto != 0 && $pago->iva == '' && $pago->monto != 0) {
 
             $temporal = $pago->monto - $pago->adelanto;
             $total = $temporal;
             $pago->total = $total;
-
+            $cajaTemp = $pago->adelanto + $caja->corte;
+            $caja->corte = $cajaTemp;
         } else if ($pago->adelanto == 0 && $pago->iva != '' && $pago->monto != 0) {
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
             //900*16=144
             $total = $pago->monto + $iva;
             $pago->total = $total;
+            $cajaTemp = $pago->adelanto + $caja->corte;
+            $caja->corte = $cajaTemp;
         } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto == 0) {
             $pago->total = 0;
-        }else {
+            $cajaTemp = $pago->adelanto + $caja->corte;
+            $caja->corte = $cajaTemp;
+        } else {
             $pago->total = 0;
+            $cajaTemp = $pago->adelanto + $caja->corte;
+            $caja->corte = $cajaTemp;
         }
 
         $pago->comentario = $request->get('comentario4');
         $pago->status = 0;
         $pago->fecha =  $equipo->created_at;
         $pago->save();
+        $caja->save();
 
 
         return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');

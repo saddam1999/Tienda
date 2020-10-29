@@ -386,7 +386,7 @@ class imprimirController extends Controller
     public function QR(Request $request, $id)
     {
 
-        $setting = \App\Models\Settings::find(1);
+            $setting = \App\Models\Settings::find(1);
         if ($setting->setting_logo == "") {
             $setting->setting_logo = "https://iunlock.store/unlock-2.png";
         }
@@ -414,7 +414,8 @@ class imprimirController extends Controller
 
             imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
         }
-        imagepng($QR);
+        
+        dd(imagepng($QR));
         imagedestroy($QR);
         return back()->with('success', 'Archivo a Imprimir generado');
     }

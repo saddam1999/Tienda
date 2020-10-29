@@ -1,10 +1,13 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
+<link href="../css/login.css" rel="stylesheet">
+
+<x-guest-layout class="background:url(../img/backgrounds.jpeg)" style="opacity:12%;   border-radius: 25px;">
+    <x-jet-authentication-card   >
+
+        <x-slot name="logo" >
             <x-jet-authentication-card-logo />
         </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-4"  />
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">
@@ -12,7 +15,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" >
             @csrf
 
             <div>

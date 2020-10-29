@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
     <style>
     .flash{
     position:fixed;
@@ -55,8 +56,7 @@
         .zoom:hover,
         .zoom:active,
         .zoom:focus {
-            /**adjust scale to desired size,
-        add browser prefixes**/
+
             -ms-transform: scale(2.5);
             -moz-transform: scale(2.5);
             -webkit-transform: scale(2.5);
@@ -66,22 +66,21 @@
             z-index: 100;
         }
 
-        /**To keep upscaled images visible on mobile,
-        increase left & right margins a bit**/
+     
         @media only screen and (max-width: 768px) {
             ul.gallery {
                 margin-left: 15vw;
                 margin-right: 15vw;
             }
 
-            /**TIP: Easy escape for touch screens,
-        give gallery's parent container a cursor: pointer.**/
             .DivName {
                 cursor: pointer
             }
         }
     </style>
-    <ul class="nav nav-tabs bg-ligth " id="myTab" role="tablist">
+
+
+    <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
@@ -216,6 +215,7 @@
                   <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
                     </div>
     </ul>
+
     <div class="tab-content bg-black" id="myTabContent">
         @if(Auth::user()->rol=="Admin"||Auth::user()->rol=="Tecnico")
         <div class="toast" data-autohide="true">
@@ -254,11 +254,11 @@
 
         <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
 
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h4 class="card-title">Productos</h4>
                                 <table class="table table-striped table-inverse table-responsive">
                                     <thead class="thead-inverse">
@@ -1458,21 +1458,24 @@
                                             @endif
                                             @endforeach
                                             
-                                            <td>{{$pago_equipo->adelanto}}</td>
+                                            <td >{{$pago_equipo->adelanto}}</td>
+
                                             @if($pago_equipo->iva=='')
-                                           <td>${{$pago_equipo->total}}</td>
+                                           <td class="price">${{$pago_equipo->total}}</td>
                                            @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
-                                           <td>${{$pago_equipo->total}} + {{$pago_equipo->iva}} IVA </td>
+                                           <td class="price">${{$pago_equipo->total}} + {{$pago_equipo->iva}} IVA </td>
                                             @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
-                                            <td>${{$pago_equipo->total}}</td>
+                                            <td class="price">${{$pago_equipo->total}}</td>
                                             @endif
-                                            <td>{{$pago_equipo->created_at}}</td>
+                                            <td class="price" >{{$pago_equipo->created_at}}</td>
 
                                             <td>{{$pago_equipo->status}}</td>
 
 
                                         </tr>
                                         @endforeach
+                                        <span>El resultado es: </span> <span id="result"></span>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -1552,6 +1555,7 @@
 
 
         </div>
+        <div class="se-pre-con"></div>
 
 </x-app-layout>
 
@@ -4223,7 +4227,25 @@ $('#smartcart').smartCart();
     });
 </script>
 <script>
-    $(document).ready(function(){
-      $('.toast').toast('show');
+    $(document).ready(function() {
+        $('.toast').toast('show');
+        $(".se-pre-con").fadeOut("slow");;
+        $('.price').each(function() {
+            calculateSum();
+        });
+
+        function calculateSum() {
+            var sum = 0;
+            //iterate through each td based on class and add the values 
+            $(".price").each(function() {
+                //add only if the value is number 
+                if (!isNaN(this.value) && this.value.length != 0) {
+                    sum += parseFloat(this.value);
+                }
+            });
+
+            $('#result').text(sum);
+        }
     });
-    </script>
+</script>
+
