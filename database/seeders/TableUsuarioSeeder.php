@@ -79,20 +79,8 @@ class TableUsuarioSeeder extends Seeder
         $Pagos->client_id = "AcZuOOumdd7lojl8xftWUROJrcO5uCoUy49jdZnQAzQfcWrb4ziEJ2ooYq-mAzAyioNBsvmhFBlMcy64";
         $Pagos->status =1;//activo
         $Pagos->save();
+ 
 
-
-        $Pago__Equipo=  new \App\Models\Pago_Equipo;
-        $Pago__Equipo->id_user = 1;//cajero
-        $Pago__Equipo->id_cliente= 1 ; //quien paga
-        $Pago__Equipo->id_equipo = 1;// que equipo se paga
-        $Pago__Equipo->id_servicio = 2;//servicio solicitado
-        $Pago__Equipo->id_sucursal = 1;//sucursal donde se pago
-        $Pago__Equipo->id_caja =1;//Caja donde se recibibio el pago
-        $Pago__Equipo->id_corte =1;//#numero del corte que esta a cargo de esta cuenta
-        $Pago__Equipo->monto =200;//anticipo
-        $Pago__Equipo->pagado =400;//total pagado
-        $Pago__Equipo->adelanto =400;//total pagado
-        $Pago__Equipo->status =1;//activo
-        $Pago__Equipo->save();
+      
     }
 }

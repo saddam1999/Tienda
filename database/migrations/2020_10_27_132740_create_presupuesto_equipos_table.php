@@ -18,12 +18,12 @@ class CreatePresupuestoEquiposTable extends Migration
             $table->integer('id_user')->nullable();
             $table->integer('id_cliente')->nullable();
             $table->integer('id_sucursal')->nullable();
-            $table->string('serial')->nullable();
-            $table->integer('imei')->nullable();
             $table->string('id_captura')->nullable();
-            $table->string('id_servicio')->nullable();
+            $table->string('id_presupuesto')->nullable();
             $table->integer('id_comentario')->nullable();
             $table->integer('id_pago')->nullable();
+            $table->string('serial')->nullable();
+            $table->integer('imei')->nullable();
             $table->string('anticipo')->nullable();//anticipo
             $table->string('pago')->nullable();//pago recibido
             $table->date('fecha_recibido')->nullable();

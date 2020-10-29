@@ -71,40 +71,35 @@ class ControllerPago_Equipo extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param  int  $id
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $pago = new \App\Models\Pago_Equipo();
+        $pago = \App\Models\Pago_Equipo::find($id);
         $pago->id_user = $request->get('id_user4');
         $pago->id_equipo = $request->get('id_equipo4');;
         $pago->id_cliente = $request->get('id_cliente4');
-        $pago->id_servicio = $request->get('id_servicio4');;
-        $pago->id_sucursal = $request->get('id_sucursal4');;
-        $sucursal = \App\Models\Sucursal::find($pago->id_sucursal);
-        if ($sucursal == null) {
-            return back()->with('success', "sucursal no encontrada favor de entrar en la seccion sucursal y seleciona una sucursal para tu cuenta de usuario.");
-        }
+        $pago->id_servicio = $request->get('id_servicio4');
+        $pago->id_sucursal = $request->get('id_sucursal4');
+        $pago->id_equipo = $request->get('id_equipo4');
+        $pago->id_caja = $request->get('id_caja4');
+        $pago->id_corte = $request->get('id_corte4');
+        $pago->monto = $request->get('monto4');// esto es lo que deberia de pagar total
+        $pago->pagado = $request->get('final4');// esto es lo que envia 
+        $pago->adelanto = $request->get('adelanto4');// esto es lo que adelanto
+    
+        $pago->total = $request->get('total');
 
-        $pago->id_caja = $sucursal->id_caja;
-        $servicio = \App\Models\Servicio::find($pago->id_servicio);
-        if ($servicio == null) {
-            return back()->with('success', "servicio no encontrada favor de entrar en la seccion servicio y seleciona una servicio para tu cuenta de usuario.");
-        }
-        //$caja = \App\Models\Caja::find($sucursal->id_caja);
-        //$pago->id_caja=$equipo->id_caja;
-        //$pago->id_corte=$equipo->id_corte;
-        if ($pago->pago != '') {
-            $pago->adelanto = $pago->pago; //adelanto
-            $pago->monto = ($servicio->precio - $pago->adelanto);
-        } else {
-            $pago->monto = $servicio->precio;
-        }
-        $pago->comentario = $pago->comentario;
-        $pago->fecha = $pago->fecha;
-        $pago->save();
+        $pago->comentario = $request->get('comentario4');
+        $pago->status = $request->get('status4');
+        $pago->fecha = $request->get('fecha4');
 
+$input = $request->all();
+
+
+dd($input);
 
         return back()->with('success', "Equipo Pagado");
     }

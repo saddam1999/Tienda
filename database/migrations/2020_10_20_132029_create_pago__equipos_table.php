@@ -25,6 +25,8 @@ class CreatePagoEquiposTable extends Migration
             $table->float('monto')->nullable();//adelanto
             $table->float('pagado')->nullable();//pagado
             $table->float('adelanto')->nullable();
+            $table->float('iva')->nullable();
+            $table->float('total')->nullable();
             $table->string('comentario')->nullable();
             $table->string('status')->nullable();
             $table->date('fecha')->nullable();

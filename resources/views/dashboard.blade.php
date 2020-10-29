@@ -217,6 +217,18 @@
                     </div>
     </ul>
     <div class="tab-content bg-black" id="myTabContent">
+        @if(Auth::user()->rol=="Admin"||Auth::user()->rol=="Tecnico")
+        <div class="toast" data-autohide="true">
+            <div class="toast-header">
+              <strong class="mr-auto text-primary">Toast Header</strong>
+              <small class="text-muted">5 mins ago</small>
+              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+            </div>
+            <div class="toast-body">
+              Some text inside the toast body
+            </div>
+          </div>
+          @endif
         <div class="row">
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
@@ -238,7 +250,6 @@
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
                         </svg></center></button>
             </div>
-
         </div>
 
         <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
@@ -1087,7 +1098,6 @@
                                             <th>IMEI</th>
                                             <th>Captura</th>
                                             <th>Comentario</th>
-                                            <th>Servicio</th>
                                             <th>Fecha Recibido</th>
                                             <th>Fecha Entrega</th>
                                             <th>Status</th>
@@ -1114,33 +1124,7 @@
                                             <td><img class="thumbnail zoom" style="border-radius:10px;"
                                                     src="./fotos/{{$equipo->id_captura}}" alt=""></td>
                                             <td><textarea class="border border-dark" name="" id="" cols="auto" rows="auto" disabled>{{$equipo->id_comentario}}</textarea></td>
-                                            @foreach ($Servicio as $servicio)
-                                            @if($servicio->id==$equipo->id_servicio)
-                                            <td>
-                                            <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
-                                            data-id_servicio="{{$equipo->id_servicio}}"
-                                            data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
-                                            data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                                            data-Señal="{{$equipo->Señal}}"
-                                            data-LectorSD="{{$equipo->LectorSD}}"
-                                            data-AltaVoz="{{$equipo->AltaVoz}}"
-                                            data-BotonHome="{{$equipo->BotonHome}}"
-                                            data-Microfono="{{$equipo->Microfono}}"
-                                            data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                            data-Volumenplus="{{$equipo->Volumenplus}}"
-                                            data-Volumenless="{{$equipo->Volumenless}}"
-                                            data-Encendido="{{$equipo->Encendido}}"
-                                            data-Auricular="{{$equipo->Auricular}}"
-                                            data-Touch="{{$equipo->Touch}}"
-                                            data-Bateria="{{$equipo->Bateria}}"
-                                            data-Enciende="{{$equipo->Enciende}}"
-                                            data-Memoria="{{$equipo->Memoria}}"
-                                            data-SIM="{{$equipo->SIM}}"
-                                            data-Golpes="{{$equipo->Golpes}}"
-                                            data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                            data-toggle="modal" data-target="#modal_servicio">{{$servicio->nombre}}</a></td>
-                                            @endif
-                                            @endforeach
+
                                             <td><input class="text-secondary" type="date" value="{{$equipo->fecha_recibido}}"></td>
                                             <td>
                                                 @php
@@ -1192,6 +1176,8 @@
                                                 <a href="" data-toggle="modal" data-target="#modaledittaller"
                                                     data-id="{{$equipo->id}}"
                                                     data-pago="{{$equipo->pago}}"
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
@@ -1238,10 +1224,14 @@
                                                             d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                                     </svg></a>
                                                 <a href="" data-toggle="modal" data-target="#modal_foto"
-                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id="{{$equipo->id}}" 
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
+                                                    data-id_user="{{$equipo->id_user}}"
                                                     data-servicio="{{$equipo->id_servicio}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}"
+                                                    data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -1277,9 +1267,13 @@
                                                         <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                                                     </svg></a>
                                                 <a href="/galleria/{{$equipo->id}} " target="_blank"
-                                                    data-id="{{$equipo->id}}" data-id_user="{{$equipo->id_user}}"
+                                                    data-id="{{$equipo->id}}" 
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
+                                                    data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}" 
+                                                    data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -1311,15 +1305,17 @@
                                                             d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
                                                     </svg></a>
 
-                                                    @foreach ($Servicio as $servicio)
-                                                    @if($servicio->id==$equipo->id_servicio)
+                                       
                                                     <a href="" data-toggle="modal" data-target="#modal_pago"
                                                     data-id="{{$equipo->id}}"
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_sucursal="{{$equipo->id_sucursal}}"
                                                     data-precio="{{$servicio->precio}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-pago="{{$equipo->pago}}"
@@ -1353,13 +1349,13 @@
                                                         <path
                                                             d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
                                                     </svg></a>
-                                                    @endif
-
-                                                    @endforeach
+            
                                             </td>
                                             <td><a href="/imprimir/{{$equipo->id}}" target="_blank"
                                                 data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
                                                 data-id_servicio="{{$equipo->id_servicio}}"
+                                                data-presupuesto="{{$equipo->presupuesto}}"
+                                                data-inversion="{{$equipo->inversion}}"
                                                 data-precio="{{$equipo->precio}}"
                                                 data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                 data-id_user="{{$equipo->id_user}}"
@@ -1419,44 +1415,33 @@
                                             <th>Cajero</th>
                                             <th>Cliente</th>
                                             <th>Equipo</th>
-                                            <th>Servicio</th>
                                             <th>Precio</th>
                                             <th>Sucursal</th>
                                             <th>Adelanto</th>
                                             <th>Monto a Pagar</th>
                                             <th>Fecha</th>
                                             <th>Pagado</th>
-                                            <th><button type="button" data-toggle="modal"
-                                                    data-target="#modalagregarservicio" data-backdrop="static"
-                                                    data-keyboard="false" class="btn btn-success btn-lg btn-block">
-                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                            class="bi bi-clipboard-plus" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                                                            <path fill-rule="evenodd"
-                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
-                                                        </svg></center>
-                                                </button></th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Pago_Equipo as $Pago_Equipo)
+                                        @foreach($Pago_Equipo as $pago_equipo)
                                         <tr>
-                                            <td>{{$Pago_Equipo->id}}</td>
+                                            <td>{{$pago_equipo->id}}</td>
                                             @foreach ($Usuario as $usuario)
-                                            @if($Pago_Equipo->id_user==$usuario->id)
+                                            @if($pago_equipo->id_user==$usuario->id)
                                             <td>{{$usuario->name}}</td>
                                             @endif
                                             @endforeach
+
                                             @foreach ($Usuario as $usuario)
-                                            @if($Pago_Equipo->id_cliente==$usuario->id)
+                                            @if($pago_equipo->id_cliente==$usuario->id)
                                             <td>{{$usuario->name}}</td>
                                             @endif
                                             @endforeach
 
                                             @foreach ($Equipo as $equipo)
-                                            @if($equipo->id==$Pago_Equipo->id_equipo)
+                                            @if($equipo->id==$pago_equipo->id_equipo)
                                             @if($equipo->serial=='')
                                             <td>{{$equipo->serial}}</td>
                                             @else
@@ -1465,51 +1450,27 @@
                                             @endif
                                             @endforeach
 
-                                            @foreach ($Servicio as $servicio)
-                                            @if($Pago_Equipo->id_servicio==$servicio->id)
-                                            <td>{{$servicio->nombre}}</td>
-                                            <td class="text-success">${{$servicio->precio}}</td>
-                                            @endif
-                                            @endforeach
+                                            <td>{{$pago_equipo->monto}}</td>
 
                                             @foreach ($Sucursal as $sucursal)
-                                            @if($Pago_Equipo->id_sucursal==$sucursal->id)
+                                            @if($pago_equipo->id_sucursal==$sucursal->id)
                                             <td>{{$sucursal->nombre}}</td>
                                             @endif
                                             @endforeach
+                                            
+                                            <td>{{$pago_equipo->adelanto}}</td>
+                         
+                                            <td>${{$pago_equipo->total}}</td>
+                                        
+                                            <td>{{$pago_equipo->created_at}}</td>
 
-                                            @foreach ($Servicio as $servicio)
-                                            @if($Pago_Equipo->id_servicio==$servicio->id)
-                                            <td class="text-danger"><del>
-                                                @if($Pago_Equipo->monto!=$servicio->precio)
-                                                @php $temporal= $servicio->precio - $Pago_Equipo->monto; @endphp
-                                                ${{$temporal}}
-                                                @endif </del>
-                                            </td>
-                                            @endif
-                                            @endforeach
+                                            <td>{{$pago_equipo->status}}</td>
 
-                                            <td class="text-warning">${{$Pago_Equipo->monto}}</td>
-                                            <td>{{$Pago_Equipo->created_at}}</td>
-                                            @if($Pago_Equipo->status=='deposito'||$Pago_Equipo->status=='retiro')
-                                            @if($Pago_Equipo->status=='deposito')
-                                            <td class="text-success">Deposito</td>
-                                                @elseif($Pago_Equipo->status=='retiro')
-                                            <td class="text-warning">Retiro</td>
-                                                @endif
-                                            @else
-                                            @if($servicio->precio==$Pago_Equipo->monto&&$servicio->precio>=0)
-                                            <td class="text-success">Pagado</td>
-                                                @else
-                                            <td class="text-warning">Pendiente</td>
-                                                @endif
-                                            @endif
-                                            <td></td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -1587,6 +1548,7 @@
 
 
         </div>
+
 </x-app-layout>
 
 
@@ -1648,7 +1610,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white">Agregar Caja</h5>
+                <h5 class="modal-title text-white">Asignar Caja a Sucursal</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -2498,21 +2460,6 @@
                                 </div>
 
                                 <div class="col-4-md">
-                                    <label for="descripcion">Servicio (En caso de no existir el servicio deseado agregar segun el cliente)</label>
-                                    <select class="form-control" id="id_servicio" name="id_servicio" required>
-                                        @foreach ($Servicio as $servicio)
-                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
-                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
-                                        @endforeach
-                                    </select>
-                                    <a href="" data-toggle="modal"
-                                    data-target="#modalagregarservicio" >
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">Agregar Servicio</span>
-                                      </div></a>
-                                </div>
-
-                                <div class="col-4-md">
                                     <label for="descripcion">Marca</label>
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
                                         @foreach ($Marca as $marca)
@@ -2587,7 +2534,6 @@
                                             <input class="form-check-input" type="checkbox" id="Touch" name="Touch" value="Touch" >
                                             <label class="form-check-label" for="inlineCheckbox3">Touch</label>
                                           </div>
-
                                           <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="Bateria"  name="Bateria" value="Bateria" >
                                             <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
@@ -2625,7 +2571,7 @@
                                           </div>
                                     </div>
                                 </div>
-                                <div class="col-4-md">
+                                <div class="col-4-md mb-1">
                                     <label for="descripcion">Sucursal</label>
                                     <select class="form-control" id="id_sucursal" name="id_sucursal" required>
                                         @foreach ($Sucursal as $sucursal)
@@ -2633,17 +2579,47 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Anticipo</label>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
-                                            <input class="form-control" type="number" name="pago" id="pago"
-                                            placeholder="Anticipo">
-                                          </div>
+                                <div class="card text-left  border border-info">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="marca">Anticipo</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">$</span>
+                                                            <input class="form-control" type="text" name="pago"
+                                                                id="pago" 
+                                                                placeholder="Anticipo" value="0">
+                                                        </div>
 
-                                    </div>
-                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="presupuesto">Presupuesto</label>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input class="form-control" type="text" name="presupuesto"
+                                                            id="presupuesto" placeholder="(Cuanto puede Costar)" value="0">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="inversion">Inversion</label>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input class="form-control" type="text" name="inversion"
+                                                            id="inversion"
+                                                            placeholder=" (Cuanto es lo maximo que se puede invertir)" value="0">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div> 
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">Dia de Equipo Recibido</label>
@@ -2714,7 +2690,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <input type="hidden" name="id_sucursal2" id="id_sucursal2" value="{{Auth::user()->id_sucursal}}">
+                                <input type="hidden" name="id_sucursal2" id="id_sucursal2"
+                                    value="{{Auth::user()->id_sucursal}}">
 
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Tecnico</label>
@@ -2738,18 +2715,6 @@
                                         <input class="form-control" type="text" name="serial2" id="serial2">
                                     </div>
                                 </div>
-                                <div class="col-4-md">
-                                    <label for="descripcion">Servicio (En caso de no existir el servicio deseado agregar segun el cliente)</label>
-                                    <div class="input-group-append">
-                                    <select class="form-control" id="id_servicio2" name="id_servicio2" required>
-                                        @foreach ($Servicio as $servicio)
-                                        <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
-                                            [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
-                                        @endforeach
-                                    </select>
-
-                                </div>
-                                </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="descripcion">Descripcion</label><br>
@@ -2763,96 +2728,130 @@
                                         <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara2" name="Tiene_Camara2" value="Tiene_Camara">
-                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Centro_Carga2" name="Centro_Carga2" value="Centro_Carga">
-                                            <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Señal2" name="Señal2" value="Señal" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="AltaVoz2" name="AltaVoz2" value="AltaVoz" >
-                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="BotonHome2" name="BotonHome2" value="BotonHome" >
-                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Microfono2"  name="Microfono2"  value="Microfono" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Lector_SIM2" name="Lector_SIM2" value="Lector_SIM" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Tiene_Camara2"
+                                                        name="Tiene_Camara2" value="Tiene_Camara">
+                                                    <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Centro_Carga2"
+                                                        name="Centro_Carga2" value="Centro_Carga">
+                                                    <label class="form-check-label" for="inlineCheckbox2">Centro
+                                                        Carga</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Señal2"
+                                                        name="Señal2" value="Señal">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="AltaVoz2"
+                                                        name="AltaVoz2" value="AltaVoz">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">AltaVoz</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="BotonHome2"
+                                                        name="BotonHome2" value="BotonHome">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">BotonHome</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Microfono2"
+                                                        name="Microfono2" value="Microfono">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Microfono</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Lector_SIM2"
+                                                        name="Lector_SIM2" value="Lector_SIM">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Lector
+                                                        SIM</label>
+                                                </div>
 
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus2" name="Volumenplus2" value="volumenplus" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenless2" name="Volumenless2" value="Volumenless" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Encendido2" name="Encendido2"  value="Encendido" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Volumenplus2"
+                                                        name="Volumenplus2" value="volumenplus">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                        +</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Volumenless2"
+                                                        name="Volumenless2" value="Volumenless">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                        -</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Encendido2"
+                                                        name="Encendido2" value="Encendido">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Encendido</label>
+                                                </div>
 
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD2"  name="LectorSD2"  value="LectorSD" >
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auricular2" name="Auricular2" value="Auricular" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Touch2" name="Touch2"  value="Touch" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="LectorSD2"
+                                                        name="LectorSD2" value="LectorSD">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">LectorSD</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Auricular2"
+                                                        name="Auricular2" value="Auricular">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Auricular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Touch2"
+                                                        name="Touch2" value="Touch">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                                </div>
 
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria2" name="Bateria2" value="Bateria" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Bateria2"
+                                                        name="Bateria2" value="Bateria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Bateria</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                    <div class="col-6-md">
-                                        <div class="form-group">
-                                          <div class="card text-left">
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende2" name="Enciende2" value="Enciende" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria2"  name="Memoria2" value="Memoria" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM2" name="SIM2"  value="SIM" >
+                                                    <input class="form-check-input" type="checkbox" id="Enciende2"
+                                                        name="Enciende2" value="Enciende">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Enciende?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Memoria2"
+                                                        name="Memoria2" value="Memoria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Memoria?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="SIM2"
+                                                        name="SIM2" value="SIM">
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes2" name="Golpes2" value="Golpes" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2" name="Tiene_Bateria2" value="Tiene_Bateria" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
-                                                  </div>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Golpes2"
+                                                        name="Golpes2" value="Golpes">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Golpes?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2"
+                                                        name="Tiene_Bateria2" value="Tiene_Bateria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Bateria?</label>
+                                                </div>
                                             </div>
-                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -2869,50 +2868,86 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-4-md">
+                                <div class="col-4-md mb-1">
                                     <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2" value="{{Auth::user()->id_sucursal}}" required>
+                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2"
+                                        value="{{Auth::user()->id_sucursal}}" required>
                                         @foreach ($Sucursal as $sucursal)
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Anticipo</label>
-                                        <input class="form-control" type="text" name="pago2" id="pago2"
-                                            placeholder="Anticipo">
+
+                                <div class="card text-left  border border-info">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="marca">Anticipo</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">$</span>
+                                                            <input class="form-control" type="text" name="pago2"
+                                                                id="pago2"
+                                                                placeholder="Anticipo">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                <div class="col-md-4">
+                                                    <label for="presupuesto">Presupuesto</label>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input class="form-control" type="text" name="presupuesto2"
+                                                            id="presupuesto2" placeholder="(Cuanto puede Costar)">
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label for="inversion">Inversion</label>
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input class="form-control" type="text" name="inversion2"
+                                                            id="inversion2"
+                                                            placeholder=" (Cuanto es lo maximo que se puede invertir)">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Recibido</label>
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido2" id="fecha_recibido2"
-                                            value="<?php echo date('Y-m-d'); ?>">
+
+                                    <div class="col-6-md">
+                                        <div class="form-group">
+                                            <label for="marca">Tiempo Recibido</label>
+                                            <input class="form-control" data-provide="datepicker" type="date"
+                                                name="fecha_recibido2" id="fecha_recibido2"
+                                                value="<?php echo date('Y-m-d'); ?>">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Entrega</label>
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_entrega2" id="fecha_entrega2">
+                                    <div class="col-6-md">
+                                        <div class="form-group">
+                                            <label for="marca">Tiempo Entrega</label>
+                                            <input class="form-control" data-provide="datepicker" type="date"
+                                                name="fecha_entrega2" id="fecha_entrega2">
+                                        </div>
                                     </div>
+                                    <br>
                                 </div>
-                                <br>
                             </div>
                         </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="boton">Save</button>
+                </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="boton">Save</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
-
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -3253,7 +3288,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="agregarpago">
+                    <form name="pagoform" id="pagoform" action="">
                         @csrf
                         @method('POST')
                         <div class="card text-left">
@@ -3277,14 +3312,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" name="final4" id="final4">
+                        </div>
+                        
+                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" >
+                        <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" >
+                        <input type="hidden" class="form-control" name="id_sucursal4" id="id_sucursal4" value="">
+                        <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" >
+                        <input type="hidden" class="form-control" name="adelanto4" id="adelanto4" value="" >
 
-                          </div>
-                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" disabled>
-                        <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" disabled>
-                        <input type="hidden" class="form-control" name="id_servicio4" id="id_servicio4" value=""
-                            disabled>
-                        <input type="hidden" class="form-control" name="id_servicio4" id="serial4" value="" disabled>
-                        <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" disabled>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">
@@ -3348,7 +3383,6 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -3453,6 +3487,7 @@
     </div>
 </div>
 
+
 <!-- Scripts Status-->
 <script>
     $('#modal_status').on('show.bs.modal', function(e) {
@@ -3467,7 +3502,20 @@
 <script>
     $('#modal_pago').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id;
-        $(e.currentTarget).find('#id4').val(id);
+        $(e.currentTarget).find('#id_equipo4').val(id);
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#id').val(id);
+        $("#pagoform").attr("action", '/agregarpago/' + id);
+        var id = $(e.relatedTarget).data().id_cliente;
+        $(e.currentTarget).find('#id_cliente4').val(id);
+        var id = $(e.relatedTarget).data().id_sucursal;
+        $(e.currentTarget).find('#id_sucursal4').val(id);
+        var id = $(e.relatedTarget).data().pago;
+        $(e.currentTarget).find('#pago4').val(id);
+        var id = $(e.relatedTarget).data().fecha_recibido;
+        $(e.currentTarget).find('#fecha_recibido4').val(id);
+        var id = $(e.relatedTarget).data().fecha_entrega;
+        $(e.currentTarget).find('#fecha_entrega4').val(id);
         $("#cambio_pago").attr("action", '/agregarpago/' + id);
         var id = $(e.relatedTarget).data().pago;
         anticipo = id;
@@ -3476,47 +3524,28 @@
         } else {
             $(e.currentTarget).find('#pago4').val(id);
         }
-
-        var id = $(e.relatedTarget).data().precio
-        precio = id;
+        precio = $(e.relatedTarget).data().presupuesto;
         temporal = precio - anticipo;
         total = precio;
         $(e.currentTarget).find('#pendiente4').val(temporal);
         $(e.currentTarget).find('#total').val(total);
-        var id = $(e.relatedTarget).data().id_cliente;
-        $(e.currentTarget).find('#id_cliente4').val(id);
-        var id = $(e.relatedTarget).data().id_servicio;
-        $(e.currentTarget).find('#id_servicio4').val(id);
-        var id = $(e.relatedTarget).data().serial;
-        $(e.currentTarget).find('#serial4').val(id);
-        var id = $(e.relatedTarget).data().imei;
-        $(e.currentTarget).find('#imei4').val(id);
-        var id = $(e.relatedTarget).data().pago;
-        $(e.currentTarget).find('#pago4').val(id);
-        var id = $(e.relatedTarget).data().descripcion;
-        $(e.currentTarget).find('#descripcion4').val(id);
-        var id = $(e.relatedTarget).data().fecha_recibido;
-        $(e.currentTarget).find('#fecha_recibido4').val(id);
-        var id = $(e.relatedTarget).data().fecha_entrega;
-        $(e.currentTarget).find('#fecha_entrega4').val(id);
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status4').val(id);
         $('#final4').on('input', function(e) {
             iva = document.getElementById("iva").value;
-            pago=document.getElementById("final4").value;
+            pago = document.getElementById("final4").value;
             var tasa = iva;
             var monto = $("input[name=total]").val();
             var anticipo = $("input[name=pendiente4]").val();
-            if(anticipo!=0){
-            cambio=pago-anticipo;
-            }else{
-            cambio=pago-precio;
+            if (anticipo != 0) {
+                cambio = pago - anticipo;
+            } else {
+                cambio = pago - precio;
             }
             if (tasa == 0.0) {
                 $("input[name=subtotal]").val(parseInt(cambio));
                 $("input[name=total_final]").val(parseInt(monto));
             } else {
-                var monto = $("input[name=total]").val();
                 var iva = (monto * tasa) / 100;
                 $("input[name=subtotal]").val(parseInt(cambio));
                 $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
@@ -3976,7 +4005,13 @@
         $(e.currentTarget).find('#id_servicio2').val(id);
         var id = $(e.relatedTarget).data().pago;
         $(e.currentTarget).find('#pago2').val(id);
+        var id = $(e.relatedTarget).data().anticipo;
+        $(e.currentTarget).find('#anticipo2').val(id);
+        var id = $(e.relatedTarget).data().presupuesto;
+        $(e.currentTarget).find('#presupuesto2').val(id);
 
+        var id = $(e.relatedTarget).data().inversion;
+        $(e.currentTarget).find('#inversion2').val(id);
         var id = $(e.relatedTarget).data().id_cliente;
         $(e.currentTarget).find('#id_cliente2').val(id);
         var id = $(e.relatedTarget).data().serial;
@@ -4183,4 +4218,8 @@ $('#smartcart').smartCart();
         });
     });
 </script>
-
+<script>
+    $(document).ready(function(){
+      $('.toast').toast('show');
+    });
+    </script>

@@ -34,7 +34,19 @@ class ControllerProveedor extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $setting=  new \App\Models\Proveedor();
+        $setting->nombre=$request->get('nombre');
+        $setting->direccion=$request->get('direccion');
+        $setting->telefono=$request->get('telefono');
+        $setting->email=$request->get('email');
+        $setting->telegram=$request->get('telegram');
+        $setting->whatsapp=$request->get('whatsapp');
+        $setting->credito=$request->get('credito');
+        $setting->saldo=$request->get('saldo');
+        $setting->RFC=$request->get('RFC');
+        $setting->status=$request->get('status');
+        $setting->save();
+        return back()->with('success', "Proveedor agregado : ".$setting->nombre);
     }
 
     /**
@@ -68,8 +80,20 @@ class ControllerProveedor extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $setting= \App\Models\Proveedor::find($id);
+        $setting->nombre=$request->get('nombre');
+        $setting->direccion=$request->get('direccion');
+        $setting->telefono=$request->get('telefono');
+        $setting->email=$request->get('email');
+        $setting->telegram=$request->get('telegram');
+        $setting->whatsapp=$request->get('whatsapp');
+        $setting->credito=$request->get('credito');
+        $setting->saldo=$request->get('saldo');
+        $setting->RFC=$request->get('RFC');
+        $setting->status=$request->get('status');
+        $setting->save();
+        return back()->with('success', "Proveedor Editado : ".$setting->name);
+    } 
 
     /**
      * Remove the specified resource from storage.
@@ -79,6 +103,12 @@ class ControllerProveedor extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin= \App\Models\Proveedor::find($id);
+        if ($admin != null) {
+            $admin->delete(); 
+            return back()->with('success', "Usuario Borrado: ".$admin->nombre);
+        } else {
+            return back()->with('success', "Usuario No Borrado: ".$admin->nombre);
+        }
     }
 }

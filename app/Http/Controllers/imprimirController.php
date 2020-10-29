@@ -206,155 +206,173 @@ class imprimirController extends Controller
         $equipo = \App\Models\Equipo::find($id);
         $usuario = \App\Models\User::find($equipo->id_cliente);
         $tecnico = \App\Models\User::find($equipo->id_user);
-        $precio = \App\Models\Servicio::find($equipo->id_servicio);
+        $precio = \App\Models\Equipo::find($id);
         $setting = \App\Models\Settings::find(1);
-        if ($equipo != null && $usuario != null && $tecnico != null && $precio != null && $setting != null) {
-            if ($equipo->imei != '') {
-                $datoequipo = $equipo->imei;
-            } else {
-                $datoequipo = $equipo->serial;
-            }
-            $adelanto = $tecnico->monto;
-            $final = $precio->precio - $adelanto;
-
-            $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/imprimir/' . $id;
-
-            \QRcode::png($data, "test.png");
-
-            $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(45, 350));
-            $pdf->AddPage();
-            $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
-            $textypos = 5;
-            $pdf->Image($setting->setting_logo, 30, 1, -1500);
-            $pdf->setY(2);
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, $setting->setting_nombre);
-            $pdf->SetFont('Arial', '', 4);    //Letra Arial, negrita (Bold), tam. 20
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Direccion: ' . $setting->setting_direccion);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Telefono: ' . $setting->setting_telefono);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '=======================================');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Fecha:' . $equipo->created_at);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Cliente: ' . $usuario->name);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Tecnico: ' . $tecnico->name);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Equipo: ' . $datoequipo);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Diagnostico: ' . $equipo->id_comentario);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '=======================================');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'CANT.  ARTICULO       PRECIO               TOTAL');
-
-            $total = 0;
-            $off = $textypos + 6;
-            $producto = array(
-                "q" => 1,
-                "name" => $precio->nombre,
-                "price" => $precio->precio
-            );
-            $productos = array($producto);
-            foreach ($productos as $pro) {
-                $pdf->setX(2);
-                $pdf->Cell(5, $off, $pro["q"]);
-                $pdf->setX(6);
-                $pdf->Cell(35, $off,  strtoupper(substr($pro["name"], 0, 12)));
-                $pdf->setX(20);
-                $pdf->Cell(11, $off,  "$" . number_format($pro["price"], 2, ".", ","), 0, 0, "R");
-                $pdf->setX(32);
-                $pdf->Cell(11, $off,  "$ " . number_format($pro["q"] * $pro["price"], 2, ".", ","), 0, 0, "R");
-
-                $total += $pro["q"] * $pro["price"];
-                $off += 6;
-            }
-            $textypos = $off + 6;
-
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, "TOTAL : ");
-            $pdf->setX(38);
-            $pdf->Cell(5, $textypos, "$ " . number_format($total, 2, ".", ","), 0, 0, "R");
-
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos + 6, 'Gracias por su preferencia');
-            $textypos += 6;
-            $pdf->setX(2);
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '1.-Despues de 30 dias de cualquier reparacion');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'no nos hacemos responsables de los equipos.');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '2.- No se responde por danos ocasionados por alto');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'voltaje, golpes, humedad y otras causas de un ');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'mal manejo del equipo.');
-
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '3.- El departamento tecnico no se hace responsable');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'por la perdida de informacion o datos, para tal fin');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'el usuario debe realizar sus propias copias de seguridad');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '4.- No se responde por un sim card y memorias');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'dejadas en los equipos.');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '5.- No hay garantia en equipos mojados.');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '=== Acepto clausula de danos: ===');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '_______________________________________');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, '        Nombre y Firma de conformidad');
-            $textypos += 6;
-            $pdf->setX(2);
-            $pdf->Cell(5, $textypos, 'Enfoca con tu telefono este codigo y sigue tu orden');
-            $pdf->Image("test.png", 10, 100, 20, 20, "png");
-            $pdf->Output();
-            //$pdf->AddPage();
-            //$pdf->Image(imagepng($QR), 10, 10, 20, 20, "png");
-            //imagepng($QR);
-            //imagedestroy($QR);
-            //$pdf->Output();
-
-            return back()->with('success', 'Archivo a Imprimir generado');
+        if ($equipo->imei != '') {
+            $datoequipo = $equipo->imei;
         } else {
-
-            return back()->with('success', 'Archivo a Imprimir no pudo ser generado revisa si esta configura el logotipo de la empresa ');
+            $datoequipo = $equipo->serial;
         }
+        $adelanto = $tecnico->monto;
+        $final = $precio->presupuesto - $adelanto;
+        if ($setting->setting_logo == "") {
+            $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";
+        }
+        $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+
+        \QRcode::png($data, "$id.png");
+
+        $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(45, 350));
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
+        $textypos = 5;
+        $pdf->Image($setting->setting_logo, 10, 1, -800);
+
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, $setting->setting_nombre);
+        $pdf->SetFont('Arial', '', 4);    //Letra Arial, negrita (Bold), tam. 20
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Direccion: ' . $setting->setting_direccion);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Telefono: ' . $setting->setting_telefono);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '=======================================');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Fecha: ' . $equipo->created_at);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Cliente: ' . $usuario->name);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Tecnico: ' . $tecnico->name);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Equipo: ' . $datoequipo);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Diagnostico: ' . $equipo->id_comentario);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Adelanto: ' . $equipo->pago . ' - ' . ' Cotizado: ' . $equipo->presupuesto);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '=======================================');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'CANT.      EQUIPO          PRECIO               TOTAL A PAGAR');
+        if ($precio->serial == '') {
+            $equipo = $precio->imei;
+        } else {
+            $equipo = $precio->serial;
+        }
+        if ($precio->pago == '') {
+            $total2 =  $precio->presupuesto;
+        } else {
+            $total2 = $precio->presupuesto - $precio->pago;
+        }
+        $total = 0;
+        $off = $textypos + 6;
+        $producto = array(
+            "q" => 1,
+            "name" => $equipo,
+            "price" => $total2
+        );
+        $productos = array($producto);
+        foreach ($productos as $pro) {
+            $pdf->setX(2);
+            $pdf->Cell(5, $off, $pro["q"]);
+            $pdf->setX(6);
+            $pdf->Cell(35, $off,  strtoupper(substr($pro["name"], 0, 12)));
+            $pdf->setX(20);
+            $pdf->Cell(11, $off,  "$" . number_format($pro["price"], 2, ".", ","), 0, 0, "R");
+            $pdf->setX(32);
+            $pdf->Cell(11, $off,  "$ " . number_format($pro["q"] * $pro["price"], 2, ".", ","), 0, 0, "R");
+
+            $total += $pro["q"] * $pro["price"];
+            $off += 6;
+        }
+        $textypos = $off + 6;
+
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, "TOTAL : ");
+        $pdf->setX(38);
+        $pdf->Cell(5, $textypos, "$ " . number_format($total, 2, ".", ","), 0, 0, "R");
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos + 6, 'Gracias por su preferencia');
+        $textypos += 6;
+        $pdf->setX(2);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '1.-Despues de 30 dias de cualquier reparacion');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'no nos hacemos responsables de los equipos.');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '2.- No se responde por danos ocasionados por alto');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'voltaje, golpes, humedad y otras causas de un ');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'mal manejo del equipo.');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '3.- El departamento tecnico no se hace responsable');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'por la perdida de informacion o datos, para tal fin');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'el usuario debe realizar sus propias copias de seguridad');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '4.- No se responde por un sim card y memorias');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'dejadas en los equipos.');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '5.- No hay garantia en equipos mojados.');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '=== Acepto clausula de danos: ===');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '_______________________________________');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '        Nombre y Firma de conformidad');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '===================================================');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, 'Enfoca con tu telefono este codigo y sigue tu orden por internet');
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, $setting->setting_url . '/orden/' . $id);
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Image("$id.png", 10, 116, 20, 20, "png");
+        $textypos += 6;
+        $pdf->setX(2);
+        $pdf->Output();
+        //$pdf->AddPage();
+        //$pdf->Image(imagepng($QR), 10, 10, 20, 20, "png");
+        //imagepng($QR);
+        //imagedestroy($QR);
+        //$pdf->Output();
+
+        return back()->with('success', 'Archivo a Imprimir generado');
     }
 
     /**
@@ -367,8 +385,12 @@ class imprimirController extends Controller
      */
     public function QR(Request $request, $id)
     {
+
         $setting = \App\Models\Settings::find(1);
-        $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/imprimir/' . $id;
+        if ($setting->setting_logo == "") {
+            $setting->setting_logo = "https://iunlock.store/unlock-2.png";
+        }
+        $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
         $size = isset($_GET['size']) ? $_GET['size'] : '200x200';
         $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
 
@@ -395,5 +417,25 @@ class imprimirController extends Controller
         imagepng($QR);
         imagedestroy($QR);
         return back()->with('success', 'Archivo a Imprimir generado');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function orden(Request $request, $id)
+    {
+
+        $equipo = \App\Models\Equipo::all();
+        $usuario = \App\Models\User::all();
+        $settings = \App\Models\Settings::all();
+        $captura = \App\Models\Captura::all();
+
+        return view('/orden')->with('id', $id)->with('Equipo', $equipo)->with('Usuario', $usuario)->with('Settings', $settings, $usuario)->with('Captura', $captura);
+        //return back('/galleria')->with('id',$id)->with('Captura',$captura);
     }
 }

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Models\User;
-use App\Models\Articulo;
 
-class ControllerUsuario extends Controller
+class ControllerPresupuesto extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,17 +34,7 @@ class ControllerUsuario extends Controller
      */
     public function store(Request $request)
     {
-        $setting=  new \App\Models\User;
-        $setting->name=$request->get('name');
-        $setting->email=$request->get('email');
-        $contraseñaantigua=$request->get('password');
-        $setting->password=bcrypt($contraseñaantigua);
-        $setting->rol=$request->get('rol');
-        $setting->id_sucursal=$request->get('id_sucursal');
-        $setting->status=$request->get('status');
-        $setting->save();
-        return back()->with('success', "Usuario agregado : ".$setting->name);
-
+        //
     }
 
     /**
@@ -68,7 +56,7 @@ class ControllerUsuario extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -80,18 +68,7 @@ class ControllerUsuario extends Controller
      */
     public function update(Request $request, $id)
     {
-        $admin= \App\Models\User::find($id);
-        $admin->name=$request->get('name1');
-        $admin->email=$request->get('email1');
-        //$contraseñaantigua=$request->get('password1');
-       // $admin->password=bcrypt($contraseñaantigua);
-       $admin->id_sucursal=$request->get('id_sucursal1');
-
-        $admin->rol=$request->get('rol1');
-        $admin->status=$request->get('estatus1');
-        $admin->save();
-        return back()->with('success', "Usuario Editado : ".$admin->name);
-
+        //
     }
 
     /**
@@ -102,12 +79,6 @@ class ControllerUsuario extends Controller
      */
     public function destroy($id)
     {
-        $admin= \App\Models\User::find($id);
-        if ($admin != null) {
-            $admin->delete();
-            return back()->with('success', "Usuario Borrado: ".$admin->name);
-        } else {
-            return back()->with('success', "Usuario No Borrado: ".$admin->name);
-        }
+        //
     }
 }

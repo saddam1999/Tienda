@@ -40,11 +40,13 @@ class ControllerEquipo extends Controller
         $equipo = new \App\Models\Equipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
-        $equipo->id_servicio = $request->get('id_servicio');
+        $equipo->id_servicio = null;
+        $equipo->inversion = $request->get('inversion');
+        $equipo->presupuesto = $request->get('presupuesto');
+        $equipo->pago = $request->get('pago');
         $equipo->id_sucursal = $request->get('id_sucursal');
         $equipo->serial = $request->get('serial');
         $equipo->imei = $request->get('imei');
-        $equipo->pago = $request->get('pago');
         $equipo->id_captura = $request->get('id_captura');
         $equipo->id_comentario = $request->get('descripcion');
         $equipo->fecha_recibido = $request->get('fecha_recibido');
@@ -57,7 +59,7 @@ class ControllerEquipo extends Controller
         $equipo->AltaVoz = $request->get('AltaVoz');
         $equipo->BotonHome = $request->get('BotonHome');
         $equipo->Microfono = $request->get('Microfono');
-        $equipo->Lector_SIM = $request->get('Lector_SIM'); 
+        $equipo->Lector_SIM = $request->get('Lector_SIM');
         $equipo->Volumenplus = $request->get('Volumenplus');
         $equipo->Volumenless = $request->get('Volumenless');
         $equipo->Encendido = $request->get('Encendido');
@@ -70,7 +72,47 @@ class ControllerEquipo extends Controller
         $equipo->Golpes = $request->get('Golpes');
         $equipo->Tiene_Bateria = $request->get('Tiene_Bateria');
         $equipo->save();
-        return back()->with('success', "Equipo agregado");
+
+        $setting = \App\Models\Settings::find(1);
+        $pago = new \App\Models\Pago_Equipo();
+        $cajaT = \App\Models\Caja::all();
+        foreach ($cajaT as $cajatemp) {
+            $caja = \App\Models\Sucursal::find($cajatemp->id_sucursal);
+        }
+        $pago->id_user = $equipo->id_user;
+        $pago->id_equipo = $equipo->id;
+        $pago->iva = $setting->setting_iva;
+        $pago->id_cliente = $equipo->id_cliente;
+        $pago->id_servicio = null;
+        $pago->id_sucursal = $equipo->id_sucursal;
+        $pago->id_caja = $caja->id;
+        $pago->id_corte = $equipo->created_at;
+        $pago->monto = $equipo->presupuesto; // esto es lo que deberia de pagar total
+        $pago->adelanto = $equipo->pago; // esto es lo que adelanto
+        $pago->monto = $equipo->presupuesto;
+
+
+        if ($pago->adelanto == '')
+        {
+
+            $pago->pagado = 0; // esto es lo que envia 
+            $total = $pago->monto;
+            $pago->total = $total;
+
+        } else {
+            
+            $pago->pagado = $pago->adelanto; // esto es lo que envia 
+            $total = $pago->monto - $pago->adelanto;
+            $pago->total = $total;
+        }
+
+        $pago->comentario = $request->get('comentario4');
+        $pago->status = 0;
+        $pago->fecha =  $equipo->created_at;
+        $pago->save();
+
+
+        return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 
     /**
@@ -106,37 +148,39 @@ class ControllerEquipo extends Controller
     {
         $equipo = \App\Models\Equipo::find($id);
         $equipo->id_user = $request->get('id_user2');
-       $equipo->id_cliente = $request->get('id_cliente2');
-       $equipo->id_servicio = $request->get('id_servicio2');
-       $equipo->serial = $request->get('serial2');
-       $equipo->imei = $request->get('imei2');
-       $equipo->pago = $request->get('pago2');
-       //$equipo->id_captura=$request->get('id_captura2');
-       $equipo->id_comentario = $request->get('descripcion2');
-       $equipo->fecha_recibido = $request->get('fecha_recibido2');
-       $equipo->fecha_entrega = $request->get('fecha_entrega2');
-       $equipo->status = $request->get('status2');
-       $equipo->Tiene_Camara = $request->get('Tiene_Camara2');
-       $equipo->Centro_Carga = $request->get('Centro_Carga2');
-       $equipo->Señal = $request->get('Señal2');
-       $equipo->LectorSD = $request->get('LectorSD2');
-       $equipo->AltaVoz = $request->get('AltaVoz2');
-       $equipo->BotonHome = $request->get('BotonHome2');
-       $equipo->Microfono = $request->get('Microfono2');
-       $equipo->Lector_SIM = $request->get('Lector_SIM2');
-       $equipo->Volumenplus = $request->get('Volumenplus2');
-       $equipo->Volumenless = $request->get('Volumenless2');
-       $equipo->Encendido = $request->get('Encendido2');
-       $equipo->Auricular = $request->get('Auricular2');
-       $equipo->Touch = $request->get('Touch2');
-       $equipo->Bateria = $request->get('Bateria2');
-       $equipo->Enciende = $request->get('Enciende2');
-       $equipo->Memoria = $request->get('Memoria2');
-       $equipo->SIM = $request->get('SIM2');
-       $equipo->Golpes = $request->get('Golpes2');
-       $equipo->Tiene_Bateria = $request->get('Tiene_Bateria2');
-       $equipo->save();
-        return back()->with('success', "Equipo Editado");
+        $equipo->id_cliente = $request->get('id_cliente2');
+        $equipo->id_servicio = $request->get('id_servicio2');
+        $equipo->serial = $request->get('serial2');
+        $equipo->imei = $request->get('imei2');
+        $equipo->pago = $request->get('pago2');
+        $equipo->inversion = $request->get('inversion2');
+        $equipo->presupuesto = $request->get('presupuesto2');
+        //$equipo->id_captura=$request->get('id_captura2');
+        $equipo->id_comentario = $request->get('descripcion2');
+        $equipo->fecha_recibido = $request->get('fecha_recibido2');
+        $equipo->fecha_entrega = $request->get('fecha_entrega2');
+        $equipo->status = $request->get('status2');
+        $equipo->Tiene_Camara = $request->get('Tiene_Camara2');
+        $equipo->Centro_Carga = $request->get('Centro_Carga2');
+        $equipo->Señal = $request->get('Señal2');
+        $equipo->LectorSD = $request->get('LectorSD2');
+        $equipo->AltaVoz = $request->get('AltaVoz2');
+        $equipo->BotonHome = $request->get('BotonHome2');
+        $equipo->Microfono = $request->get('Microfono2');
+        $equipo->Lector_SIM = $request->get('Lector_SIM2');
+        $equipo->Volumenplus = $request->get('Volumenplus2');
+        $equipo->Volumenless = $request->get('Volumenless2');
+        $equipo->Encendido = $request->get('Encendido2');
+        $equipo->Auricular = $request->get('Auricular2');
+        $equipo->Touch = $request->get('Touch2');
+        $equipo->Bateria = $request->get('Bateria2');
+        $equipo->Enciende = $request->get('Enciende2');
+        $equipo->Memoria = $request->get('Memoria2');
+        $equipo->SIM = $request->get('SIM2');
+        $equipo->Golpes = $request->get('Golpes2');
+        $equipo->Tiene_Bateria = $request->get('Tiene_Bateria2');
+        $equipo->save();
+        return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 
 
