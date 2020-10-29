@@ -1459,9 +1459,13 @@
                                             @endforeach
                                             
                                             <td>{{$pago_equipo->adelanto}}</td>
-                         
+                                            @if($pago_equipo->iva=='')
+                                           <td>${{$pago_equipo->total}}</td>
+                                           @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
+                                           <td>${{$pago_equipo->total}} + {{$pago_equipo->iva}} IVA </td>
+                                            @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
                                             <td>${{$pago_equipo->total}}</td>
-                                        
+                                            @endif
                                             <td>{{$pago_equipo->created_at}}</td>
 
                                             <td>{{$pago_equipo->status}}</td>

@@ -89,21 +89,32 @@ class ControllerEquipo extends Controller
         $pago->id_corte = $equipo->created_at;
         $pago->monto = $equipo->presupuesto; // esto es lo que deberia de pagar total
         $pago->adelanto = $equipo->pago; // esto es lo que adelanto
-        $pago->monto = $equipo->presupuesto;
-
-
-        if ($pago->adelanto == '')
-        {
-
-            $pago->pagado = 0; // esto es lo que envia 
-            $total = $pago->monto;
+        if ($pago->adelanto == 0 && $pago->iva == '' && $pago->monto == 0) {
+            $pago->total = 0;
+        } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto != 0) {
+            $temporal = $pago->monto - $pago->adelanto;
+            //1000 - 100=900
+            $iva = ($temporal * $pago->iva) / 100;
+            //900*16=144
+            $total = $temporal + $iva;
             $pago->total = $total;
 
-        } else {
-            
-            $pago->pagado = $pago->adelanto; // esto es lo que envia 
-            $total = $pago->monto - $pago->adelanto;
+        } else if ($pago->adelanto != 0 && $pago->iva == '' && $pago->monto != 0) {
+
+            $temporal = $pago->monto - $pago->adelanto;
+            $total = $temporal;
             $pago->total = $total;
+
+        } else if ($pago->adelanto == 0 && $pago->iva != '' && $pago->monto != 0) {
+            //1000 - 100=900
+            $iva = ($pago->monto * $pago->iva) / 100;
+            //900*16=144
+            $total = $pago->monto + $iva;
+            $pago->total = $total;
+        } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto == 0) {
+            $pago->total = 0;
+        }else {
+            $pago->total = 0;
         }
 
         $pago->comentario = $request->get('comentario4');
