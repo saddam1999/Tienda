@@ -91,26 +91,14 @@
                         d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
                 </svg>Admin Punto de Venta</a>
             <div class="dropdown-menu">
-                <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                    aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                        class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                    </svg>Articulos
+                <a class="dropdown-item" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
+                    aria-controls="articulos" aria-selected="true">Articulos
                 </a>
                 <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
-                    aria-controls="marcas" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                        class="bi bi-handbag" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
-                    </svg>Marcas
+                    aria-controls="marcas" aria-selected="false">Marcas
                 </a>
                 <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                    aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                        class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                    </svg>Categorias
+                    aria-controls="categoria" aria-selected="false">Categorias
                 </a>
         </li>
 
@@ -128,20 +116,12 @@
                     aria-controls="servicios" aria-selected="false">Area de Servicios
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
+                <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Equipos a Reparar</a>
                 <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
-                    aria-controls="marcas" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                        class="bi bi-handbag" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
-                    </svg>Marcas
+                    aria-controls="marcas" aria-selected="false">Marcas
                 </a>
                 <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                    aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                        class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                    </svg>Categorias
+                    aria-controls="categoria" aria-selected="false">Categorias
                 </a>
             </div>
         </li>
@@ -231,7 +211,8 @@
         </div>
     </div>
     @endif
-    <div class="tab-content bg-black" id="myTabContent" style="background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
+    <div class="tab-content bg-black" id="myTabContent" style="
+    background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
         <div class="row">
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
