@@ -231,7 +231,7 @@
         </div>
     </div>
     @endif
-    <div class="tab-content bg-black" id="myTabContent">
+    <div class="tab-content bg-black" id="myTabContent" style="background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
         <div class="row">
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
@@ -392,16 +392,7 @@
                                             <td>{{$marca->id}}</td>
                                             <td>{{$marca->nombre}}</td>
                                             <td>{{$marca->descripcion}}</td>
-                                            <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id="{{$marca->id}}" data-nombre="{{$marca->nombre}}"
-                                                    data-descripcion="{{$marca->descripcion}}"><svg width="1em"
-                                                        height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg></a>
+                                            <td>
                                                 <a href="/deletemarca/{{$marca->id}}"><svg width="1em" height="1em"
                                                         viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -971,7 +962,7 @@
                                                                 </div>
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
-                                                                    class="btn btn-info btn-lg btn-block mt-1">Guardar
+                                                                    class="btn btn-info btn-lg btn-block mt-1" style="vertical-align:middle"> <span> Guardar
                                                                     <center><svg width="2em" height="2em"
                                                                             viewBox="0 0 16 16"
                                                                             class="bi bi-pencil-square"
@@ -981,7 +972,7 @@
                                                                                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                                             <path fill-rule="evenodd"
                                                                                 d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                                        </svg></center></button> </form>
+                                                                        </svg></center> </span> </button> </form>
 
                                                         </div>
                                                     </div>
@@ -1069,7 +1060,7 @@
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
-                                                                    class="btn btn-info btn-lg btn-block mt-1">Guardar
+                                                                    class="btn btn-info btn-lg btn-block mt-1" style="vertical-align:middle"> <span> Guardar
                                                                     <center><svg width="1em" height="1em"
                                                                             viewBox="0 0 16 16" class="bi bi-hdd"
                                                                             fill="currentColor"
@@ -1080,7 +1071,7 @@
                                                                                 d="M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                                                                             <path fill-rule="evenodd"
                                                                                 d="M4.094 4a.5.5 0 0 0-.44.26l-2.47 4.532A1.5 1.5 0 0 0 1 9.51v.99H0v-.99c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198v.99h-1v-.99a1.5 1.5 0 0 0-.183-.718L12.345 4.26a.5.5 0 0 0-.439-.26H4.094z" />
-                                                                        </svg></center></button> </form>
+                                                                        </svg></center> </span></button> </form>
 
                                                         </div>
                                                     </div>
