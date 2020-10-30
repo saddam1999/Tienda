@@ -784,7 +784,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Settings</h4>
+                                <h4 class="card-title">Opciones</h4>
                                 <div class="wrapper">
                                     <div class="row">
                                         <div class="col-3">

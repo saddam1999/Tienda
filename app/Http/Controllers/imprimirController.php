@@ -219,8 +219,33 @@ class imprimirController extends Controller
             $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";
         }
         $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+        $size = isset($_GET['size']) ? $_GET['size'] : '200x200';
+        $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
 
-        \QRcode::png($data, "$id.png");
+        header('Content-type: image/png');
+        // Get QR Code image from Google Chart API
+        // http://code.google.com/apis/chart/infographics/docs/qr_codes.html
+        $QR = imagecreatefrompng('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=' . $size . '&chl=' . urlencode($data));
+        if ($logo !== FALSE) {
+            $logo = imagecreatefromstring(file_get_contents($logo));
+
+            $QR_width = imagesx($QR);
+            $QR_height = imagesy($QR);
+
+            $logo_width = imagesx($logo);
+            $logo_height = imagesy($logo);
+
+            // Scale logo to fit in the QR Code
+            $logo_qr_width = $QR_width / 3;
+            $scale = $logo_width / $logo_qr_width;
+            $logo_qr_height = $logo_height / $scale;
+
+            imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+        }
+
+          imagepng($QR,"$id.png");
+        // $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+        //\QRcode::png($data, "$id.png");
 
         $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(45, 350));
         $pdf->AddPage();
@@ -371,6 +396,7 @@ class imprimirController extends Controller
         //imagepng($QR);
         //imagedestroy($QR);
         //$pdf->Output();
+      //  header('Content-Disposition: Attachment;filename=image.png');
 
         return back()->with('success', 'Archivo a Imprimir generado');
     }
@@ -414,7 +440,55 @@ class imprimirController extends Controller
 
             imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
         }
-        
+
+          imagepng($QR,"$id.png");
+       // imagedestroy($QR);
+
+
+        return back()->with('success', 'Archivo a Imprimir generado');
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function QRNEGOCIO(Request $request, $id)
+    {
+
+            $setting = \App\Models\Settings::find(1);
+        if ($setting->setting_logo == "") {
+            $setting->setting_logo = "https://iunlock.store/unlock-2.png";
+        }
+        $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+        $size = isset($_GET['size']) ? $_GET['size'] : '200x200';
+        $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
+
+        header('Content-type: image/png');
+        // Get QR Code image from Google Chart API
+        // http://code.google.com/apis/chart/infographics/docs/qr_codes.html
+        $QR = imagecreatefrompng('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=' . $size . '&chl=' . urlencode($data));
+        if ($logo !== FALSE) {
+            $logo = imagecreatefromstring(file_get_contents($logo));
+
+            $QR_width = imagesx($QR);
+            $QR_height = imagesy($QR);
+
+            $logo_width = imagesx($logo);
+            $logo_height = imagesy($logo);
+
+            // Scale logo to fit in the QR Code
+            $logo_qr_width = $QR_width / 3;
+            $scale = $logo_width / $logo_qr_width;
+            $logo_qr_height = $logo_height / $scale;
+
+            imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+        }
+
         dd(imagepng($QR));
         imagedestroy($QR);
         return back()->with('success', 'Archivo a Imprimir generado');
