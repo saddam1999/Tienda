@@ -10,10 +10,11 @@
     @php date_default_timezone_set('UTC');
     $contador=0;
     @endphp
+
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
@@ -28,16 +29,16 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
+
     <style>
-    .flash{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-color:#fff;
-    }
+        .flash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
 
         ul.gallery {
             margin-left: 3vw;
@@ -66,7 +67,7 @@
             z-index: 100;
         }
 
-     
+
         @media only screen and (max-width: 768px) {
             ul.gallery {
                 margin-left: 15vw;
@@ -79,7 +80,6 @@
         }
     </style>
 
-
     <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -91,27 +91,27 @@
                         d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
                 </svg>Admin Punto de Venta</a>
             <div class="dropdown-menu">
-            <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
-                </svg>Articulos
-            </a>
-            <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
-                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
-                </svg>Marcas
-            </a>
-            <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                </svg>Categorias
-            </a>
+                <a class="nav-link" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
+                    aria-controls="articulos" aria-selected="true"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-bag-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z" />
+                    </svg>Articulos
+                </a>
+                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
+                    aria-controls="marcas" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-handbag" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
+                    </svg>Marcas
+                </a>
+                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                    aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    </svg>Categorias
+                </a>
         </li>
 
         <li class="nav-item dropdown">
@@ -129,20 +129,20 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Taller</a>
-                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab" aria-controls="marcas"
-                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-handbag"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
-                </svg>Marcas
-            </a>
-            <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                    class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
-                </svg>Categorias
-            </a>
+                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
+                    aria-controls="marcas" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-handbag" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 1a2 2 0 0 0-2 2v2h4V3a2 2 0 0 0-2-2zm3 4V3a3 3 0 1 0-6 0v2H3.361a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.356a2.5 2.5 0 0 0 2.472-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 0 0 1 0V6h4z" />
+                    </svg>Marcas
+                </a>
+                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                    aria-controls="categoria" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                    </svg>Categorias
+                </a>
             </div>
         </li>
 
@@ -190,75 +190,81 @@
         </li>
         @foreach ($Caja as $caja)
         @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-            <div class="input-group-prepend bg-success" style="border-radius:12%;">
-      <span class="input-group-text face text-secondary"><a href="" data-toggle="modal" data-target="#modal_caja">Caja:
-              $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a> </span>
+        <div class="input-group-prepend bg-success" style="border-radius:12%;">
+            <span class="input-group-text face text-secondary"><a href="" data-toggle="modal"
+                    data-target="#modal_caja">Caja:
+                    $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a> </span>
+        </div>
+        @endif
+        @endforeach
+
+        <div class="input-group-prepend bg-warning" style="border-radius:12%;">
+            @php $count=0; @endphp
+            @foreach ($Equipo as $equipo)
+            @php
+
+            if($equipo->status != 2 && $equipo->status != 6)
+            {
+            $count++;
+            }
+            @endphp
+            @endforeach
+            <span class="input-group-text face text-secondary">Pendientes: {{$count}}</span>
+        </div>
+        <div class="input-group-prepend bg-primary" style="border-radius:12%;">
+            <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
+        </div>
+    </ul>
+    @if(Auth::user()->rol=="Admin"||Auth::user()->rol=="Tecnico")
+    <div class="toast" data-autohide="false">
+        <div class="toast-header">
+            <strong class="mr-auto text-primary">Toast Header</strong>
+            <small class="text-muted">5 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+        </div>
+        <div class="toast-body">
+            @if (session('pago_equipo'))
+            <div class="alert alert-success m-3">
+                <?php echo '<html>'.session('id_sucursal').'</html>' ?>
             </div>
             @endif
-    @endforeach
-
-
-            <div class="input-group-prepend bg-warning"  style="border-radius:12%;">
-                @php $count=0; @endphp
-                @foreach ($Equipo as $equipo)
-                @php
-
-                if($equipo->status != 2 && $equipo->status != 6)
-                {
-                $count++;
-                }
-                @endphp
-                @endforeach
-                    <span class="input-group-text face text-secondary">Pendientes: {{$count}}</span>
-                  </div>
-                  <div class="input-group-prepend bg-primary"  style="border-radius:12%;">
-                  <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
-                    </div>
-    </ul>
-
+        </div>
+    </div>
+    @endif
     <div class="tab-content bg-black" id="myTabContent">
-        @if(Auth::user()->rol=="Admin"||Auth::user()->rol=="Tecnico")
-        <div class="toast" data-autohide="true">
-            <div class="toast-header">
-              <strong class="mr-auto text-primary">Toast Header</strong>
-              <small class="text-muted">5 mins ago</small>
-              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-            </div>
-            <div class="toast-body">
-              Some text inside the toast body
-            </div>
-          </div>
-          @endif
         <div class="row">
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
-                    data-keyboard="false" class="btn btn-success btn-lg btn-block mt-3">Punto de Venta<center><svg
-                            width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
-                            <path fill-rule="evenodd"
-                                d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-                        </svg></center></button>
+                    data-keyboard="false" class="btn btn-success btn-lg btn-block mt-3"
+                    style="vertical-align:middle"><span>Punto de Venta<center><svg width="2em" height="2em"
+                                viewBox="0 0 16 16" class="bi bi-bag-check" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z" />
+                                <path fill-rule="evenodd"
+                                    d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                            </svg></center> </span></button>
             </div>
             <div class="col-md-4 m-auto mt-1">
                 <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3">Taller <center><svg
-                            width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
-                        </svg></center></button>
+                    data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3"
+                    style="vertical-align:middle"><span>Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                                class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                            </svg></center>
+                    </span>
+                </button>
             </div>
         </div>
 
         <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
-                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" >
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
 
-                            <div class="card-body" >
+                            <div class="card-body">
                                 <h4 class="card-title">Productos</h4>
                                 <table class="table table-striped table-inverse table-responsive">
                                     <thead class="thead-inverse">
@@ -337,14 +343,8 @@
                                                         <path fill-rule="evenodd"
                                                             d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                     </svg></a>
-                                                <a href="/deletearticulo/{{$articulo->id}}"><svg width="1em"
-                                                        height="1em" viewBox="0 0 16 16" class="bi bi-trash"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                    </svg></a>
+                                                <a href="/deletearticulo/{{$articulo->id}}"><i
+                                                        class="fa fa-trash"></i></a>
                                             </td>
                                             <td></td>
                                         </tr>
@@ -479,8 +479,10 @@
                                             @endif
                                             <td>{{$usuario->created_at}}</td>
                                             <td><a href="" data-toggle="modal" data-target="#modaleditar"
-                                                    data-id="{{$usuario->id}}" data-id_sucursal="{{$usuario->id_sucursal}}" data-name="{{$usuario->name}}"
-                                                    data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"
+                                                    data-id="{{$usuario->id}}"
+                                                    data-id_sucursal="{{$usuario->id_sucursal}}"
+                                                    data-name="{{$usuario->name}}" data-email="{{$usuario->email}}"
+                                                    data-rol="{{$usuario->rol}}"
                                                     data-estatus="{{$usuario->status}}"><svg width="1em" height="1em"
                                                         viewBox="0 0 16 16" class="bi bi-pencil-square"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -511,7 +513,7 @@
                 </div>
             </div>
 
-        <div class="tab-pane fade" id="prueba" role="tabpanel" aria-labelledby="prueba-tab">...</div>
+            <div class="tab-pane fade" id="prueba" role="tabpanel" aria-labelledby="prueba-tab">...</div>
         </div>
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
 
@@ -913,46 +915,60 @@
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_banner}}@endif">
                                                                 <label for="setting_url">URL del Negocio/
                                                                     Empresa</label>
-                                                                <input class="form-control" type="url"
-                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_url}} @endif"
-                                                                    name="setting_url" id="setting_url"
-                                                                    value="https:// @php echo $_SERVER['HTTP_HOST']; @endphp" >
-                                                                    <label for="iva">IVA</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">%</span>
-                                                                          <input type="text" class="form-control"  name="setting_iva" id="setting_iva" value="@if($Settings->isEmpty()) @else {{$setting->setting_iva}} @endif" >
-                                                                        </div>
-                                                                    </div>
+                                                                <input class="form-control" type="text"
+                                                                    value="https://@php echo $_SERVER['HTTP_HOST']; @endphp"
+                                                                    name="setting_url" id="setting_url">
 
-                                                                    <label for="setting_descuento_1">Descuento 1</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">%</span>
-                                                                          <input type="text" class="form-control"  name="setting_descuento_1" id="setting_descuento_1" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_1}} @endif " >
-                                                                        </div>
+                                                                <label for="iva">IVA</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                        <input type="text" class="form-control"
+                                                                            name="setting_iva" id="setting_iva"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_iva}} @endif">
                                                                     </div>
-                                                                    <label for="setting_descuento_2">Descuento 2</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">%</span>
-                                                                          <input type="text" class="form-control"  name="setting_descuento_2" id="setting_descuento_2" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_2}} @endif" >
-                                                                        </div>
+                                                                </div>
+
+                                                                <label for="setting_descuento_1">Descuento 1</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                        <input type="text" class="form-control"
+                                                                            name="setting_descuento_1"
+                                                                            id="setting_descuento_1"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_1}} @endif ">
                                                                     </div>
-                                                                    <label for="setting_descuento_3">Descuento 3</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">%</span>
-                                                                          <input type="text" class="form-control"  name="setting_descuento_3" id="setting_descuento_3" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_3}} @endif" >
-                                                                        </div>
+                                                                </div>
+                                                                <label for="setting_descuento_2">Descuento 2</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                        <input type="text" class="form-control"
+                                                                            name="setting_descuento_2"
+                                                                            id="setting_descuento_2"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_2}} @endif">
                                                                     </div>
-                                                                    <label for="setting_descuento_4">Descuento 4</label>
-                                                                    <div class="input-group mb-3">
-                                                                        <div class="input-group-prepend">
-                                                                          <span class="input-group-text">%</span>
-                                                                          <input type="text" class="form-control"  name="setting_descuento_4" id="setting_descuento_4" value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_4}} @endif" >
-                                                                        </div>
+                                                                </div>
+                                                                <label for="setting_descuento_3">Descuento 3</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                        <input type="text" class="form-control"
+                                                                            name="setting_descuento_3"
+                                                                            id="setting_descuento_3"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_3}} @endif">
                                                                     </div>
+                                                                </div>
+                                                                <label for="setting_descuento_4">Descuento 4</label>
+                                                                <div class="input-group mb-3">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">%</span>
+                                                                        <input type="text" class="form-control"
+                                                                            name="setting_descuento_4"
+                                                                            id="setting_descuento_4"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_4}} @endif">
+                                                                    </div>
+                                                                </div>
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
                                                                     class="btn btn-info btn-lg btn-block mt-1">Guardar
@@ -1087,7 +1103,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Taller</h4>
+                                <h4 class="card-title">Equipos a Reparar</h4>
                                 <table class="table table-striped table-inverse table-responsive">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -1123,9 +1139,11 @@
                                             <td>{{$equipo->imei}}</td>
                                             <td><img class="thumbnail zoom" style="border-radius:10px;"
                                                     src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                            <td><textarea class="border border-dark" name="" id="" cols="auto" rows="auto" disabled>{{$equipo->id_comentario}}</textarea></td>
+                                            <td><textarea class="border border-dark" name="" id="" cols="auto"
+                                                    rows="auto" disabled>{{$equipo->id_comentario}}</textarea></td>
 
-                                            <td><input class="text-secondary" type="date" value="{{$equipo->fecha_recibido}}"></td>
+                                            <td><input class="text-secondary" type="date"
+                                                    value="{{$equipo->fecha_recibido}}"></td>
                                             <td>
                                                 @php
                                                 $date1 = new DateTime("now");
@@ -1149,10 +1167,8 @@
                                                 <input class="text-info" type="date" value="{{$equipo->fecha_entrega}}">
                                                 @endif
                                             </td>
-                                            <td><a href="" class="btn btn-dark"
-                                                    data-id="{{$equipo->id}}"
-                                                    data-status="{{$equipo->status}}"
-                                                    data-pago="{{$equipo->pago}}"
+                                            <td><a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                    data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
                                                     Recibido
@@ -1174,8 +1190,7 @@
                                             @if($equipo->status!=2 && $equipo->status !=6)
                                             <td>
                                                 <a href="" data-toggle="modal" data-target="#modaledittaller"
-                                                    data-id="{{$equipo->id}}"
-                                                    data-pago="{{$equipo->pago}}"
+                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
@@ -1201,14 +1216,12 @@
                                                     data-volumenless="{{$equipo->Volumenless}}"
                                                     data-encendido="{{$equipo->Encendido}}"
                                                     data-auricular="{{$equipo->Auricular}}"
-                                                    data-touch="{{$equipo->Touch}}"
-                                                    data-bateria="{{$equipo->Bateria}}"
+                                                    data-touch="{{$equipo->Touch}}" data-bateria="{{$equipo->Bateria}}"
                                                     data-enciende="{{$equipo->Enciende}}"
-                                                    data-memoria="{{$equipo->Memoria}}"
-                                                    data-sim="{{$equipo->SIM}}"
+                                                    data-memoria="{{$equipo->Memoria}}" data-sim="{{$equipo->SIM}}"
                                                     data-golpes="{{$equipo->Golpes}}"
-                                                    data-tiene_bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
-                                                        viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                                    data-tiene_bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                        height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -1224,14 +1237,13 @@
                                                             d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                                     </svg></a>
                                                 <a href="" data-toggle="modal" data-target="#modal_foto"
-                                                    data-id="{{$equipo->id}}" 
+                                                    data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-servicio="{{$equipo->id_servicio}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}"
-                                                    data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -1249,17 +1261,14 @@
                                                     data-Volumenless="{{$equipo->Volumenless}}"
                                                     data-Encendido="{{$equipo->Encendido}}"
                                                     data-Auricular="{{$equipo->Auricular}}"
-                                                    data-Touch="{{$equipo->Touch}}"
-                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
                                                     data-Enciende="{{$equipo->Enciende}}"
-                                                    data-Memoria="{{$equipo->Memoria}}"
-                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
                                                     data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                                    ><svg width="2em" height="2em"
-
-                                                        viewBox="0 0 16 16" class="bi bi-camera text-success"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                        height="2em" viewBox="0 0 16 16"
+                                                        class="bi bi-camera text-success" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
                                                         <path fill-rule="evenodd"
@@ -1267,13 +1276,12 @@
                                                         <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                                                     </svg></a>
                                                 <a href="/galleria/{{$equipo->id}} " target="_blank"
-                                                    data-id="{{$equipo->id}}" 
+                                                    data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" 
-                                                    data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -1291,26 +1299,25 @@
                                                     data-Volumenless="{{$equipo->Volumenless}}"
                                                     data-Encendido="{{$equipo->Encendido}}"
                                                     data-Auricular="{{$equipo->Auricular}}"
-                                                    data-Touch="{{$equipo->Touch}}"
-                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
                                                     data-Enciende="{{$equipo->Enciende}}"
-                                                    data-Memoria="{{$equipo->Memoria}}"
-                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
                                                     data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                                    ><svg width="2em" height="2em"
-                                                        viewBox="0 0 16 16" class="bi bi-film text-warning"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                        height="2em" viewBox="0 0 16 16" class="bi bi-film text-warning"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0h8v6H4V1zm8 8H4v6h8V9zM1 1h2v2H1V1zm2 3H1v2h2V4zM1 7h2v2H1V7zm2 3H1v2h2v-2zm-2 3h2v2H1v-2zM15 1h-2v2h2V1zm-2 3h2v2h-2V4zm2 3h-2v2h2V7zm-2 3h2v2h-2v-2zm2 3h-2v2h2v-2z" />
                                                     </svg></a>
 
-                                       
-                                                    <a href="" data-toggle="modal" data-target="#modal_pago"
+                                                <a href="" data-toggle="modal" data-target="#modal_pago"
                                                     data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
+                                                    data-total="{{$equipo->total}}" data-iva="{{$equipo->iva}}"
+                                                    data-monto="{{$equipo->monto}}"
+                                                    data-adelanto="{{$equipo->adelanto}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
@@ -1334,59 +1341,56 @@
                                                     data-Volumenless="{{$equipo->Volumenless}}"
                                                     data-Encendido="{{$equipo->Encendido}}"
                                                     data-Auricular="{{$equipo->Auricular}}"
-                                                    data-Touch="{{$equipo->Touch}}"
-                                                    data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
                                                     data-Enciende="{{$equipo->Enciende}}"
-                                                    data-Memoria="{{$equipo->Memoria}}"
-                                                    data-SIM="{{$equipo->SIM}}"
+                                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
                                                     data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                                    ><svg width="2em" height="2em"
-                                                        viewBox="0 0 16 16" class="bi bi-cash text-info"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                        height="2em" viewBox="0 0 16 16" class="bi bi-cash text-info"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
                                                         <path
                                                             d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
                                                     </svg></a>
-            
+
                                             </td>
                                             <td><a href="/imprimir/{{$equipo->id}}" target="_blank"
-                                                data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
-                                                data-id_servicio="{{$equipo->id_servicio}}"
-                                                data-presupuesto="{{$equipo->presupuesto}}"
-                                                data-inversion="{{$equipo->inversion}}"
-                                                data-precio="{{$equipo->precio}}"
-                                                data-id_sucursal="{{Auth::user()->id_sucursal}}"
-                                                data-id_user="{{$equipo->id_user}}"
-                                                data-id_cliente="{{$equipo->id_cliente}}"
-                                                data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                data-id_captura="{{$equipo->id_captura}}"
-                                                data-id_comentario="{{$equipo->id_comentario}}"
-                                                data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                data-status="{{$equipo->status}}"
-                                                data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
-                                                data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                                                data-Señal="{{$equipo->Señal}}"
-                                                data-LectorSD="{{$equipo->LectorSD}}"
-                                                data-AltaVoz="{{$equipo->AltaVoz}}"
-                                                data-BotonHome="{{$equipo->BotonHome}}"
-                                                data-Microfono="{{$equipo->Microfono}}"
-                                                data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                                data-Volumenplus="{{$equipo->Volumenplus}}"
-                                                data-Volumenless="{{$equipo->Volumenless}}"
-                                                data-Encendido="{{$equipo->Encendido}}"
-                                                data-Auricular="{{$equipo->Auricular}}"
-                                                data-Touch="{{$equipo->Touch}}"
-                                                data-Bateria="{{$equipo->Bateria}}"
-                                                data-Enciende="{{$equipo->Enciende}}"
-                                                data-Memoria="{{$equipo->Memoria}}"
-                                                data-SIM="{{$equipo->SIM}}"
-                                                data-Golpes="{{$equipo->Golpes}}"
-                                                data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"
-                                                ><i class="far fa-file-pdf text-warning h1 face" alt="Imprime archivo PDF"></i></a>
-                                                <a href="/QR/{{$equipo->id}}" target="_blank"><h1><i class="fas fa-qrcode face" alt="Imprime QR"></i></h1>
+                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}"
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
+                                                    data-precio="{{$equipo->precio}}"
+                                                    data-id_sucursal="{{Auth::user()->id_sucursal}}"
+                                                    data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
+                                                    data-Señal="{{$equipo->Señal}}"
+                                                    data-LectorSD="{{$equipo->LectorSD}}"
+                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
+                                                    data-BotonHome="{{$equipo->BotonHome}}"
+                                                    data-Microfono="{{$equipo->Microfono}}"
+                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-Volumenless="{{$equipo->Volumenless}}"
+                                                    data-Encendido="{{$equipo->Encendido}}"
+                                                    data-Auricular="{{$equipo->Auricular}}"
+                                                    data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
+                                                    data-Enciende="{{$equipo->Enciende}}"
+                                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
+                                                    data-Golpes="{{$equipo->Golpes}}"
+                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><i
+                                                        class="far fa-file-pdf text-warning h1 face"
+                                                        alt="Imprime archivo PDF"></i></a>
+                                                <a href="/QR/{{$equipo->id}}" target="_blank">
+                                                    <h1><i class="fas fa-qrcode face" alt="Imprime QR"></i></h1>
                                                 </a>
 
                                             </td>
@@ -1421,7 +1425,7 @@
                                             <th>Monto a Pagar</th>
                                             <th>Fecha</th>
                                             <th>Pagado</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1457,20 +1461,19 @@
                                             <td>{{$sucursal->nombre}}</td>
                                             @endif
                                             @endforeach
-                                            
-                                            <td >{{$pago_equipo->adelanto}}</td>
+
+                                            <td>{{$pago_equipo->adelanto}}</td>
 
                                             @if($pago_equipo->iva=='')
-                                           <td class="price">${{$pago_equipo->total}}</td>
-                                           @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
-                                           <td class="price">${{$pago_equipo->total}} + {{$pago_equipo->iva}} IVA </td>
+                                            <td class="price">${{$pago_equipo->total}}</td>
+                                            @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
+                                            <td class="price">${{$pago_equipo->total}} + {{$pago_equipo->iva}} IVA </td>
                                             @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
                                             <td class="price">${{$pago_equipo->total}}</td>
                                             @endif
-                                            <td class="price" >{{$pago_equipo->created_at}}</td>
+                                            <td class="price">{{$pago_equipo->created_at}}</td>
 
                                             <td>{{$pago_equipo->status}}</td>
-
 
                                         </tr>
                                         @endforeach
@@ -1500,47 +1503,50 @@
                                             <th>Monto</th>
                                             <th>Movimiento</th>
                                             <th>Fecha</th>
-                                            <th><button type="button" data-toggle="modal"
-                                                    data-target="#modal_caja"
-                                                    data-backdrop="static"
-                                                    data-keyboard="false" class="btn btn-warning btn-lg btn-block">
-                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wallet2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-                                                      </svg></center>
+                                            <th><button type="button" data-toggle="modal" data-target="#modal_caja"
+                                                    data-backdrop="static" data-keyboard="false"
+                                                    class="btn btn-warning btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-wallet2" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
+                                                        </svg></center>
                                                 </button></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($MovimientoCaja as $MovimientoCaja)
                                         <tr>
-                                        <td>{{$MovimientoCaja->id}}</td>
-                                        @foreach ($Usuario as $usuario)
-                                        @if($usuario->id==$MovimientoCaja->id_user)
-                                        <td>{{$usuario->name}}</td>
-                                        @endif
-                                        @endforeach
+                                            <td>{{$MovimientoCaja->id}}</td>
+                                            @foreach ($Usuario as $usuario)
+                                            @if($usuario->id==$MovimientoCaja->id_user)
+                                            <td>{{$usuario->name}}</td>
+                                            @endif
+                                            @endforeach
 
-                                        @foreach ($Sucursal as $sucursal)
-                                        @if($MovimientoCaja->id_sucursal==$sucursal->id)
-                                        <td>{{$sucursal->nombre}}</td>
-                                        @endif
-                                        @endforeach
+                                            @foreach ($Sucursal as $sucursal)
+                                            @if($MovimientoCaja->id_sucursal==$sucursal->id)
+                                            <td>{{$sucursal->nombre}}</td>
+                                            @endif
+                                            @endforeach
 
-                                        <td><textarea name="" id="" cols="auto" rows="auto" disabled>{{$MovimientoCaja->comentario}}</textarea>
+                                            <td><textarea name="" id="" cols="auto" rows="auto"
+                                                    disabled>{{$MovimientoCaja->comentario}}</textarea>
                                             </td>
-                                        @if($MovimientoCaja->status=='deposito')
-                                        <td class="text-success">+ {{$MovimientoCaja->monto}}</td>
-                                        @else
-                                        <td class="text-danger">
-                                        <del>- {{$MovimientoCaja->monto}}</del></td>
-                                        @endif
-                                        @if($MovimientoCaja->status=='deposito')
-                                        <td class="text-success">Deposito</td>
-                                        @else
-                                        <td class="text-warning">Retiro</td>
-                                        @endif
-                                        <td>{{$MovimientoCaja->created_at}}</td>
-                                        <td></td>
+                                            @if($MovimientoCaja->status=='deposito')
+                                            <td class="text-success">+ {{$MovimientoCaja->monto}}</td>
+                                            @else
+                                            <td class="text-danger">
+                                                <del>- {{$MovimientoCaja->monto}}</del></td>
+                                            @endif
+                                            @if($MovimientoCaja->status=='deposito')
+                                            <td class="text-success">Deposito</td>
+                                            @else
+                                            <td class="text-warning">Retiro</td>
+                                            @endif
+                                            <td>{{$MovimientoCaja->created_at}}</td>
+                                            <td></td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -1552,58 +1558,63 @@
                 </div>
             </div>
 
-
-
         </div>
         <div class="se-pre-con"></div>
 
 </x-app-layout>
 
-
 <!-- Modal Bienvenida-->
-<div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" >
+<div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-                <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-white">Bienvenido a HollyStore</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header bg-primary">
+                <h5 class="modal-title text-white">Bienvenido a HollyStore</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                        <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading">Gracias por tu Compra</h4>
-                            <p>Antes de comenzar necesitamos configurar algunas cosas importantes para el buen funcionamiento de la plataforma.</p>
-                            @if ($Sucursal->isEmpty())
-                             <a href=""  data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui defines en donde estas trabajando)</a><br>
-                            @else
-                           <del><a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas trabajando)</a><br></del>
-                            @endif
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Gracias por tu Compra</h4>
+                        <p>Antes de comenzar necesitamos configurar algunas cosas importantes para el buen
+                            funcionamiento de la plataforma.</p>
+                        @if ($Sucursal->isEmpty())
+                        <a href="" data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui
+                            defines en donde estas trabajando)</a><br>
+                        @else
+                        <del><a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas
+                                trabajando)</a><br></del>
+                        @endif
 
-                            @if ($Caja->isEmpty())
-                             <a href="" data-toggle="modal" data-target="#modalagregarcaja">2.-Agregar una Caja (Aqui recibiras los pagos de tu pagina)</a><br>
-                             @else
-                             <del><a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu pagina)</a><br></del>
-                              @endif
+                        @if ($Caja->isEmpty())
+                        <a href="" data-toggle="modal" data-target="#modalagregarcaja">2.-Agregar una Caja (Aqui
+                            recibiras los pagos de tu pagina)</a><br>
+                        @else
+                        <del><a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu
+                                pagina)</a><br></del>
+                        @endif
 
-                              @if($Marca->isEmpty())
-                              <a href="" class="nav-link" data-toggle="modal" data-target="#modal_agregarmarca"
-                                >3.-Agregar tu primera Marca Comercial</a><br>
-                              @else
-                              <del><a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br></del>
-                               @endif
+                        @if($Marca->isEmpty())
+                        <a href="" class="nav-link" data-toggle="modal" data-target="#modal_agregarmarca">3.-Agregar tu
+                            primera Marca Comercial</a><br>
+                        @else
+                        <del><a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br></del>
+                        @endif
 
-                              @if ($Settings->isEmpty())
-                              <a  class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
-                              aria-selected="false">4.-Configurar Tu Negocio</a><br>
-                              @else
-                              <del><a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br></del>
-                               @endif
+                        @if ($Settings->isEmpty())
+                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                            aria-controls="settings" aria-selected="false">4.-Configurar Tu Negocio</a><br>
+                        @else
+                        <del><a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br></del>
+                        @endif
 
-                            <hr>
-                            <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas contactame en twitter por @hollydev1</p>
-                          </div>                </div>
+                        <hr>
+                        <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas
+                            contactame en twitter por @hollydev1</p>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -2077,11 +2088,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Sucursal</label>
-                             <select class="form-control" name="id_sucursal1" id="id_sucursal1">
-                                 @foreach ($Sucursal as $sucursal)
-                                 <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
-                                 @endforeach
-                             </select>
+                                <select class="form-control" name="id_sucursal1" id="id_sucursal1">
+                                    @foreach ($Sucursal as $sucursal)
+                                    <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -2158,11 +2170,12 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Sucursal</label>
-                             <select class="form-control" name="id_sucursal" id="id_sucursal">
-                                 @foreach ($Sucursal as $sucursal)
-                                 <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
-                                 @endforeach
-                             </select>
+                                <select class="form-control" name="id_sucursal" id="id_sucursal">
+                                    @foreach ($Sucursal as $sucursal)
+                                    <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -2372,20 +2385,24 @@
                                             <th>Precio</th>
                                             <td>Comprar</td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($Articulo as $articulo)
-                                            <tr>
-                                            <td scope="row" name="product_id" >{{$articulo->id}}</td>
-                                                <td><img data-name="product_image" src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1" alt="..." class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""></td>
-                                                <td data-name="product_name">{{$articulo->nombre}}</td>
-                                                <td data-name="product_desc">{{$articulo->descripcion}}</td>
-                                                <td name="product_price" >{{$articulo->precio}}</td>
-                                                <td name="product_price" >{{$articulo->precio}}</td>
-                                                <td><button class="sc-add-to-cart btn btn-success">Add to cart</button></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($Articulo as $articulo)
+                                        <tr>
+                                            <td scope="row" name="product_id">{{$articulo->id}}</td>
+                                            <td><img data-name="product_image"
+                                                    src="http://placehold.it/250x150/2aabd2/ffffff?text=Product+1"
+                                                    alt="..."
+                                                    class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                                                    alt=""></td>
+                                            <td data-name="product_name">{{$articulo->nombre}}</td>
+                                            <td data-name="product_desc">{{$articulo->descripcion}}</td>
+                                            <td name="product_price">{{$articulo->precio}}</td>
+                                            <td name="product_price">{{$articulo->precio}}</td>
+                                            <td><button class="sc-add-to-cart btn btn-success">Add to cart</button></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -2411,7 +2428,7 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
                             class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
@@ -2438,10 +2455,12 @@
                                             @endif
                                             @endforeach
                                         </select>
-                                        <a href=""  data-toggle="modal" data-target="#modalagregar"><span class="input-group-text">Agregar Cliente</span></a>
-                                      </div>
+                                        <a href="" data-toggle="modal" data-target="#modalagregar"><span
+                                                class="input-group-text">Agregar Cliente</span></a>
+                                    </div>
                                 </div>
-                            <input type="hidden" name="id_sucursal" id="id_sucursal" value="{{Auth::user()->id_sucursal}}">
+                                <input type="hidden" name="id_sucursal" id="id_sucursal"
+                                    value="{{Auth::user()->id_sucursal}}">
                                 <div class="col-4-md">
                                     <label for="nombre">Nombre Tecnico</label>
                                     <select class="form-control" id="id_user" name="id_user" required>
@@ -2462,7 +2481,7 @@
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
-                                         <input class="form-control" type="text" name="serial" id="serial"
+                                        <input class="form-control" type="text" name="serial" id="serial"
                                             placeholder="Serial">
                                     </div>
                                 </div>
@@ -2477,7 +2496,9 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="descripcion">Descripcion <br>(En caso de tener Contraseña el equipo escribir aqui junto con los detalles por que motivo se ingresa el equipo)</label><br>
+                                        <label for="descripcion">Descripcion <br>(En caso de tener Contraseña el equipo
+                                            escribir aqui junto con los detalles por que motivo se ingresa el
+                                            equipo)</label><br>
                                         <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
                                             rows="10"
                                             placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
@@ -2488,95 +2509,129 @@
                                         <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara" name="Tiene_Camara" value="Tiene_Camara">
-                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Centro_Carga" name="Centro_Carga" value="Centro_Carga">
-                                            <label class="form-check-label" for="inlineCheckbox2">Centro Carga</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Señal"  name="Señal"  value="Señal" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD" name="LectorSD"  value="LectorSD" >
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="AltaVoz"  name="AltaVoz"  value="AltaVoz" >
-                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="BotonHome" name="BotonHome"  value="BotonHome" >
-                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Microfono" name="Microfono" value="Microfono" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Lector_SIM" name="Lector_SIM" value="Lector_SIM" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Tiene_Camara"
+                                                        name="Tiene_Camara" value="Tiene_Camara">
+                                                    <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Centro_Carga"
+                                                        name="Centro_Carga" value="Centro_Carga">
+                                                    <label class="form-check-label" for="inlineCheckbox2">Centro
+                                                        Carga</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Señal"
+                                                        name="Señal" value="Señal">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="LectorSD"
+                                                        name="LectorSD" value="LectorSD">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">LectorSD</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="AltaVoz"
+                                                        name="AltaVoz" value="AltaVoz">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">AltaVoz</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="BotonHome"
+                                                        name="BotonHome" value="BotonHome">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">BotonHome</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Microfono"
+                                                        name="Microfono" value="Microfono">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Microfono</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Lector_SIM"
+                                                        name="Lector_SIM" value="Lector_SIM">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Lector
+                                                        SIM</label>
+                                                </div>
 
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus"  name="Volumenplus" value="volumenplus" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenless" name="Volumenless" value="Volumenless" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Encendido" name="Encendido" value="Encendido" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Volumenplus"
+                                                        name="Volumenplus" value="volumenplus">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                        +</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Volumenless"
+                                                        name="Volumenless" value="Volumenless">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                        -</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Encendido"
+                                                        name="Encendido" value="Encendido">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Encendido</label>
+                                                </div>
 
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auricular" name="Auricular" value="Auricular" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Touch" name="Touch" value="Touch" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
-                                          </div>
-                                          <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria"  name="Bateria" value="Bateria" >
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
-                                          </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Auricular"
+                                                        name="Auricular" value="Auricular">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Auricular</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Touch"
+                                                        name="Touch" value="Touch">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Bateria"
+                                                        name="Bateria" value="Bateria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Bateria</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                                    <div class="col-6-md">
-                                        <div class="form-group">
-                                          <div class="card text-left">
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Detalles del equipo</p>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende" name="Enciende" value="Enciende" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria" name="Memoria" value="Memoria" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM" name="SIM" value="SIM" >
+                                                    <input class="form-check-input" type="checkbox" id="Enciende"
+                                                        name="Enciende" value="Enciende">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Enciende?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Memoria"
+                                                        name="Memoria" value="Memoria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Memoria?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
+                                                        value="SIM">
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes"  name="Golpes" value="golpes" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
-                                                  </div>
-                                                  <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria" value="Tiene_Bateria" >
-                                                    <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
-                                                  </div>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Golpes"
+                                                        name="Golpes" value="golpes">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Golpes?</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="Bateria"
+                                                        name="Bateria" value="Tiene_Bateria">
+                                                    <label class="form-check-label"
+                                                        for="inlineCheckbox3">Bateria?</label>
+                                                </div>
                                             </div>
-                                          </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-4-md mb-1">
@@ -2597,37 +2652,37 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">$</span>
                                                             <input class="form-control" type="text" name="pago"
-                                                                id="pago" 
-                                                                placeholder="Anticipo" value="0">
+                                                                id="pago" placeholder="Anticipo" value="0">
                                                         </div>
 
                                                     </div>
                                                 </div>
                                             </div>
 
-                                                <div class="col-md-4">
-                                                    <label for="presupuesto">Presupuesto</label>
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                        <input class="form-control" type="text" name="presupuesto"
-                                                            id="presupuesto" placeholder="(Cuanto puede Costar)" value="0">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="inversion">Inversion</label>
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                        <input class="form-control" type="text" name="inversion"
-                                                            id="inversion"
-                                                            placeholder=" (Cuanto es lo maximo que se puede invertir)" value="0">
-
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <label for="presupuesto">Presupuesto</label>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" type="text" name="presupuesto"
+                                                        id="presupuesto" placeholder="(Cuanto puede Costar)" value="0">
                                                 </div>
 
                                             </div>
+                                            <div class="col-md-4">
+                                                <label for="inversion">Inversion</label>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" type="text" name="inversion"
+                                                        id="inversion"
+                                                        placeholder=" (Cuanto es lo maximo que se puede invertir)"
+                                                        value="0">
+
+                                                </div>
+                                            </div>
+
                                         </div>
-                                    </div> 
+                                    </div>
+                                </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">Dia de Equipo Recibido</label>
@@ -2652,7 +2707,7 @@
                             <input type="hidden" name="status" id="status" value="0">
                             <input type="hidden" name="id_captura" id="id_captura" value="">
                             <button type="button" class="btn btn-primary" id="boton">
-                           <i class="fas fa-camera-retro"></i></button>
+                                <i class="fas fa-camera-retro"></i></button>
                         </div>
                 </div>
             </div>
@@ -2670,7 +2725,7 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Taller<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
                             class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
@@ -2896,66 +2951,65 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">$</span>
                                                             <input class="form-control" type="text" name="pago2"
-                                                                id="pago2"
-                                                                placeholder="Anticipo">
+                                                                id="pago2" placeholder="Anticipo">
                                                         </div>
 
                                                     </div>
                                                 </div>
                                             </div>
 
-                                                <div class="col-md-4">
-                                                    <label for="presupuesto">Presupuesto</label>
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                        <input class="form-control" type="text" name="presupuesto2"
-                                                            id="presupuesto2" placeholder="(Cuanto puede Costar)">
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="inversion">Inversion</label>
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text">$</span>
-                                                        <input class="form-control" type="text" name="inversion2"
-                                                            id="inversion2"
-                                                            placeholder=" (Cuanto es lo maximo que se puede invertir)">
-
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <label for="presupuesto">Presupuesto</label>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" type="text" name="presupuesto2"
+                                                        id="presupuesto2" placeholder="(Cuanto puede Costar)">
                                                 </div>
 
                                             </div>
-                                        </div>
-                                    </div>
+                                            <div class="col-md-4">
+                                                <label for="inversion">Inversion</label>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" type="text" name="inversion2"
+                                                        id="inversion2"
+                                                        placeholder=" (Cuanto es lo maximo que se puede invertir)">
 
-                                    <div class="col-6-md">
-                                        <div class="form-group">
-                                            <label for="marca">Tiempo Recibido</label>
-                                            <input class="form-control" data-provide="datepicker" type="date"
-                                                name="fecha_recibido2" id="fecha_recibido2"
-                                                value="<?php echo date('Y-m-d'); ?>">
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
-                                    <div class="col-6-md">
-                                        <div class="form-group">
-                                            <label for="marca">Tiempo Entrega</label>
-                                            <input class="form-control" data-provide="datepicker" type="date"
-                                                name="fecha_entrega2" id="fecha_entrega2">
-                                        </div>
-                                    </div>
-                                    <br>
                                 </div>
+
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Recibido</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_recibido2" id="fecha_recibido2"
+                                            value="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">Tiempo Entrega</label>
+                                        <input class="form-control" data-provide="datepicker" type="date"
+                                            name="fecha_entrega2" id="fecha_entrega2">
+                                    </div>
+                                </div>
+                                <br>
                             </div>
                         </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="boton">Save</button>
-                </div>
-                </form>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="boton">Save</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -3201,8 +3255,8 @@
 </div>
 </div>
 <!-- Modal Notificacion -->
-<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" style="border-radius:12%;"
-    aria-hidden="true">
+<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info">
@@ -3302,7 +3356,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <label for="total">Total a Pagar</label>
-                                <input type="text" class="form-control" name="total" id="total" disabled>
+                                <input type="text" class="form-control" name="total4" id="total4" disabled>
                                 <label for="status">Anticipo</label>
                                 <input type="text" class="form-control" name="pago4" id="pago4" disabled>
                                 <label for="status">Pendiente</label>
@@ -3321,22 +3375,22 @@
                             <span class="input-group-text">$</span>
                             <input type="text" class="form-control" name="final4" id="final4">
                         </div>
-                        
-                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="" >
-                        <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="" >
+
+                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="">
+                        <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="">
                         <input type="hidden" class="form-control" name="id_sucursal4" id="id_sucursal4" value="">
-                        <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="" >
-                        <input type="hidden" class="form-control" name="adelanto4" id="adelanto4" value="" >
+                        <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="">
+                        <input type="hidden" class="form-control" name="adelanto4" id="adelanto4" value="">
 
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="iva">IVA</label>
                                     <div class="input-group-prepend">
-                                    <span class="input-group-text">%</span>
-                                    <input disabled type="text" name="iva" max="2" class="form-control" id="iva"
-                                    value="@if($Settings->isEmpty())@else{{$setting->setting_iva}}" @endif>
-                                </div>
+                                        <span class="input-group-text">%</span>
+                                        <input disabled type="text" name="iva" max="2" class="form-control" id="iva"
+                                            value="@if($Settings->isEmpty())@else{{$setting->setting_iva}}" @endif>
+                                    </div>
 
                                 </div>
                                 <div class="col-md-4">
@@ -3345,47 +3399,52 @@
                                         <span class="input-group-text">$</span>
                                         <input disabled type="text" class="form-control" name="subtotal" id="subtotal">
 
-                                      </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="status">Total</label>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">$</span>
-                                        <input disabled type="text" class="form-control" name="total_final" id="total_final">
-                                      </div>
+                                        <input disabled type="text" class="form-control" name="total_final"
+                                            id="total_final">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                          <div class="container">
+                        <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card text-left">
-                                      <div class="card-body">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="setting_descuento_1"
-                                                name="setting_descuento_1" value="setting_descuento_1">
-                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 1</label>
-                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="setting_descuento_1"
+                                                    name="setting_descuento_1" value="setting_descuento_1">
+                                                <label class="form-check-label" for="inlineCheckbox2">Descuento
+                                                    1</label>
+                                            </div>
 
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="setting_descuento_2"
-                                                name="setting_descuento_2" value="setting_descuento_1">
-                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 2</label>
-                                        </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="setting_descuento_2"
+                                                    name="setting_descuento_2" value="setting_descuento_1">
+                                                <label class="form-check-label" for="inlineCheckbox2">Descuento
+                                                    2</label>
+                                            </div>
 
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="setting_descuento_3"
-                                                name="setting_descuento_3" value="setting_descuento_1">
-                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 3</label>
-                                        </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="setting_descuento_3"
+                                                    name="setting_descuento_3" value="setting_descuento_1">
+                                                <label class="form-check-label" for="inlineCheckbox2">Descuento
+                                                    3</label>
+                                            </div>
 
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="setting_descuento_4"
-                                                name="setting_descuento_4" value="setting_descuento_1">
-                                            <label class="form-check-label" for="inlineCheckbox2">Descuento 4</label>
-                                        </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="setting_descuento_4"
+                                                    name="setting_descuento_4" value="setting_descuento_1">
+                                                <label class="form-check-label" for="inlineCheckbox2">Descuento
+                                                    4</label>
+                                            </div>
 
-                                      </div>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -3439,50 +3498,50 @@
     </div>
 </div>
 
-
 <!-- Modal Caja -->
 <div class="modal fade" id="modal_caja" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-         <h5 class="modal-title text-white">Caja: @foreach($Sucursal as $suc)@if(Auth::user()->id_sucursal ==
-             $suc->id) {{$suc->nombre}}@endif @endforeach<br> Cajero: {{Auth::user()->name}}</h5>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-         </button>
-     </div>
+                <h5 class="modal-title text-white">Caja: @foreach($Sucursal as $suc)@if(Auth::user()->id_sucursal ==
+                    $suc->id) {{$suc->nombre}}@endif @endforeach<br> Cajero: {{Auth::user()->name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
                     <form action="/agregarpagocaja">
                         @csrf
                         @method('POST')
-                    <div class="col-6-md">
-                        <label for="monto">Monto</label>
-                        <input class="form-control" type="number" name="monto6" id="monto6" placeholder="0.0">
-                    </div>
-                    <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
-                    <input type="hidden" name="id_sucursal6" id="id_sucursal6" value="{{Auth::user()->id_sucursal}}">
-                    <input type="hidden" name="id_cliente6" id="id_cliente6" value="0">
-                    <input type="hidden" name="id_equipo6" id="id_equipo6" value="0">
-               @foreach($Sucursal as $sucursal)
-               @foreach($Caja as $caja)
-               @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-               <input type="hidden" name="id_caja6" id="id_caja6" value="{{$caja->id}}">
-               @endif
-               @endforeach
-              @endforeach
-                    <div class="col-6-md">
-                        <label for="motivo">Motivo</label>
-                        <textarea name="descripcion6" class="form-control" id="descripcion6" cols="10"
-                            rows="10"></textarea>
-                    </div>
+                        <div class="col-6-md">
+                            <label for="monto">Monto</label>
+                            <input class="form-control" type="number" name="monto6" id="monto6" placeholder="0.0">
+                        </div>
+                        <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="id_sucursal6" id="id_sucursal6"
+                            value="{{Auth::user()->id_sucursal}}">
+                        <input type="hidden" name="id_cliente6" id="id_cliente6" value="0">
+                        <input type="hidden" name="id_equipo6" id="id_equipo6" value="0">
+                        @foreach($Sucursal as $sucursal)
+                        @foreach($Caja as $caja)
+                        @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+                        <input type="hidden" name="id_caja6" id="id_caja6" value="{{$caja->id}}">
+                        @endif
+                        @endforeach
+                        @endforeach
+                        <div class="col-6-md">
+                            <label for="motivo">Motivo</label>
+                            <textarea name="descripcion6" class="form-control" id="descripcion6" cols="10"
+                                rows="10"></textarea>
+                        </div>
 
-                    <div class="col-6-md">
-                        <select class="form-control mt-2" name="status6" id="status6">
-                            <option  value="deposito">Deposito +</option>
-                            <option  value="retiro">Retiro -</option>
-                        </select>
-                    </div>
+                        <div class="col-6-md">
+                            <select class="form-control mt-2" name="status6" id="status6">
+                                <option value="deposito">Deposito +</option>
+                                <option value="retiro">Retiro -</option>
+                            </select>
+                        </div>
 
                 </div>
             </div>
@@ -3491,10 +3550,9 @@
                 <button type="submit" class="btn btn-primary">Ok</button>
             </div>
         </div>
-    </form>
+        </form>
     </div>
 </div>
-
 
 <!-- Scripts Status-->
 <script>
@@ -3520,6 +3578,14 @@
         $(e.currentTarget).find('#id_sucursal4').val(id);
         var id = $(e.relatedTarget).data().pago;
         $(e.currentTarget).find('#pago4').val(id);
+        var id = $(e.relatedTarget).data().total;
+        $(e.currentTarget).find('#total4').val(id);
+        var id = $(e.relatedTarget).data().monto;
+        $(e.currentTarget).find('#monto4').val(id);
+        var id = $(e.relatedTarget).data().iva;
+        $(e.currentTarget).find('#iva4').val(id);
+        var id = $(e.relatedTarget).data().adelanto;
+        $(e.currentTarget).find('#adelanto4').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;
         $(e.currentTarget).find('#fecha_recibido4').val(id);
         var id = $(e.relatedTarget).data().fecha_entrega;
@@ -3606,7 +3672,7 @@
         $("#editarcategoria").attr("action", '/editarcategoria/' + id);
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id1').val(id);
-        var id = $(e.relatedTarget).data().nombre_categoria1;
+        var id = $(e.relatedTarget).data().nombre_categoria;
         $(e.currentTarget).find('#nombre_categoria1').val(id);
     });
 </script>
@@ -4005,10 +4071,8 @@
         $("#editequipo").attr("action", '/editequipo/' + id);
         var id = $(e.relatedTarget).data().id_user;
         $(e.currentTarget).find('#id_user2').val(id);
-
         var id = $(e.relatedTarget).data().id_sucursal;
         $(e.currentTarget).find('#id_sucursal2').val(id);
-
         var id = $(e.relatedTarget).data().id_servicio;
         $(e.currentTarget).find('#id_servicio2').val(id);
         var id = $(e.relatedTarget).data().pago;
@@ -4017,7 +4081,6 @@
         $(e.currentTarget).find('#anticipo2').val(id);
         var id = $(e.relatedTarget).data().presupuesto;
         $(e.currentTarget).find('#presupuesto2').val(id);
-
         var id = $(e.relatedTarget).data().inversion;
         $(e.currentTarget).find('#inversion2').val(id);
         var id = $(e.relatedTarget).data().id_cliente;
@@ -4028,135 +4091,124 @@
         $(e.currentTarget).find('#imei2').val(id);
         var id = $(e.relatedTarget).data().id_captura;
         $(e.currentTarget).find('#id_captura2').val(id);
-
         var id = $(e.relatedTarget).data().id_comentario;
         $(e.currentTarget).find('#descripcion2').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;
         $(e.currentTarget).find('#fecha_recibido2').val(id);
         var id = $(e.relatedTarget).data().fecha_entrega;
         $(e.currentTarget).find('#fecha_entrega2').val(id);
-
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status2').val(id);
-
         var id = $(e.relatedTarget).data().tiene_camara;
         $(e.currentTarget).find('Tiene_Camara2').val(id);
-        if(id=='Tiene_Camara'){
-        document.getElementById("Tiene_Camara2").checked = true;
+        if (id == 'Tiene_Camara') {
+            document.getElementById("Tiene_Camara2").checked = true;
         }
         var id = $(e.relatedTarget).data().centro_carga;
         $(e.currentTarget).find('Centro_Carga2').val(id);
-        if(id=='Centro_Carga'){
-        document.getElementById("Centro_Carga2").checked = true;
+        if (id == 'Centro_Carga') {
+            document.getElementById("Centro_Carga2").checked = true;
         }
         var id = $(e.relatedTarget).data().señal;
         $(e.currentTarget).find('Señal2').val(id);
-        if(id=='Señal'){
-        document.getElementById("Señal2").checked = true;
+        if (id == 'Señal') {
+            document.getElementById("Señal2").checked = true;
         }
         var id = $(e.relatedTarget).data().lectorsd;
         $(e.currentTarget).find('LectorSD2').val(id);
-        if(id=='LectorSD'){
-        document.getElementById("LectorSD2").checked = true;
+        if (id == 'LectorSD') {
+            document.getElementById("LectorSD2").checked = true;
         }
         var id = $(e.relatedTarget).data().altavoz;
         $(e.currentTarget).find('AltaVoz2').val(id);
-        if(id=='AltaVoz'){
-        document.getElementById("AltaVoz2").checked = true;
+        if (id == 'AltaVoz') {
+            document.getElementById("AltaVoz2").checked = true;
         }
         var id = $(e.relatedTarget).data().botonhome;
         $(e.currentTarget).find('BotonHome2').val(id);
-        if(id=='BotonHome'){
-        document.getElementById("BotonHome2").checked = true;
+        if (id == 'BotonHome') {
+            document.getElementById("BotonHome2").checked = true;
         }
         var id = $(e.relatedTarget).data().microfono;
         $(e.currentTarget).find('Microfono2').val(id);
-        if(id=='Microfono'){
-        document.getElementById("Microfono2").checked = true;
+        if (id == 'Microfono') {
+            document.getElementById("Microfono2").checked = true;
         }
         var id = $(e.relatedTarget).data().lector_sim;
         $(e.currentTarget).find('Lector_SIM2').val(id);
-        if(id=='Lector_SIM'){
-        document.getElementById("Lector_SIM2").checked = true;
+        if (id == 'Lector_SIM') {
+            document.getElementById("Lector_SIM2").checked = true;
         }
         var id = $(e.relatedTarget).data().volumenplus;
-
         $(e.currentTarget).find('Volumenplus2').val(id);
-        if(id=='volumenplus'){
-        document.getElementById("Volumenplus2").checked = true;
+        if (id == 'volumenplus') {
+            document.getElementById("Volumenplus2").checked = true;
         }
         var id = $(e.relatedTarget).data().volumenless;
         $(e.currentTarget).find('Volumenless2').val(id);
-        if(id=='Volumenless'){
-        document.getElementById("Volumenless2").checked = true;
+        if (id == 'Volumenless') {
+            document.getElementById("Volumenless2").checked = true;
         }
         var id = $(e.relatedTarget).data().encendido;
         $(e.currentTarget).find('Encendido2').val(id);
-        if(id=='Encendido'){
-        document.getElementById("Encendido2").checked = true;
+        if (id == 'Encendido') {
+            document.getElementById("Encendido2").checked = true;
         }
-
         var id = $(e.relatedTarget).data().auricular;
         $(e.currentTarget).find('Auricular2').val(id);
-        if(id=='Auricular'){
-        document.getElementById("Auricular2").checked = true;
+        if (id == 'Auricular') {
+            document.getElementById("Auricular2").checked = true;
         }
         var id = $(e.relatedTarget).data().touch;
         $(e.currentTarget).find('Touch2').val(id);
-        if(id=='Touch'){
-        document.getElementById("Touch2").checked = true;
+        if (id == 'Touch') {
+            document.getElementById("Touch2").checked = true;
         }
         var id = $(e.relatedTarget).data().bateria;
         $(e.currentTarget).find('Bateria2').val(id);
-        if(id=='Bateria'){
-        document.getElementById("Bateria2").checked = true;
+        if (id == 'Bateria') {
+            document.getElementById("Bateria2").checked = true;
         }
         var id = $(e.relatedTarget).data().enciende;
         $(e.currentTarget).find('Enciende2').val(id);
-        if(id=='Enciende'){
-        document.getElementById("Enciende2").checked = true;
+        if (id == 'Enciende') {
+            document.getElementById("Enciende2").checked = true;
         }
-
         var id = $(e.relatedTarget).data().memoria;
         $(e.currentTarget).find('Memoria2').val(id);
-        if(id=='Memoria'){
-        document.getElementById("Memoria2").checked = true;
+        if (id == 'Memoria') {
+            document.getElementById("Memoria2").checked = true;
         }
-
         var id = $(e.relatedTarget).data().sim;
         $(e.currentTarget).find('SIM2').val(id);
-        if(id=='SIM'){
-        document.getElementById("SIM2").checked = true;
+        if (id == 'SIM') {
+            document.getElementById("SIM2").checked = true;
         }
-
         var id = $(e.relatedTarget).data().golpes;
         $(e.currentTarget).find('Golpes2').val(id);
-        if(id=="Golpes"){
-        document.getElementById("Golpes2").checked = true;
+        if (id == "Golpes") {
+            document.getElementById("Golpes2").checked = true;
         }
-
         var id = $(e.relatedTarget).data().tiene_bateria;
         $(e.currentTarget).find('Tiene_Bateria2').val(id);
-        if(id=="Tiene_Bateria"){
-        document.getElementById("Tiene_Bateria2").checked = true;
+        if (id == "Tiene_Bateria") {
+            document.getElementById("Tiene_Bateria2").checked = true;
         }
-
-
     });
 </script>
 <!-- Script Tabs -->
 <script>
     $(document).ready(function() {
         // Initialize the leaveStep event
-$("#smartcart").on("cartEmpty", function(e) {
-  // alert("Cart is empty");
-});
+        $("#smartcart").on("cartEmpty", function(e) {
+            // alert("Cart is empty");
+        });
+        // Initialize Smart Cart
+        $('#smartcart').smartCart();
 
-// Initialize Smart Cart
-$('#smartcart').smartCart();
         function flash(e) {
             $('.flash')
-                .show() //show the hidden div
+                .show()
                 .animate({
                     opacity: 0.5
                 }, 300)
@@ -4226,26 +4278,15 @@ $('#smartcart').smartCart();
         });
     });
 </script>
+
 <script>
     $(document).ready(function() {
-        $('.toast').toast('show');
-        $(".se-pre-con").fadeOut("slow");;
-        $('.price').each(function() {
-            calculateSum();
-        });
-
-        function calculateSum() {
-            var sum = 0;
-            //iterate through each td based on class and add the values 
-            $(".price").each(function() {
-                //add only if the value is number 
-                if (!isNaN(this.value) && this.value.length != 0) {
-                    sum += parseFloat(this.value);
-                }
-            });
-
-            $('#result').text(sum);
-        }
+        $(".se-pre-con").fadeOut("slow");
     });
 </script>
 
+@if(session('pago_equipo'))
+<script>
+    $('.toast').toast('show');
+</script>
+@endif

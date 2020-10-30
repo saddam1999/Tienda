@@ -130,7 +130,7 @@ class ControllerEquipo extends Controller
         $pago->save();
         $caja->save();
 
-
+        //return back()->with('id_sucursal',$equipo->id_sucursal)->with('pago_equipo',$equipo->id_user);
         return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 

@@ -87,9 +87,9 @@ class ControllerPago_Equipo extends Controller
         $pago->id_caja = $request->get('id_caja4');
         $pago->id_corte = $request->get('id_corte4');
         $pago->monto = $request->get('monto4');// esto es lo que deberia de pagar total
-        $pago->pagado = $request->get('final4');// esto es lo que envia 
+        $pago->pagado = $request->get('final4');// esto es lo que envia
         $pago->adelanto = $request->get('adelanto4');// esto es lo que adelanto
-    
+
         $pago->total = $request->get('total');
 
         $pago->comentario = $request->get('comentario4');
@@ -98,7 +98,7 @@ class ControllerPago_Equipo extends Controller
 
 $input = $request->all();
 
-
+ 
 dd($input);
 
         return back()->with('success', "Equipo Pagado");
