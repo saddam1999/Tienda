@@ -207,7 +207,7 @@ class imprimirController extends Controller
         $usuario = \App\Models\User::find($equipo->id_cliente);
         $tecnico = \App\Models\User::find($equipo->id_user);
         $precio = \App\Models\Equipo::find($id);
-        $equipo_pago = \App\Models\pago_equipo::find($id);
+        $equipo_pago = \App\Models\Pago_Equipo::find($id);
 
         $setting = \App\Models\Settings::find(1);
         if ($equipo->imei != '') {
