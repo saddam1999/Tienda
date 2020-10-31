@@ -26,11 +26,14 @@
     <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
     <link href="../css/main.css" rel="stylesheet" type="text/css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <style>
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css);
+
         .flash {
             position: fixed;
             top: 0;
@@ -1611,8 +1614,8 @@
                     <form action="/agregarcaja">
                         @method('POST')
                         @csrf
-                        <label for="nombre">Nombre</label>
-                        <select class="form-control" name="id_user" id="id_user">
+                        <label for="nombre">Nombre</label> <br>
+                        <select class="form-control" name="id_user" style="width:400px;" id="id_user">
                             @foreach($Usuario as $usuario)
                             @if($usuario->rol=="tecnico"||$usuario->rol=="admin")
                             <option class="form-control" value="{{$usuario->id}}">{{$usuario->name}}</option>
@@ -1622,8 +1625,8 @@
                         <input type="hidden" name="corte" id="corte" value="0">
                         <input type="hidden" name="id_corte" id="id_corte" value="Activo">
 
-                        <label for="id_sucursal">Sucursal</label>
-                        <select class="form-control" name="id_sucursal" id="id_sucursal">
+                        <label for="id_sucursal">Sucursal</label> <br>
+                        <select class="form-control" name="id_sucursal" style="width:600px;" id="id_sucursal">
                             @foreach ($Sucursal as $sucursal)
                             <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
                             @endforeach
@@ -1743,8 +1746,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Marca</label>
-                                        <select class="form-control" id="id_marca" name="id_marca" required>
+                                        <label for="marca">Marca</label> <br>
+                                        <select class="form-control" id="id_marca" style="width:400px;" name="id_marca" required>
                                             <option value="0" selected>Seleciona una Marca</option>
                                             @foreach($Marca as $marca)
                                             <option value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -1754,8 +1757,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Categoria</label>
-                                        <select class="form-control" id="categoria" name="categoria" required>
+                                        <label for="marca">Categoria</label> <br>
+                                        <select class="form-control" id="categoria" style="width:400px;" name="categoria" required>
                                             <option value="N/A" selected>Seleciona una Categoria</option>
                                             @foreach($Categoria as $categoria)
                                             <option value="{{$categoria->nombre_categoria}}">
@@ -1766,8 +1769,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Talla</label>
-                                        <select class="form-control" id="talla" name="talla" required>
+                                        <label for="marca">Talla</label> <br>
+                                        <select class="form-control" id="talla" style="width:400px;" name="talla" required>
                                             <option value="N/A" selected>Seleciona una Talla</option>
                                             <option value="xs">XS</option>
                                             <option value="s">S</option>
@@ -1901,8 +1904,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Marca</label>
-                                        <select class="form-control" id="id_marca1" name="id_marca1" required>
+                                        <label for="marca">Marca</label><br>
+                                        <select class="form-control" id="id_marca1" style="width:400px;" name="id_marca1" required>
                                             <option value="0" selected>Seleciona una Marca</option>
                                             @foreach($Marca as $marca)
                                             <option value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -1912,8 +1915,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Categoria</label>
-                                        <select class="form-control" id="categoria1" name="categoria1" required>
+                                        <label for="marca">Categoria</label><br>
+                                        <select class="form-control" id="categoria1" style="width:400px;" name="categoria1" required>
                                             <option value="N/A" selected>Seleciona una Categoria</option>
                                             @foreach($Categoria as $categoria)
                                             <option value="{{$categoria->nombre_categoria}}">
@@ -1924,8 +1927,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Talla</label>
-                                        <select class="form-control" id="talla1" name="talla1" required>
+                                        <label for="marca">Talla</label> <br>
+                                        <select class="form-control" id="talla1" style="width:400px;" name="talla1" required>
                                             <option value="N/A">Seleciona una Talla</option>
                                             <option value="xs">XS</option>
                                             <option value="s">S</option>
@@ -2050,8 +2053,8 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-control" name="estatus1" id="estatus1">
+                                <label>Status</label> <br>
+                                <select class="form-control" style="width:400px;" name="estatus1" id="estatus1">
                                     <option value="1" selected>Active</option>
                                     <option value="0">No Active</option>
                                 </select>
@@ -2059,8 +2062,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Sucursal</label>
-                                <select class="form-control" name="id_sucursal1" id="id_sucursal1">
+                                <label>Sucursal</label> <br>
+                                <select class="form-control" style="width:400px;"  name="id_sucursal1" id="id_sucursal1">
                                     @foreach ($Sucursal as $sucursal)
                                     <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
                                     </option>
@@ -2070,8 +2073,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Rol</label>
-                                <select class="form-control" name="rol1" id="rol1">
+                                <label>Rol</label> <br>
+                                <select class="form-control" style="width:400px;" name="rol1" id="rol1">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
                                     <option value="cliente" selected>Cliente</option>
@@ -2141,8 +2144,8 @@
                         <input type="hidden" name="status" id="status" value="1">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Sucursal</label>
-                                <select class="form-control" name="id_sucursal" id="id_sucursal">
+                                <label>Sucursal</label> <br>
+                                <select class="form-control" style="width:400px;"  name="id_sucursal" id="id_sucursal">
                                     @foreach ($Sucursal as $sucursal)
                                     <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
                                     </option>
@@ -2152,8 +2155,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Rol</label>
-                                <select class="form-control" name="rol">
+                                <label>Rol</label> <br>
+                                <select class="form-control" style="width:400px;"  name="rol">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
                                     <option value="cliente" selected>Cliente</option>
@@ -2207,8 +2210,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="tiempo1">Tiempo</label>
-                                        <select class="form-control" id="tiempo1" name="tiempo1" required>
+                                        <label for="tiempo1">Tiempo</label> <br>
+                                        <select class="form-control" style="width:400px;"  id="tiempo1" name="tiempo1" required>
                                             <option value="Null" selected>Tiempo Estimado</option>
                                             <option value="Instantaneo">Instantaneo</option>
                                             <option value="15 minutos">15 Minutos</option>
@@ -2282,8 +2285,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Tiempo</label>
-                                        <select class="form-control" id="tiempo" name="tiempo" required>
+                                        <label for="marca">Tiempo</label> <br>
+                                        <select class="form-control" id="tiempo" style="width:400px;" name="tiempo" required>
                                             <option value="Null" selected>Tiempo Estimado</option>
                                             <option value="Instantaneo">Instantaneo</option>
                                             <option value="15 minutos">15 Minutos</option>
@@ -2418,24 +2421,23 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Cliente</label>
+                                    <label for="nombre">Nombre Cliente</label> <br>
                                     <div class="input-group-append">
-                                        <select class="form-control" id="id_cliente" name="id_cliente" required>
+                                        <select class="form-control" style="width:600px;" id="id_cliente" name="id_cliente" required>
                                             @foreach ($Usuario as $user)
                                             @if($user->rol=='cliente')
                                             <option value="{{$user->id}}">{{$user->name}}</option>
                                             @endif
                                             @endforeach
                                         </select>
-                                        <a href="" data-toggle="modal" data-target="#modalagregar"><span
-                                                class="input-group-text">Agregar Cliente</span></a>
+
                                     </div>
                                 </div>
                                 <input type="hidden" name="id_sucursal" id="id_sucursal"
                                     value="{{Auth::user()->id_sucursal}}">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Tecnico</label>
-                                    <select class="form-control" id="id_user" name="id_user" required>
+                                    <label for="nombre">Nombre Tecnico</label> <br>
+                                    <select class="form-control" id="id_user" style="width:600px;" name="id_user" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=="tecnico")
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -2459,8 +2461,8 @@
                                 </div>
 
                                 <div class="col-4-md">
-                                    <label for="descripcion">Marca</label>
-                                    <select class="form-control" id="id_servicio" name="id_servicio" required>
+                                    <label for="descripcion">Marca</label> <br>
+                                    <select class="form-control" id="id_servicio" style="width:600px;" name="id_servicio" required>
                                         @foreach ($Marca as $marca)
                                         <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                                         @endforeach
@@ -2607,8 +2609,8 @@
                                     </div>
                                 </div>
                                 <div class="col-4-md mb-1">
-                                    <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal" name="id_sucursal" required>
+                                    <label for="descripcion">Sucursal</label> <br>
+                                    <select class="form-control" id="id_sucursal" style="width:600px;" name="id_sucursal" required>
                                         @foreach ($Sucursal as $sucursal)
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
                                         @endforeach
@@ -2670,7 +2672,7 @@
                                             name="fecha_entrega" id="fecha_entrega">
                                     </div>
                                 </div>
-                                <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+                                <select  type="hidden" name="listaDeDispositivos" style="width:600px;" id="listaDeDispositivos"></select>
                                 <p id="estado"></p>
                                 <br>
                             </div>
@@ -2716,8 +2718,8 @@
                             <div class="container">
 
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Cliente</label>
-                                    <select class="form-control" id="id_cliente2" name="id_cliente2" required>
+                                    <label for="nombre">Nombre Cliente</label><br>
+                                    <select class="form-control" style="width:600px;" id="id_cliente2" name="id_cliente2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -2729,8 +2731,8 @@
                                     value="{{Auth::user()->id_sucursal}}">
 
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Tecnico</label>
-                                    <select class="form-control" id="id_user2" name="id_user2" required>
+                                    <label for="nombre">Nombre Tecnico</label> <br>
+                                    <select class="form-control" style="width:600px;" id="id_user2" name="id_user2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=="tecnico")
                                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -2738,6 +2740,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <label for="marca">IMEI</label>
@@ -2891,8 +2894,8 @@
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="status2">Status</label>
-                                        <select class="form-control" name="status2" id="status2">
+                                        <label for="status2">Status</label> <br>
+                                        <select class="form-control" style="width:600px;"  name="status2" id="status2">
                                             <option value="0">Recibido</option>
                                             <option value="1">En Revision</option>
                                             <option value="2">Cancelado</option>
@@ -2904,8 +2907,8 @@
                                     </div>
                                 </div>
                                 <div class="col-4-md mb-1">
-                                    <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2"
+                                    <label for="descripcion">Sucursal</label><br>
+                                    <select style="width:600px;"  class="form-control" id="id_sucursal2" name="id_sucursal2"
                                         value="{{Auth::user()->id_sucursal}}" required>
                                         @foreach ($Sucursal as $sucursal)
                                         <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
@@ -2923,7 +2926,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">$</span>
                                                             <input class="form-control" type="text" name="pago2"
-                                                                id="pago2" placeholder="Anticipo">
+                                                                id="pago2" placeholder="Anticipo" disabled>
                                                         </div>
 
                                                     </div>
@@ -2935,7 +2938,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
                                                     <input class="form-control" type="text" name="presupuesto2"
-                                                        id="presupuesto2" placeholder="(Cuanto puede Costar)">
+                                                        id="presupuesto2" placeholder="(Cuanto puede Costar)" disabled>
                                                 </div>
 
                                             </div>
@@ -3288,8 +3291,8 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <label for="status">Status</label>
-                    <form name="cambio_status" id="cambio_status" action="">
+                    <label for="status">Status</label> <br>
+                    <form name="cambio_status" style="width:600px;" id="cambio_status" action="">
                         <select name="status3" id="status3">
                             <option value="0">Recibido</option>
                             <option value="1">En Revision</option>
@@ -3336,8 +3339,8 @@
                                     disabled>
                             </div>
                         </div>
-                        <label for="metodo">Metodo de Pago</label>
-                        <select class="form-control" name="pago_id4" id="pago_id4">
+                        <label for="metodo">Metodo de Pago</label> <br>
+                        <select class="form-control"  style="width:600px;" name="pago_id4" id="pago_id4">
                             <option value="1">Efectivo</option>
                             <option value="2">Paypal</option>
                             <option value="3">Tarjeta Debito/Credito (Paypal)</option>
@@ -3448,9 +3451,9 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="col-4-md">
-                        <form name="cambio_servicio" id="cambio_servicio" action="">
-                            <label for="descripcion">Servicio</label>
-                            <select class="form-control" id="id_servicio5" name="id_servicio5" required>
+                        <form name="cambio_servicio" id="cambio_servicio"  action="">
+                            <label for="descripcion">Servicio</label> <br>
+                            <select class="form-control" id="id_servicio5" style="width:600px;" name="id_servicio5" required>
                                 @foreach ($Servicio as $servicio)
                                 <option value="{{$servicio->id}}">[{{$servicio->nombre}}]
                                     [Tiempo:{{$servicio->tiempo}}] [${{$servicio->precio}}]</option>
@@ -3508,8 +3511,8 @@
                                 rows="10"></textarea>
                         </div>
 
-                        <div class="col-6-md">
-                            <select class="form-control mt-2" name="status6" id="status6">
+                        <div class="col-6-md"> <br>
+                            <select class="form-control mt-2" style="width:450px;" name="status6" id="status6">
                                 <option value="deposito">Deposito +</option>
                                 <option value="retiro">Retiro -</option>
                             </select>
@@ -4262,3 +4265,13 @@
     $('.toast').toast('show');
 </script>
 @endif
+
+
+    <script type="text/javascript">
+			$(document).ready(function() {
+				$("select").select2({
+
+				});
+			});
+		</script>
+
