@@ -78,25 +78,26 @@ class ControllerPago_Equipo extends Controller
     public function store(Request $request, $id)
     {
         $pago = \App\Models\Pago_Equipo::find($id);
-        $totalsiniva= $pago->monto;
-        $debiendo=$pago->total;
-        $pagado= $request->get('final4');
-        $adelanto=$pago->adelanto;
-        $iva= $pago ->iva;
-        $totaldefinitivo=$debiendo - $pagado;
-        if($totaldefinitivo==0)
-        {
-            $pago->total=$pagado;
+        $totalsiniva = $pago->monto;
+        $debiendo = $pago->total;
+        $pagado = $request->get('final4');
+        $adelanto = $pago->adelanto;
+        $iva = $pago->iva;
+        $totaldefinitivo = $debiendo - $pagado;
+        if ($debiendo == 0) {
+            return back()->with('success', "No hay nada que pagar");
+        } elseif ($pagado == 0) {
+            return back()->with('success', "0 no es un valor aceptado como monto a pagar");
+        } elseif ($totaldefinitivo == 0) {
+            $pago->total = $pagado;
             $pago->status = 1;
             $pago->save();
-            return back()->with('success', "Equipo: #",$id."Monto Total: ".$debiendo."Pagado: ".$pagado);
-
-        }else{
-            return back()->with('success', "No");
-
+            return back()->with('success', "Equipo: #", $id . "Monto Total: " . $debiendo . "Pagado: " . $pagado);
+        } elseif($totaldefinitivo != 0) {
+            return back()->with('success', "Cambio : ".$totaldefinitivo);
         }
 
-       // dd($totalconivayadelanto);
+        // dd($totalconivayadelanto);
         //$pago->id_user = $request->get('id_user4');
         //$pago->id_equipo = $request->get('id_equipo4');;
         //$pago->id_cliente = $request->get('id_cliente4');

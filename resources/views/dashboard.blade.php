@@ -3534,68 +3534,21 @@
 <script>
     $('#modal_pago').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id;
-        $(e.currentTarget).find('#id_equipo4').val(id);
-
-        var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id').val(id);
+        tasa = document.getElementById("iva").value;
+        var presupuesto = $(e.relatedTarget).data().presupuesto; //pago a pagar
+        var adelanto = $(e.relatedTarget).data().pago; //adelanto
+        $(e.currentTarget).find('#adelanto4').val(adelanto);
+        if (iva != 0) {
+            var iva = (presupuesto * tasa) / 100;
+            $("input[name=total_final]").val(parseInt(presupuesto) + parseInt(iva));
+            $("input[name=presupuesto4]").val(parseInt(presupuesto) + parseInt(iva));
+            pendiente = (presupuesto + iva) - adelanto;
+            $("input[name=pendiente4]").val(pendiente);
+        } else if (iva == '' || iva== 0)
+        {
 
-        $("#agregarpago").attr("action", '/agregarpago/' + id);
-
-        var id = $(e.relatedTarget).data().id_cliente;
-        $(e.currentTarget).find('#id_cliente4').val(id);
-        var id = $(e.relatedTarget).data().presupuesto;//pago
-        $(e.currentTarget).find('#presupuesto4').val(id);
-
-        var id = $(e.relatedTarget).data().id_sucursal;
-        $(e.currentTarget).find('#id_sucursal4').val(id);
-
-        var id = $(e.relatedTarget).data().pago;//adelanto
-        $(e.currentTarget).find('#adelanto4').val(id);
-        var id = $(e.relatedTarget).data().presupuesto;//pago
-        $(e.currentTarget).find('#pago44').val(id);
-
-        var id = $(e.relatedTarget).data().pago;//adelanto
-        $(e.currentTarget).find('#adelanto44').val(id);
-
-        var id = $(e.relatedTarget).data().pago;
-        anticipo = id;
-        if (id == 0) {
-            $(e.currentTarget).find('#pago4').val(0);
-        } else {
-            $(e.currentTarget).find('#pago4').val(id);
         }
-        precio = $(e.relatedTarget).data().presupuesto;
-        temporal = precio - anticipo;
-        total = precio;
-        $(e.currentTarget).find('#pendiente4').val(temporal);
-        $(e.currentTarget).find('#total4').val(total);
-        var id = $(e.relatedTarget).data().status;
-        $(e.currentTarget).find('#status4').val(id);
-        $('#final4').on('input', function(e) {
-            iva = document.getElementById("iva").value;
-            pago = document.getElementById("final4").value;
-            var tasa = iva;
-            var monto = $("input[name=total]").val();
-            var anticipo = $("input[name=pendiente4]").val();
-            if (anticipo != 0) {
-                cambio = pago - anticipo;
-            } else {
-                cambio = pago - precio;
-            }
-            if (tasa == 0.0) {
-                $("input[name=subtotal]").val(parseInt(cambio));
-                $("input[name=total_final]").val(parseInt(monto));
-            } else {
-                var iva = (monto * tasa) / 100;
-                $("input[name=subtotal]").val(parseInt(cambio));
-                $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
-            }
-            if (tasa == null) {
-                var monto = $("input[name=total]").val();
-                document.getElementById("total_final").monto;
-                $("input[name=subtotal]").val(parseInt(cambio));
-            }
-        });
     });
 </script>
 <!-- Scripts Servisio-->
