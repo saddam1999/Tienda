@@ -3381,28 +3381,28 @@
                                     <div class="card text-left">
                                         <div class="card-body">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="setting_descuento_1"
+                                                <input class="form-check-input" type="checkbox" disabled id="setting_descuento_1"
                                                     name="setting_descuento_1" value="setting_descuento_1">
                                                 <label class="form-check-label" for="inlineCheckbox2">Descuento
                                                     1</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="setting_descuento_2"
+                                                <input class="form-check-input" type="checkbox" disabled id="setting_descuento_2"
                                                     name="setting_descuento_2" value="setting_descuento_1">
                                                 <label class="form-check-label" for="inlineCheckbox2">Descuento
                                                     2</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="setting_descuento_3"
+                                                <input class="form-check-input" type="checkbox" disabled id="setting_descuento_3"
                                                     name="setting_descuento_3" value="setting_descuento_1">
                                                 <label class="form-check-label" for="inlineCheckbox2">Descuento
                                                     3</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="setting_descuento_4"
+                                                <input class="form-check-input" type="checkbox" disabled id="setting_descuento_4"
                                                     name="setting_descuento_4" value="setting_descuento_1">
                                                 <label class="form-check-label" for="inlineCheckbox2">Descuento
                                                     4</label>
@@ -3545,6 +3545,31 @@
             $("input[name=presupuesto4]").val(parseInt(presupuesto) + parseInt(iva));
             pendiente = (presupuesto + iva) - adelanto;
             $("input[name=pendiente4]").val(pendiente);
+            $('#final4').on('input', function(e) {
+                iva = document.getElementById("iva").value;
+            pago = document.getElementById("final4").value;
+            var tasa = iva;
+            var monto = $("input[name=total]").val();
+            var anticipo = $("input[name=pendiente4]").val();
+            if (anticipo != 0) {
+                cambio = pago - anticipo;
+            } else {
+                cambio = pago - precio;
+            }
+            if (tasa == 0.0) {
+                $("input[name=subtotal]").val(parseInt(cambio));
+                //$("input[name=total_final]").val(parseInt(monto));
+            } else {
+                var iva = (monto * tasa) / 100;
+                $("input[name=subtotal]").val(parseInt(cambio));
+               // $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
+            }
+            if (tasa == null) {
+                var monto = $("input[name=total]").val();
+               // document.getElementById("total_final").monto;
+                $("input[name=subtotal]").val(parseInt(cambio));
+            }
+            });
         } else if (iva == '' || iva== 0)
         {
 
