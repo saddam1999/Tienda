@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Equipo;
 use App\Models\Servicio;
+use Illuminate\Support\Facades\Notification;
 
 
 class ControllerEquipo extends Controller
@@ -37,6 +38,7 @@ class ControllerEquipo extends Controller
      */
     public function store(Request $request)
     {
+
         $equipo = new \App\Models\Equipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
@@ -130,7 +132,7 @@ class ControllerEquipo extends Controller
         $pago->save();
         $caja->save();
 
-        //return back()->with('id_sucursal',$equipo->id_sucursal)->with('pago_equipo',$equipo->id_user);
+
         return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 

@@ -27,8 +27,8 @@ class ControllerPago_Equipo extends Controller
 
         $pagocaja = new \App\Models\MovimientoCaja();
         $pagocaja->id_user = $request->get('id_user6');
-       // $pagocaja->id_cliente = $request->get('id_cliente6');
-       // $pagocaja->id_cliente = $request->get('id_cliente6');
+        // $pagocaja->id_cliente = $request->get('id_cliente6');
+        // $pagocaja->id_cliente = $request->get('id_cliente6');
         $pagocaja->id_equipo = $request->get('id_equipo6');
         $pagocaja->id_sucursal = $request->get('id_sucursal6');
         $pagocaja->id_caja = $request->get('id_caja6');
@@ -75,33 +75,52 @@ class ControllerPago_Equipo extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request, $id)
     {
         $pago = \App\Models\Pago_Equipo::find($id);
-        $pago->id_user = $request->get('id_user4');
-        $pago->id_equipo = $request->get('id_equipo4');;
-        $pago->id_cliente = $request->get('id_cliente4');
-        $pago->id_servicio = $request->get('id_servicio4');
-        $pago->id_sucursal = $request->get('id_sucursal4');
-        $pago->id_equipo = $request->get('id_equipo4');
-        $pago->id_caja = $request->get('id_caja4');
-        $pago->id_corte = $request->get('id_corte4');
-        $pago->monto = $request->get('monto4');// esto es lo que deberia de pagar total
-        $pago->pagado = $request->get('final4');// esto es lo que envia
-        $pago->adelanto = $request->get('adelanto4');// esto es lo que adelanto
+        $totalsiniva= $pago->monto;
+        $debiendo=$pago->total;
+        $pagado= $request->get('final4');
+        $adelanto=$pago->adelanto;
+        $iva= $pago ->iva;
+        $totaldefinitivo=$debiendo - $pagado;
+        if($totaldefinitivo==0)
+        {
+            $pago->total=$pagado;
+            $pago->status = 1;
+            $pago->save();
+            return back()->with('success', "Equipo: #",$id."Monto Total: ".$debiendo."Pagado: ".$pagado);
 
-        $pago->total = $request->get('total');
+        }else{
+            return back()->with('success', "No");
 
-        $pago->comentario = $request->get('comentario4');
-        $pago->status = $request->get('status4');
-        $pago->fecha = $request->get('fecha4');
+        }
 
-$input = $request->all();
+       // dd($totalconivayadelanto);
+        //$pago->id_user = $request->get('id_user4');
+        //$pago->id_equipo = $request->get('id_equipo4');;
+        //$pago->id_cliente = $request->get('id_cliente4');
+        //$pago->id_servicio = $request->get('id_servicio4');
+        //$pago->id_sucursal = $request->get('id_sucursal4');
+        //$pago->id_equipo = $request->get('id_equipo4');
+        //$pago->id_caja = $request->get('id_caja4');
+        //$pago->id_corte = $request->get('id_corte4');
 
- 
-dd($input);
+        //  $pago->monto = $request->get('monto44'); // esto es lo que deberia de pagar total
+        //  $pago->pagado = $request->get('final44'); // esto es lo que envia
+        // $pago->adelanto = $request->get('adelanto44'); // esto es lo que adelanto
 
-        return back()->with('success', "Equipo Pagado");
+        //  if($pago->monto)
+        //$pago->total = $request->get('total');
+        //$pago->comentario = $request->get('comentario4');
+        //  $pago->status = 1;
+        // $pago->fecha = $request->get('fecha4');
+        // $pago->save();
+        //$input = $request->all();
+
+
+        //dd($input);
+
     }
 
     /**

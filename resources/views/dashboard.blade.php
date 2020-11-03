@@ -128,8 +128,18 @@
                 </a>
             </div>
         </li>
-
-        <li class="nav-item">
+        <li class="nav-item border-top border-left border-right border-warning rounded face">
+            <a class="nav-link" id="taller-tab" data-toggle="tab" href="#taller" role="tab" aria-controls="taller"
+                aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                <path fill-rule="evenodd"
+                    d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+            </svg>Equipos a Reparar
+            </a>
+        </li>
+        <li class="nav-item border-top border-left border-right border-info rounded face">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -171,6 +181,7 @@
                 </svg>Opciones
             </a>
         </li>
+
         @foreach ($Caja as $caja)
         @if(Auth::user()->id_sucursal==$caja->id_sucursal)
         <div class="input-group-prepend bg-success" style="border-radius:12%;">
@@ -181,7 +192,7 @@
         @endif
         @endforeach
 
-        <div class="input-group-prepend bg-warning" style="border-radius:12%;">
+            <div class="input-group-prepend bg-warning" style="border-radius:12%;">
             @php $count=0; @endphp
             @foreach ($Equipo as $equipo)
             @php
@@ -192,13 +203,14 @@
             }
             @endphp
             @endforeach
-            <span class="input-group-text face text-secondary">Pendientes: {{$count}}</span>
+            <span class="input-group-text face text-secondary"><a  id="taller-tab" data-toggle="tab" href="#taller">Pendientes: {{$count}} </span></a>
+
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
             <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
         </div>
     </ul>
-    @if(Auth::user()->rol=="Admin"||Auth::user()->rol=="Tecnico")
+    @if(Auth::user()->rol=="admin"||Auth::user()->rol=="tecnico")
     <div class="toast" data-autohide="false">
         <div class="toast-header">
             <strong class="mr-auto text-primary">Toast Header</strong>
@@ -214,6 +226,7 @@
         </div>
     </div>
     @endif
+
     <div class="tab-content bg-black" id="myTabContent" style="
     background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
         <div class="row">
@@ -1289,48 +1302,27 @@
                                                     data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
-                                                    data-id_servicio="{{$equipo->id_servicio}}"
-                                                    data-total="{{$equipo->total}}" data-iva="{{$equipo->iva}}"
-                                                    data-monto="{{$equipo->monto}}"
+                                                    data-pago="{{$equipo->pago}}"
                                                     data-adelanto="{{$equipo->adelanto}}"
+                                                    data-precio="{{$servicio->precio}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-serial="{{$equipo->serial}}"
+                                                    data-imei="{{$equipo->imei}}"
                                                     data-id_sucursal="{{$equipo->id_sucursal}}"
-                                                    data-precio="{{$servicio->precio}}"
-                                                    data-id_comentario="{{$equipo->id_comentario}}"
-                                                    data-pago="{{$equipo->pago}}"
-                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"
-                                                    data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
-                                                    data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                                                    data-Señal="{{$equipo->Señal}}"
-                                                    data-LectorSD="{{$equipo->LectorSD}}"
-                                                    data-AltaVoz="{{$equipo->AltaVoz}}"
-                                                    data-BotonHome="{{$equipo->BotonHome}}"
-                                                    data-Microfono="{{$equipo->Microfono}}"
-                                                    data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                                    data-Volumenplus="{{$equipo->Volumenplus}}"
-                                                    data-Volumenless="{{$equipo->Volumenless}}"
-                                                    data-Encendido="{{$equipo->Encendido}}"
-                                                    data-Auricular="{{$equipo->Auricular}}"
-                                                    data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
-                                                    data-Enciende="{{$equipo->Enciende}}"
-                                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
-                                                    data-Golpes="{{$equipo->Golpes}}"
-                                                    data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                    ><svg width="2em"
                                                         height="2em" viewBox="0 0 16 16" class="bi bi-cash text-info"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
                                                         <path
                                                             d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-                                                    </svg></a>
-
+                                                    </svg>
+                                                </a>
                                             </td>
-                                            <td><a href="/imprimir/{{$equipo->id}}" target="_blank"
+                                            <td>
+                                                <a href="/imprimir/{{$equipo->id}}" target="_blank"
                                                     data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
@@ -1367,7 +1359,6 @@
                                                 <a href="/QR/{{$equipo->id}}" target="_blank">
                                                     <h1><i class="fas fa-qrcode face" alt="Imprime QR"></i></h1>
                                                 </a>
-
                                             </td>
                                             @endif
                                         </tr>
@@ -3326,15 +3317,15 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form name="pagoform" id="pagoform" action="">
+                    <form name="agregarpago" id="agregarpago" action="">
                         @csrf
                         @method('POST')
                         <div class="card text-left">
                             <div class="card-body">
                                 <label for="total">Total a Pagar</label>
-                                <input type="text" class="form-control" name="total4" id="total4" disabled>
+                                <input type="text" class="form-control" name="presupuesto4" id="presupuesto4" disabled>
                                 <label for="status">Anticipo</label>
-                                <input type="text" class="form-control" name="pago4" id="pago4" disabled>
+                                <input type="text" class="form-control" name="adelanto4" id="adelanto4" disabled>
                                 <label for="status">Pendiente</label>
                                 <input type="text" class="form-control" name="pendiente4" id="pendiente4" value=""
                                     disabled>
@@ -3352,11 +3343,12 @@
                             <input type="text" class="form-control" name="final4" id="final4">
                         </div>
 
-                        <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="">
+                    <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="{{Auth::user()->id}}">
                         <input type="hidden" class="form-control" name="id_cliente4" id="id_cliente4" value="">
                         <input type="hidden" class="form-control" name="id_sucursal4" id="id_sucursal4" value="">
                         <input type="hidden" class="form-control" name="id_equipo4" id="id_equipo4" value="">
-                        <input type="hidden" class="form-control" name="adelanto4" id="adelanto4" value="">
+                        <input type="hidden" class="form-control" name="adelanto44" id="adelanto44" value="">
+                        <input type="hidden" class="form-control" name="pago44" id="pago44" value="">
 
                         <div class="container">
                             <div class="row">
@@ -3545,28 +3537,28 @@
     $('#modal_pago').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id_equipo4').val(id);
+
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id').val(id);
-        $("#pagoform").attr("action", '/agregarpago/' + id);
+
+        $("#agregarpago").attr("action", '/agregarpago/' + id);
+
         var id = $(e.relatedTarget).data().id_cliente;
         $(e.currentTarget).find('#id_cliente4').val(id);
+        var id = $(e.relatedTarget).data().presupuesto;//pago
+        $(e.currentTarget).find('#presupuesto4').val(id);
+
         var id = $(e.relatedTarget).data().id_sucursal;
         $(e.currentTarget).find('#id_sucursal4').val(id);
-        var id = $(e.relatedTarget).data().pago;
-        $(e.currentTarget).find('#pago4').val(id);
-        var id = $(e.relatedTarget).data().total;
-        $(e.currentTarget).find('#total4').val(id);
-        var id = $(e.relatedTarget).data().monto;
-        $(e.currentTarget).find('#monto4').val(id);
-        var id = $(e.relatedTarget).data().iva;
-        $(e.currentTarget).find('#iva4').val(id);
-        var id = $(e.relatedTarget).data().adelanto;
+
+        var id = $(e.relatedTarget).data().pago;//adelanto
         $(e.currentTarget).find('#adelanto4').val(id);
-        var id = $(e.relatedTarget).data().fecha_recibido;
-        $(e.currentTarget).find('#fecha_recibido4').val(id);
-        var id = $(e.relatedTarget).data().fecha_entrega;
-        $(e.currentTarget).find('#fecha_entrega4').val(id);
-        $("#cambio_pago").attr("action", '/agregarpago/' + id);
+        var id = $(e.relatedTarget).data().presupuesto;//pago
+        $(e.currentTarget).find('#pago44').val(id);
+
+        var id = $(e.relatedTarget).data().pago;//adelanto
+        $(e.currentTarget).find('#adelanto44').val(id);
+
         var id = $(e.relatedTarget).data().pago;
         anticipo = id;
         if (id == 0) {
@@ -3578,7 +3570,7 @@
         temporal = precio - anticipo;
         total = precio;
         $(e.currentTarget).find('#pendiente4').val(temporal);
-        $(e.currentTarget).find('#total').val(total);
+        $(e.currentTarget).find('#total4').val(total);
         var id = $(e.relatedTarget).data().status;
         $(e.currentTarget).find('#status4').val(id);
         $('#final4').on('input', function(e) {
