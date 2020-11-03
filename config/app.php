@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
 
     ],
 
@@ -192,6 +193,7 @@ return [
     */
 
     'aliases' => [
+
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

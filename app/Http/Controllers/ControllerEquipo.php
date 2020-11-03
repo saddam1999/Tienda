@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Equipo;
 use App\Models\Servicio;
 use Illuminate\Support\Facades\Notification;
-
+use App\Message;
+use App\Events\NewMessageNotification;
 
 class ControllerEquipo extends Controller
 {
@@ -74,6 +75,8 @@ class ControllerEquipo extends Controller
         $equipo->Golpes = $request->get('Golpes');
         $equipo->Tiene_Bateria = $request->get('Tiene_Bateria');
         $equipo->save();
+
+        $user = \App\Models\User::all();
 
         $setting = \App\Models\Settings::find(1);
         $pago = new \App\Models\Pago_Equipo();

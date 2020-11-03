@@ -10,6 +10,7 @@
     @php date_default_timezone_set('UTC');
     $contador=0;
     @endphp
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
@@ -19,7 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
@@ -82,7 +82,11 @@
             }
         }
     </style>
+<!-- receive notifications -->
 
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+<!-- receive notifications -->
     <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -210,22 +214,7 @@
             <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
         </div>
     </ul>
-    @if(Auth::user()->rol=="admin"||Auth::user()->rol=="tecnico")
-    <div class="toast" data-autohide="false">
-        <div class="toast-header">
-            <strong class="mr-auto text-primary">Toast Header</strong>
-            <small class="text-muted">5 mins ago</small>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-        </div>
-        <div class="toast-body">
-            @if (session('pago_equipo'))
-            <div class="alert alert-success m-3">
-                <?php echo '<html>'.session('id_sucursal').'</html>' ?>
-            </div>
-            @endif
-        </div>
-    </div>
-    @endif
+
 
     <div class="tab-content bg-black" id="myTabContent" style="
     background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
@@ -1803,6 +1792,8 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <form name="editararticulo" id="editararticulo" action="/editararticulo">
+                        @csrf
+
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
@@ -1960,6 +1951,8 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <form action="/marca">
+                        @csrf
+
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
@@ -2098,6 +2091,8 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <form action="/addusuario">
+                        @csrf
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name</label>
@@ -3285,6 +3280,7 @@
                 <div class="container-fluid">
                     <label for="status">Status</label>
                     <form name="cambio_status" id="cambio_status" action="">
+                        @csrf
                         <select name="status3" id="status3">
                             <option value="0">Recibido</option>
                             <option value="1">En Revision</option>
@@ -3445,6 +3441,8 @@
                 <div class="container-fluid">
                     <div class="col-4-md">
                         <form name="cambio_servicio" id="cambio_servicio" action="">
+                            @csrf
+
                             <label for="descripcion">Servicio</label>
                             <select class="form-control" id="id_servicio5" name="id_servicio5" required>
                                 @foreach ($Servicio as $servicio)
@@ -4259,6 +4257,11 @@
 </script>
 @endif
 
-
+<script>
+Echo.channel('tablon')
+            .listen('MiEvento', (e) => {
+                console.log(e.mensaje);
+            });
+</script>
 
 
