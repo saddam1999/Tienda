@@ -244,7 +244,7 @@ class ControllerEquipo extends Controller
             $equipo->save();
             return back()->with('success', "Status Cambiado");
         } else {
-            return back()->with('success', 'Status no se pudo Cambiar intente de nuevo ');
+            return back()->with('warning', 'Status no se pudo Cambiar intente de nuevo ');
         }
     }
 
@@ -261,7 +261,7 @@ class ControllerEquipo extends Controller
             $equipo->delete();
             return back()->with('success', "Equipo Borrado");
         } else {
-            return back()->with('success', 'Equipo no se pudo Borrar ');
+            return back()->with('warning', 'Equipo no se pudo Borrar ');
         }
     }
 }

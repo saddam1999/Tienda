@@ -54,7 +54,7 @@ class ControllerPresupuestoEquipo extends Controller
         $equipo->AltaVoz = $request->get('AltaVoz');
         $equipo->BotonHome = $request->get('BotonHome');
         $equipo->Microfono = $request->get('Microfono');
-        $equipo->Lector_SIM = $request->get('Lector_SIM'); 
+        $equipo->Lector_SIM = $request->get('Lector_SIM');
         $equipo->Volumenplus = $request->get('Volumenplus');
         $equipo->Volumenless = $request->get('Volumenless');
         $equipo->Encendido = $request->get('Encendido');
@@ -166,7 +166,7 @@ class ControllerPresupuestoEquipo extends Controller
             $equipo->save();
             return back()->with('success', "Status Cambiado");
         } else {
-            return back()->with('success', 'Status no se pudo Cambiar intente de nuevo ');
+            return back()->with('warning', 'Status no se pudo Cambiar intente de nuevo ');
         }
     }
      /**
@@ -182,7 +182,7 @@ class ControllerPresupuestoEquipo extends Controller
             $equipo->delete();
             return back()->with('success', "Equipo Borrado");
         } else {
-            return back()->with('success', 'Equipo no se pudo Borrar ');
+            return back()->with('warning', 'Equipo no se pudo Borrar ');
         }
     }
 }

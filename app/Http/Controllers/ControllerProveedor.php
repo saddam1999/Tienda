@@ -93,7 +93,7 @@ class ControllerProveedor extends Controller
         $setting->status=$request->get('status');
         $setting->save();
         return back()->with('success', "Proveedor Editado : ".$setting->name);
-    } 
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -105,10 +105,10 @@ class ControllerProveedor extends Controller
     {
         $admin= \App\Models\Proveedor::find($id);
         if ($admin != null) {
-            $admin->delete(); 
+            $admin->delete();
             return back()->with('success', "Usuario Borrado: ".$admin->nombre);
         } else {
-            return back()->with('success', "Usuario No Borrado: ".$admin->nombre);
+            return back()->with('warning', "Usuario No Borrado: ".$admin->nombre);
         }
     }
 }

@@ -1100,12 +1100,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach($Equipo as $equipo)
-                                        @foreach($Pago_Equipo as $pago)
-
                                             <tr>
-
                                             <td>{{$equipo->id}}</td>
-
                                             @foreach ($Usuario as $user)
                                             @if($user->id==$equipo->id_user)
                                             <td>{{$user->name}}</td>
@@ -1295,9 +1291,6 @@
                                                     data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
-                                                    @if($equipo->id==$pago->id)
-                                                    data-iva="{{$pago->iva}}"
-                                                    @endif
                                                     data-pago="{{$equipo->pago}}"
                                                     data-adelanto="{{$equipo->adelanto}}"
                                                     data-precio="{{$servicio->precio}}"
@@ -1358,7 +1351,6 @@
                                             </td>
                                             @endif
                                         </tr>
-                                        @endforeach
                                         @endforeach
 
                                     </tbody>
@@ -2621,8 +2613,8 @@
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">$</span>
-                                                            <input class="form-control" type="text" name="pago"
-                                                                id="pago" placeholder="Anticipo" value="0">
+                                                            <input class="form-control" name="pago"
+                                                                id="pago" placeholder="Anticipo" pattern="[0-9]" type="number" min="0" value="0">
                                                         </div>
 
                                                     </div>
@@ -2633,7 +2625,7 @@
                                                 <label for="presupuesto">Presupuesto</label>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
-                                                    <input class="form-control" type="text" name="presupuesto"
+                                                    <input class="form-control" pattern="[0-9]" type="number" min="0" name="presupuesto"
                                                         id="presupuesto" placeholder="(Cuanto puede Costar)" value="0">
                                                 </div>
 
@@ -2642,7 +2634,7 @@
                                                 <label for="inversion">Inversion</label>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
-                                                    <input class="form-control" type="text" name="inversion"
+                                                    <input class="form-control" pattern="[0-9]" type="number" min="0" name="inversion"
                                                         id="inversion"
                                                         placeholder=" (Cuanto es lo maximo que se puede invertir)"
                                                         value="0">
@@ -3250,6 +3242,30 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="modal_warning" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    style="border-radius:12%;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title text-white">Atencion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    @if (session('warning'))
+                    <div class="alert alert-warning m-3">
+                        <?php echo '<html>'.session('warning').'</html>' ?>
+                    </div>
+                    @endif </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal  Taller Galleria -->
 <div class="modal fade" id="modal-taller-galleria" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -3328,12 +3344,20 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <label for="total">Total a Pagar</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" name="presupuesto4" id="presupuesto4" disabled>
+                                </div>
                                 <label for="status">Anticipo</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" name="adelanto4" id="adelanto4" disabled>
+                                </div>
                                 <label for="status">Pendiente</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" name="pendiente4" id="pendiente4" value=""
-                                    disabled>
+                                    disabled></div>
                             </div>
                         </div>
                         <label for="metodo">Metodo de Pago</label>
@@ -3345,8 +3369,7 @@
                         <label for="status">Pago</label>
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
-                            <input type="number" class="form-control" name="final4" id="final4"  pattern="[0-9]"    onkeyup="value=isNaN(parseFloat(value))?0:value"
-                            type="number" min="0" required>
+                            <input type="number" class="form-control" name="final4" id="final4"  pattern="[0-9]" type="number" min="0" required>
                         </div>
 
                     <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="{{Auth::user()->id}}">
@@ -3492,7 +3515,7 @@
                         @method('POST')
                         <div class="col-6-md">
                             <label for="monto">Monto</label>
-                            <input class="form-control" type="number" name="monto6" id="monto6" placeholder="0.0">
+                            <input class="form-control" pattern="[0-9]" type="number" min="0" name="monto6" id="monto6" placeholder="0.0" >
                         </div>
                         <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
                         <input type="hidden" name="id_sucursal6" id="id_sucursal6"
@@ -4189,6 +4212,10 @@
 @if(session('success'))
 <script>
     $('#modal_notificacion').modal('show');
+</script>
+@elseif(session('warning'))
+<script>
+    $('#modal_warning').modal('show');
 </script>
 @endif
 

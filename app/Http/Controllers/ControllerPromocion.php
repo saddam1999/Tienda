@@ -114,7 +114,7 @@ class ControllerPromocion extends Controller
             return back()->with('success', "Promocion Borrada: ".$promocion->titulo);
 
         } else {
-            return back()->with('success', "No se pudo borrar promocion intentar de nuevo");
+            return back()->with('warning', "No se pudo borrar promocion intentar de nuevo");
         }
     }
 }

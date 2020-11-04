@@ -443,7 +443,7 @@ class imprimirController extends Controller
             imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
         }
 
-          imagepng($QR,"$id.png");
+          dd(imagepng($QR));
        // imagedestroy($QR);
 
 

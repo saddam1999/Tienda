@@ -161,7 +161,7 @@ class ControllerArticulo extends Controller
             $articulo->delete();
             return back()->with('success', 'Articulo Borrado : ' . $articulo->nombre);
         } else {
-            return back()->with('success', 'Articulo no se pudo Borrar : ' . $articulo->nombre);
+            return back()->with('warning', 'Articulo no se pudo Borrar : ' . $articulo->nombre);
         }
     }
 }

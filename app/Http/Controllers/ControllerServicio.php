@@ -99,7 +99,7 @@ class ControllerServicio extends Controller
             $servicio->delete();
             return back()->with('success', "Servicio Borrado: ".$servicio->nombre);
         } else {
-            return back()->with('success', 'Servicio no se pudo Borrar : ' . $servicio->nombre);
+            return back()->with('warning', 'Servicio no se pudo Borrar : ' . $servicio->nombre);
         }
     }
 }

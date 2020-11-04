@@ -99,7 +99,7 @@ class ControllerCaja extends Controller
             $caja->delete();
             return back()->with('success', 'Caja Borrada : ' . $caja->nombre);
         } else {
-            return back()->with('success', 'Caja no se pudo Borrar : ' . $caja->nombre);
+            return back()->with('warning', 'Caja no se pudo Borrar : ' . $caja->nombre);
         }
     }
 }

@@ -103,7 +103,7 @@ class ControllerMarca extends Controller
             $marca->delete();
             return back()->with('success', "Marca Borrada : ".$marca->nombre);
         } else {
-            return back()->with('success', 'Marca no se pudo Borrar : ' . $marca->nombre);
+            return back()->with('warning', 'Marca no se pudo Borrar : ' . $marca->nombre);
         }
     }
 }

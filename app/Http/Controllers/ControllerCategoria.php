@@ -92,7 +92,7 @@ class ControllerCategoria extends Controller
             $categoria->delete();
             return back()->with('success', 'Categoria Borrada  : ' . $categoria->nombre_categoria);
         } else {
-            return back()->with('success', 'Captura no se pudo Borrar : ' . $categoria->nombre_categoria);
+            return back()->with('warning', 'Captura no se pudo Borrar : ' . $categoria->nombre_categoria);
         }
     }
 }

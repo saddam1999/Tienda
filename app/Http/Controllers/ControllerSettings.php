@@ -122,7 +122,7 @@ class ControllerSettings extends Controller
             $settings->delete();
             return back()->with('success', "Configurado Borrar ");
         } else {
-            return back()->with('success', 'Configurado no se pudo Borrar : ' . $settings->nombre);
+            return back()->with('warning', 'Configurado no se pudo Borrar : ' . $settings->nombre);
         }
     }
 }

@@ -62,7 +62,7 @@ class ControllerPago_Equipo extends Controller
                     $caja->save();
                     return back()->with('success', "Retirado: $" . $pagocaja->monto . " Caja: $" . $caja->corte);
                 } else {
-                    return back()->with('success', "No puedes retirar: $" . $pagocaja->monto . " Con saldo negativo te faltan: $" . $caja->corte);
+                    return back()->with('warning', "No puedes retirar: $" . $pagocaja->monto . " Con saldo negativo te faltan: $" . $caja->corte);
                 }
             }
         }
@@ -82,19 +82,28 @@ class ControllerPago_Equipo extends Controller
         $debiendo = $pago->total;
         $pagado = $request->get('final4');
         $adelanto = $pago->adelanto;
+        $pendiente=$debiendo-$adelanto;
         $iva = $pago->iva;
         $totaldefinitivo = $debiendo - $pagado;
         if ($debiendo == 0 || $debiendo == null) {
-            return back()->with('success', "No hay nada que pagar");
+            return back()->with('warning', "No hay nada que pagar");
         } elseif ($pagado == 0 || $pagado == null) {
-            return back()->with('success', "0 no es un valor aceptado como monto a pagar");
+            return back()->with('warning', "0 no es un valor aceptado como monto a pagar");
         } elseif ($totaldefinitivo == 0) {
             $pago->total = $pagado;
             $pago->status = 1;
             $pago->save();
-            return back()->with('success', "Equipo: #", $pago->id  . "Monto Total: " . $pagado . "Pagado: " . $adelanto);
-        } elseif ($totaldefinitivo != 0) {
-            return back()->with('success', "Cambio : $" . abs($totaldefinitivo));
+            return back()->with('success', "Equipo: #". $pago->id ." Pagado " ." Monto Total: " . $pagado );
+        } elseif ($pagado >= $pendiente)
+        {
+             // dd("pendiente: ".$pendiente." total: ".$debiendo." pagado: ".$pagado);
+
+            return back()->with('success', "Cambio : $". abs($totaldefinitivo)." Equipo Pagado");
+
+        }else{
+
+            return back()->with('warning', "No se pudo cancelar el equipo como pagado le falta por pagar : $" . abs($totaldefinitivo) ." Por favor complete el pago completo segun el pago pendiente...");
+
         }
             // dd($totaldefinitivo);
            // https://api.whatsapp.com/send/?phone=525545507506&text&app_absent=0

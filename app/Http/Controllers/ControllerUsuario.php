@@ -107,7 +107,7 @@ class ControllerUsuario extends Controller
             $admin->delete();
             return back()->with('success', "Usuario Borrado: ".$admin->name);
         } else {
-            return back()->with('success', "Usuario No Borrado: ".$admin->name);
+            return back()->with('warning', "Usuario No Borrado: ".$admin->name);
         }
     }
 }

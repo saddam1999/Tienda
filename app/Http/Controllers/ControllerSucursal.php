@@ -103,7 +103,7 @@ class ControllerSucursal extends Controller
             $sucursal->delete();
             return back()->with('success', "Sucursal Borrada: ".$sucursal->nombre);
         } else {
-            return back()->with('success', "Sucursal No Borrada: ".$sucursal->nombre);
+            return back()->with('warning', "Sucursal No Borrada: ".$sucursal->nombre);
         }
     }
 }

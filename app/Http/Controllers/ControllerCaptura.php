@@ -117,7 +117,7 @@ class ControllerCaptura extends Controller
             $captura->delete();
             return back()->with('success', 'Captura Borrado : ' . $captura->nombre);
         } else {
-            return back()->with('success', 'Captura no se pudo Borrar : ' . $captura->nombre);
+            return back()->with('warning', 'Captura no se pudo Borrar : ' . $captura->nombre);
         }
     }
 }
