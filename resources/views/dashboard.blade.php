@@ -3522,7 +3522,7 @@
                         @method('POST')
                         <div class="col-6-md">
                             <label for="monto">Monto</label>
-                            <input class="form-control" pattern="[0-9]" type="number" min="0" name="monto6" id="monto6" placeholder="0.0" >
+                            <input class="form-control" pattern="[0-9]" type="number" min="0" name="monto6" id="monto6" placeholder="0.0" required>
                         </div>
                         <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
                         <input type="hidden" name="id_sucursal6" id="id_sucursal6"

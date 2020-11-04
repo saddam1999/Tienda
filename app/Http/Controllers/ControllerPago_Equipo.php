@@ -100,7 +100,7 @@ class ControllerPago_Equipo extends Controller
             return back()->with('success', "Equipo: #". $pago->id ." Pagado " ." Monto Total: " . $pagado );
         } elseif ($pagado >= $pendiente)
         {
-            $pago->total = 0;
+             $pago->total = 0;
             $pago->status = 1;
             $equipo->status=4;
             $equipo->save();
