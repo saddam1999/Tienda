@@ -43,7 +43,7 @@ class ControllerPago_Equipo extends Controller
         //if($caja->id_sucursal!=$pagocaja->id_sucursal){
 
         if ($caja == null) {
-            return back()->with('success', "Caja no encontrada favor de entrar en la seccion sucursal y seleciona una caja para tu cuenta de usuario.");
+            return back()->with('warning', "Caja no encontrada favor de entrar en la seccion sucursal y seleciona una caja para tu cuenta de usuario.");
         } else {
             if ($pagocaja->status == 'deposito' && $pagocaja->monto >= 0) {
                 $pagocaja->id_servicio = "Deposito en Caja";
@@ -78,6 +78,8 @@ class ControllerPago_Equipo extends Controller
     public function store(Request $request, $id)
     {
         $pago = \App\Models\Pago_Equipo::find($id);
+        $equipo = \App\Models\Equipo::find($id);
+
         $totalsiniva = $pago->monto;
         $debiendo = $pago->total;
         $pagado = $request->get('final4');
@@ -90,47 +92,27 @@ class ControllerPago_Equipo extends Controller
         } elseif ($pagado == 0 || $pagado == null) {
             return back()->with('warning', "0 no es un valor aceptado como monto a pagar");
         } elseif ($totaldefinitivo == 0) {
-            $pago->total = $pagado;
+            $pago->total = 0;
             $pago->status = 1;
+            $equipo->status=4;
+            $equipo->save();
             $pago->save();
             return back()->with('success', "Equipo: #". $pago->id ." Pagado " ." Monto Total: " . $pagado );
         } elseif ($pagado >= $pendiente)
         {
-             // dd("pendiente: ".$pendiente." total: ".$debiendo." pagado: ".$pagado);
-
+            $pago->total = 0;
+            $pago->status = 1;
+            $equipo->status=4;
+            $equipo->save();
+            $pago->save();
             return back()->with('success', "Cambio : $". abs($totaldefinitivo)." Equipo Pagado");
-
         }else{
 
             return back()->with('warning', "No se pudo cancelar el equipo como pagado le falta por pagar : $" . abs($totaldefinitivo) ." Por favor complete el pago completo segun el pago pendiente...");
 
         }
-            // dd($totaldefinitivo);
            // https://api.whatsapp.com/send/?phone=525545507506&text&app_absent=0
-        // dd($totalconivayadelanto);
-        //$pago->id_user = $request->get('id_user4');
-        //$pago->id_equipo = $request->get('id_equipo4');;
-        //$pago->id_cliente = $request->get('id_cliente4');
-        //$pago->id_servicio = $request->get('id_servicio4');
-        //$pago->id_sucursal = $request->get('id_sucursal4');
-        //$pago->id_equipo = $request->get('id_equipo4');
-        //$pago->id_caja = $request->get('id_caja4');
-        //$pago->id_corte = $request->get('id_corte4');
 
-        //  $pago->monto = $request->get('monto44'); // esto es lo que deberia de pagar total
-        //  $pago->pagado = $request->get('final44'); // esto es lo que envia
-        // $pago->adelanto = $request->get('adelanto44'); // esto es lo que adelanto
-
-        //  if($pago->monto)
-        //$pago->total = $request->get('total');
-        //$pago->comentario = $request->get('comentario4');
-        //  $pago->status = 1;
-        // $pago->fecha = $request->get('fecha4');
-        // $pago->save();
-        //$input = $request->all();
-
-
-        //dd($input);
 
     }
 

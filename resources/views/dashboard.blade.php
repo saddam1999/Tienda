@@ -1379,6 +1379,7 @@
                                             <th>Sucursal</th>
                                             <th>Adelanto</th>
                                             <th>Monto a Pagar</th>
+                                            <th>Total</th>
                                             <th>Fecha</th>
                                             <th>Pagado</th>
 
@@ -1427,14 +1428,20 @@
                                             @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
                                             <td class="price">${{$pago_equipo->total}}</td>
                                             @endif
-                                            <td class="price">{{$pago_equipo->created_at}}</td>
 
+                                            @if($pago_equipo->iva=='')
+                                            <td class="price">${{$pago_equipo->monto}}</td>
+                                            @elseif($pago_equipo->iva!=''&&$pago_equipo->monto!=0)
+                                            <td class="price">${{$pago_equipo->monto}} + {{$pago_equipo->iva}} IVA </td>
+                                            @elseif($pago_equipo->iva!=''&&$pago_equipo->monto==0)
+                                            <td class="price">${{$pago_equipo->monto}}</td>
+                                            @endif
+
+                                            <td class="price">{{$pago_equipo->created_at}}</td>
                                             <td>{{$pago_equipo->status}}</td>
 
                                         </tr>
                                         @endforeach
-                                        <span>El resultado es: </span> <span id="result"></span>
-
                                     </tbody>
                                 </table>
                             </div>
