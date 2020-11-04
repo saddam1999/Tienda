@@ -96,14 +96,16 @@ class ControllerEquipo extends Controller
         if ($pago->adelanto == 0 && $pago->iva == '' && $pago->monto == 0) {
             $pago->total = 0;
         } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto != 0) {
-            $temporal = $pago->monto - $pago->adelanto;
+
+           // $temporal = $pago->monto - $pago->adelanto; se quito aqui quite primero el adelanto y luego aplique el iva WRONG
             //1000 - 100=900
-            $iva = ($temporal * $pago->iva) / 100;
+            $iva = ($pago->monto * $pago->iva) / 100;
             //900*16=144
-            $total = $temporal + $iva;
+            $total = ($pago->monto + $iva)-$pago->adelanto;//aqui calculo el total mas el iva y luego remuevo el adelanto es lo que falta a pagar
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
+
         } else if ($pago->adelanto != 0 && $pago->iva == '' && $pago->monto != 0) {
 
             $temporal = $pago->monto - $pago->adelanto;
@@ -111,7 +113,9 @@ class ControllerEquipo extends Controller
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
+
         } else if ($pago->adelanto == 0 && $pago->iva != '' && $pago->monto != 0) {
+
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
             //900*16=144
@@ -119,10 +123,13 @@ class ControllerEquipo extends Controller
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
+
         } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto == 0) {
+
             $pago->total = 0;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
+
         } else {
             $pago->total = 0;
             $cajaTemp = $pago->adelanto + $caja->corte;

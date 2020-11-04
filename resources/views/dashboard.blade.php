@@ -1100,8 +1100,12 @@
                                     </thead>
                                     <tbody>
                                         @foreach($Equipo as $equipo)
-                                        <tr>
+                                        @foreach($Pago_Equipo as $pago)
+
+                                            <tr>
+
                                             <td>{{$equipo->id}}</td>
+
                                             @foreach ($Usuario as $user)
                                             @if($user->id==$equipo->id_user)
                                             <td>{{$user->name}}</td>
@@ -1291,6 +1295,9 @@
                                                     data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
+                                                    @if($equipo->id==$pago->id)
+                                                    data-iva="{{$pago->iva}}"
+                                                    @endif
                                                     data-pago="{{$equipo->pago}}"
                                                     data-adelanto="{{$equipo->adelanto}}"
                                                     data-precio="{{$servicio->precio}}"
@@ -1352,6 +1359,8 @@
                                             @endif
                                         </tr>
                                         @endforeach
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -3336,7 +3345,8 @@
                         <label for="status">Pago</label>
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
-                            <input type="text" class="form-control" name="final4" id="final4">
+                            <input type="number" class="form-control" name="final4" id="final4"  pattern="[0-9]"    onkeyup="value=isNaN(parseFloat(value))?0:value"
+                            type="number" min="0" required>
                         </div>
 
                     <input type="hidden" class="form-control" name="id_user4" id="id_user4" value="{{Auth::user()->id}}">
@@ -3535,6 +3545,8 @@
     $('#modal_pago').on('show.bs.modal', function(e) {
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id').val(id);
+        $("#agregarpago").attr("action", '/agregarpago/' + id);
+
         tasa = document.getElementById("iva").value;
         var presupuesto = $(e.relatedTarget).data().presupuesto; //pago a pagar
         var adelanto = $(e.relatedTarget).data().pago; //adelanto
@@ -3547,33 +3559,30 @@
             $("input[name=pendiente4]").val(pendiente);
             $('#final4').on('input', function(e) {
                 iva = document.getElementById("iva").value;
-            pago = document.getElementById("final4").value;
-            var tasa = iva;
-            var monto = $("input[name=total]").val();
-            var anticipo = $("input[name=pendiente4]").val();
-            if (anticipo != 0) {
-                cambio = pago - anticipo;
-            } else {
-                cambio = pago - precio;
-            }
-            if (tasa == 0.0) {
-                $("input[name=subtotal]").val(parseInt(cambio));
-                //$("input[name=total_final]").val(parseInt(monto));
-            } else {
-                var iva = (monto * tasa) / 100;
-                $("input[name=subtotal]").val(parseInt(cambio));
-               // $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
-            }
-            if (tasa == null) {
+                pago = document.getElementById("final4").value;
+                var tasa = iva;
                 var monto = $("input[name=total]").val();
-               // document.getElementById("total_final").monto;
-                $("input[name=subtotal]").val(parseInt(cambio));
-            }
+                var anticipo = $("input[name=pendiente4]").val();
+                if (anticipo != 0) {
+                    cambio = pago - anticipo;
+                } else {
+                    cambio = pago - precio;
+                }
+                if (tasa == 0.0) {
+                    $("input[name=subtotal]").val(parseInt(cambio));
+                    //$("input[name=total_final]").val(parseInt(monto));
+                } else {
+                    var iva = (monto * tasa) / 100;
+                    $("input[name=subtotal]").val(parseInt(cambio));
+                    // $("input[name=total_final]").val(parseInt(monto) + parseInt(iva));
+                }
+                if (tasa == null) {
+                    var monto = $("input[name=total]").val();
+                    // document.getElementById("total_final").monto;
+                    $("input[name=subtotal]").val(parseInt(cambio));
+                }
             });
-        } else if (iva == '' || iva== 0)
-        {
-
-        }
+        } else if (iva == '' || iva == 0) {}
     });
 </script>
 <!-- Scripts Servisio-->

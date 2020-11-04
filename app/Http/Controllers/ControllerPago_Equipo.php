@@ -84,19 +84,20 @@ class ControllerPago_Equipo extends Controller
         $adelanto = $pago->adelanto;
         $iva = $pago->iva;
         $totaldefinitivo = $debiendo - $pagado;
-        if ($debiendo == 0) {
+        if ($debiendo == 0 || $debiendo == null) {
             return back()->with('success', "No hay nada que pagar");
-        } elseif ($pagado == 0) {
+        } elseif ($pagado == 0 || $pagado == null) {
             return back()->with('success', "0 no es un valor aceptado como monto a pagar");
         } elseif ($totaldefinitivo == 0) {
             $pago->total = $pagado;
             $pago->status = 1;
             $pago->save();
-            return back()->with('success', "Equipo: #", $id . "Monto Total: " . $debiendo . "Pagado: " . $pagado);
-        } elseif($totaldefinitivo != 0) {
-            return back()->with('success', "Cambio : ".$totaldefinitivo);
+            return back()->with('success', "Equipo: #", $pago->id  . "Monto Total: " . $pagado . "Pagado: " . $adelanto);
+        } elseif ($totaldefinitivo != 0) {
+            return back()->with('success', "Cambio : $" . abs($totaldefinitivo));
         }
-
+            // dd($totaldefinitivo);
+           // https://api.whatsapp.com/send/?phone=525545507506&text&app_absent=0
         // dd($totalconivayadelanto);
         //$pago->id_user = $request->get('id_user4');
         //$pago->id_equipo = $request->get('id_equipo4');;
