@@ -1095,7 +1095,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Equipo as $equipo)
+                                        @foreach($Equipo->sortByDesc('status')  as $equipo)
                                             <tr>
                                             <td>{{$equipo->id}}</td>
                                             @foreach ($Usuario as $user)
