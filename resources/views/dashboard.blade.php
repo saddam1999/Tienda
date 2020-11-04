@@ -10,9 +10,10 @@
     @php date_default_timezone_set('UTC');
     $contador=0;
     @endphp
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- JS, Popper.js, and jQuery -->
+    
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -30,7 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <style>
         @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css);
 
@@ -1368,7 +1370,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Ventas</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" >
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1437,7 +1439,7 @@
                                             <td class="price">${{$pago_equipo->monto}}</td>
                                             @endif
 
-                                            <td class="price">{{$pago_equipo->created_at}}</td>
+                                            <td class="price">{{$pago_equipo->created_at->format('d/m/y')}}</td>
                                             <td>{{$pago_equipo->status}}</td>
 
                                         </tr>
@@ -1456,16 +1458,18 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Movimiento Caja</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tableventas" name="tableventas" cellspacing="0" width="100%">
                                     <thead class="thead-inverse">
+                                        <caption>Movimiento Caja</caption>
+
                                         <tr>
-                                            <th>#</th>
-                                            <th>Cajero</th>
-                                            <th>Sucursal</th>
-                                            <th>Comentario</th>
-                                            <th>Monto</th>
-                                            <th>Movimiento</th>
-                                            <th>Fecha</th>
+                                            <th class="th-sm">#</th>
+                                            <th class="th-sm">Cajero</th>
+                                            <th class="th-sm">Sucursal</th>
+                                            <th class="th-sm">Comentario</th>
+                                            <th class="th-sm">Monto</th>
+                                            <th class="th-sm">Movimiento</th>
+                                            <th class="th-sm">Fecha</th>
                                             <th><button type="button" data-toggle="modal" data-target="#modal_caja"
                                                     data-backdrop="static" data-keyboard="false"
                                                     class="btn btn-warning btn-lg btn-block">
@@ -1508,7 +1512,7 @@
                                             @else
                                             <td class="text-warning">Retiro</td>
                                             @endif
-                                            <td>{{$MovimientoCaja->created_at}}</td>
+                                            <td>{{$MovimientoCaja->created_at->format('d/m/y')}}</td>
                                             <td></td>
                                         </tr>
                                         @endforeach
@@ -1525,7 +1529,7 @@
         <div class="se-pre-con"></div>
 
 </x-app-layout>
-
+<footer class="footer-card fixed-bottom bg-dark text-white"><h4>Developed : HollyDev TradeMark 2014-2020</h4></footer>
 <!-- Modal Bienvenida-->
 <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -3229,8 +3233,12 @@
     style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-info">
-                <h5 class="modal-title text-white">Notificacion</h5>
+            <div class="modal-header bg-info text-white"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+                <circle cx="8" cy="4.5" r="1"/>
+              </svg>
+                <h5 class="modal-title text-white" width="2em" height="2em"> Notificacion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -3253,8 +3261,11 @@
     style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white">Atencion</h5>
+            <div class="modal-header bg-danger text-white">
+                <svg width="2em" height="2em" viewBox="0 0 17 16" class="bi bi-exclamation-triangle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                  </svg>
+                <h5 class="modal-title text-white" width="2em" height="2em" >Atencion</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -3559,6 +3570,7 @@
         </form>
     </div>
 </div>
+
 
 <!-- Scripts Status-->
 <script>
@@ -4285,4 +4297,12 @@ Echo.channel('tablon')
             });
 </script>
 
+<script>
+    $(document).ready(function () {
+      $('#tableventas').DataTable({
+        "pagingType": "simple" // "simple" option for 'Previous' and 'Next' buttons only
+      });
+      $('.dataTables_length').addClass('bs-select');
+    });
+    </script>
 
