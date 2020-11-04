@@ -10,10 +10,8 @@
     @php date_default_timezone_set('UTC');
     $contador=0;
     @endphp
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- JS, Popper.js, and jQuery -->
-    
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -21,14 +19,15 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
-    <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
+    <link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
     <link href="../css/main.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
@@ -84,11 +83,6 @@
             }
         }
     </style>
-<!-- receive notifications -->
-
-<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-
-<!-- receive notifications -->
     <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -254,7 +248,7 @@
 
                             <div class="card-body">
                                 <h4 class="card-title">Productos</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tablearticulos">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -353,7 +347,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Marca</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tablemarcas">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -411,7 +405,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Usuarios</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tableusuarios">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -503,7 +497,7 @@
 
                             <div class="card-body">
                                 <h4 class="card-title">Servicios</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tableservicios">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -576,7 +570,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Sucursales</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tablesucursal">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -646,7 +640,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Cajas</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tablecajas">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -728,7 +722,7 @@
 
                             <div class="card-body">
                                 <h4 class="card-title">Categoria</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tablecategoria">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1083,7 +1077,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Equipos a Reparar</h4>
-                                <table class="table table-striped table-inverse table-responsive">
+                                <table class="table table-striped table-inverse table-responsive" id="tabletaller">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1370,7 +1364,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Ventas</h4>
-                                <table class="table table-striped table-inverse table-responsive" >
+                                <table class="table table-striped table-inverse table-responsive" id="tableventas"  >
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1445,8 +1439,12 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
+
                                 </table>
                             </div>
+                            <div class="col-md-12 text-center">
+                                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -1458,10 +1456,8 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Movimiento Caja</h4>
-                                <table class="table table-striped table-inverse table-responsive" id="tableventas" name="tableventas" cellspacing="0" width="100%">
+                                <table class="table table-striped table-inverse table-responsive" id="tablemovimientos" >
                                     <thead class="thead-inverse">
-                                        <caption>Movimiento Caja</caption>
-
                                         <tr>
                                             <th class="th-sm">#</th>
                                             <th class="th-sm">Cajero</th>
@@ -1517,19 +1513,21 @@
                                         </tr>
                                         @endforeach
                                     </tbody>
+
                                 </table>
-                                </p>
                             </div>
+                            <div class="col-md-12 text-center">
+                                <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                                </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="se-pre-con"></div>
 
 </x-app-layout>
-<footer class="footer-card fixed-bottom bg-dark text-white"><h4>Developed : HollyDev TradeMark 2014-2020</h4></footer>
+<footer class="footer-card fixed-bottom bg-dark text-white ml-auto"><h4>Developed : HollyDev TradeMark 2014-2020 </h4></footer>
 <!-- Modal Bienvenida-->
 <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -4290,19 +4288,20 @@
 </script>
 @endif
 
+
 <script>
-Echo.channel('tablon')
-            .listen('MiEvento', (e) => {
-                console.log(e.mensaje);
-            });
+$(document).ready(function(){
+  $('#tableventas').dataTable();
+  $('#tablemovimientos').dataTable();
+  $('#tabletaller').dataTable();
+  $('#tablecategoria').dataTable();
+  $('#tablesucursal').dataTable();
+  $('#tableservicios').dataTable();
+  $('#tableusuarios').dataTable();
+  $('#tablemarcas').dataTable();
+  $('#tablearticulos').dataTable();
+  $('#tablecajas').dataTable();
+
+});
+
 </script>
-
-<script>
-    $(document).ready(function () {
-      $('#tableventas').DataTable({
-        "pagingType": "simple" // "simple" option for 'Previous' and 'Next' buttons only
-      });
-      $('.dataTables_length').addClass('bs-select');
-    });
-    </script>
-

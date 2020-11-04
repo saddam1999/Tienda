@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@900&display=swap" rel="stylesheet">    <!-- Primary Navigation Menu -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="shadow-lg max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top background:url(../img/backgrounds.jpeg)" style="background-image: url('../img/backgrounds.jpeg'); ">
+<div class="face shadow-lg max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top background:url(../img/backgrounds.jpeg)" style="background-image: url('../img/backgrounds.jpeg'); ">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
