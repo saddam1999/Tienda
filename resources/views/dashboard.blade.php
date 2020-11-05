@@ -1527,7 +1527,8 @@
         <div class="se-pre-con"></div>
 
 </x-app-layout>
-<footer class="footer-card fixed-bottom bg-dark text-white ml-auto"><h4>Developed : HollyDev TradeMark 2014-2020 </h4></footer>
+<footer class="footer-card fixed-bottom bg-dark text-white ml-auto">
+    <h4>HollyDev <a href="https://twitter.com/hollydev3"><i class="fab fa-twitter-square text-info"></i></a> <a href="https://t.me/hollydev2"><i class="fab fa-telegram text-white"></i></a> </h4></footer>
 <!-- Modal Bienvenida-->
 <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">

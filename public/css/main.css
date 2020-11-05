@@ -4,11 +4,11 @@
             backface-visibility: hidden;
             perspective: 1000px;
         }
-
+        
         .modal-open .tab-content {
             filter: blur(5px) grayscale(20%);
         }
-
+        
         @keyframes shake {
             10%,
             90% {
@@ -28,7 +28,7 @@
                 transform: translate3d(4px, 0, 0);
             }
         }
-
+        
         .float {
             position: fixed;
             width: 60px;
@@ -43,16 +43,16 @@
             box-shadow: 2px 2px 3px #999;
             z-index: 100;
         }
-
+        
         .my-float {
             margin-top: 16px;
         }
-
+        
         #imagen {
             float: inherit;
         }
         /* Extra small devices (phones, 600px and down) */
-
+        
         @media only screen and (max-width: 300px) {
             body {
                 padding-top: 210px;
@@ -60,7 +60,7 @@
             }
         }
         /* Extra small devices (phones, 600px and down) */
-
+        
         @media only screen and (max-width: 414px) {
             body {
                 padding-top: 120px;
@@ -68,32 +68,32 @@
             }
         }
         /* Extra small devices (phones, 600px and down) */
-
+        
         @media only screen and (max-width: 768px) {}
-
+        
         .padding-0 {
             padding-right: 5px;
             padding-left: 5px
         }
-
+        
         .img-style {
             margin-left: -11px;
             box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             max-width: 104% !important
         }
-
+        
         .bbb_background {
             background-color: #E0E0E0 !important
         }
-
+        
         .ribbon {
             width: 150px;
             height: 150px;
             overflow: hidden;
             position: absolute
         }
-
+        
         .ribbon::before,
         .ribbon::after {
             position: absolute;
@@ -102,7 +102,7 @@
             display: block;
             border: 5px solid #2980b9
         }
-
+        
         .ribbon span {
             position: absolute;
             display: block;
@@ -116,38 +116,38 @@
             text-transform: uppercase;
             text-align: center
         }
-
+        
         .ribbon-top-right {
             top: -10px;
             right: -10px
         }
-
+        
         .ribbon-top-right::before,
         .ribbon-top-right::after {
             border-top-color: transparent;
             border-right-color: transparent
         }
-
+        
         .ribbon-top-right::before {
             top: 0;
             left: 17px
         }
-
+        
         .ribbon-top-right::after {
             bottom: 17px;
             right: 0
         }
-
+        
         .ribbon-top-right span {
             left: -25px;
             top: 30px;
             transform: rotate(45deg)
         }
-
+        
         .bbb_deals_featured {
             width: 100%
         }
-
+        
         .bbb_deals {
             width: 100%;
             margin-right: 7%;
@@ -159,7 +159,7 @@
             border-radius: 5px;
             margin-top: 0px
         }
-
+        
         .bbb_deals_title {
             position: absolute;
             top: 27px;
@@ -168,72 +168,72 @@
             font-weight: 500;
             color: #000000
         }
-
+        
         .bbb_deals_slider_container {
             width: 100%
         }
-
+        
         .bbb_deals_item {
             width: 100% !important
         }
-
+        
         .bbb_deals_image {
             width: 100%
         }
-
+        
         .bbb_deals_image img {
             width: 100%
         }
-
+        
         .bbb_deals_content {
             margin-top: 33px
         }
-
+        
         .bbb_deals_item_category a {
             font-size: 14px;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.5)
         }
-
+        
         .bbb_deals_item_price_a {
             font-size: 14px;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.6)
         }
-
+        
         .bbb_deals_item_name {
             font-size: 24px;
             font-weight: 400;
             color: #000000
         }
-
+        
         .bbb_deals_item_price {
             font-size: 24px;
             font-weight: 500;
             color: #df3b3b
         }
-
+        
         .available {
             margin-top: 19px
         }
-
+        
         .available_title {
             font-size: 12px;
             color: rgba(0, 0, 0, 0.5);
             font-weight: 400
         }
-
+        
         .available_title span {
             font-weight: 700
         }
-
+        
         @media only screen and (max-width: 991px) {
             .bbb_deals {
                 width: 100%;
                 margin-right: 0px
             }
         }
-
+        
         @media only screen and (max-width: 575px) {
             .bbb_deals {
                 padding-left: 15px;
@@ -251,7 +251,7 @@
                 font-size: 20px
             }
         }
-
+        
         .item-1,
         .item-2,
         .item-3 {
@@ -264,19 +264,19 @@
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
         }
-
+        
         .item-1 {
             animation-name: anim-1;
         }
-
+        
         .item-2 {
             animation-name: anim-2;
         }
-
+        
         .item-3 {
             animation-name: anim-3;
         }
-
+        
         @keyframes anim-1 {
             0%,
             8.3% {
@@ -294,7 +294,7 @@
                 opacity: 0;
             }
         }
-
+        
         @keyframes anim-2 {
             0%,
             33.33% {
@@ -312,7 +312,7 @@
                 opacity: 0;
             }
         }
-
+        
         @keyframes anim-3 {
             0%,
             66.66% {
@@ -332,18 +332,18 @@
         /* Paste this css to your style sheet file or under head tag */
         /* This only works with JavaScript,
 if it's not present, don't show loader */
-
+        
         .no-js #loader {
             display: none;
         }
-
+        
         .js #loader {
             display: block;
             position: absolute;
             left: 100px;
             top: 0;
         }
-
+        
         .se-pre-con {
             position: fixed;
             left: 0px;
@@ -353,7 +353,7 @@ if it's not present, don't show loader */
             z-index: 9999;
             background: url(Preloader_11.gif) center no-repeat #fff;
         }
-
+        
         .btn {
             display: inline-block;
             border-radius: 4px;
@@ -368,14 +368,14 @@ if it's not present, don't show loader */
             cursor: pointer;
             margin: 5px;
         }
-
+        
         .btn span {
             cursor: pointer;
             display: inline-block;
             position: relative;
             transition: 0.5s;
         }
-
+        
         .btn span:after {
             content: '\00bb';
             position: absolute;
@@ -384,16 +384,16 @@ if it's not present, don't show loader */
             right: -20px;
             transition: 0.5s;
         }
-
+        
         .btn:hover span {
             padding-right: 25px;
         }
-
+        
         .btn:hover span:after {
             opacity: 1;
             right: 0;
         }
-
+        
         .select {
             width: 100%;
             min-width: 15ch;
@@ -407,7 +407,7 @@ if it's not present, don't show loader */
             background-color: #fff;
             background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
         }
-
+        
         .select::after {
             content: "";
             width: 0.8em;
