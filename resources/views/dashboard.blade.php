@@ -207,7 +207,7 @@
 
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
-            <span class="input-group-text face text-secondary">Urgente: {{$contador}}</span>
+            <span class="input-group-text face text-secondary">SMS: {{$contador}}</span>
         </div>
     </ul>
 
@@ -1475,7 +1475,18 @@
                                                             <path fill-rule="evenodd"
                                                                 d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
                                                         </svg></center>
-                                                </button></th>
+                                                </button>
+
+                                                <button type="button" data-toggle="modal" data-target="#modal_corte"
+                                                    data-backdrop="static" data-keyboard="false"
+                                                    class="btn btn-info btn-lg btn-block">
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-data" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                                        <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                                                        <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
+                                                      </svg></center>
+                                                </button>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1527,9 +1538,72 @@
         <div class="se-pre-con"></div>
 
 </x-app-layout>
-<footer class="footer-card fixed-bottom bg-dark text-white ml-auto">
-    <h4>HollyDev <a href="https://twitter.com/hollydev3"><i class="fab fa-twitter-square text-info"></i></a> <a href="https://t.me/hollydev2"><i class="fab fa-telegram text-white"></i></a> </h4></footer>
-<!-- Modal Bienvenida-->
+
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark text-white"  style="background-image: url('../img/backgrounds.jpeg'); ">
+    <!-- Footer Elements -->
+  <div class="container">
+
+      <!-- Grid row-->
+      <div class="row">
+
+          <!-- Grid column -->
+          <div class="col-md-12 py-5">
+              <div class="mb-1 flex-center">
+
+                  <!-- Facebook -->
+                  <a class="fb-ic">
+                      <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!-- Twitter -->
+                  <a class="tw-ic" href="https://twitter.com/hollydev3">
+                      <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!-- Google +-->
+                  <a class="gplus-ic" href="https://www.youtube.com/channel/UCX1rcl5HxAb94teb1l_Tu-A">
+                      <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!--Linkedin -->
+                  <a class="li-ic">
+                      <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!--Instagram-->
+                  <a class="ins-ic">
+                      <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                  </a>
+                  <!--Pinterest-->
+                  <a class="pin-ic">
+                      <i class="fab fa-pinterest fa-lg white-text fa-2x mr-5"> </i>
+                  </a>
+
+                  <!--Telegram-->
+                  <a class="tele-ic" href="https://t.me/hollydev2">
+                      <i class="fab fa-telegram fa-lg mr-md-5 mr-3  white-text fa-2x"> </i>
+                  </a>
+              </div>
+          </div>
+        <!-- Grid column -->
+
+      </div>
+    </div>
+    <!-- Footer Elements -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-1 text-white">© 2020 Copyright:
+      <a href="https://hollyrenew.website/"> HollyDev</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+
+
+
+
+
+    <!-- Modal Bienvenida-->
 <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
