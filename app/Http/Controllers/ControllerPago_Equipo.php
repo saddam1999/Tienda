@@ -79,34 +79,51 @@ class ControllerPago_Equipo extends Controller
     {
         $pago = \App\Models\Pago_Equipo::find($id);
         $equipo = \App\Models\Equipo::find($id);
+        $user = \App\Models\User::all();
+        $setting = \App\Models\Settings::find(1);
+        //$cajaT = \App\Models\Caja::all();
+        $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
+        $caja = \App\Models\Caja::find($sucursal->id);
 
-        $totalsiniva = $pago->monto;
-        $debiendo = $pago->total;
-        $pagado = $request->get('final4');
-        $adelanto = $pago->adelanto;
-        $pendiente=$debiendo-$adelanto;
+        $totalsiniva = $pago->monto;//monto completo sin iva
+
+        $debiendo = $pago->total;//lo que se debe en total
+        $pagado = $request->get('final4');//lo que acaba de mandar
+
+        $adelanto = $pago->adelanto;//lo que dio de adelanto
+        $pendiente=$debiendo-$pagado;
         $iva = $pago->iva;
+
         $totaldefinitivo = $debiendo - $pagado;
+dd($pago->total = $pago->monto);
+        //dd("ID PAGO: ".$pago->id."ID Equipo".$equipo->id, "Total: ". $pago->total." pagado: ".$pagado." debiendo: ".$debiendo." Resta :".$totaldefinitivo );
         if ($debiendo == 0 || $debiendo == null) {
             return back()->with('warning', "No hay nada que pagar");
         } elseif ($pagado == 0 || $pagado == null) {
             return back()->with('warning', "0 no es un valor aceptado como monto a pagar");
         } elseif ($totaldefinitivo == 0) {
-            $pago->total = 0;
+            $pago->total = $pago->monto;
             $pago->status = 1;
             $equipo->status=4;
+            $cajaTemp = $pago->total + $caja->corte;
+            $caja->corte = $cajaTemp;
+            $caja->save();
             $equipo->save();
             $pago->save();
             return back()->with('success', "Equipo: #". $pago->id ." Pagado " ." Monto Total: " . $pagado );
-        } elseif ($pagado >= $pendiente)
+        } elseif ($totaldefinitivo>= $pagado)
         {
-            $pago->total = 0;
+            $pago->total = $pago->monto;
             $pago->status = 1;
             $equipo->status=4;
+            $cajaTemp = $pago->total + $caja->corte;
+            $caja->corte = $cajaTemp;
+            $caja->save();
             $equipo->save();
             $pago->save();
             return back()->with('success', "Cambio : $". abs($totaldefinitivo)." Equipo Pagado");
-        }else{
+
+        }elseif ($totaldefinitivo<= $pagado){
 
             return back()->with('warning', "No se pudo cancelar el equipo como pagado le falta por pagar : $" . abs($totaldefinitivo) ." Por favor complete el pago completo segun el pago pendiente...");
 

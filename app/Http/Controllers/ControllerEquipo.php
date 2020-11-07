@@ -77,7 +77,6 @@ class ControllerEquipo extends Controller
         $equipo->save();
 
         $user = \App\Models\User::all();
-
         $setting = \App\Models\Settings::find(1);
         $pago = new \App\Models\Pago_Equipo();
         //$cajaT = \App\Models\Caja::all();
