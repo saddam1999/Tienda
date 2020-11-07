@@ -7,11 +7,11 @@
 
         </h2>
     </x-slot>
-@php
-date_default_timezone_set('UTC');
-$contador=0;
-$value = $setting->whatsapp;
-setcookie("Whatsapp", $value);
+    @php
+    date_default_timezone_set('UTC');
+    $contador=0;
+    $value = $setting->whatsapp;
+    setcookie("Whatsapp", $value);
     @endphp
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- JS, Popper.js, and jQuery -->
@@ -33,13 +33,18 @@ setcookie("Whatsapp", $value);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-  <!--Floating WhatsApp css-->
-<link rel="stylesheet" href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
-<!--Floating WhatsApp javascript-->
-<script type="text/javascript" src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js"></script>
-  <style>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript"
+        src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <!--Floating WhatsApp css-->
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+    <!--Floating WhatsApp javascript-->
+    <script type="text/javascript"
+        src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
+    </script>
+    <style>
         @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css);
 
         .flash {
@@ -90,7 +95,31 @@ setcookie("Whatsapp", $value);
             }
         }
     </style>
-    <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '3271930189583444'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3271930189583444');
+        fbq('track', 'PageView');
+    </script><noscript>
+
+    <img height="1" width="1"
+            src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
     <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -139,12 +168,12 @@ setcookie("Whatsapp", $value);
         <li class="nav-item border-top border-left border-right border-warning rounded face">
             <a class="nav-link" id="taller-tab" data-toggle="tab" href="#taller" role="tab" aria-controls="taller"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                    d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
-                <path fill-rule="evenodd"
-                    d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-            </svg>Equipos a Reparar
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Equipos a Reparar
             </a>
         </li>
         <li class="nav-item border-top border-left border-right border-info rounded face">
@@ -200,7 +229,7 @@ setcookie("Whatsapp", $value);
         @endif
         @endforeach
 
-            <div class="input-group-prepend bg-warning" style="border-radius:12%;">
+        <div class="input-group-prepend bg-warning" style="border-radius:12%;">
             @php $count=0; @endphp
             @foreach ($Equipo as $equipo)
             @php
@@ -211,30 +240,35 @@ setcookie("Whatsapp", $value);
             }
             @endphp
             @endforeach
-            <span class="input-group-text face text-secondary"><a  id="taller-tab" data-toggle="tab" href="#taller">Pendientes: {{$count}} </span></a>
+            <span class="input-group-text face text-secondary"><a id="taller-tab" data-toggle="tab"
+                    href="#taller">Pendientes: {{$count}} </span></a>
 
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
             <span class="input-group-text face text-secondary">SMS: {{$contador}}</span>
         </div>
     </ul>
-    <div class="tab-content bg-black" id="myTabContent" style="
+    <div class="tab-content bg-black" id="myTabContent"
+        style="
     background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
         <div class="row">
 
-    <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
-          <strong class="mr-auto">Pre Orden</strong>
-          <small class="text-muted">hace 11 minutos</small>
-          <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="toast-body">
-          Gracias por tu interes en Holly Store Pro esta es una version Demo y no esta completa pero trabajamos arduamente por tenerlo finalizado proximamente en caso de estar interesado dejamos abierta la posibilidad de pre ordenar este sistema y obtener grandes ventajas en cuando a precios y funciones extras para quien ordene previamente contactame en caso de estar interesado.
-               </div>
-      </div>
+            <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
+                    <strong class="mr-auto">Pre Orden</strong>
+                    <small class="text-muted">hace 11 minutos</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    Gracias por tu interes en Holly Store Pro esta es una version Demo y no esta completa pero
+                    trabajamos arduamente por tenerlo finalizado proximamente en caso de estar interesado dejamos
+                    abierta la posibilidad de pre ordenar este sistema y obtener grandes ventajas en cuando a precios y
+                    funciones extras para quien ordene previamente contactame en caso de estar interesado.
+                </div>
+            </div>
 
             <div class="col-md-4 m-auto">
                 <button type="button" data-toggle="modal" data-target="#modalvender" data-backdrop="static"
@@ -965,17 +999,18 @@ setcookie("Whatsapp", $value);
                                                                 </div>
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
-                                                                    class="btn btn-info btn-lg btn-block mt-1" style="vertical-align:middle"> <span> Guardar
-                                                                    <center><svg width="2em" height="2em"
-                                                                            viewBox="0 0 16 16"
-                                                                            class="bi bi-pencil-square"
-                                                                            fill="currentColor"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                            <path fill-rule="evenodd"
-                                                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                                        </svg></center> </span> </button> </form>
+                                                                    class="btn btn-info btn-lg btn-block mt-1"
+                                                                    style="vertical-align:middle"> <span> Guardar
+                                                                        <center><svg width="2em" height="2em"
+                                                                                viewBox="0 0 16 16"
+                                                                                class="bi bi-pencil-square"
+                                                                                fill="currentColor"
+                                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                                <path
+                                                                                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                                            </svg></center> </span> </button> </form>
 
                                                         </div>
                                                     </div>
@@ -1063,18 +1098,19 @@ setcookie("Whatsapp", $value);
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
-                                                                    class="btn btn-info btn-lg btn-block mt-1" style="vertical-align:middle"> <span> Guardar
-                                                                    <center><svg width="1em" height="1em"
-                                                                            viewBox="0 0 16 16" class="bi bi-hdd"
-                                                                            fill="currentColor"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path fill-rule="evenodd"
-                                                                                d="M14 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1zM2 8a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z" />
-                                                                            <path
-                                                                                d="M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                                                                            <path fill-rule="evenodd"
-                                                                                d="M4.094 4a.5.5 0 0 0-.44.26l-2.47 4.532A1.5 1.5 0 0 0 1 9.51v.99H0v-.99c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198v.99h-1v-.99a1.5 1.5 0 0 0-.183-.718L12.345 4.26a.5.5 0 0 0-.439-.26H4.094z" />
-                                                                        </svg></center> </span></button> </form>
+                                                                    class="btn btn-info btn-lg btn-block mt-1"
+                                                                    style="vertical-align:middle"> <span> Guardar
+                                                                        <center><svg width="1em" height="1em"
+                                                                                viewBox="0 0 16 16" class="bi bi-hdd"
+                                                                                fill="currentColor"
+                                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M14 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1zM2 8a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z" />
+                                                                                <path
+                                                                                    d="M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M4.094 4a.5.5 0 0 0-.44.26l-2.47 4.532A1.5 1.5 0 0 0 1 9.51v.99H0v-.99c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198v.99h-1v-.99a1.5 1.5 0 0 0-.183-.718L12.345 4.26a.5.5 0 0 0-.439-.26H4.094z" />
+                                                                            </svg></center> </span></button> </form>
 
                                                         </div>
                                                     </div>
@@ -1116,8 +1152,8 @@ setcookie("Whatsapp", $value);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($Equipo->sortByDesc('status')  as $equipo)
-                                            <tr>
+                                        @foreach($Equipo->sortByDesc('status') as $equipo)
+                                        <tr>
                                             <td>{{$equipo->id}}</td>
                                             @foreach ($Usuario as $user)
                                             @if($user->id==$equipo->id_user)
@@ -1309,16 +1345,13 @@ setcookie("Whatsapp", $value);
                                                     data-id="{{$equipo->id}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
-                                                    data-pago="{{$equipo->pago}}"
-                                                    data-adelanto="{{$equipo->adelanto}}"
+                                                    data-pago="{{$equipo->pago}}" data-adelanto="{{$equipo->adelanto}}"
                                                     data-precio="{{$servicio->precio}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}"
-                                                    data-imei="{{$equipo->imei}}"
-                                                    data-id_sucursal="{{$equipo->id_sucursal}}"
-                                                    ><svg width="2em"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_sucursal="{{$equipo->id_sucursal}}"><svg width="2em"
                                                         height="2em" viewBox="0 0 16 16" class="bi bi-cash text-info"
                                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
@@ -1386,7 +1419,7 @@ setcookie("Whatsapp", $value);
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Ventas</h4>
-                                <table class="table table-striped table-inverse table-responsive" id="tableventas"  >
+                                <table class="table table-striped table-inverse table-responsive" id="tableventas">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1466,7 +1499,7 @@ setcookie("Whatsapp", $value);
                             </div>
                             <div class="col-md-12 text-center">
                                 <ul class="pagination pagination-lg pager" id="myPager"></ul>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1478,7 +1511,7 @@ setcookie("Whatsapp", $value);
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Movimiento Caja</h4>
-                                <table class="table table-striped table-inverse table-responsive" id="tablemovimientos" >
+                                <table class="table table-striped table-inverse table-responsive" id="tablemovimientos">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th class="th-sm">#</th>
@@ -1502,11 +1535,16 @@ setcookie("Whatsapp", $value);
                                                 <button type="button" data-toggle="modal" data-target="#modal_corte"
                                                     data-backdrop="static" data-keyboard="false"
                                                     class="btn btn-info btn-lg btn-block">
-                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clipboard-data" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                                        <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                                                        <path d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z"/>
-                                                      </svg></center>
+                                                    <center><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-clipboard-data" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                                                            <path
+                                                                d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V7zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0V9z" />
+                                                        </svg></center>
                                                 </button>
                                             </th>
                                         </tr>
@@ -1551,7 +1589,7 @@ setcookie("Whatsapp", $value);
                             </div>
                             <div class="col-md-12 text-center">
                                 <ul class="pagination pagination-lg pager" id="myPager"></ul>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1559,55 +1597,8 @@ setcookie("Whatsapp", $value);
         </div>
         <div class="se-pre-con"></div>
 
-<div id="WAButton"></div>
+        <div id="WAButton"></div>
 </x-app-layout>
-<!-- Footer -->
-<footer class="page-footer font-small bg-dark text-white rounded" style="background-image: url('../img/backgrounds.jpeg');">
-    <!-- Footer Elements -->
-    <div class="container">
-
-        <!-- Grid row-->
-        <div class="row">
-
-            <!-- Grid column -->
-            <div class="col-md-12 py-2">
-                <div class="flex-center">
-
-                    <!-- Facebook -->
-                    <a class="fb-ic">
-                        <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    <!-- Twitter -->
-                    <a class="tw-ic" href="https://twitter.com/hollydev3">
-                        <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    <!-- Google +-->
-                    <a class="gplus-ic" href="https://www.youtube.com/channel/UCX1rcl5HxAb94teb1l_Tu-A">
-                        <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    <!-- Youtube +-->
-                    <a class="you-ic" href="https://www.youtube.com/channel/UCX1rcl5HxAb94teb1l_Tu-A">
-                        <i class="fab fa-youtube fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                    </a>
-                    <!--Telegram-->
-                    <a class="tele-ic" href="https://t.me/hollydev2">
-                        <i class="fab fa-telegram fa-lg mr-md-5 mr-3  white-text fa-2x"> </i>
-                    </a>
-                </div>
-            </div>
-            <!-- Grid column -->
-
-        </div>
-    </div>
-    <!-- Footer Elements -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-1 text-white">© 2020 Copyright:
-        <a href="https://hollyrenew.website/"> HollyDev</a>
-    </div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+@extends('footer')
 @extends('scripts')
 @extends('modal')

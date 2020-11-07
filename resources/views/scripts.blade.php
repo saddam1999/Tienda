@@ -749,4 +749,4 @@ var telefono= "+52445705494";
             });
         });
  </script>
-@field('scripts')
+@section('scripts')

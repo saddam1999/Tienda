@@ -2039,4 +2039,4 @@
         </form>
     </div>
 </div>
-@field('modal')
+@section('modal')

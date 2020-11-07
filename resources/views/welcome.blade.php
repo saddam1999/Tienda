@@ -538,7 +538,7 @@
     <!-- FOOTER -->
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">@if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif </a> &middot; <a
+        <p>&copy; 2014-2020 HollyDev Jose Isaias Briano Jasso. &middot; <a href="#">@if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif </a> &middot; <a
                 href="#">Contactanos:</a>@if($Settings->isEmpty()) @else {{$setting->setting_contacto}} @endif </p><p>Abierto de : @if($Settings->isEmpty()) @else {{$setting->setting_abierto}} @endif</p>
     </footer>
 </main>
