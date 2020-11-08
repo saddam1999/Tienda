@@ -165,7 +165,7 @@
                 </a>
             </div>
         </li>
-        <li class="nav-item border-top border-left border-right border-warning rounded face">
+        <li class="nav-item rounded face">
             <a class="nav-link" id="taller-tab" data-toggle="tab" href="#taller" role="tab" aria-controls="taller"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@
                 </svg>Equipos a Reparar
             </a>
         </li>
-        <li class="nav-item border-top border-left border-right border-info rounded face">
+        <li class="nav-item rounded face">
             <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1463,7 +1463,7 @@
                                             @endforeach
 
                                             <td>{{$pago_equipo->monto}}</td>
-
+ 
                                             @foreach ($Sucursal as $sucursal)
                                             @if($pago_equipo->id_sucursal==$sucursal->id)
                                             <td>{{$sucursal->nombre}}</td>

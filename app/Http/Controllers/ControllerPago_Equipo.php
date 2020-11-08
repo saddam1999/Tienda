@@ -84,18 +84,21 @@ class ControllerPago_Equipo extends Controller
         //$cajaT = \App\Models\Caja::all();
         $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
         $caja = \App\Models\Caja::find($sucursal->id);
-
+       // dd("Caja: ".$caja->id."Sucursal: ".$sucursal->id);
         $totalsiniva = $pago->monto;//monto completo sin iva
-
         $debiendo = $pago->total;//lo que se debe en total
-        $pagado = $request->get('final4');//lo que acaba de mandar
+        $pagado = $request->get('final4');//lo que acaba de mandar 1060
+        $adelanto = $pago->adelanto;//lo que dio de adelanto 100
+        $pendiente = $debiendo-$pagado;//1060
+        $iva = $pago->iva;//
 
-        $adelanto = $pago->adelanto;//lo que dio de adelanto
-        $pendiente=$debiendo-$pagado;
-        $iva = $pago->iva;
-
-        $totaldefinitivo = $debiendo - $pagado;
-dd($pago->total = $pago->monto);
+        if($iva != '')
+        {
+            $coniva=($debiendo * $iva) /100;
+            $debiendo=$coniva+$debiendo;
+        }
+        $totaldefinitivo = $debiendo - $pagado;//1060-1060=0
+        //dd($pago->total = $pago->monto);
         //dd("ID PAGO: ".$pago->id."ID Equipo".$equipo->id, "Total: ". $pago->total." pagado: ".$pagado." debiendo: ".$debiendo." Resta :".$totaldefinitivo );
         if ($debiendo == 0 || $debiendo == null) {
             return back()->with('warning', "No hay nada que pagar");
@@ -104,7 +107,7 @@ dd($pago->total = $pago->monto);
         } elseif ($totaldefinitivo == 0) {
             $pago->total = $pago->monto;
             $pago->status = 1;
-            $equipo->status=4;
+            $equipo->status= 4;
             $cajaTemp = $pago->total + $caja->corte;
             $caja->corte = $cajaTemp;
             $caja->save();

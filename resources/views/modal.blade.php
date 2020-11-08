@@ -1,7 +1,6 @@
 
     <!-- Modal Bienvenida-->
-    <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-    aria-hidden="true">
+    <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -1076,14 +1075,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4-md mb-1">
-                                    <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal" name="id_sucursal" required>
-                                        @foreach ($Sucursal as $sucursal)
-                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                                 <div class="card text-left  border border-info">
                                     <div class="card-body">
                                         <div class="row">
@@ -1373,15 +1365,6 @@
                                             <option value="6">Entregado</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-4-md mb-1">
-                                    <label for="descripcion">Sucursal</label>
-                                    <select class="form-control" id="id_sucursal2" name="id_sucursal2"
-                                        value="{{Auth::user()->id_sucursal}}" required>
-                                        @foreach ($Sucursal as $sucursal)
-                                        <option value="{{$sucursal->id}}">[{{$sucursal->nombre}}]</option>
-                                        @endforeach
-                                    </select>
                                 </div>
 
                                 <div class="card text-left  border border-info">
@@ -1834,7 +1817,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" name="presupuesto4" id="presupuesto4" disabled>
-                                </div>
+                                </div> 
                                 <label for="status">Anticipo</label>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>

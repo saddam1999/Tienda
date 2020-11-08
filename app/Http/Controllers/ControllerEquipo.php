@@ -89,7 +89,7 @@ class ControllerEquipo extends Controller
         $pago->id_servicio = null;
         $pago->id_sucursal = $equipo->id_sucursal;
         $pago->id_caja = $caja->id;
-        $pago->id_corte = $equipo->created_at;
+        $pago->id_corte = $equipo->created_at;//
         $pago->monto = $equipo->presupuesto; // esto es lo que deberia de pagar total
         $pago->adelanto = $equipo->pago; // esto es lo que adelanto
         if ($pago->adelanto == 0 && $pago->iva == '' && $pago->monto == 0) {

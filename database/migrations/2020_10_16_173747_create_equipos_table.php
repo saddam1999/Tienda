@@ -22,7 +22,7 @@ class CreateEquiposTable extends Migration
             $table->integer('imei')->nullable();
             $table->string('id_captura')->nullable();
             $table->string('id_servicio')->nullable();
-            $table->integer('id_comentario')->nullable();
+            $table->integer('id_comentario')->nullable();///
             $table->integer('id_pago')->nullable();
             $table->string('anticipo')->nullable();//anticipo
             $table->string('pago')->nullable();//pago recibido
