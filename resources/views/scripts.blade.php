@@ -734,10 +734,9 @@ $(document).ready(function(){
 
 </script>
 <script type="text/javascript">
-var telefono= "+52445705494";
     $(function () {
             $('#WAButton').floatingWhatsApp({
-                phone:  telefono, //WhatsApp Business phone number
+                phone:  "524445705494", //WhatsApp Business phone number
                 headerTitle: 'Contactanos por Whatsapp!', //Popup Title
                 popupMessage: 'Hola como podemos ayudarte?', //Popup Message
                 showPopup: true, //Enables popup display

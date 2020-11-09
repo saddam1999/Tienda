@@ -250,7 +250,7 @@
     </ul>
     <div class="tab-content bg-black" id="myTabContent"
         style="
-    background-image: url('https://img.freepik.com/vector-gratis/resumen-papel-hexagono-fondo-blanco_51543-7.jpg?size=626&ext=jpg&ga=GA1.2.1613989602.1602201600'); ">
+    background-image: url('https://wallpaperset.com/w/full/d/d/5/462750.jpg'); ">
         <div class="row">
 
             <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive" aria-atomic="true">
@@ -1463,7 +1463,7 @@
                                             @endforeach
 
                                             <td>{{$pago_equipo->monto}}</td>
- 
+
                                             @foreach ($Sucursal as $sucursal)
                                             @if($pago_equipo->id_sucursal==$sucursal->id)
                                             <td>{{$sucursal->nombre}}</td>

@@ -77,14 +77,18 @@ class ControllerPago_Equipo extends Controller
      */
     public function store(Request $request, $id)
     {
-        $pago = \App\Models\Pago_Equipo::find($id);
-        $equipo = \App\Models\Equipo::find($id);
-        $user = \App\Models\User::all();
-        $setting = \App\Models\Settings::find(1);
+        $equipo = \App\Models\Equipo::find($id);//id 10
+
+        $pago = \App\Models\Pago_Equipo::find($id);// 9 null
+
+
+       dd($pago->id_pago);
+        //$user = \App\Models\User::all();
+        //$setting = \App\Models\Settings::find(1);
         //$cajaT = \App\Models\Caja::all();
+        // dd("Caja: ".$caja->id."Sucursal: ".$sucursal->id);
         $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
         $caja = \App\Models\Caja::find($sucursal->id);
-       // dd("Caja: ".$caja->id."Sucursal: ".$sucursal->id);
         $totalsiniva = $pago->monto;//monto completo sin iva
         $debiendo = $pago->total;//lo que se debe en total
         $pagado = $request->get('final4');//lo que acaba de mandar 1060
