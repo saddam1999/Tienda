@@ -302,7 +302,7 @@
                         <div class="card text-left">
 
                             <div class="card-body">
-                                <h4 class="card-title">Productos</h4>
+                                <h4 class="card-title">Productos Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tablearticulos">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -401,7 +401,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Marca</h4>
+                                <h4 class="card-title">Marcas Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tablemarcas">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -551,7 +551,7 @@
                         <div class="card text-left">
 
                             <div class="card-body">
-                                <h4 class="card-title">Servicios</h4>
+                                <h4 class="card-title">Servicios Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tableservicios">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -776,7 +776,7 @@
                         <div class="card text-left">
 
                             <div class="card-body">
-                                <h4 class="card-title">Categoria</h4>
+                                <h4 class="card-title">Categorias Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tablecategoria">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -840,7 +840,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Opciones</h4>
+                                <h4 class="card-title">Opciones Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <div class="wrapper">
                                     <div class="row">
                                         <div class="col-3">
@@ -1133,7 +1133,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Equipos a Reparar</h4>
+                                <h4 class="card-title">Equipos a Reparar Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tabletaller">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -1153,6 +1153,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach($Equipo->sortByDesc('status') as $equipo)
+                                        @if($equipo->id_sucursal==Auth::user()->id_sucursal)
+
                                         <tr>
                                             <td>{{$equipo->id}}</td>
                                             @foreach ($Usuario as $user)
@@ -1402,6 +1404,7 @@
                                             </td>
                                             @endif
                                         </tr>
+                                        @endif
                                         @endforeach
 
                                     </tbody>
@@ -1418,7 +1421,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Ventas</h4>
+                                <h4 class="card-title">Ventas Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tableventas">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -1438,6 +1441,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($Pago_Equipo as $pago_equipo)
+                                        @if($pago_equipo->id_sucursal==Auth::user()->id_sucursal)
                                         <tr>
                                             <td>{{$pago_equipo->id}}</td>
                                             @foreach ($Usuario as $usuario)
@@ -1492,6 +1496,7 @@
                                             <td>{{$pago_equipo->status}}</td>
 
                                         </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
 
@@ -1510,7 +1515,7 @@
                     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Movimiento Caja</h4>
+                                <h4 class="card-title">Movimientos Caja Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tablemovimientos">
                                     <thead class="thead-inverse">
                                         <tr>
@@ -1551,6 +1556,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($MovimientoCaja as $MovimientoCaja)
+                                        @if($MovimientoCaja->id_sucursal==Auth::user()->id_sucursal)
                                         <tr>
                                             <td>{{$MovimientoCaja->id}}</td>
                                             @foreach ($Usuario as $usuario)
@@ -1582,6 +1588,7 @@
                                             <td>{{$MovimientoCaja->created_at->format('d/m/y')}}</td>
                                             <td></td>
                                         </tr>
+                                        @endif
                                         @endforeach
                                     </tbody>
 

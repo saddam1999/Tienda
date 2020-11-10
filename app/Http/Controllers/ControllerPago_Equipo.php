@@ -83,15 +83,17 @@ class ControllerPago_Equipo extends Controller
         //ID es id de equipo entonces buscamos el id del pago con id_equipo dentro de pago_equipo
         foreach ($busquedapago as $pago) {
             if ($pago->id_equipo == $id) {
+                //dd($equipo->id_sucursal);
                 //$user = \App\Models\User::all();
                 //$setting = \App\Models\Settings::find(1);
                 //$cajaT = \App\Models\Caja::all();
                 // dd("Caja: ".$caja->id."Sucursal: ".$sucursal->id);
                 $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
                 $caja = \App\Models\Caja::find($sucursal->id);
+                $setting=\App\Models\Settings::all();
                 $totalsiniva = $pago->monto; //monto completo sin iva
                 if ($pago->iva == null) {
-                    $pago->iva = 16;
+                    $pago->iva= $setting->settings_iva;
                 }
                 $calculaiva = ($pago->total * $pago->iva) / 100;
                 $debiendo = $pago->total + $calculaiva; //lo que se debe en total
