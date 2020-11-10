@@ -1,4 +1,5 @@
 <!-- Footer -->
+
 <footer class="page-footer font-small bg-dark text-white rounded"
     style="background-image: url('../img/backgrounds.jpeg');">
     <!-- Footer Elements -->

@@ -120,51 +120,8 @@
     <img height="1" width="1"
             src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
-    <ul class="nav nav-tabs bg-ligth" id="myTab" role="tablist" style="background-color:#fff;">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
-                    <path fill-rule="evenodd"
-                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-                </svg>Admin Punto de Venta</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
-                    aria-controls="articulos" aria-selected="true">Articulos
-                </a>
-                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
-                    aria-controls="marcas" aria-selected="false">Marcas
-                </a>
-                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                    aria-controls="categoria" aria-selected="false">Categorias
-                </a>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
-                    <path fill-rule="evenodd"
-                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
-                </svg>Admin Taller</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
-                    aria-controls="servicios" aria-selected="false">Area de Servicios
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Equipos a Reparar</a>
-                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
-                    aria-controls="marcas" aria-selected="false">Marcas
-                </a>
-                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
-                    aria-controls="categoria" aria-selected="false">Categorias
-                </a>
-            </div>
-        </li>
+    <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary" id="myTab" role="tablist" style="background-color:#fff; border: none;
+    border-radius: 40px;" >
         <li class="nav-item rounded face">
             <a class="nav-link" id="taller-tab" data-toggle="tab" href="#taller" role="tab" aria-controls="taller"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
@@ -205,6 +162,49 @@
                 </svg>Sucursal
             </a>
         </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Opciones Admin</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id="articulos-tab" data-toggle="tab" href="#articulos" role="tab"
+                    aria-controls="articulos" aria-selected="true">Articulos
+                </a>
+                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
+                    aria-controls="marcas" aria-selected="false">Marcas
+                </a>
+                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                    aria-controls="categoria" aria-selected="false">Categorias
+                </a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
+                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
+                    <path fill-rule="evenodd"
+                        d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                </svg>Admin Taller</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
+                    aria-controls="servicios" aria-selected="false">Area de Servicios
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" id="taller-tab" data-toggle="tab" href="#taller">Equipos a Reparar</a>
+                <a class="dropdown-item" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
+                    aria-controls="marcas" aria-selected="false">Marcas
+                </a>
+                <a class="dropdown-item" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
+                    aria-controls="categoria" aria-selected="false">Categorias
+                </a>
+            </div>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
                 aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-toggles2"
@@ -298,7 +298,8 @@
         <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
 
                             <div class="card-body">
@@ -398,7 +399,8 @@
         <div class="tab-pane fade show" id="marcas" role="tabpanel" aria-labelledby="marcas-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Marcas Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
@@ -456,7 +458,8 @@
         <div class="tab-pane fade show " id="usuarios" role="tabpanel" aria-labelledby="usuarios-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Usuarios</h4>
@@ -547,7 +550,8 @@
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
 
                             <div class="card-body">
@@ -621,7 +625,8 @@
         <div class="tab-pane fade show " id="sucursal" role="tabpanel" aria-labelledby="sucursal-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Sucursales</h4>
@@ -692,8 +697,9 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="card text-left">
-                            <div class="card-body">
+                        <div class="card text-left mt-2">
+                            <div class="card-body" style=" border: none;
+                            border-radius: 40px 10px;">
                                 <h4 class="card-title">Cajas</h4>
                                 <table class="table table-striped table-inverse table-responsive" id="tablecajas">
                                     <thead class="thead-inverse">
@@ -772,7 +778,8 @@
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
 
                             <div class="card-body">
@@ -837,7 +844,8 @@
         <div class="tab-pane fade show " id="settings" role="tabpanel" aria-labelledby="settings-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Opciones Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
@@ -1130,7 +1138,8 @@
         <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg border border-warning" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Equipos a Reparar Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
@@ -1418,7 +1427,8 @@
         <div class="tab-pane fade show" id="ventas" role="tabpanel" aria-labelledby="ventas-tab">
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Ventas Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
@@ -1512,7 +1522,8 @@
 
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none;
+                    border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Movimientos Caja Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
