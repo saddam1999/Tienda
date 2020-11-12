@@ -91,11 +91,11 @@ Route::get('/agregarpago/{id}', [ControllerPago_Equipo::class, 'store']);
 Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
 //imprimirController Ticket
-Route::get('/imprimir/{id}', [imprimirController::class, 'update']);//para pagar un equipo ticket
+Route::get('/imprimir/id={id}&csrf={csrf}', [imprimirController::class, 'update']);//para pagar un equipo ticket
 Route::get('/QR/{id}', [imprimirController::class, 'QR']);//imprime un codigo de seguimiento  equipo QR
 //mostrarEquipo
 Route::get('/orden/{id}', [imprimirController::class, 'orden']);
- 
+
 //ControllerPago Caja
 Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
 

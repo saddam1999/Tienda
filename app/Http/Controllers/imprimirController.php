@@ -203,12 +203,16 @@ class imprimirController extends Controller
     public function update(Request $request, $id)
     {
 
-        $equipo = \App\Models\Equipo::find($id);
+        $equipo = \App\Models\Equipo::find($id); //id 10
+        $busquedapago = \App\Models\Pago_Equipo::all();
+        //$pago = \App\Models\Pago_Equipo::find($id); // 9 null
+        //ID es id de equipo entonces buscamos el id del pago con id_equipo dentro de pago_equipo
+        foreach ($busquedapago as $pago) {
+            if ($pago->id_equipo == $id) {
         $usuario = \App\Models\User::find($equipo->id_cliente);
         $tecnico = \App\Models\User::find($equipo->id_user);
         $precio = \App\Models\Equipo::find($id);
-        $equipo_pago = \App\Models\Pago_Equipo::find($id);
-
+      //  dd($pago->id);
         $setting = \App\Models\Settings::find(1);
         if ($equipo->imei != '') {
             $datoequipo = $equipo->imei;
@@ -254,7 +258,9 @@ class imprimirController extends Controller
         $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
         $textypos = 5;
         $pdf->Image($setting->setting_logo, 10, 1, -800);
-
+        $textypos += 14;
+        $pdf->setX(2);
+        $pdf->Cell(5, $textypos, '=======================================');
         $textypos += 6;
         $pdf->setX(2);
         $pdf->Cell(5, $textypos, $setting->setting_nombre);
@@ -310,7 +316,7 @@ class imprimirController extends Controller
         $producto = array(
             "q" => 1,
             "name" => $equipo,
-            "price" => $equipo_pago->total
+            "price" => $pago->total
         );
         $productos = array($producto);
         foreach ($productos as $pro) {
@@ -389,7 +395,7 @@ class imprimirController extends Controller
         $pdf->Cell(5, $textypos, $setting->setting_url . '/orden/' . $id);
         $textypos += 6;
         $pdf->setX(2);
-        $pdf->Image("$id.png", 10, 116, 20, 20, "png");
+        $pdf->Image("$id.png", 10, 126, 20, 20, "png");
         $textypos += 6;
         $pdf->setX(2);
         $pdf->Output();
@@ -401,7 +407,7 @@ class imprimirController extends Controller
       //  header('Content-Disposition: Attachment;filename=image.png');
 
         return back()->with('success', 'Archivo a Imprimir generado');
-    }
+    }}}
 
     /**
      * Store a newly created resource in storage.

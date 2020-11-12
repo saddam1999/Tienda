@@ -4,97 +4,153 @@
 @if($equipo->id==$id && $settings->id==1 && $usuario->id==$equipo->id_cliente)
 <!DOCTYPE html>
 <html lang="en">
+<link href="../css/main.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+</script>
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
+<link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
+<link href="../css/main.css" rel="stylesheet" type="text/css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script type="text/javascript" language="javascript"
+    src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript"
+    src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<!--Floating WhatsApp css-->
+<link rel="stylesheet"
+    href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+<!--Floating WhatsApp javascript-->
+<script type="text/javascript"
+    src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
+</script>
+<style>
+    body:after {
+        content: '{{$settings->setting_nombre}}';
+        font-size: 2em;
+        color: rgba(52, 166, 214, 0.4);
+        z-index: 9999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        -webkit-pointer-events: none;
+        -moz-pointer-events: none;
+        -ms-pointer-events: none;
+        -o-pointer-events: none;
+        pointer-events: none;
+
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+</style>
+<meta charset="UTF-8">
+<title>ORDEN #{{$equipo->id}}</title>
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<link href="../css/main.css" rel="stylesheet" type="text/css">
+<!--Floating WhatsApp css-->
+<link rel="stylesheet"
+    href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+<!--Floating WhatsApp javascript-->
+<script type="text/javascript"
+    src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
+</script>
+<!-- jQuery and JS bundle w/ Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+</script>
+<style>
+    /**THE SAME CSS IS USED IN ALL 3 DEMOS**/
+    /**gallery margins**/
+    ul.gallery {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+
+    .zoom {
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        transition: all 0.35s ease-in-out;
+        cursor: -webkit-zoom-in;
+        cursor: -moz-zoom-in;
+        cursor: zoom-in;
+    }
+
+    .zoom:hover,
+    .zoom:active,
+    .zoom:focus {
+        /**adjust scale to desired size,
+add browser prefixes**/
+        -ms-transform: scale(2.5);
+        -moz-transform: scale(2.5);
+        -webkit-transform: scale(2.5);
+        -o-transform: scale(2.5);
+        transform: scale(2.5);
+        position: relative;
+        z-index: 100;
+    }
+
+    /**To keep upscaled images visible on mobile,
+increase left & right margins a bit**/
+    @media only screen and (max-width: 768px) {
+        ul.gallery {
+            margin-left: 15vw;
+            margin-right: 15vw;
+        }
+
+        /**TIP: Easy escape for touch screens,
+give gallery's parent container a cursor: pointer.**/
+        .DivName {
+            cursor: pointer
+        }
+    }
+</style>
+
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Bree Serif', serif;
+    }
+</style>
 
 <head>
-    <meta charset="UTF-8">
-    <title>ORDEN #{{$equipo->id}}</title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-        <link href="../css/main.css" rel="stylesheet" type="text/css">
 
-    <!-- jQuery and JS bundle w/ Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
-    </script>
-    <style>
-        /**THE SAME CSS IS USED IN ALL 3 DEMOS**/
-        /**gallery margins**/
-        ul.gallery {
-            margin-left: 3vw;
-            margin-right: 3vw;
-        }
-
-        .zoom {
-            -webkit-transition: all 0.35s ease-in-out;
-            -moz-transition: all 0.35s ease-in-out;
-            transition: all 0.35s ease-in-out;
-            cursor: -webkit-zoom-in;
-            cursor: -moz-zoom-in;
-            cursor: zoom-in;
-        }
-
-        .zoom:hover,
-        .zoom:active,
-        .zoom:focus {
-            /**adjust scale to desired size,
-    add browser prefixes**/
-            -ms-transform: scale(2.5);
-            -moz-transform: scale(2.5);
-            -webkit-transform: scale(2.5);
-            -o-transform: scale(2.5);
-            transform: scale(2.5);
-            position: relative;
-            z-index: 100;
-        }
-
-        /**To keep upscaled images visible on mobile,
-    increase left & right margins a bit**/
-        @media only screen and (max-width: 768px) {
-            ul.gallery {
-                margin-left: 15vw;
-                margin-right: 15vw;
-            }
-
-            /**TIP: Easy escape for touch screens,
-    give gallery's parent container a cursor: pointer.**/
-            .DivName {
-                cursor: pointer
-            }
-        }
-    </style>
-
-    <style>
-        @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
-
-        body,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Bree Serif', serif;
-        }
-    </style>
-
+<body>
     <div class="container">
         <div class="row">
-
-            <div class="col-xs-1">
-                @if($settings->setting_logo=="")
-                <h6><a href=" "><img alt="{{$settings->setting_logo}}" src="{{$settings->setting_logo}}" /></a></h6>
-                @else
-                <h6><a href=" "><img alt="{{$settings->setting_logo}}" src="{{$settings->setting_logo}}" /></a></h6>
-                @endif
-            </div>
             <div class="col-xs-5">
                 <!-- <img src="../fotos/{{$equipo->id_captura}}" alt="">-->
-
                 <h5><a href=""><img alt="" />
                         <p>{{$settings->setting_nombre}}</p>
                         <p>{{$settings->setting_direccion}}</p>
@@ -103,6 +159,15 @@
                     </a>
                 </h5>
 
+            </div>
+            <div class="col-xs-1">
+                @if($settings->setting_logo=="")
+                <h6><a href=" "><img width="100px;" height="20%" alt="{{$settings->setting_logo}}"
+                            src="{{$settings->setting_logo}}" /></a></h6>
+                @else
+                <h6><a href=" "><img width="100px;" height="20%" alt="{{$settings->setting_logo}}"
+                            src="{{$settings->setting_logo}}" /></a></h6>
+                @endif
             </div>
             <div class="col-xs-6 text-right">
                 <div class="panel panel-default">
@@ -152,9 +217,9 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                             </h4>
-                            <h4>Tecnico : 
+                            <h4>Tecnico :
                                 <a href="#">@if($usuario->id == $equipo->id_user) {{$usuario->name}} @endif</a>
-                             
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </h4>
                         </div>
                     </div>
@@ -374,32 +439,32 @@
 
         </div>
     </div>
-</head>
-<ul class="list-inline gallery">
+    </head>
+    <ul class="list-inline gallery">
+        <div class="container">
+            <h5>{{ csrf_token() }}</h5>
+            <div class="row">
 
-    <div class="container">
-        <h1>Orden : # {{$id}}</h1>
-        <div class="row">
-
-            @foreach ($Captura as $captura)
-            @if($captura->id_equipo==$id)
-            @foreach ($Usuario as $usuario)
-            @if($usuario->id==$captura->id_user)
-            <h3>Tecnico:{{$usuario->name}}</h3>
-            @endif
-            @endforeach
-            <div class="col-md-12">
-                <li><img class="thumbnail zoom " src="../fotos/{{$captura->captura}}" style="border-radius:40px;"></li>
-                <textarea class="form-control mt-2" name="" id="" cols="30"
-                    rows="10">{{$captura->descripcion}}</textarea>
+                @foreach ($Captura as $captura)
+                @if($captura->id_equipo==$id)
+                @foreach ($Usuario as $usuario)
+                @if($usuario->id==$captura->id_user)
+                <h3>Tecnico:{{$usuario->name}}</h3>
+                @endif
+                @endforeach
+                <div class="col-md-12">
+                    <li><img class="thumbnail zoom " src="../fotos/{{$captura->captura}}" style="border-radius:40px;">
+                    </li>
+                    <textarea class="form-control mt-2" name="" id="" cols="30"
+                        rows="10">{{$captura->descripcion}}</textarea>
+                </div>
+                @endif
+                @endforeach
             </div>
-            @endif
-            @endforeach
         </div>
-    </div>
-</ul>
-
-<body>
+    </ul>
+    <div id="WAButton"></div>
+    @extends('footer')
 </body>
 
 <!-- Modal -->
@@ -429,7 +494,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Acepto</button>
             </div>
         </div>
     </div>

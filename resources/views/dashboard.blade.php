@@ -116,6 +116,13 @@
         fbq('init', '3271930189583444');
         fbq('track', 'PageView');
     </script><noscript>
+<link data-require="datatables@1.10.12" data-semver="1.10.12" rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" type ="text/css" href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" />
+<script src="Scripts/jquery-3.3.1.js"></script>
+<script data-require="jquery@3.0.0" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+<script data-require="datatables@1.10.12" data-semver="1.10.12" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script data-require="datatables-responsive@*" data-semver="2.1.0" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js">
+</script>
 
     <img height="1" width="1"
             src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1" /></noscript>
@@ -1143,7 +1150,7 @@
                         <div class="card text-left">
                             <div class="card-body">
                                 <h4 class="card-title">Equipos a Reparar Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
-                                <table class="table table-striped table-inverse table-responsive" id="tabletaller">
+                                <table class="table table-striped table-inverse table-responsive display nowrap" id="tabletaller">
                                     <thead class="thead-inverse">
                                         <tr>
                                             <th>#</th>
@@ -1159,6 +1166,18 @@
                                             <th>Opciones</th>
                                             <th>Imprimir</th>
                                         </tr>
+                                        <tfoot>
+                                            <tr>
+                                                <th>First name</th>
+                                                <th>Last name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
+                                                <th>Salary</th>
+                                                <th>Extn.</th>
+                                            </tr>
+                                        </tfoot>
                                     </thead>
                                     <tbody>
                                         @foreach($Equipo->sortByDesc('status') as $equipo)
@@ -1373,7 +1392,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="/imprimir/{{$equipo->id}}" target="_blank"
+                                                <a href="/imprimir/id={{$equipo->id}}&csrf={{ csrf_token() }}" target="_blank"
                                                     data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
