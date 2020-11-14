@@ -172,20 +172,20 @@ give gallery's parent container a cursor: pointer.**/
             <div class="col-xs-6 text-right">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1>ORDEN</h1>
+
 
                     </div>
                     <div class="panel-body">
-                        <h4>ORDEN Nº :
-                            <a href="#">#{{$equipo->id}}</a>
-                        </h4>
+
                     </div>
                 </div>
             </div>
 
             <hr />
 
-            <h1 style="text-align: center;">Revision de Orden</h1>
+            <h1 style="text-align: center;">Revision de Orden Nº :
+                #{{$equipo->id}}
+            </h1>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
@@ -228,13 +228,13 @@ give gallery's parent container a cursor: pointer.**/
             </div>
 
             <pre></pre>
-            <table class="table table-bordered">
+            <table class="table table-bordered text-white" style="background-color:black ; border-radius: 2em;">
                 <thead>
                     <tr>
-                        <th style="text-align: center;">
+                        <th style="text-align: center; border-radius: 2em;">
                             <h4>Revision de componentes :</h4>
                         </th>
-                        <th style="text-align: center;">
+                        <th style="text-align: center; border-radius: 2em;">
                             <h4>Diagnostico Previo :</h4>
                         </th>
 
@@ -242,7 +242,7 @@ give gallery's parent container a cursor: pointer.**/
                 </thead>
                 <tbody>
                     <tr>
-                        <td rowspan="3" style="text-align: center;">
+                        <td rowspan="3" style="text-align: center; border-radius: 2em;">
                             <div class="col-6-md">
                                 <div class="form-group">
                                     <div class="card text-left">
@@ -335,7 +335,7 @@ give gallery's parent container a cursor: pointer.**/
                             </div>
                         </td>
 
-                        <td rowspan="3" style="text-align: center;"><a href="#">
+                        <td rowspan="3" style="text-align: center; border-radius: 2em;"><a href="#">
                                 <div class="col-6-md">
                                     <div class="form-group">
                                         <div class="card text-left">
@@ -426,14 +426,16 @@ give gallery's parent container a cursor: pointer.**/
 
             <div class="row">
                 <div class="col-xs-4">
-                    <h1><a href=" "><img alt="" src="../{{$id}}.png" /></a></h1>
+                    <h1><a href="../{{$id}}.png"><img alt="" src="../{{$id}}.png" /></a></h1>
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-4">
                     <div class="panel panel-info" style="text-align: right;">
                         <h6> "Este documento no representa un documento legal ni administrativo y no conlleva ninguna
                             accion legal"</h6>
                     </div>
-
+                    <div class="col-xs-4">
+                        <a href="/" type="button" class="btn btn-primary btn-lg ml-5">Volver a la tienda </a>
+                    </div>
                 </div>
             </div>
 
@@ -444,7 +446,6 @@ give gallery's parent container a cursor: pointer.**/
         <div class="container">
             <h5>{{ csrf_token() }}</h5>
             <div class="row">
-
                 @foreach ($Captura as $captura)
                 @if($captura->id_equipo==$id)
                 @foreach ($Usuario as $usuario)
@@ -463,7 +464,39 @@ give gallery's parent container a cursor: pointer.**/
             </div>
         </div>
     </ul>
+    <div class="toast fixed-bottom " role="alert" data-delay="986000" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Estimado @if($equipo->id_cliente==$usuario->id){{$usuario->name}}@endif</a></strong>
+            <small class="text-muted">hace 11 minutos</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            <h5>El status de su orden es:   @if($equipo->status==0)
+                Recibido
+                @elseif($equipo->status==1)
+                En Revision
+                @elseif($equipo->status==2)
+                Cancelado
+                @elseif($equipo->status==3)
+                Espera
+                @elseif($equipo->status==4)
+                A espera de Cliente(Contactarse a Sucursal)
+                @elseif($equipo->status==5)
+                Listo(Para entregar)
+                @elseif($equipo->status==6)
+                Entregado
+                @endif </h5>
+        </div>
+    </div>
     <div id="WAButton"></div>
+    <script>
+          $('.toast').toast('show');
+
+        </script>
+
     @extends('footer')
 </body>
 

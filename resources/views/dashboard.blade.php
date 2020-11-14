@@ -241,14 +241,14 @@
             @foreach ($Equipo as $equipo)
             @php
 
-            if($equipo->status != 2 && $equipo->status != 6)
+            if($equipo->status != 2 && $equipo->status != 6 && $equipo->id_sucursal == Auth::user()->id_sucursal)
             {
             $count++;
             }
             @endphp
             @endforeach
             <span class="input-group-text face text-secondary"><a id="taller-tab" data-toggle="tab"
-                    href="#taller">Pendientes: {{$count}} </span></a>
+                    href="#taller">Pendientes: {{$count}}</span></a>
 
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
@@ -1166,18 +1166,7 @@
                                             <th>Opciones</th>
                                             <th>Imprimir</th>
                                         </tr>
-                                        <tfoot>
-                                            <tr>
-                                                <th>First name</th>
-                                                <th>Last name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                                <th>Extn.</th>
-                                            </tr>
-                                        </tfoot>
+
                                     </thead>
                                     <tbody>
                                         @foreach($Equipo->sortByDesc('status') as $equipo)
@@ -1228,7 +1217,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="" class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                <a href="" @if($equipo->status==2) class="btn btn-danger" @endif @if($equipo->status==6) class="btn btn-secondary" @endif  class="btn btn-dark" data-id="{{$equipo->id}}"
                                                     data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
