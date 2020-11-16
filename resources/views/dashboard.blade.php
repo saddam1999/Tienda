@@ -10,8 +10,7 @@
     @php
     date_default_timezone_set('UTC');
     $contador=0;
-    $value = $setting->whatsapp;
-    setcookie("Whatsapp", $value);
+
     @endphp
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- JS, Popper.js, and jQuery -->
@@ -123,7 +122,6 @@
 <script data-require="datatables@1.10.12" data-semver="1.10.12" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script data-require="datatables-responsive@*" data-semver="2.1.0" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js">
 </script>
-
     <img height="1" width="1"
             src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
@@ -252,7 +250,8 @@
 
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
-            <span class="input-group-text face text-secondary">SMS: {{$contador}}</span>
+            <span class="input-group-text face text-secondary">        <a href="" data-toggle="modal" data-target="#modal_sms">
+                SMS: {{$contador}}</span></a>
         </div>
     </ul>
     <div class="tab-content bg-black" id="myTabContent"

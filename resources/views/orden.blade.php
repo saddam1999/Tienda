@@ -228,13 +228,13 @@ give gallery's parent container a cursor: pointer.**/
             </div>
 
             <pre></pre>
-            <table class="table table-bordered text-white" style="background-color:black ; border-radius: 2em;">
+            <table class="table table-bordered text-white">
                 <thead>
                     <tr>
-                        <th style="text-align: center; border-radius: 2em;">
+                        <th style="text-align: center; border-radius: 2em; background-color:black ;" >
                             <h4>Revision de componentes :</h4>
                         </th>
-                        <th style="text-align: center; border-radius: 2em;">
+                        <th style="text-align: center; border-radius: 2em; background-color:black ;">
                             <h4>Diagnostico Previo :</h4>
                         </th>
 

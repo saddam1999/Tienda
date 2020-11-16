@@ -1,4 +1,6 @@
-
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AcZuOOumdd7lojl8xftWUROJrcO5uCoUy49jdZnQAzQfcWrb4ziEJ2ooYq-mAzAyioNBsvmhFBlMcy64">
+</script>
     <!-- Modal Bienvenida-->
     <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -1817,7 +1819,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
                                 <input type="text" class="form-control" name="presupuesto4" id="presupuesto4" disabled>
-                                </div> 
+                                </div>
                                 <label for="status">Anticipo</label>
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
@@ -2022,4 +2024,46 @@
         </form>
     </div>
 </div>
+
+<!-- Modal SMS -->
+<div class="modal fade" id="modal_sms" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white shadow-md">
+                <h5 class="modal-title">Pagar por Mensajes de Texto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form name="paypal" id="paypal" action="">
+                        @csrf
+                        @method('POST')
+                        <select name="creditos1" id="creditos1" onchange="paypal1(this);" class="form-control">
+                            <option value="0" selected style="border-radius:20%;">Select a mount</option>
+                            <option value="16">100 SMS</option>
+                            <option value="26">200 SMS</option>
+                            <option value="36">300 SMS</option>
+                            <option value="46">400 SMS</option>
+                            <option value="56">500 SMS</option>
+                            <option value="66">600 SMS</option>
+                            <option value="76">700 SMS</option>
+                            <option value="86">800 SMS</option>
+                            <option value="96">900 SMS</option>
+                            <option value="106">1000 SMS</option>
+                        </select>
+                </div>
+            </div>
+            <div id="paypal-button-container"></div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+</script>
+
+
+
 @section('modal')
+

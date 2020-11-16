@@ -748,4 +748,64 @@ $(document).ready(function(){
             });
         });
  </script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    function paypal1(selectObj) {
+        var selectIndex = selectObj.selectedIndex;
+        var selectValue = selectObj.options[selectIndex].text;
+        var link = $('#creditos1').val();
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: link
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                // This function captures the funds from the transaction.
+                return actions.order.capture().then(function(details) {
+                    // This function shows a transaction success message to your buyer.
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    //$("#paypal").attr("action", '/credito_usuario/' + id);
+                    //we will send data and recive data fom our AjaxController
+                    //alert("im just clicked click me");
+                    id = 1;
+                    $.ajax({
+                        url: 'creditos/' + id,
+                        data: {
+                            'count': link,
+                            '_method': 'POST',
+                        },
+                        type: 'POST',
+                        success: function(response) {
+                             alert(response);
+                            location.reload();
+                        },
+                        statusCode: {
+                            404: function() {
+                                 alert('web not found');
+                            }
+                        },
+                        error: function(x, xs, xt) {
+                               window.open(JSON.stringify(x));
+                            alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+                        }
+                    });
+                });
+            }
+        }).render('#paypal-button-container');
+    }
+    //This function displays Smart Payment Buttons on your web page.
+</script>
+
 @section('scripts')
