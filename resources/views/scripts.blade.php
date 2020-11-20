@@ -806,12 +806,22 @@ $(document).ready(function(){
     }
     //This function displays Smart Payment Buttons on your web page.
 </script>
+
 <script>
-    $(document).ready(function(){
-        $('#setting_plantilla').change(function(){
-            //$("#template").attr("src",'{{$setting->setting_template}}');
+    $('#modal_info').on('show.bs.modal', function(e) {
+
+    var id = $(e.relatedTarget).data().id;
+    $(e.currentTarget).find('#info_id').text(id);
+    var id = $(e.relatedTarget).data().id_captura;
+    $(e.currentTarget).find('#info_imagen').val(id);
+    $("#info_imagen").attr("src", './fotos/' + id);
+    var id = $(e.relatedTarget).data().serial;
+    $(e.currentTarget).find('#info_serial').text(id);
+    var id = $(e.relatedTarget).data().imei;
+    $(e.currentTarget).find('#info_imei').text(id);
+    var id = $(e.relatedTarget).data().id_comentario;
+    $(e.currentTarget).find('#info_comentario').val(id);
         });
-    });
 </script>
 
 @section('scripts')

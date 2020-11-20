@@ -24,6 +24,9 @@ class CreateSettingsTable extends Migration
             $table->string('setting_rfc')->nullable();
             $table->string('setting_contacto')->nullable();
             $table->string('setting_url')->nullable();
+            $table->string('setting_twitter')->nullable();
+            $table->string('setting_facebook')->nullable();
+
             $table->string('setting_plantilla')->nullable();
             $table->string('setting_telefono')->nullable();
             $table->float('setting_iva')->nullable();

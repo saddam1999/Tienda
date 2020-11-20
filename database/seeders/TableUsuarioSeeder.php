@@ -14,7 +14,7 @@ class TableUsuarioSeeder extends Seeder
     public function run()
     {
 
-  
+
         $User=  new \App\Models\User;
         $User->name="Napoleon";
         $User->email="gomezlopeznapoleon@gmail.com";
@@ -45,6 +45,71 @@ class TableUsuarioSeeder extends Seeder
         $User->status=1;
         $User->save();
 
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone 7";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=123123;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=10000;
+        $Articulo->precioOriginal=10000;
+        $Articulo->save();
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone 8";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=12333123;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=11000;
+        $Articulo->precioOriginal=11000;
+        $Articulo->save();
+
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone X";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=1232323;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=20000;
+        $Articulo->precioOriginal=20000;
+        $Articulo->save();
+
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone 11";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=1232323;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=40000;
+        $Articulo->precioOriginal=40000;
+        $Articulo->save();
+
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone 11";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=1232323;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=40000;
+        $Articulo->precioOriginal=40000;
+        $Articulo->descuento=20;
+        $Articulo->save();
+        $Articulo=  new \App\Models\Articulo;
+        $Articulo->nombre="iPhone 11";
+        $Articulo->id_marca=1;
+        $Articulo->categoria=1;
+        $Articulo->IDlocal=1232323;
+        $Articulo->descripcion="Sin duda para mi una de las mejores marcas. Este teléfono en sí es más asequible a día de hoy que los demás. Ya que ya existen muchos nuevos. He de decir, que como fallos, IPHONE tiene muchas actualizaciones, y si no las realizas el móvil es como si dejase de funcionar, se ralentiza, y se…";
+        $Articulo->existencia=1;
+        $Articulo->precio=40000;
+        $Articulo->precioOriginal=40000;
+        $Articulo->descuento=10;
+        $Articulo->save();
 
         $Servicio=  new \App\Models\Servicio;
         $Servicio->nombre = "Revision de Equipo";
@@ -78,8 +143,8 @@ class TableUsuarioSeeder extends Seeder
         $Pagos->client_id = "AcZuOOumdd7lojl8xftWUROJrcO5uCoUy49jdZnQAzQfcWrb4ziEJ2ooYq-mAzAyioNBsvmhFBlMcy64";
         $Pagos->status =1;//activo
         $Pagos->save();
- 
 
-      
+
+
     }
 }

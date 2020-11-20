@@ -33,7 +33,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <style>
         ul.gallery {
@@ -202,17 +205,18 @@
 <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
-        <strong class="mr-auto"> {{$promocion->titulo}} </strong>
+        <strong class="mr-auto">@if($Promocion->isEmpty()) @else {{$promocion->titulo}} @endif</strong>
         <small class="text-muted">hace 11 minutos</small>
         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
     <div class="toast-body">
-        <p> {{$promocion->titulo_banner_principal}}
+        <p>@if($Promocion->isEmpty()) @else {{$promocion->titulo_banner_principal}} @endif
         </p>
     </div>
 </div>
+@if($Settings->isEmpty()) @else
 @if($setting->setting_plantilla=='../images/template1.png')
 
 <body class="homepage is-preload">
@@ -276,6 +280,19 @@
                                     @endif
                                 </li>
                             </ul>
+                            <div class="wrapper">
+                                <!-- Sidebar  -->
+                                <nav  class="sticky-top shadow-lg "  id="sidebar" style="background-color:white; opacity:95%; border-radius:20px;">
+                                    <div id="dismiss" class="mt-5">
+                                        <i class="fas fa-arrow-left"></i>
+                                    </div>
+                                    <form action="results.php" method="POST">
+                                        <div class="sidebar-header text-dark" style="background-color:white; color:dark; border-radius:20px; " id="smartcart">
+                                            <h3 class="text-dark"><br> Carrito</h3>
+                                            <!-- SmartCart element -->
+                                    </form>
+                                </nav>
+                            </div>
                         </nav>
 
                     </div>
@@ -442,11 +459,6 @@
                                     @foreach ($Articulo as $producto)
                                     @if($producto->descuento!=0)
                                     <div class="col-md-4" style="border-radius:10px;">
-                                        <div class="alert alert-warning" role="alert">
-                                            <h4 class="alert-heading"> @if($Promocion->isEmpty()) @else
-                                                {{$promocion->titulo}} @endif</h4>
-
-                                        </div>
                                         <!-- bbb_deals -->
                                         <div class="bbb_deals sc-product-item" style="border-radius:40px;">
                                             @if($producto->descuento!=0)
@@ -676,31 +688,40 @@
                     <div class="col-6 col-12-medium imp-medium">
                         <!-- About -->
                         <section>
-                            <h2><strong>ZeroFour</strong> by HTML5 UP</h2>
-                            <p>Hi! This is <strong>ZeroFour</strong>, a free, fully responsive HTML5 site
-                                template by <a href="http://twitter.com/ajlkn">AJ</a> for <a
-                                    href="http://html5up.net/">HTML5 UP</a>.
-                                It's <a href="http://html5up.net/license/">Creative Commons Attribution</a>
-                                licensed so use it for any personal or commercial project (just credit us
-                                for the design!).</p>
-                            <a href="#" class="button alt icon solid fa-arrow-circle-right">Learn More</a>
+                            <h2><strong>Politica de Privacidad</strong></h2>
+                            <p>A menudo, clientes y usuarios confían su información personal a diferentes operadores de
+                                sitios web. Si un proyecto online presta servicios que demandan información detallada
+                                sobre sus usuarios será imprescindible contar con una política de protección de datos.
+                                Para establecer una relación de confianza, los operadores de una página web deben
+                                ofrecer a sus usuarios una política de privacidad web completa que informe sobre el tipo
+                                de datos que serán recolectados, así como la forma en que se compilarán, y finalmente,
+                                cuál será el uso que se les dará. Además, una política de privacidad completa
+                                proporcionará información sobre las medidas de seguridad del proceso de recopilación de
+                                datos.</p>
+                            <a href="#" data-toggle="modal" data-target="#modal_privacidad"
+                                class="button alt icon solid fa-arrow-circle-right">Learn More</a>
                         </section>
 
                         <!-- Contact -->
                         <section>
-                            <h2>Get in touch</h2>
+                            <h2>Estamos en Contacto</h2>
                             <div>
                                 <div class="row">
                                     <div class="col-6 col-12-small">
                                         <dl class="contact">
                                             <dt>Twitter</dt>
-                                            <dd><a href="#">@untitled-corp</a></dd>
+                                            <dd><a href="https://twitter.com/{{$setting->setting_twitter}}">@if($Settings->isEmpty())
+                                                    @else
+                                                    {{$setting->setting_twitter}} @endif</a></dd>
                                             <dt>Facebook</dt>
-                                            <dd><a href="#">facebook.com/untitled</a></dd>
+                                            <dd><a href="{{$setting->setting_facebook}}">@if($Settings->isEmpty()) @else
+                                                    {{$setting->setting_nombre}} @endif</a></dd>
                                             <dt>WWW</dt>
-                                            <dd><a href="#">untitled.tld</a></dd>
+                                            <dd><a href="#">@if($Settings->isEmpty()) @else
+                                                    {{$setting->setting_url}} @endif</a></dd>
                                             <dt>Email</dt>
-                                            <dd><a href="#">user@untitled.tld</a></dd>
+                                            <dd><a href="#">@if($Settings->isEmpty()) @else
+                                                    {{$setting->setting_contacto}} @endif</a></dd>
                                         </dl>
                                     </div>
                                     <div class="col-6 col-12-small">
@@ -711,7 +732,7 @@
                                             </dd>
                                             <dt>Telefono</dt>
                                             <dd class="text-white">@if($Settings->isEmpty()) @else
-                                                {{$setting->setting_contacto}} @endif</dd>
+                                                {{$setting->setting_telefono}} @endif</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -728,6 +749,117 @@
                 </div>
 
             </footer>
+            <!-- Modal Privacidad-->
+            <div class="modal fade" id="modal_privacidad" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Politica de Privacidad</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="card text-left">
+                                    <div class="card-body">
+                                        <h4 class="card-title">POLÍTICA DE PRIVACIDAD
+                                        </h4>
+                                        <p class="card-text"> El presente Política de Privacidad establece los términos
+                                            en que usa y protege la información que es proporcionada por sus usuarios al
+                                            momento de utilizar su sitio web. Esta compañía está comprometida con la
+                                            seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos
+                                            de información personal con la cual usted pueda ser identificado, lo hacemos
+                                            asegurando que sólo se empleará de acuerdo con los términos de este
+                                            documento. Sin embargo esta Política de Privacidad puede cambiar con el
+                                            tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar
+                                            continuamente esta página para asegurarse que está de acuerdo con dichos
+                                            cambios.
+
+                                            Información que es recogida
+
+                                            Nuestro sitio web podrá recoger información personal por ejemplo: Nombre,
+                                            información de contacto como su dirección de correo electrónica e
+                                            información demográfica. Así mismo cuando sea necesario podrá ser requerida
+                                            información específica para procesar algún pedido o realizar una entrega o
+                                            facturación.
+
+                                            Uso de la información recogida
+
+                                            Nuestro sitio web emplea la información con el fin de proporcionar el mejor
+                                            servicio posible, particularmente para mantener un registro de usuarios, de
+                                            pedidos en caso que aplique, y mejorar nuestros productos y servicios. Es
+                                            posible que sean enviados correos electrónicos periódicamente a través de
+                                            nuestro sitio con ofertas especiales, nuevos productos y otra información
+                                            publicitaria que consideremos relevante para usted o que pueda brindarle
+                                            algún beneficio, estos correos electrónicos serán enviados a la dirección
+                                            que usted proporcione y podrán ser cancelados en cualquier momento.
+
+                                            está altamente comprometido para cumplir con el compromiso de mantener su
+                                            información segura. Usamos los sistemas más avanzados y los actualizamos
+                                            constantemente para asegurarnos que no exista ningún acceso no autorizado.
+
+                                            Cookies
+
+                                            Una cookie se refiere a un fichero que es enviado con la finalidad de
+                                            solicitar permiso para almacenarse en su ordenador, al aceptar dicho fichero
+                                            se crea y la cookie sirve entonces para tener información respecto al
+                                            tráfico web, y también facilita las futuras visitas a una web recurrente.
+                                            Otra función que tienen las cookies es que con ellas las web pueden
+                                            reconocerte individualmente y por tanto brindarte el mejor servicio
+                                            personalizado de su web.
+
+                                            Nuestro sitio web emplea las cookies para poder identificar las páginas que
+                                            son visitadas y su frecuencia. Esta información es empleada únicamente para
+                                            análisis estadístico y después la información se elimina de forma
+                                            permanente. Usted puede eliminar las cookies en cualquier momento desde su
+                                            ordenador. Sin embargo las cookies ayudan a proporcionar un mejor servicio
+                                            de los sitios web, estás no dan acceso a información de su ordenador ni de
+                                            usted, a menos de que usted así lo quiera y la proporcione directamente, .
+                                            Usted puede aceptar o negar el uso de cookies, sin embargo la mayoría de
+                                            navegadores aceptan cookies automáticamente pues sirve para tener un mejor
+                                            servicio web. También usted puede cambiar la configuración de su ordenador
+                                            para declinar las cookies. Si se declinan es posible que no pueda utilizar
+                                            algunos de nuestros servicios.
+
+                                            Enlaces a Terceros
+
+                                            Este sitio web pudiera contener en laces a otros sitios que pudieran ser de
+                                            su interés. Una vez que usted de clic en estos enlaces y abandone nuestra
+                                            página, ya no tenemos control sobre al sitio al que es redirigido y por lo
+                                            tanto no somos responsables de los términos o privacidad ni de la protección
+                                            de sus datos en esos otros sitios terceros. Dichos sitios están sujetos a
+                                            sus propias políticas de privacidad por lo cual es recomendable que los
+                                            consulte para confirmar que usted está de acuerdo con estas.
+
+                                            Control de su información personal
+
+                                            En cualquier momento usted puede restringir la recopilación o el uso de la
+                                            información personal que es proporcionada a nuestro sitio web. Cada vez que
+                                            se le solicite rellenar un formulario, como el de alta de usuario, puede
+                                            marcar o desmarcar la opción de recibir información por correo electrónico.
+                                            En caso de que haya marcado la opción de recibir nuestro boletín o
+                                            publicidad usted puede cancelarla en cualquier momento.
+
+                                            Esta compañía no venderá, cederá ni distribuirá la información personal que
+                                            es recopilada sin su consentimiento, salvo que sea requerido por un juez con
+                                            un orden judicial.
+
+                                            Se reserva el derecho de cambiar los términos de la presente Política de
+                                            Privacidad en cualquier momento.</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         @if($Promocion->isEmpty()) @else
         <script>
@@ -735,28 +867,43 @@
         </script>
         @endif
 
+        <div class="overlay"></div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+                $('#dismiss, .overlay').on('click', function() {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').removeClass('active');
+                });
+                $('#sidebarCollapse').on('click', function() {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').addClass('active');
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+            // $('#smartcart').smartCart();
+        </script>
+        <script type="text/javascript">
+            $('#smartcart').smartCart();
+        </script>
+
     </div>
-    <div class="overlay"></div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-            $('#dismiss, .overlay').on('click', function() {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-        // $('#smartcart').smartCart();
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
     </script>
-    <script type="text/javascript">
-        $('#smartcart').smartCart();
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
+    </script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
     </script>
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -773,65 +920,6 @@
     <!-- jQuery Custom Scroller CDN -->
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
-    <div class="overlay"></div>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-            $('#dismiss, .overlay').on('click', function() {
-                $('#sidebar').removeClass('active');
-                $('.overlay').removeClass('active');
-            });
-            $('#sidebarCollapse').on('click', function() {
-                $('#sidebar').addClass('active');
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-        // $('#smartcart').smartCart();
-    </script>
-    <script type="text/javascript">
-        $('#smartcart').smartCart();
-    </script>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-    </script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-    </script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#sidebar").mCustomScrollbar({
-                theme: "minimal"
-            });
-            $('#dismiss, .overlay').on('click', function() {
-                // hide sidebar
-                $('#sidebar').removeClass('active');
-                // hide overlay
-                $('.overlay').removeClass('active');
-            });
-            $('#sidebarCollapse').on('click', function() {
-                // open sidebar
-                $('#sidebar').addClass('active');
-                // fade in the overlay
-                $('.overlay').addClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
     </script>
     <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
@@ -841,6 +929,9 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
+@else
+
+@endif
 @endif
 
 </html>

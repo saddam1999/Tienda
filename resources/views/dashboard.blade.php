@@ -42,7 +42,7 @@
     <!--Floating WhatsApp javascript-->
     <script type="text/javascript"
         src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
-    </script>
+
     <style>
         @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css);
 
@@ -550,6 +550,7 @@
                 </div>
             </div>
 
+
             <div class="tab-pane fade" id="prueba" role="tabpanel" aria-labelledby="prueba-tab">...</div>
         </div>
         <div class="tab-pane fade show " id="servicios" role="tabpanel" aria-labelledby="servicios-tab">
@@ -907,7 +908,7 @@
                                                                             <label for="setting_logo">Logo del Negocio/
                                                                                 Empresa</label>
                                                                             <input class="form-control" type="text"
-                                                                                name="setting_logo" id="setting_logo" 
+                                                                                name="setting_logo" id="setting_logo"
                                                                                 value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif"
                                                                                 required>
                                                                         </div>
@@ -923,7 +924,7 @@
                                                                         name="setting_descripcion" id="setting_descripcion"
                                                                         cols="30"
                                                                         rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
-                                                                <label for="setting_contacto">Contacto del Negocio/
+                                                                <label for="setting_contacto">Correo del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text"
                                                                     name="setting_contacto" id="setting_contacto"
@@ -967,13 +968,13 @@
                                                                           <div class="form-check form-check-inline">
                                                                             <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template3.png" @if($Settings->isEmpty())  @else @if($setting->setting_plantilla=='../images/template3.png') checked @endif   @endif disabled>
                                                                             <label class="form-check-label" for="inlineRadio3" >Template 3 (Premiun version)</label>
-                                                                          </div>       
+                                                                          </div>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <img  name="template" id="template" class="m-auto border border-secondary shadow-lg" style="border-radius: 10px;" src="@if($Settings->isEmpty()) @else {{$setting->setting_plantilla}}@endif" alt="">
                                                                     </div>
                                                                 </div>
-       
+
 
                                                                 <label for="setting_rfc">RFC del Negocio/
                                                                     Empresa</label>
@@ -981,6 +982,21 @@
                                                                     name="setting_rfc" id="setting_rfc"
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_rfc}}@endif"
                                                                     required>
+
+                                                                    <label for="setting_rfc">FaceBook
+                                                                        Empresa</label>
+                                                                    <input class="form-control" type="text"
+                                                                        name="setting_facebook" id="setting_facebook"
+                                                                        value="@if($Settings->isEmpty()) @else {{$setting->setting_facebook}}@endif"
+                                                                        required>
+
+                                                                        <label for="setting_rfc">Twitter
+                                                                            Empresa</label>
+                                                                        <input class="form-control" type="text"
+                                                                            name="setting_twitter" id="setting_twitter"
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_twitter}}@endif"
+                                                                            required>
+
                                                                 <label for="setting_banner">Banner del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text"
@@ -1130,7 +1146,7 @@
                                                                     required>
 
                                                                 <label for="fecha_inicio">Fecha Inicio Promocion</label>
-                                                                <input class="form-control" 
+                                                                <input class="form-control"
                                                                     type="date" name="fecha_inicio" id="fecha_inicio"
                                                                     value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}}@endif"
                                                                     >
@@ -1179,17 +1195,16 @@
                     border-radius: 40px 10px;">
                         <div class="card text-left">
                             <div class="card-body">
-                                <h4 class="card-title">Equipos a Reparar Sucursal @foreach ($Sucursal as $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif @endforeach</h4>
-                                <table class="table table-striped table-inverse table-responsive display nowrap" id="tabletaller">
+                                <h4 class="card-title">Equipos a Reparar Sucursal @foreach ($Sucursal as
+                                    $sucursal)@if($sucursal->id==Auth::user()->id_sucursal) {{$sucursal->nombre}} @endif
+                                    @endforeach</h4>
+                                <table class="table table-striped table-inverse table-responsive display nowrap"
+                                    id="tabletaller">
                                     <thead class="thead-inverse">
                                         <tr>
-                                            <th>#</th>
+                                            <th>Info</th>
                                             <th>Tecnico</th>
                                             <th>Cliente</th>
-                                            <th>Serial</th>
-                                            <th>IMEI</th>
-                                            <th>Captura</th>
-                                            <th>Comentario</th>
                                             <th>Fecha Recibido</th>
                                             <th>Fecha Entrega</th>
                                             <th>Status</th>
@@ -1203,7 +1218,48 @@
                                         @if($equipo->id_sucursal==Auth::user()->id_sucursal)
 
                                         <tr>
-                                            <td>{{$equipo->id}}</td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target="#modal_info"
+                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                    data-presupuesto="{{$equipo->presupuesto}}"
+                                                    data-inversion="{{$equipo->inversion}}"
+                                                    data-id_servicio="{{$equipo->id_servicio}}"
+                                                    data-precio="{{$equipo->precio}}"
+                                                    data-id_sucursal="{{Auth::user()->id_sucursal}}"
+                                                    data-id_user="{{$equipo->id_user}}"
+                                                    data-id_cliente="{{$equipo->id_cliente}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-id_captura="{{$equipo->id_captura}}"
+                                                    data-id_comentario="{{$equipo->id_comentario}}"
+                                                    data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                                    data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                                    data-status="{{$equipo->status}}"
+                                                    data-tiene_camara="{{$equipo->Tiene_Camara}}"
+                                                    data-centro_carga="{{$equipo->Centro_Carga}}"
+                                                    data-señal="{{$equipo->Señal}}"
+                                                    data-lectorsd="{{$equipo->LectorSD}}"
+                                                    data-altavoz="{{$equipo->AltaVoz}}"
+                                                    data-botonhome="{{$equipo->BotonHome}}"
+                                                    data-microfono="{{$equipo->Microfono}}"
+                                                    data-lector_sim="{{$equipo->Lector_SIM}}"
+                                                    data-volumenplus="{{$equipo->Volumenplus}}"
+                                                    data-volumenless="{{$equipo->Volumenless}}"
+                                                    data-encendido="{{$equipo->Encendido}}"
+                                                    data-auricular="{{$equipo->Auricular}}"
+                                                    data-touch="{{$equipo->Touch}}" data-bateria="{{$equipo->Bateria}}"
+                                                    data-enciende="{{$equipo->Enciende}}"
+                                                    data-memoria="{{$equipo->Memoria}}" data-sim="{{$equipo->SIM}}"
+                                                    data-golpes="{{$equipo->Golpes}}"
+                                                    data-tiene_bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
+                                                        height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle"
+                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                    </svg></a>
+
+                                            </td>
                                             @foreach ($Usuario as $user)
                                             @if($user->id==$equipo->id_user)
                                             <td>{{$user->name}}</td>
@@ -1214,12 +1270,6 @@
                                             <td>{{$user->name}}</td>
                                             @endif
                                             @endforeach
-                                            <td>{{$equipo->serial}} {{$equipo->id_pago}}</td>
-                                            <td>{{$equipo->imei}}</td>
-                                            <td><img class="thumbnail zoom" style="border-radius:10px;"
-                                                    src="./fotos/{{$equipo->id_captura}}" alt=""></td>
-                                            <td><textarea class="border border-dark" name="" id="" cols="auto"
-                                                    rows="auto" disabled>{{$equipo->id_comentario}}</textarea></td>
 
                                             <td><input class="text-secondary" type="date"
                                                     value="{{$equipo->fecha_recibido}}"></td>
@@ -1247,7 +1297,10 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="" @if($equipo->status==2) class="btn btn-danger" @endif @if($equipo->status==6) class="btn btn-secondary" @endif  class="btn btn-dark" data-id="{{$equipo->id}}"
+                                                <a href="" @if($equipo->status==2) class="btn btn-danger" @endif
+                                                    @if($equipo->status==6)
+                                                    class="btn btn-secondary" @endif class="btn btn-dark"
+                                                    data-id="{{$equipo->id}}"
                                                     data-status="{{$equipo->status}}" data-pago="{{$equipo->pago}}"
                                                     data-toggle="modal" data-target="#modal_status">
                                                     @if($equipo->status==0)
@@ -1411,8 +1464,9 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="/imprimir/id={{$equipo->id}}&csrf={{ csrf_token() }}" target="_blank"
-                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                                <a href="/imprimir/id={{$equipo->id}}&csrf={{ csrf_token() }}"
+                                                    target="_blank" data-id="{{$equipo->id}}"
+                                                    data-pago="{{$equipo->pago}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"

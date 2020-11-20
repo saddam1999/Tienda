@@ -415,3 +415,11 @@ if it's not present, don't show loader */
             background-color: var(--select-arrow);
             clip-path: polygon(100% 0%, 0 0%, 50% 100%);
         }
+        
+        .info {
+            display: none;
+        }
+        
+        .show {
+            display: block;
+        }

@@ -49,6 +49,8 @@ class ControllerSettings extends Controller
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->setting_iva=$request->get('setting_iva');
         $settings->setting_plantilla=$request->get('setting_plantilla');
+        $settings->setting_twitter=$request->get('setting_twitter');
+        $settings->setting_facebook=$request->get('setting_facebook');
         $settings->setting_descuento_1=$request->get('setting_descuento_1');
         $settings->setting_descuento_2=$request->get('setting_descuento_2');
         $settings->setting_descuento_3=$request->get('setting_descuento_3');
@@ -102,6 +104,8 @@ class ControllerSettings extends Controller
         $settings->setting_plantilla=$request->get('setting_plantilla');
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->setting_iva=$request->get('setting_iva');
+        $settings->setting_twitter=$request->get('setting_twitter');
+        $settings->setting_facebook=$request->get('setting_facebook');
         $settings->setting_descuento_1=$request->get('setting_descuento_1');
         $settings->setting_descuento_2=$request->get('setting_descuento_2');
         $settings->setting_descuento_3=$request->get('setting_descuento_3');
