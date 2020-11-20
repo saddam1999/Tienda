@@ -41,8 +41,8 @@
     <!-- Footer Elements -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-1 text-white">© 2020 Copyright:
-        <a class="text-white"href="https://hollyrenew.website/"> HollyDev</a>
+    <div class="footer-copyright text-center py-1 text-white">©Holly Store Pro Copyright 2020 :
+        <a class="text-white"href="https://hollyrenew.website/"> Desarrolado por HollyDev</a>
     </div>
     <!-- Copyright -->
 

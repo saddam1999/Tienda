@@ -48,6 +48,7 @@ class ControllerSettings extends Controller
         $settings->setting_telefono=$request->get('setting_telefono');
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->setting_iva=$request->get('setting_iva');
+        $settings->setting_plantilla=$request->get('setting_plantilla');
         $settings->setting_descuento_1=$request->get('setting_descuento_1');
         $settings->setting_descuento_2=$request->get('setting_descuento_2');
         $settings->setting_descuento_3=$request->get('setting_descuento_3');
@@ -98,6 +99,7 @@ class ControllerSettings extends Controller
         $settings->setting_contacto=$request->get('setting_contacto');
         $settings->setting_url=$request->get('setting_url');
         $settings->setting_telefono=$request->get('setting_telefono');
+        $settings->setting_plantilla=$request->get('setting_plantilla');
         $settings->setting_moneda=$request->get('setting_moneda');
         $settings->setting_iva=$request->get('setting_iva');
         $settings->setting_descuento_1=$request->get('setting_descuento_1');

@@ -704,7 +704,6 @@
         });
     });
 </script>
-
 <script>
     $(document).ready(function() {
         $(".se-pre-con").fadeOut("slow");
@@ -806,6 +805,13 @@ $(document).ready(function(){
         }).render('#paypal-button-container');
     }
     //This function displays Smart Payment Buttons on your web page.
+</script>
+<script>
+    $(document).ready(function(){
+        $('#setting_plantilla').change(function(){
+            //$("#template").attr("src",'{{$setting->setting_template}}');
+        });
+    });
 </script>
 
 @section('scripts')

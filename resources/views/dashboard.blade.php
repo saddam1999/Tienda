@@ -902,12 +902,27 @@
                                                                     name="setting_telefono" id="setting_telefono"
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_telefono}}@endif"
                                                                     required>
-                                                                <label for="setting_logo">Logo del Negocio/
-                                                                    Empresa</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="setting_logo" id="setting_logo"
-                                                                    value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif"
-                                                                    required>
+                                                                    <div class="row mt-2">
+                                                                        <div class="col-md-6">
+                                                                            <label for="setting_logo">Logo del Negocio/
+                                                                                Empresa</label>
+                                                                            <input class="form-control" type="text"
+                                                                                name="setting_logo" id="setting_logo" 
+                                                                                value="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <img  class="m-auto border border-secondary shadow-lg" style="border-radius: 10px;" width="auto" height="auto" src="@if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" alt="">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <label for="setting_descripcion">Texto del Banner
+                                                                        Negocio/
+                                                                        Empresa en la pagina principal</label>
+                                                                    <textarea class="form-control"
+                                                                        name="setting_descripcion" id="setting_descripcion"
+                                                                        cols="30"
+                                                                        rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
                                                                 <label for="setting_contacto">Contacto del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text"
@@ -920,16 +935,10 @@
                                                                     name="setting_abierto" id="setting_abierto"
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}@endif"
                                                                     required>
-                                                                <label for="setting_descripcion">Descripcion del
-                                                                    Negocio/
-                                                                    Empresa</label>
-                                                                <textarea class="form-control"
-                                                                    name="setting_descripcion" id="setting_descripcion"
-                                                                    cols="30"
-                                                                    rows="3">@if($Settings->isEmpty()) @else {{$setting->setting_descripcion}}@endif</textarea>
+
                                                                 <label for="setting_moneda">Selecciona la moneda que
-                                                                    requieres:</label>
-                                                                <select class="form-control" name="setting_moneda"
+                                                                    requieres:@if($Settings->isEmpty()) @else {{$setting->setting_moneda}}@endif</label>
+                                                                <select class="form-control" name="setting_moneda" id="setting_moneda"
                                                                     value="@if($Settings->isEmpty()) @else {{$setting->setting_moneda}}@endif"
                                                                     required>
                                                                     <option class="form-control" value="Dollar">Dolar
@@ -944,6 +953,28 @@
                                                                     <option class="form-control" value="Rupia">Rupia
                                                                     </option>
                                                                 </select>
+                                                                <div class="row mt-2">
+                                                                    <div class="col-md-6">
+                                                                        <label for="setting_plantilla">Selecciona Plantilla pagina Principal:</label> <br>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template1.png"   @if($Settings->isEmpty()) @else @if($setting->setting_plantilla=='../images/template1.png')  checked @endif   @endif >
+                                                                            <label class="form-check-label" for="setting_plantilla">Template 1</label>
+                                                                          </div>
+                                                                          <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template2.png" @if($Settings->isEmpty())  @else @if($setting->setting_plantilla=='../images/template2.png') checked @endif   @endif disabled>
+                                                                            <label class="form-check-label" for="setting_plantilla" >Template 2 (Premiun version)</label>
+                                                                          </div>
+                                                                          <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template3.png" @if($Settings->isEmpty())  @else @if($setting->setting_plantilla=='../images/template3.png') checked @endif   @endif disabled>
+                                                                            <label class="form-check-label" for="inlineRadio3" >Template 3 (Premiun version)</label>
+                                                                          </div>       
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <img  name="template" id="template" class="m-auto border border-secondary shadow-lg" style="border-radius: 10px;" src="@if($Settings->isEmpty()) @else {{$setting->setting_plantilla}}@endif" alt="">
+                                                                    </div>
+                                                                </div>
+       
+
                                                                 <label for="setting_rfc">RFC del Negocio/
                                                                     Empresa</label>
                                                                 <input class="form-control" type="text"
@@ -1099,16 +1130,16 @@
                                                                     required>
 
                                                                 <label for="fecha_inicio">Fecha Inicio Promocion</label>
-                                                                <input class="form-control" data-provide="datepicker"
+                                                                <input class="form-control" 
                                                                     type="date" name="fecha_inicio" id="fecha_inicio"
                                                                     value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_inicio}}@endif"
-                                                                    required>
+                                                                    >
 
                                                                 <label for="fecha_final">Fecha Final Promocion</label>
-                                                                <input class="form-control" data-provide="datepicker"
+                                                                <input class="form-control"
                                                                     type="date" name="fecha_final" id="fecha_final"
                                                                     value="@if($Promocion->isEmpty()) @else {{$promocion->fecha_final}}@endif"
-                                                                    required>
+                                                                    >
 
                                                                 <button type="submit" data-backdrop="static"
                                                                     data-keyboard="false"
@@ -1621,7 +1652,6 @@
             </div>
         </div>
         <div class="se-pre-con"></div>
-
         <div id="WAButton"></div>
 </x-app-layout>
 @extends('footer')

@@ -14,7 +14,6 @@ class TableUsuarioSeeder extends Seeder
     public function run()
     {
 
-
   
         $User=  new \App\Models\User;
         $User->name="Napoleon";

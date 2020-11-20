@@ -171,7 +171,7 @@
                                             <span class="input-group-text">Upload</span>
                                         </div>
                                         <input class="form-control" type="file" name="imagena" name="imagena"
-                                            accept-charset="UTF-8" enctype="multipart/form-data" required>
+                                            accept-charset="UTF-8" enctype="multipart/form-data" >
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -2063,7 +2063,4 @@
 <script type="text/javascript">
 </script>
 
-
-
 @section('modal')
-
