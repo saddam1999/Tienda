@@ -1,6 +1,6 @@
 <!-- Footer -->
 
-<footer class="page-footer font-small bg-dark text-white rounded"
+<footer class="page-footer font-small bg-dark text-white rounded fixed-bottom"
     style="background-image: url('../img/backgrounds.jpeg');">
     <!-- Footer Elements -->
     <div class="container">
@@ -11,7 +11,6 @@
             <!-- Grid column -->
             <div class="col-md-12 py-2">
                 <div class="flex-center">
-
                     <!-- Facebook -->
                     <a class="fb-ic text-white">
                         <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>

@@ -959,7 +959,7 @@
                                                                         <label for="setting_plantilla">Selecciona Plantilla pagina Principal:</label> <br>
                                                                         <div class="form-check form-check-inline">
                                                                             <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template1.png"   @if($Settings->isEmpty()) @else @if($setting->setting_plantilla=='../images/template1.png')  checked @endif   @endif >
-                                                                            <label class="form-check-label" for="setting_plantilla">Template 1</label>
+                                                                            <label class="form-check-label" for="setting_plantilla" selected>Template 1</label>
                                                                           </div>
                                                                           <div class="form-check form-check-inline">
                                                                             <input class="form-check-input" type="radio" name="setting_plantilla" id="setting_plantilla" value="../images/template2.png" @if($Settings->isEmpty())  @else @if($setting->setting_plantilla=='../images/template2.png') checked @endif   @endif disabled>
@@ -1025,7 +1025,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="setting_descuento_1"
                                                                             id="setting_descuento_1"
-                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_1}} @endif ">
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_1}} @endif " disabled>
                                                                     </div>
                                                                 </div>
                                                                 <label for="setting_descuento_2">Descuento 2</label>
@@ -1035,7 +1035,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="setting_descuento_2"
                                                                             id="setting_descuento_2"
-                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_2}} @endif">
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_2}} @endif" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <label for="setting_descuento_3">Descuento 3</label>
@@ -1045,7 +1045,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="setting_descuento_3"
                                                                             id="setting_descuento_3"
-                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_3}} @endif">
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_3}} @endif" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <label for="setting_descuento_4">Descuento 4</label>
@@ -1055,7 +1055,7 @@
                                                                         <input type="text" class="form-control"
                                                                             name="setting_descuento_4"
                                                                             id="setting_descuento_4"
-                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_4}} @endif">
+                                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_descuento_4}} @endif" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <button type="submit" data-backdrop="static"
