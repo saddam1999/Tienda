@@ -8,7 +8,6 @@
 @extends('scriptswelcome')
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <title>@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif</title>
     <meta charset="utf-8" />
@@ -524,9 +523,7 @@
                                     @endforeach
 
                         </section>
-
                     </section>
-
                 </div>
             </div>
             <div class="wrapper style3">
