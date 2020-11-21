@@ -704,6 +704,8 @@
         });
     });
 </script>
+<!--carga -->
+
 <script>
     $(document).ready(function() {
         $(".se-pre-con").fadeOut("slow");
@@ -712,10 +714,9 @@
 
 <script>
 //    $('.toast').toast('show');
-
 </script>
 
-
+<!--tablas -->
 <script>
 $(document).ready(function(){
   $('#tableventas').dataTable();
@@ -732,6 +733,7 @@ $(document).ready(function(){
 });
 
 </script>
+<!--whatsapp -->
 <script type="text/javascript">
     $(function () {
             $('#WAButton').floatingWhatsApp({
@@ -747,6 +749,10 @@ $(document).ready(function(){
             });
         });
  </script>
+
+
+
+<!--modal paypal -->
 
 <script>
     $.ajaxSetup({
@@ -806,7 +812,7 @@ $(document).ready(function(){
     }
     //This function displays Smart Payment Buttons on your web page.
 </script>
-
+<!--modal info -->
 <script>
     $('#modal_info').on('show.bs.modal', function(e) {
 

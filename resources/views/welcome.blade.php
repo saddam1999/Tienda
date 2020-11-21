@@ -1,8 +1,12 @@
-<!DOCTYPE HTML>
 @foreach ($Settings as $setting)
 @endforeach
 @foreach ($Promocion as $promocion)
 @endforeach
+@if($Settings->isEmpty()) @else
+@if($setting->setting_plantilla=='../images/template1.png')
+@extends('modalwelcome')
+@extends('scriptswelcome')
+<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -25,6 +29,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!--Floating WhatsApp css-->
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
+    <!--Floating WhatsApp javascript-->
+    <script type="text/javascript"
+        src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
+    </script>
 
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -33,10 +44,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
     </script>
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 
-    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <style>
         ul.gallery {
@@ -202,22 +210,8 @@
         }
     </style>
 </head>
-<div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-        <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
-        <strong class="mr-auto">@if($Promocion->isEmpty()) @else {{$promocion->titulo}} @endif</strong>
-        <small class="text-muted">hace 11 minutos</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="toast-body">
-        <p>@if($Promocion->isEmpty()) @else {{$promocion->titulo_banner_principal}} @endif
-        </p>
-    </div>
-</div>
-@if($Settings->isEmpty()) @else
-@if($setting->setting_plantilla=='../images/template1.png')
+<div class="se-pre-con"></div>
+@extends('toast')
 
 <body class="homepage is-preload">
     <div id="page-wrapper">
@@ -225,7 +219,6 @@
         <div id="header-wrapper"
             style="background-image: url('@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif'); ">
             <div class="container">
-
                 <!-- Header -->
                 <header id="header">
                     <div class="inner">
@@ -244,12 +237,13 @@
                         <nav id="nav">
                             <ul>
                                 <li class="current_page_item"><a href="/">Home</a></li>
-                                <!--
+
                                 <li>
-                                    <a href="#">Dropdown</a>
+                                    <a href="#">Revision</a>
                                     <ul>
-                                        <li><a href="#">Lorem ipsum dolor</a></li>
-                                        <li><a href="#">Magna phasellus</a></li>
+                                        <li><a class="bg-dark text-white" href="#">Status de mi Equipo</a></li>
+                                        <li><a class="bg-dark text-white" href="#">Pedir una Reparacion</a></li>
+                                        <!--
                                         <li>
                                             <a href="#">Phasellus consequat</a>
                                             <ul>
@@ -259,9 +253,10 @@
                                                 <li><a href="#">Etiam dolore nisl</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">Veroeros feugiat</a></li>
+                                        <li><a href="#">Veroeros feugiat</a></li>-->
                                     </ul>
                                 </li>
+                                <!--
                                 <li><a href="left-sidebar.html">Left Sidebar</a></li>
                                 <li><a href="right-sidebar.html">Right Sidebar</a></li>-->
                                 <li>
@@ -282,12 +277,15 @@
                             </ul>
                             <div class="wrapper">
                                 <!-- Sidebar  -->
-                                <nav  class="sticky-top shadow-lg "  id="sidebar" style="background-color:white; opacity:95%; border-radius:20px;">
+                                <nav class="sticky-top shadow-lg " id="sidebar"
+                                    style="background-color:white; opacity:95%; border-radius:20px;">
                                     <div id="dismiss" class="mt-5">
                                         <i class="fas fa-arrow-left"></i>
                                     </div>
                                     <form action="results.php" method="POST">
-                                        <div class="sidebar-header text-dark" style="background-color:white; color:dark; border-radius:20px; " id="smartcart">
+                                        <div class="sidebar-header text-dark"
+                                            style="background-color:white; color:dark; border-radius:20px; "
+                                            id="smartcart">
                                             <h3 class="text-dark"><br> Carrito</h3>
                                             <!-- SmartCart element -->
                                     </form>
@@ -302,8 +300,7 @@
                 <div id="banner">
                     <h2><strong>@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif</strong>
                         <br />
-                        <a href="@if($Settings->isEmpty()) @else {{$setting->setting_url}}@endif"
-                            class="button large icon solid fa-check-circle">Bienvenido</a>
+                        <a href="#" class="button large icon solid fa-check-circle">Hola</a>
                 </div>
 
             </div>
@@ -329,11 +326,9 @@
                                     <a href="#" class="image featured"><img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif"
                                             alt="" /></a>
-                                    <header class="second icon solid fa-user">
-                                        <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h3>
-                                        <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
-                                            {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
-                                    </header>
+                                    <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h3>
+                                    <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
+                                        {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                                 </section>
                             </div>
                             <div class="col-4 col-12-medium">
@@ -341,11 +336,9 @@
                                     <a href="#" class="image featured"><img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannerb}} @endif"
                                             alt="" /></a>
-                                    <header class="second icon solid fa-cog">
-                                        <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h3>
-                                        <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
-                                            {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
-                                    </header>
+                                    <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h3>
+                                    <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
+                                        {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                                 </section>
                             </div>
                             <div class="col-4 col-12-medium">
@@ -353,11 +346,9 @@
                                     <a href="#" class="image featured"><img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannerc}} @endif"
                                             alt="" /></a>
-                                    <header class="second icon solid fa-chart-bar">
-                                        <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerc}} @endif</h3>
-                                        <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
-                                            {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
-                                    </header>
+                                    <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerc}} @endif</h3>
+                                    <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
+                                        {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                                 </section>
                             </div>
 
@@ -446,19 +437,21 @@
 
                     <!-- Feature 2 -->
                     <section class="container box feature2">
-
                         <section>
-                            <!-- Marketing messaging and featurettes
+                         <!-- Marketing messaging and featurettes
 ================================================== -->
                             <!-- Wrap the rest of the page in another container to center all the content. -->
-
                             <div class="container marketing">
-
                                 <div class="row">
                                     <!-- BEGIN PRODUCTS -->
                                     @foreach ($Articulo as $producto)
                                     @if($producto->descuento!=0)
                                     <div class="col-md-4" style="border-radius:10px;">
+                                        <div class="alert alert-warning" role="alert">
+                                            <h4 class="alert-heading"> @if($Promocion->isEmpty()) @else
+                                                {{$promocion->titulo}} @endif</h4>
+
+                                        </div>
                                         <!-- bbb_deals -->
                                         <div class="bbb_deals sc-product-item" style="border-radius:40px;">
                                             @if($producto->descuento!=0)
@@ -624,7 +617,7 @@
                                             procedimientos difíciles. No es necesario ejecutar ningún software
                                             complicado.</p>
                                         <footer>
-                                            <a href="#" class="button alt icon solid fa-file-alt">Continuar leyendo</a>
+                                            <a href="#" class="button alt icon solid fa-file-alt">Mas</a>
                                         </footer>
                                     </article>
                                 </section>
@@ -699,7 +692,7 @@
                                 proporcionará información sobre las medidas de seguridad del proceso de recopilación de
                                 datos.</p>
                             <a href="#" data-toggle="modal" data-target="#modal_privacidad"
-                                class="button alt icon solid fa-arrow-circle-right">Learn More</a>
+                                class="button alt icon solid fa-arrow-circle-right">Mas</a>
                         </section>
 
                         <!-- Contact -->
@@ -722,18 +715,19 @@
                                             <dt>Email</dt>
                                             <dd><a href="#">@if($Settings->isEmpty()) @else
                                                     {{$setting->setting_contacto}} @endif</a></dd>
+                                            <dl class="contact">
+                                                <dt>Direccion</dt>
+                                                <dd class="text-white">@if($Settings->isEmpty()) @else
+                                                    {{$setting->setting_direccion}} @endif
+                                                </dd>
+                                                <dt>Telefono</dt>
+                                                <dd class="text-white">@if($Settings->isEmpty()) @else
+                                                    {{$setting->setting_telefono}} @endif</dd>
+                                            </dl>
                                         </dl>
-                                    </div>
+                                    </div><br><br>
                                     <div class="col-6 col-12-small">
-                                        <dl class="contact">
-                                            <dt>Direccion</dt>
-                                            <dd class="text-white">@if($Settings->isEmpty()) @else
-                                                {{$setting->setting_direccion}} @endif
-                                            </dd>
-                                            <dt>Telefono</dt>
-                                            <dd class="text-white">@if($Settings->isEmpty()) @else
-                                                {{$setting->setting_telefono}} @endif</dd>
-                                        </dl>
+
                                     </div>
                                 </div>
                             </div>
@@ -749,188 +743,13 @@
                 </div>
 
             </footer>
-            <!-- Modal Privacidad-->
-            <div class="modal fade" id="modal_privacidad" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Politica de Privacidad</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container-fluid">
-                                <div class="card text-left">
-                                    <div class="card-body">
-                                        <h4 class="card-title">POLÍTICA DE PRIVACIDAD
-                                        </h4>
-                                        <p class="card-text"> El presente Política de Privacidad establece los términos
-                                            en que usa y protege la información que es proporcionada por sus usuarios al
-                                            momento de utilizar su sitio web. Esta compañía está comprometida con la
-                                            seguridad de los datos de sus usuarios. Cuando le pedimos llenar los campos
-                                            de información personal con la cual usted pueda ser identificado, lo hacemos
-                                            asegurando que sólo se empleará de acuerdo con los términos de este
-                                            documento. Sin embargo esta Política de Privacidad puede cambiar con el
-                                            tiempo o ser actualizada por lo que le recomendamos y enfatizamos revisar
-                                            continuamente esta página para asegurarse que está de acuerdo con dichos
-                                            cambios.
-
-                                            Información que es recogida
-
-                                            Nuestro sitio web podrá recoger información personal por ejemplo: Nombre,
-                                            información de contacto como su dirección de correo electrónica e
-                                            información demográfica. Así mismo cuando sea necesario podrá ser requerida
-                                            información específica para procesar algún pedido o realizar una entrega o
-                                            facturación.
-
-                                            Uso de la información recogida
-
-                                            Nuestro sitio web emplea la información con el fin de proporcionar el mejor
-                                            servicio posible, particularmente para mantener un registro de usuarios, de
-                                            pedidos en caso que aplique, y mejorar nuestros productos y servicios. Es
-                                            posible que sean enviados correos electrónicos periódicamente a través de
-                                            nuestro sitio con ofertas especiales, nuevos productos y otra información
-                                            publicitaria que consideremos relevante para usted o que pueda brindarle
-                                            algún beneficio, estos correos electrónicos serán enviados a la dirección
-                                            que usted proporcione y podrán ser cancelados en cualquier momento.
-
-                                            está altamente comprometido para cumplir con el compromiso de mantener su
-                                            información segura. Usamos los sistemas más avanzados y los actualizamos
-                                            constantemente para asegurarnos que no exista ningún acceso no autorizado.
-
-                                            Cookies
-
-                                            Una cookie se refiere a un fichero que es enviado con la finalidad de
-                                            solicitar permiso para almacenarse en su ordenador, al aceptar dicho fichero
-                                            se crea y la cookie sirve entonces para tener información respecto al
-                                            tráfico web, y también facilita las futuras visitas a una web recurrente.
-                                            Otra función que tienen las cookies es que con ellas las web pueden
-                                            reconocerte individualmente y por tanto brindarte el mejor servicio
-                                            personalizado de su web.
-
-                                            Nuestro sitio web emplea las cookies para poder identificar las páginas que
-                                            son visitadas y su frecuencia. Esta información es empleada únicamente para
-                                            análisis estadístico y después la información se elimina de forma
-                                            permanente. Usted puede eliminar las cookies en cualquier momento desde su
-                                            ordenador. Sin embargo las cookies ayudan a proporcionar un mejor servicio
-                                            de los sitios web, estás no dan acceso a información de su ordenador ni de
-                                            usted, a menos de que usted así lo quiera y la proporcione directamente, .
-                                            Usted puede aceptar o negar el uso de cookies, sin embargo la mayoría de
-                                            navegadores aceptan cookies automáticamente pues sirve para tener un mejor
-                                            servicio web. También usted puede cambiar la configuración de su ordenador
-                                            para declinar las cookies. Si se declinan es posible que no pueda utilizar
-                                            algunos de nuestros servicios.
-
-                                            Enlaces a Terceros
-
-                                            Este sitio web pudiera contener en laces a otros sitios que pudieran ser de
-                                            su interés. Una vez que usted de clic en estos enlaces y abandone nuestra
-                                            página, ya no tenemos control sobre al sitio al que es redirigido y por lo
-                                            tanto no somos responsables de los términos o privacidad ni de la protección
-                                            de sus datos en esos otros sitios terceros. Dichos sitios están sujetos a
-                                            sus propias políticas de privacidad por lo cual es recomendable que los
-                                            consulte para confirmar que usted está de acuerdo con estas.
-
-                                            Control de su información personal
-
-                                            En cualquier momento usted puede restringir la recopilación o el uso de la
-                                            información personal que es proporcionada a nuestro sitio web. Cada vez que
-                                            se le solicite rellenar un formulario, como el de alta de usuario, puede
-                                            marcar o desmarcar la opción de recibir información por correo electrónico.
-                                            En caso de que haya marcado la opción de recibir nuestro boletín o
-                                            publicidad usted puede cancelarla en cualquier momento.
-
-                                            Esta compañía no venderá, cederá ni distribuirá la información personal que
-                                            es recopilada sin su consentimiento, salvo que sea requerido por un juez con
-                                            un orden judicial.
-
-                                            Se reserva el derecho de cambiar los términos de la presente Política de
-                                            Privacidad en cualquier momento.</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-        @if($Promocion->isEmpty()) @else
-        <script>
-            $('.toast').toast('show');
-        </script>
-        @endif
-
-        <div class="overlay"></div>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
-                $('#dismiss, .overlay').on('click', function() {
-                    $('#sidebar').removeClass('active');
-                    $('.overlay').removeClass('active');
-                });
-                $('#sidebarCollapse').on('click', function() {
-                    $('#sidebar').addClass('active');
-                    $('.overlay').addClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
-            });
-            // $('#smartcart').smartCart();
-        </script>
-        <script type="text/javascript">
-            $('#smartcart').smartCart();
-        </script>
-
-    </div>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-    </script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-    </script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous">
-    </script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous">
-    </script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
-    </script>
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+        @section('scriptswelcome')
+        @show
+        @section('modalwelcome')
+        @show
 </body>
 @else
-
 @endif
 @endif
 

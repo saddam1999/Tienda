@@ -94,7 +94,6 @@
             }
         }
     </style>
-    <!-- Facebook Pixel Code -->
     <script>
         ! function(f, b, e, v, n, t, s) {
             if (f.fbq) return;
@@ -124,7 +123,6 @@
 </script>
     <img height="1" width="1"
             src="https://www.facebook.com/tr?id=3271930189583444&ev=PageView&noscript=1" /></noscript>
-    <!-- End Facebook Pixel Code -->
     <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary" id="myTab" role="tablist" style="background-color:#fff; border: none;
     border-radius: 40px;" >
         <li class="nav-item rounded face">
