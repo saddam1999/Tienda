@@ -211,7 +211,6 @@
 </head>
 <div class="se-pre-con"></div>
 @extends('toast')
-
 <body class="homepage is-preload">
     <div id="page-wrapper">
         <!-- Header -->
@@ -220,6 +219,39 @@
             <div class="container">
                 <!-- Header -->
                 <header id="header">
+                    <div class="container">
+                        <div class="header-row py-2 bg-warning text-white" style="color:#fff; border-radius:10px 10px 0px 0px;">
+                            <div class="header-column justify-content-start">
+                                <div class="header-row">
+                                    <nav class="header-nav-top" >
+                                        <ul class="nav nav-pills"  >
+                                            <li class="nav-item ml-2 mr-2" >
+                                                <a  class=" text-white strong" href="mailto:@if($Settings->isEmpty()) @else {{$setting->setting_contacto}} @endif"><i class="far fa-envelope text-white" style="top: 1px;"></i>:@if($Settings->isEmpty()) @else  {{$setting->setting_contacto}} @endif </a>
+                                            </li>
+                                            <li class="nav-item ml-2">
+                                            <a class=" text-white strong" href="tel:@if($Settings->isEmpty()) @else {{$setting->setting_telefono}} @endif"><i class="fab fa-whatsapp  text-white" style="top: 0;"></i>:@if($Settings->isEmpty()) @else  {{$setting->setting_telefono}} @endif</a>
+                                            </li>
+                                            <li class="nav-item ml-2">
+                                                <a class=" text-white strong" href="tel: @if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif"><i class="fas fa-map-marker-alt"></i>: @if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif</a>
+                                             </li>
+                                             <li class="nav-item ml-2">
+                                                <a class=" text-white strong" href="tel:@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}"@endif><i class="fab fa-algolia"></i>: @if($Settings->isEmpty()) @else {{$setting->setting_abierto}} @endif</a>
+                                             </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-end ">
+                                <div class="header-row">
+                                    <nav class="header-nav-top">
+                                    <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-icon-light">
+                                    </ul>
+                                    </nav>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <div class="inner">
 
                         <!-- Logo -->
