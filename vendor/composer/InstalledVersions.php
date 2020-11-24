@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'f14247088d3cd9d9f664a43879189eaa6e463824',
+    'reference' => '2dedbc74e5ad8e46e11e46ece155317c38623e62',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -683,7 +683,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'f14247088d3cd9d9f664a43879189eaa6e463824',
+      'reference' => '2dedbc74e5ad8e46e11e46ece155317c38623e62',
     ),
     'laravel/sanctum' => 
     array (
@@ -693,6 +693,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e',
+    ),
+    'laravel/socialite' => 
+    array (
+      'pretty_version' => 'v5.1.0',
+      'version' => '5.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '14082c665186348028e5bde17ab33b21b36dac79',
     ),
     'laravel/tinker' => 
     array (
@@ -729,6 +738,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '353f66d7555d8a90781f6f5e7091932f9a4250aa',
+    ),
+    'league/oauth1-client' => 
+    array (
+      'pretty_version' => 'v1.8.2',
+      'version' => '1.8.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '159c3d2bf27568f9af87d6c3f4bb616a251eb12b',
     ),
     'livewire/livewire' => 
     array (

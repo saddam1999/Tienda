@@ -225,7 +225,7 @@
         @foreach ($Caja as $caja)
         @if(Auth::user()->id_sucursal==$caja->id_sucursal)
         <div class="input-group-prepend bg-success" style="border-radius:12%;">
-            <span class="input-group-text face text-secondary"><a href="" data-toggle="modal"
+            <span class="input-group-text face text-secondary" style="border-radius:10px;"><a class="text-primary"href="" data-toggle="modal"
                     data-target="#modal_caja">Caja:
                     $@if($Caja->isEmpty()) @else {{$caja->corte}} @endif </a> </span>
         </div>
@@ -243,12 +243,13 @@
             }
             @endphp
             @endforeach
-            <span class="input-group-text face text-secondary"><a id="taller-tab" data-toggle="tab"
-                    href="#taller">Pendientes: {{$count}}</span></a>
-
+            <a href="#" class="input-group-text  face notification" id="taller-tab" data-toggle="tab" href="#taller" style="border-radius:10px;">
+              <span class="text-primary" >Pendientes</span>
+            <span class="badge">{{$count}}</span>
+            </a>
         </div>
         <div class="input-group-prepend bg-primary" style="border-radius:12%;">
-            <span class="input-group-text face text-secondary">        <a href="" data-toggle="modal" data-target="#modal_sms">
+            <span class="input-group-text face text-secondary" style="border-radius:10px;"><a  href="" class="text-primary"data-toggle="modal" data-target="#modal_sms">
                 SMS: {{$contador}}</span></a>
         </div>
     </ul>
@@ -1217,8 +1218,8 @@
 
                                         <tr>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target="#modal_info"
-                                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_info"
+                                            data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
                                                     data-presupuesto="{{$equipo->presupuesto}}"
                                                     data-inversion="{{$equipo->inversion}}"
                                                     data-id_servicio="{{$equipo->id_servicio}}"
@@ -1231,31 +1232,7 @@
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                                    data-status="{{$equipo->status}}"
-                                                    data-tiene_camara="{{$equipo->Tiene_Camara}}"
-                                                    data-centro_carga="{{$equipo->Centro_Carga}}"
-                                                    data-señal="{{$equipo->Señal}}"
-                                                    data-lectorsd="{{$equipo->LectorSD}}"
-                                                    data-altavoz="{{$equipo->AltaVoz}}"
-                                                    data-botonhome="{{$equipo->BotonHome}}"
-                                                    data-microfono="{{$equipo->Microfono}}"
-                                                    data-lector_sim="{{$equipo->Lector_SIM}}"
-                                                    data-volumenplus="{{$equipo->Volumenplus}}"
-                                                    data-volumenless="{{$equipo->Volumenless}}"
-                                                    data-encendido="{{$equipo->Encendido}}"
-                                                    data-auricular="{{$equipo->Auricular}}"
-                                                    data-touch="{{$equipo->Touch}}" data-bateria="{{$equipo->Bateria}}"
-                                                    data-enciende="{{$equipo->Enciende}}"
-                                                    data-memoria="{{$equipo->Memoria}}" data-sim="{{$equipo->SIM}}"
-                                                    data-golpes="{{$equipo->Golpes}}"
-                                                    data-tiene_bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em"
-                                                        height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle"
-                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                                    </svg></a>
+                                                    data-status="{{$equipo->status}}"  >Info</button>
 
                                             </td>
                                             @foreach ($Usuario as $user)
@@ -1704,7 +1681,6 @@
             </div>
         </div>
         <div class="se-pre-con"></div>
-        <div id="WAButton"></div>
 </x-app-layout>
 @extends('footer')
 @extends('scripts')

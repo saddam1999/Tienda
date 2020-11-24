@@ -423,3 +423,27 @@ if it's not present, don't show loader */
         .show {
             display: block;
         }
+        
+        .notification {
+            background-color: #555;
+            color: white;
+            text-decoration: none;
+            padding: 15px 26px;
+            position: relative;
+            display: inline-block;
+            border-radius: 2px;
+        }
+        
+        .notification:hover {
+            background: orange;
+        }
+        
+        .notification .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            padding: 5px 10px;
+            border-radius: 50%;
+            background: orange;
+            color: white;
+        }
