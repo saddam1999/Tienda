@@ -17,6 +17,7 @@
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="../css/style3.css">
+    <link href="../css/main.css" rel="stylesheet" type="text/css">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
@@ -35,7 +36,6 @@
     <script type="text/javascript"
         src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
     </script>
-
     <!-- jQuery and JS bundle w/ Popper.js -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -232,7 +232,7 @@
                                             <a class=" text-white strong" href="tel:@if($Settings->isEmpty()) @else {{$setting->setting_telefono}} @endif"><i class="fab fa-whatsapp  text-white" style="top: 0;"></i>:@if($Settings->isEmpty()) @else  {{$setting->setting_telefono}} @endif</a>
                                             </li>
                                             <li class="nav-item ml-2">
-                                                <a class=" text-white strong" href="tel: @if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif"><i class="fas fa-map-marker-alt"></i>: @if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif</a>
+                                                <a class=" text-white" href="#" data-toggle="modal" data-target="#modal_ubicacion"><i class="fas fa-map-marker-alt"></i>: @if($Settings->isEmpty()) @else {{$setting->setting_direccion}} @endif</a>
                                              </li>
                                              <li class="nav-item ml-2">
                                                 <a class=" text-white strong" href="tel:@if($Settings->isEmpty()) @else {{$setting->setting_abierto}}"@endif><i class="fab fa-algolia"></i>: @if($Settings->isEmpty()) @else {{$setting->setting_abierto}} @endif</a>
@@ -268,7 +268,6 @@
                         <nav id="nav">
                             <ul>
                                 <li class="current_page_item"><a href="/">Home</a></li>
-
                                 <li>
                                     <a href="#">Revision</a>
                                     <ul>
@@ -354,7 +353,8 @@
                             </div>
                             <div class="col-4 col-12-medium">
                                 <section>
-                                    <a href="#" class="image featured"><img
+                                    <a href="#" class="image featured">
+                                        <img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif"
                                             alt="" /></a>
                                     <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannera}} @endif</h3>
@@ -364,7 +364,8 @@
                             </div>
                             <div class="col-4 col-12-medium">
                                 <section>
-                                    <a href="#" class="image featured"><img
+                                    <a href="#" class="image featured">
+                                        <img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannerb}} @endif"
                                             alt="" /></a>
                                     <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h3>
@@ -374,7 +375,7 @@
                             </div>
                             <div class="col-4 col-12-medium">
                                 <section>
-                                    <a href="#" class="image featured"><img
+                                    <a href="#" class="image featured"> <img
                                             src="@if($Promocion->isEmpty()) @else{{$promocion->bannerc}} @endif"
                                             alt="" /></a>
                                     <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerc}} @endif</h3>
@@ -587,7 +588,8 @@
 
                                     <!-- Excerpt -->
                                     <article class="box excerpt">
-                                        <a href="#" class="image left"><img
+                                        <a href="#" class="image left">
+                                            <img
                                                 src="data:image/png;base64,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"
                                                 alt="" /></a>
                                         <div>

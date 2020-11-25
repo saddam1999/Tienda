@@ -2152,9 +2152,4 @@
     </div>
 </div>
 
-
-
-<script type="text/javascript">
-</script>
-
 @section('modal')
