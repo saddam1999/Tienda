@@ -215,7 +215,7 @@
     <div id="page-wrapper">
         <!-- Header -->
         <div id="header-wrapper"
-            style="background-image: url('@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif'); ">
+            style="border-radius:10px; background-image: url('@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif'); ">
             <div class="container">
                 <!-- Header -->
                 <header id="header">
