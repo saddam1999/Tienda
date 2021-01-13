@@ -3,7 +3,7 @@
                <script type="text/javascript">
                    (function() {
                        var options = {
-                           facebook: "1878357115573555", // Facebook page ID
+                           facebook: "460755991156675", // Facebook page ID
                            call_to_action: "En que podemos Ayudarte", // Call to action
                            position: "right", // Position may be 'right' or 'left'
                        };
@@ -24,7 +24,7 @@
                <script type="text/javascript">
                    $(function() {
                        $('#WAButton').floatingWhatsApp({
-                           phone: "5491133454999", //WhatsApp Business phone number
+                           phone: "524445705494", //WhatsApp Business phone number
                            headerTitle: 'Contactanos por Whatsapp!', //Popup Title
                            popupMessage: 'Hola como podemos ayudarte?', //Popup Message
                            showPopup: true, //Enables popup display

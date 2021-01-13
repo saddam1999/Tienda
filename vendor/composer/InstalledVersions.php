@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '2dedbc74e5ad8e46e11e46ece155317c38623e62',
+    'reference' => 'fe4dd4416399fa9aa5f44a15f95a4bed6f402c47',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -649,6 +649,15 @@ private static $installed = array (
         0 => '*',
       ),
     ),
+    'laravel-lang/lang' => 
+    array (
+      'pretty_version' => '7.0.9',
+      'version' => '7.0.9.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '679a65755db37b35acd36a5e0ca51e055815a00a',
+    ),
     'laravel/fortify' => 
     array (
       'pretty_version' => 'v1.6.1',
@@ -683,7 +692,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '2dedbc74e5ad8e46e11e46ece155317c38623e62',
+      'reference' => 'fe4dd4416399fa9aa5f44a15f95a4bed6f402c47',
     ),
     'laravel/sanctum' => 
     array (

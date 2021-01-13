@@ -95,6 +95,8 @@ Route::get('/imprimir/id={id}&csrf={csrf}', [imprimirController::class, 'update'
 Route::get('/QR/{id}', [imprimirController::class, 'QR']);//imprime un codigo de seguimiento  equipo QR
 //mostrarEquipo
 Route::get('/orden/{id}', [imprimirController::class, 'orden']);
+//Creditos SMS
+Route::get('/creditos/{id}', [creditosController::class, 'creditos']);
 
 //ControllerPago Caja
 Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
@@ -117,3 +119,4 @@ Route::get('/carrito', function () {
     ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
     ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
 });
+

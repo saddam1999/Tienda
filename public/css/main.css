@@ -1,532 +1,1193 @@
-        .face:hover {
-            animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            perspective: 1000px;
-        }
-        
-        .modal-open .tab-content {
-            filter: blur(3px) grayscale(10%);
-        }
-        
-        @keyframes shake {
-            10%,
-            90% {
-                transform: translate3d(-1px, 0, 0);
-            }
-            20%,
-            80% {
-                transform: translate3d(2px, 0, 0);
-            }
-            30%,
-            50%,
-            70% {
-                transform: translate3d(-4px, 0, 0);
-            }
-            40%,
-            60% {
-                transform: translate3d(4px, 0, 0);
-            }
-        }
-        
-        .float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-        }
-        
-        .my-float {
-            margin-top: 16px;
-        }
-        
-        #imagen {
-            float: inherit;
-        }
-        /* Extra small devices (phones, 600px and down) */
-        
-        @media only screen and (max-width: 300px) {
-            body {
-                padding-top: 210px;
-                font-stretch: ultra-condensed;
-            }
-        }
-        /* Extra small devices (phones, 600px and down) */
-        
-        @media only screen and (max-width: 414px) {
-            body {
-                padding-top: 120px;
-                font-stretch: ultra-condensed;
-            }
-        }
-        /* Extra small devices (phones, 600px and down) */
-        
-        @media only screen and (max-width: 768px) {}
-        
-        .padding-0 {
-            padding-right: 5px;
-            padding-left: 5px
-        }
-        
-        .img-style {
-            margin-left: -11px;
-            box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            max-width: 104% !important
-        }
-        
-        .bbb_background {
-            background-color: #E0E0E0 !important
-        }
-        
-        .ribbon {
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            position: absolute
-        }
-        
-        .ribbon::before,
-        .ribbon::after {
-            position: absolute;
-            z-index: -1;
-            content: '';
-            display: block;
-            border: 5px solid #2980b9
-        }
-        
-        .ribbon span {
-            position: absolute;
-            display: block;
-            width: 225px;
-            padding: 8px 0;
-            background-color: #3498db;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-            color: #fff;
-            font: 100 18px/1 'Lato', sans-serif;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-            text-transform: uppercase;
-            text-align: center
-        }
-        
-        .ribbon-top-right {
-            top: -10px;
-            right: -10px
-        }
-        
-        .ribbon-top-right::before,
-        .ribbon-top-right::after {
-            border-top-color: transparent;
-            border-right-color: transparent
-        }
-        
-        .ribbon-top-right::before {
-            top: 0;
-            left: 17px
-        }
-        
-        .ribbon-top-right::after {
-            bottom: 17px;
-            right: 0
-        }
-        
-        .ribbon-top-right span {
-            left: -25px;
-            top: 30px;
-            transform: rotate(45deg)
-        }
-        
-        .bbb_deals_featured {
-            width: 100%
-        }
-        
-        .bbb_deals {
-            width: 100%;
-            margin-right: 7%;
-            padding-top: 80px;
-            padding-left: 25px;
-            padding-right: 25px;
-            padding-bottom: 34px;
-            box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            margin-top: 0px
-        }
-        
-        .bbb_deals_title {
-            position: absolute;
-            top: 27px;
-            left: 40px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #000000
-        }
-        
-        .bbb_deals_slider_container {
-            width: 100%
-        }
-        
-        .bbb_deals_item {
-            width: 100% !important
-        }
-        
-        .bbb_deals_image {
-            width: 100%
-        }
-        
-        .bbb_deals_image img {
-            width: 100%
-        }
-        
-        .bbb_deals_content {
-            margin-top: 33px
-        }
-        
-        .bbb_deals_item_category a {
-            font-size: 14px;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.5)
-        }
-        
-        .bbb_deals_item_price_a {
-            font-size: 14px;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.6)
-        }
-        
-        .bbb_deals_item_name {
-            font-size: 24px;
-            font-weight: 400;
-            color: #000000
-        }
-        
-        .bbb_deals_item_price {
-            font-size: 24px;
-            font-weight: 500;
-            color: #df3b3b
-        }
-        
-        .available {
-            margin-top: 19px
-        }
-        
-        .available_title {
-            font-size: 12px;
-            color: rgba(0, 0, 0, 0.5);
-            font-weight: 400
-        }
-        
-        .available_title span {
-            font-weight: 700
-        }
-        
-        @media only screen and (max-width: 991px) {
-            .bbb_deals {
-                width: 100%;
-                margin-right: 0px
-            }
-        }
-        
-        @media only screen and (max-width: 575px) {
-            .bbb_deals {
-                padding-left: 15px;
-                padding-right: 15px
-            }
-            .bbb_deals_title {
-                left: 15px;
-                font-size: 16px
-            }
-            .bbb_deals_slider_nav_container {
-                right: 5px
-            }
-            .bbb_deals_item_name,
-            .bbb_deals_item_price {
-                font-size: 20px
-            }
-        }
-        
-        .item-1,
-        .item-2,
-        .item-3 {
-            position: absolute;
-            display: block;
-            top: 2em;
-            width: 60%;
-            font-size: 2em;
-            animation-duration: 20s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-        }
-        
-        .item-1 {
-            animation-name: anim-1;
-        }
-        
-        .item-2 {
-            animation-name: anim-2;
-        }
-        
-        .item-3 {
-            animation-name: anim-3;
-        }
-        
-        @keyframes anim-1 {
-            0%,
-            8.3% {
-                left: -100%;
-                opacity: 0;
-            }
-            8.3%,
-            25% {
-                left: 25%;
-                opacity: 1;
-            }
-            33.33%,
-            100% {
-                left: 110%;
-                opacity: 0;
-            }
-        }
-        
-        @keyframes anim-2 {
-            0%,
-            33.33% {
-                left: -100%;
-                opacity: 0;
-            }
-            41.63%,
-            58.29% {
-                left: 25%;
-                opacity: 1;
-            }
-            66.66%,
-            100% {
-                left: 110%;
-                opacity: 0;
-            }
-        }
-        
-        @keyframes anim-3 {
-            0%,
-            66.66% {
-                left: -100%;
-                opacity: 0;
-            }
-            74.96%,
-            91.62% {
-                left: 25%;
-                opacity: 1;
-            }
-            100% {
-                left: 110%;
-                opacity: 0;
-            }
-        }
-        /* Paste this css to your style sheet file or under head tag */
-        /* This only works with JavaScript,
+.face:hover {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.modal-open .tab-content {
+    filter: blur(3px) grayscale(10%);
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+}
+
+.my-float {
+    margin-top: 16px;
+}
+
+#imagen {
+    float: inherit;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 300px) {
+    body {
+        padding-top: 210px;
+        font-stretch: ultra-condensed;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 414px) {
+    body {
+        padding-top: 120px;
+        font-stretch: ultra-condensed;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 768px) {}
+
+.padding-0 {
+    padding-right: 5px;
+    padding-left: 5px
+}
+
+.img-style {
+    margin-left: -11px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 104% !important
+}
+
+.bbb_background {
+    background-color: #E0E0E0 !important
+}
+
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute
+}
+
+.ribbon::before,
+.ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9
+}
+
+.ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 8px 0;
+    background-color: #3498db;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    color: #fff;
+    font: 100 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    text-transform: uppercase;
+    text-align: center
+}
+
+.ribbon-top-right {
+    top: -10px;
+    right: -10px
+}
+
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent
+}
+
+.ribbon-top-right::before {
+    top: 0;
+    left: 17px
+}
+
+.ribbon-top-right::after {
+    bottom: 17px;
+    right: 0
+}
+
+.ribbon-top-right span {
+    left: -25px;
+    top: 30px;
+    transform: rotate(45deg)
+}
+
+.bbb_deals_featured {
+    width: 100%
+}
+
+.bbb_deals {
+    width: 100%;
+    margin-right: 7%;
+    padding-top: 80px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 34px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 0px
+}
+
+.bbb_deals_title {
+    position: absolute;
+    top: 27px;
+    left: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000
+}
+
+.bbb_deals_slider_container {
+    width: 100%
+}
+
+.bbb_deals_item {
+    width: 100% !important
+}
+
+.bbb_deals_image {
+    width: 100%
+}
+
+.bbb_deals_image img {
+    width: 100%
+}
+
+.bbb_deals_content {
+    margin-top: 33px
+}
+
+.bbb_deals_item_category a {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5)
+}
+
+.bbb_deals_item_price_a {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.6)
+}
+
+.bbb_deals_item_name {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000000
+}
+
+.bbb_deals_item_price {
+    font-size: 24px;
+    font-weight: 500;
+    color: #df3b3b
+}
+
+.available {
+    margin-top: 19px
+}
+
+.available_title {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400
+}
+
+.available_title span {
+    font-weight: 700
+}
+
+@media only screen and (max-width: 991px) {
+    .bbb_deals {
+        width: 100%;
+        margin-right: 0px
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .bbb_deals {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+    .bbb_deals_title {
+        left: 15px;
+        font-size: 16px
+    }
+    .bbb_deals_slider_nav_container {
+        right: 5px
+    }
+    .bbb_deals_item_name,
+    .bbb_deals_item_price {
+        font-size: 20px
+    }
+}
+
+.item-1,
+.item-2,
+.item-3 {
+    position: absolute;
+    display: block;
+    top: 2em;
+    width: 60%;
+    font-size: 2em;
+    animation-duration: 20s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.item-1 {
+    animation-name: anim-1;
+}
+
+.item-2 {
+    animation-name: anim-2;
+}
+
+.item-3 {
+    animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+    0%,
+    8.3% {
+        left: -100%;
+        opacity: 0;
+    }
+    8.3%,
+    25% {
+        left: 25%;
+        opacity: 1;
+    }
+    33.33%,
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-2 {
+    0%,
+    33.33% {
+        left: -100%;
+        opacity: 0;
+    }
+    41.63%,
+    58.29% {
+        left: 25%;
+        opacity: 1;
+    }
+    66.66%,
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim-3 {
+    0%,
+    66.66% {
+        left: -100%;
+        opacity: 0;
+    }
+    74.96%,
+    91.62% {
+        left: 25%;
+        opacity: 1;
+    }
+    100% {
+        left: 110%;
+        opacity: 0;
+    }
+}
+
+
+/* Paste this css to your style sheet file or under head tag */
+
+
+/* This only works with JavaScript,
 if it's not present, don't show loader */
-        
-        .no-js #loader {
-            display: none;
-        }
-        
-        .js #loader {
-            display: block;
-            position: absolute;
-            left: 100px;
-            top: 0;
-        }
-        
-        .se-pre-con {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background: url(Preloader_11.gif) center no-repeat #fff;
-        }
-        
-        .btn {
-            display: inline-block;
-            border-radius: 4px;
-            background-color: #f4511e;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 28px;
-            padding: 20px;
-            width: 200px;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-        }
-        
-        .btn span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-        
-        .btn span:after {
-            content: '\00bb';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-        
-        .btn:hover span {
-            padding-right: 25px;
-        }
-        
-        .btn:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
-        
-        .select {
-            width: 100%;
-            min-width: 15ch;
-            max-width: 30ch;
-            border: 1px solid var(--select-border);
-            border-radius: 0.25em;
-            padding: 0.25em 0.5em;
-            font-size: 1.25rem;
-            cursor: pointer;
-            line-height: 1.1;
-            background-color: #fff;
-            background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
-        }
-        
-        .select::after {
-            content: "";
-            width: 0.8em;
-            height: 0.5em;
-            background-color: var(--select-arrow);
-            clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-        }
-        
-        .info {
-            display: none;
-        }
-        
-        .show {
-            display: block;
-        }
-        
-        .notification {
-            background-color: #555;
-            color: white;
-            text-decoration: none;
-            padding: 15px 26px;
-            position: relative;
-            display: inline-block;
-            border-radius: 2px;
-        }
-        
-        .notification:hover {
-            background: orange;
-        }
-        
-        .notification .badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            padding: 5px 10px;
-            border-radius: 50%;
-            background: orange;
-            color: white;
-        }
-        /* The snackbar - position it at the bottom and in the middle of the screen */
-        
-        #snackbar {
-            visibility: hidden;
-            /* Hidden by default. Visible on click */
-            min-width: 250px;
-            /* Set a default minimum width */
-            margin-left: -125px;
-            /* Divide value of min-width by 2 */
-            background-color: #333;
-            /* Black background color */
-            color: #fff;
-            /* White text color */
-            text-align: center;
-            /* Centered text */
-            border-radius: 2px;
-            /* Rounded borders */
-            padding: 16px;
-            /* Padding */
-            position: fixed;
-            /* Sit on top of the screen */
-            z-index: 1;
-            /* Add a z-index if needed */
-            left: 50%;
-            /* Center the snackbar */
-            bottom: 30px;
-            /* 30px from the bottom */
-        }
-        /* Show the snackbar when clicking on a button (class added with JavaScript) */
-        
-        #snackbar.show {
-            visibility: visible;
-            /* Show the snackbar */
-            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(Preloader_11.gif) center no-repeat #fff;
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn:hover span {
+    padding-right: 25px;
+}
+
+.btn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+.info {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.notification {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notification:hover {
+    background: orange;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: orange;
+    color: white;
+}
+
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+
+#snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+}
+
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+
+#snackbar.show {
+    visibility: visible;
+    /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
     However, delay the fade out process for 2.5 seconds */
-            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-        /* Animations to fade the snackbar in and out */
-        
-        @-webkit-keyframes fadein {
-            from {
-                bottom: 0;
-                opacity: 0;
-            }
-            to {
-                bottom: 30px;
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadein {
-            from {
-                bottom: 0;
-                opacity: 0;
-            }
-            to {
-                bottom: 30px;
-                opacity: 1;
-            }
-        }
-        
-        @-webkit-keyframes fadeout {
-            from {
-                bottom: 30px;
-                opacity: 1;
-            }
-            to {
-                bottom: 0;
-                opacity: 0;
-            }
-        }
-        
-        @keyframes fadeout {
-            from {
-                bottom: 30px;
-                opacity: 1;
-            }
-            to {
-                bottom: 0;
-                opacity: 0;
-            }
-        }
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+/* Animations to fade the snackbar in and out */
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+label[for="abrir-cerrar"] {
+    cursor: pointer;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+}
+
+.cerrar {
+    display: none;
+}
+
+#sidebar {
+    width: 0;
+}
+
+#contenido {
+    margin-left: 0;
+}
+
+input#abrir-cerrar:checked~#sidebar {
+    width: 300px;
+}
+
+input#abrir-cerrar:checked+label[for="abrir-cerrar"],
+input#abrir-cerrar:checked~#contenido {
+    margin-left: 300px;
+    transition: margin-left .4s;
+}
+
+input#abrir-cerrar:checked+label[for="abrir-cerrar"] .cerrar {
+    display: inline;
+}
+
+input#abrir-cerrar:checked+label[for="abrir-cerrar"] .abrir {
+    display: none;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: black;
+    overflow-x: hidden;
+    transition: 0.4s;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.sidebar .boton-cerrar {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 2rem;
+    display: block;
+    padding: 0;
+    line-height: 1.5rem;
+    margin: 0;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.sidebar ul,
+.sidebar li {
+    margin: 0;
+    padding: 0;
+    list-style: none inside;
+}
+
+.sidebar ul {
+    margin: 4rem auto;
+    display: block;
+    width: 80%;
+    min-width: 200px;
+}
+
+.sidebar a {
+    display: block;
+    font-size: 120%;
+    color: #eee;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #fff;
+    background-color: #f90;
+}
+
+h1 {
+    color: #f90;
+    font-size: 180%;
+    font-weight: normal;
+}
+
+#contenido {
+    transition: margin-left .4s;
+    padding: 1rem;
+}
+
+.abrir-cerrar {
+    color: #2E88C7;
+    font-size: 1rem;
+}
+
+.wrapper {
+    max-width: 678px;
+    margin: auto;
+}
+
+pre {
+    border-left: 0.3rem solid #4039ff;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+.push_left {
+    margin-left: 6px;
+}
+
+.push_right {
+    margin-right: 6px;
+}
+
+code,
+xmp {
+    white-space: normal !important;
+}
+
+textarea {
+    margin-bottom: 0px;
+    min-height: 200px;
+    line-height: 1;
+}
+
+.close {
+    width: 20px;
+    height: 21px;
+    position: relative;
+    display: inline-block;
+    vertical-align: text-bottom;
+    text-align: center;
+    cursor: pointer;
+}
+
+.close:before,
+.close:after {
+    position: absolute;
+    left: 10px;
+    content: ' ';
+    height: 21px;
+    width: 3px;
+    background-color: #fff;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+
+.card {
+    margin: 20px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1)
+}
+
+.card_title,
+.title,
+[data-pushbar-id] {
+    background: #4039ff;
+    color: #fff;
+}
+
+.card_title,
+.title {
+    padding: 15px 20px;
+    font-weight: bold;
+}
+
+.card_title {
+    border-radius: 4px 4px 0px 0px;
+}
+
+.card_content {
+    padding: 15px;
+}
+
+a.button.getBtn {
+    margin-top: 16px;
+    background-color: #fff;
+    color: #4039ff;
+    border-color: #fff;
+}
+
+.small {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.menu li {
+    list-style: none;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: block;
+    margin: 0px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.button,
+button,
+input[type='button'],
+input[type='reset'],
+input[type='submit'] {
+    background-color: #4039ff;
+    border: 0.1rem solid #4039ff;
+}
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url(http://weloveiconfonts.com/api/?family=openwebicons);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+@import url(http://weloveiconfonts.com/api/?family=fontelico);
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 300;
+    line-height: 34px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+
+/* entypo */
+
+[class*="entypo-"]:before {
+    font-family: "entypo", sans-serif;
+}
+
+
+/* openwebicons */
+
+[class*="openwebicons-"]:before {
+    font-family: "openwebicons", sans-serif;
+}
+
+
+/* fontawesome */
+
+[class*="fontawesome-"]:before {
+    font-family: "fontawesome", sans-serif;
+}
+
+
+/* zocial */
+
+[class*="zocial-"]:before {
+    font-family: "zocial", sans-serif;
+}
+
+
+/* fontelico */
+
+[class*="fontelico-"]:before {
+    font-family: "fontelico", sans-serif;
+}
+
+
+/* Fix OPW
+----------------------------------------------------------*/
+
+
+/* openwebicons */
+
+[class*="openwebicons-"]:before {
+    font-family: 'OpenWeb Icons', sans-serif;
+}
+
+.header .text-muted {
+    padding: .4em .8em;
+}
+
+.header .text-muted span:hover {
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    -webkit-filter: url(#blurLogo);
+    filter: url(#blurLogo);
+    filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='1');
+}
+
+.header .text-muted span span.bl {
+    font-weight: 400;
+    -webkit-animation: blur 5s ease infinite;
+    animation: blur 5s ease infinite;
+}
+
+.header .text-muted .starter {
+    float: right;
+    line-height: 2.5;
+    color: #17a689;
+}
+
+.nav li:hover a {
+    background: transparent;
+}
+
+.nav li:hover a span {
+    background: #1abc9c;
+    color: #f3f3f3;
+}
+
+.nav li a {
+    color: #17a689;
+    line-height: 3;
+}
+
+.nav li a.active span {
+    background: #1abc9c;
+    color: #f3f3f3;
+}
+
+.nav li a span {
+    -webkit-box-shadow: inset 0 0 0 0.1em #1abc9c;
+    box-shadow: inset 0 0 0 0.1em #1abc9c;
+    font-size: 1.6em;
+    padding: .2em .4em;
+    height: 30px !important;
+    border-radius: 3px;
+}
+
+
+/* Jumbotron
+----------------------------------------------*/
+
+.jumbotron {
+    color: #fff;
+    background: #1abc9c;
+}
+
+
+/* Sidebar
+-----------------------------------------------------------------------------------------*/
+
+.menusign {
+    display: block;
+    width: 10px;
+    line-height: .3;
+    font-size: 2em;
+    margin: .5em;
+}
+
+.menusign br {
+    height: 0;
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 9999999;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 260px;
+    background: black;
+    -webkit-transition: left 0.3s ease, -webkit-box-shadow 0.3s ease 0.2s;
+    transition: left 0.3s ease, box-shadow 0.3s ease 0.2s;
+    -webkit-box-shadow: 0.5em 0 0 0 #1abc9c, 0.6em 0 0 0 #17a689;
+    box-shadow: 0.5em 0 0 0 #1abc9c, 0.6em 0 0 0 #17a689;
+}
+
+.sidebar #close {
+    float: right;
+    margin: -5.5rem 1rem;
+    font-size: 1.4em;
+    color: #fa598d;
+    text-align: right;
+}
+
+.sidebar.closed {
+    left: -260px;
+    -webkit-box-shadow: 0 0 0 #1abc9c;
+    box-shadow: 0 0 0 #1abc9c;
+}
+
+.sidebar h2 {
+    padding: .5em;
+    color: #1abc9c;
+}
+
+.sidebar ul {
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    width: 90%;
+    margin: 5px 10px;
+    float: left;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 3px 6px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 2px solid #1abc9c;
+    background: #1abc9c;
+    color: #f3f3f3;
+}
+
+.sidebar ul li a {
+    color: white;
+}
+
+.sidebar ul li:hover {
+    background: #17a689;
+    border-color: #17a689;
+}
+
+.footer a {
+    color: #17a689;
+}
+
+
+/* Blurred class
+
+This class is added to the container
+(#blurMe) when the sidebar is open.
+-----------------------------------*/
+
+.blurred {
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    -webkit-filter: url(#blur);
+    filter: url(#blur);
+    filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='10');
+}
+
+
+/* Logo effect
+-----------------------------*/
+
+@-webkit-keyframes blur {
+    66% {
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        -webkit-filter: url(#blurLogo);
+        filter: url(#blurLogo);
+        filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='1');
+    }
+}
+
+@keyframes blur {
+    66% {
+        -webkit-filter: blur(1px);
+        filter: blur(1px);
+        -webkit-filter: url(#blurLogo);
+        filter: url(#blurLogo);
+        filter: progid: DXImageTransform.Microsoft.Blur(PixelRadius='1');
+    }
+}
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css);
+.flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+
+ul.gallery {
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.zoom {
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;
+    cursor: zoom-in;
+}
+
+.zoom:hover,
+.zoom:active,
+.zoom:focus {
+    -ms-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+    position: relative;
+    z-index: 100;
+}
+
+@media only screen and(max-width: 768 px) {
+    ul.gallery {
+        margin-left: 15vw;
+        margin-right: 15vw;
+    }
+    .DivName {
+        cursor: pointer
+    }
+}
+
+#navbar-toggle {
+    position: absolute;
+    top: -99999px;
+    left: -99999px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav-menu {
+    display: none;
+}
+
+#navbar-toggle:checked+label .nav-menu {
+    display: block;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+body {
+    background: #333;
+}
+
+.raw {
+    height: 120px;
+    width: 500px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+/* perspective */
+
+.flip-container {
+    perspective: 1000;
+    margin: 10px;
+    float: left;
+}
+
+
+/* turning on hover */
+
+.flip-container:hover .flipper {
+    transform: rotateY(180deg);
+}
+
+.flip-container,
+.front,
+.back {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 20px;
+}
+
+
+/* flipping speed here */
+
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+
+/* making the the other side hidden while flipping */
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* front side is in front of a back side */
+
+.front {
+    z-index: 2;
+    background-color: tomato;
+    color: white;
+}
+
+
+/* back side */
+
+.back {
+    transform: rotateY(180deg);
+    background-color: lightblue;
+}
+
+.back p {
+    font-size: 18px;
+    margin-top: 0px;
+    font-family: 'Kaushan Script', cursive;
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: #333;
+    color: white;
+}

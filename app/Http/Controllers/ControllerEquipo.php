@@ -40,6 +40,15 @@ class ControllerEquipo extends Controller
     public function store(Request $request)
     {
 
+        $chars = '0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
+        $charsLength = (strlen($chars) - 1);
+        $r = null;
+
+        for ($i = 1; $i <= 8; $i++) {
+            $rand = rand(0, $charsLength);
+            $r .= $chars[$rand];
+        }
+
         $equipo = new \App\Models\Equipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
@@ -47,6 +56,8 @@ class ControllerEquipo extends Controller
         $equipo->inversion = $request->get('inversion');
         $equipo->presupuesto = $request->get('presupuesto');
         $equipo->pago = $request->get('pago');
+        $equipo->uniqueid = $r;
+        $equipo->modelo = $request->get('modelo');
         $equipo->id_sucursal = $request->get('id_sucursal');
         $equipo->serial = $request->get('serial');
         $equipo->imei = $request->get('imei');
@@ -84,27 +95,27 @@ class ControllerEquipo extends Controller
         $caja = \App\Models\Caja::find($sucursal->id);
         $pago->id_user = $equipo->id_user;
         $pago->id_equipo = $equipo->id;
+
         $pago->iva = $setting->setting_iva;
         $pago->id_cliente = $equipo->id_cliente;
         $pago->id_servicio = null;
         $pago->id_sucursal = $equipo->id_sucursal;
         $pago->id_caja = $caja->id;
-        $pago->id_corte = $equipo->created_at;//
+        $pago->id_corte = $equipo->created_at; //
         $pago->monto = $equipo->presupuesto; // esto es lo que deberia de pagar total
         $pago->adelanto = $equipo->pago; // esto es lo que adelanto
         if ($pago->adelanto == 0 && $pago->iva == '' && $pago->monto == 0) {
             $pago->total = 0;
         } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto != 0) {
 
-           // $temporal = $pago->monto - $pago->adelanto; se quito aqui quite primero el adelanto y luego aplique el iva WRONG
+            // $temporal = $pago->monto - $pago->adelanto; se quito aqui quite primero el adelanto y luego aplique el iva WRONG
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
             //900*16=144
-            $total = ($pago->monto + $iva)-$pago->adelanto;//aqui calculo el total mas el iva y luego remuevo el adelanto es lo que falta a pagar
+            $total = ($pago->monto + $iva) - $pago->adelanto; //aqui calculo el total mas el iva y luego remuevo el adelanto es lo que falta a pagar
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
-
         } else if ($pago->adelanto != 0 && $pago->iva == '' && $pago->monto != 0) {
 
             $temporal = $pago->monto - $pago->adelanto;
@@ -112,7 +123,6 @@ class ControllerEquipo extends Controller
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
-
         } else if ($pago->adelanto == 0 && $pago->iva != '' && $pago->monto != 0) {
 
             //1000 - 100=900
@@ -122,13 +132,11 @@ class ControllerEquipo extends Controller
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
-
         } else if ($pago->adelanto != 0 && $pago->iva != '' && $pago->monto == 0) {
 
             $pago->total = 0;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
-
         } else {
             $pago->total = 0;
             $cajaTemp = $pago->adelanto + $caja->corte;
@@ -142,7 +150,7 @@ class ControllerEquipo extends Controller
         $caja->save();
 
 
-        return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
+        return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=dZxP8hEU4nc33TJfl4iTu32Q5cDrmWjzf39ZVW0m">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 
     /**
@@ -180,6 +188,7 @@ class ControllerEquipo extends Controller
         $equipo->id_user = $request->get('id_user2');
         $equipo->id_cliente = $request->get('id_cliente2');
         $equipo->id_servicio = $request->get('id_servicio2');
+        $equipo->modelo = $request->get('modelo2');
         $equipo->serial = $request->get('serial2');
         $equipo->imei = $request->get('imei2');
         $equipo->pago = $request->get('pago2');

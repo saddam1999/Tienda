@@ -57,7 +57,7 @@
     <script type="text/javascript">
         $('#smartcart').smartCart();
     </script>
-<footer class="page-footer font-small bg-dark text-white rounded fixed-bottom"
+<footer class="page-footer font-small bg-dark text-white rounded"
     style="background-image: url('../img/backgrounds.jpeg');">
     <!-- Footer Elements -->
     <div class="container">

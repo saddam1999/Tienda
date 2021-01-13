@@ -10,7 +10,7 @@ body {
     justify-content: center;
     color: #fff;
     background: url("/img/backgrounds.jpeg");
-    background-size: 400% 400%;
+    background-size: 200% 120%;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;

@@ -2,14 +2,12 @@
     src="https://www.paypal.com/sdk/js?client-id=AcZuOOumdd7lojl8xftWUROJrcO5uCoUy49jdZnQAzQfcWrb4ziEJ2ooYq-mAzAyioNBsvmhFBlMcy64">
 </script>
     <!-- Modal Bienvenida-->
-    <div class="modal fade" id="modal_configurar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="modal_configurar"  data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-primary">
+            <div class="modal-header bg-dark">
                 <h5 class="modal-title text-white">Bienvenido a HollyStore</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
@@ -17,8 +15,10 @@
                         <h4 class="alert-heading">Gracias por tu Compra</h4>
                         <p>Antes de comenzar necesitamos configurar algunas cosas importantes para el buen
                             funcionamiento de la plataforma.</p>
+                        <img class="form-control face" style="height: 50%; width:50%" src="https://wylnux.files.wordpress.com/2013/09/512c.png" alt="">
+
                         @if ($Sucursal->isEmpty())
-                        <a href="" data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui
+                        <a  href="" data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui
                             defines en donde estas trabajando)</a><br>
                         @else
                         <del><a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas
@@ -34,28 +34,25 @@
                         @endif
 
                         @if($Marca->isEmpty())
-                        <a href="" class="nav-link" data-toggle="modal" data-target="#modal_agregarmarca">3.-Agregar tu
+                        <a href="" data-toggle="modal" data-target="#modal_agregarmarca">3.-Agregar tu
                             primera Marca Comercial</a><br>
                         @else
                         <del><a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br></del>
                         @endif
 
                         @if ($Settings->isEmpty())
-                        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                            aria-controls="settings" aria-selected="false">4.-Configurar Tu Negocio</a><br>
+                        <a id="settings-tab" data-toggle="tab" href="#settings" role="tab"
+                            aria-controls="settings" aria-selected="false" data-dismiss="modal" >4.-Configurar Tu Negocio</a><br>
                         @else
                         <del><a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br></del>
                         @endif
-
                         <hr>
                         <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas
-                            contactame en twitter por @hollydev1</p>
+                            contactame en twitter por @hollydev3</p>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -122,6 +119,11 @@
                         @method('POST')
                         <div class="row">
                             <div class="container">
+                                <div class="col-6-md">
+                                    <label for="IDlocal">Codigo Local</label>
+                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal"
+                                        placeholder="Agrega el codigo que usas localmente para indentificar el producto">
+                                </div>
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" id="nombre"
@@ -243,11 +245,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-6-md">
-                                    <label for="IDlocal">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal"
-                                        placeholder="Agrega el codigo que usas localmente para indentificar el producto">
-                                </div>
                             </div>
                         </div>
                 </div>
@@ -278,6 +275,10 @@
 
                         <div class="row">
                             <div class="container">
+                                <div class="col-6-md">
+                                    <label for="IDlocal1">Codigo Local</label>
+                                    <input type="text" class="form-control" name="IDlocal1" id="IDlocal1">
+                                </div>
                                 <div class="col-6-md">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
@@ -402,10 +403,6 @@
                                             <option value="xxl">XXL</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="IDlocal1">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal1" id="IDlocal1">
                                 </div>
                             </div>
                         </div>
@@ -928,7 +925,13 @@
                                             placeholder="Serial">
                                     </div>
                                 </div>
-
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">MODELO</label>
+                                        <input class="form-control" type="text" name="modelo" id="modelo"
+                                            placeholder="Modelo del aparato" required>
+                                    </div>
+                                </div>
                                 <div class="col-4-md">
                                     <label for="descripcion">Marca</label>
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
@@ -1213,6 +1216,12 @@
                                     <div class="form-group">
                                         <label for="marca">SERIAL</label>
                                         <input class="form-control" type="text" name="serial2" id="serial2">
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="marca">MODELO</label>
+                                        <input class="form-control" type="text" name="modelo2" id="modelo2" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -1682,35 +1691,34 @@
 </div>
 </div>
 </div>
-<!-- Modal Notificacion -->
+<!-- Modal Notificacion Success -->
 <div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-info text-white"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <div class="modal-header bg-dark text-info"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                 <circle cx="8" cy="4.5" r="1"/>
               </svg>
-                <h5 class="modal-title text-white" width="2em" height="2em"> Notificacion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h2 class="modal-title text-white ml-5" width="2em" height="2em"> Notificacion</h2>
+                <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="container-fluid">
+            <div class="modal-body bg-dark">
+                <div class="container-fluid text-white">
                     @if (session('success'))
-                    <div class="alert alert-success m-3">
                         <?php echo '<html>'.session('success').'</html>' ?>
-                    </div>
                     @endif </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer bg-dark">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal Notificacion Warning -->
 <div class="modal fade" id="modal_warning" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -2130,10 +2138,12 @@
                 <div class="container-fluid">
                     <div class="card text-left">
                         <img class="card-img-top" class="thumbnail zoom" name="info_imagen" id="info_imagen"
-                            style="border-radius:10px;" src="./fotos/" alt="">
+                            style="border-radius:10px;" src="" alt="">
                         <div class="card-body">
                             <label for="info_id">ID</label>
                             <p class="card-text" name="info_id" id="info_id"></p>
+                            <label for="info_id">UniqueID</label>
+                            <p class="card-text" name="uniqueid" id="uniqueid"></p>
                             <label for="info_serial">Serial</label>
                             <p class="card-text" name="info_serial" id="info_serial"></p>
                             <label for="info_imei">Imei</label>
@@ -2147,6 +2157,70 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ventas-->
+<div class="modal fade" id="modal_ventas" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+                <div class="modal-header  bg-success">
+                        <h5 class="modal-title text-white">Vender Articulos</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table" id="tabla_productos">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($Articulo as $productos)
+                                <tr>
+                                    <a href="#">
+                                    <td scope="row">{{$productos->id}}</td>
+                                    <td>{{$productos->nombre}}</td>
+                                    <td><textarea class="form-control" name="" id="" cols="30" rows="10"> {{$productos->descripcion}}</textarea></td>
+                                </a>
+
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center active">
+                                Active list item
+                                <span class="badge badge-secondary badge-pill">pill1</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                List item
+                                <span class="badge badge-secondary badge-pill">pill2</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                                Disabled item
+                                <span class="badge badge-secondary badge-pill">pill3</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>

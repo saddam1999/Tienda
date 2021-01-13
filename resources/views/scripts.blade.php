@@ -499,6 +499,9 @@
         $(e.currentTarget).find('#id_servicio2').val(id);
         var id = $(e.relatedTarget).data().pago;
         $(e.currentTarget).find('#pago2').val(id);
+        var id = $(e.relatedTarget).data().modelo;
+        $(e.currentTarget).find('#modelo2').val(id);
+
         var id = $(e.relatedTarget).data().anticipo;
         $(e.currentTarget).find('#anticipo2').val(id);
         var id = $(e.relatedTarget).data().presupuesto;
@@ -709,6 +712,7 @@
 <script>
     $(document).ready(function() {
         $(".se-pre-con").fadeOut("slow");
+
     });
 </script>
 
@@ -729,26 +733,12 @@ $(document).ready(function(){
   $('#tablemarcas').dataTable();
   $('#tablearticulos').dataTable();
   $('#tablecajas').dataTable();
+  $('#tabla_productos').dataTable();
 
 });
 
 </script>
-<!--whatsapp -->
-<script type="text/javascript">
-    $(function () {
-            $('#WAButton').floatingWhatsApp({
-                phone:  "524445705494", //WhatsApp Business phone number
-                headerTitle: 'Contactanos por Whatsapp!', //Popup Title
-                popupMessage: 'Hola como podemos ayudarte?', //Popup Message
-                showPopup: true, //Enables popup display
-                buttonImage: '<img src="https://i.pinimg.com/originals/57/93/fa/5793fa77a347969c747ecf703c2aee90.png" />', //Button Image
-                headerColor: 'black', //Custom header color
-                backgroundColor: 'white', //Custom background button color
-                position: "right" //Position: left | right
 
-            });
-        });
- </script>
 
 
 
@@ -784,7 +774,7 @@ $(document).ready(function(){
                     //$("#paypal").attr("action", '/credito_usuario/' + id);
                     //we will send data and recive data fom our AjaxController
                     //alert("im just clicked click me");
-                    id = 1;
+                    id = 1; 
                     $.ajax({
                         url: 'creditos/' + id,
                         data: {
@@ -823,6 +813,8 @@ $(document).ready(function(){
     $("#info_imagen").attr("src", './fotos/' + id);
     var id = $(e.relatedTarget).data().serial;
     $(e.currentTarget).find('#info_serial').text(id);
+    var id = $(e.relatedTarget).data().uniqueid;
+    $(e.currentTarget).find('#uniqueid').text(id);
     var id = $(e.relatedTarget).data().imei;
     $(e.currentTarget).find('#info_imei').text(id);
     var id = $(e.relatedTarget).data().id_comentario;
@@ -830,4 +822,29 @@ $(document).ready(function(){
         });
 </script>
 
+<script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+     <script>
+        $(document).ready(function(){
+                // Toggle the blurred class
+                function sidebar() {
+                    var trigger = $('#trigger, #close'),
+                        menu = $('.sidebar');
+                    trigger.on('click', function() {
+                        $(this).toggleClass('active');
+                        menu.toggleClass('closed');
+                        $('#blurrMe').toggleClass('blurred'); // just here
+                    });
+                }
+
+                function deploy() {
+                    sidebar();
+                }
+                deploy();
+            });
+        </script>
 @section('scripts')

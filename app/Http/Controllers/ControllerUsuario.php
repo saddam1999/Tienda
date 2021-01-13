@@ -41,7 +41,7 @@ class ControllerUsuario extends Controller
         $setting->email=$request->get('email');
         $contraseñaantigua=$request->get('password');
         $setting->password=bcrypt($contraseñaantigua);
-        $setting->rol=$request->get('rol');
+        $setting->rol=$request->get('rol'); 
         $setting->id_sucursal=$request->get('id_sucursal');
         $setting->status=$request->get('status');
         $setting->save();

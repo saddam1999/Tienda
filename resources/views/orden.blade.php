@@ -1,3 +1,5 @@
+@foreach ($Settings as $setting)
+@endforeach
 @foreach ($Equipo as $equipo)
 @foreach ($Settings as $settings)
 @foreach ($Usuario as $usuario)
@@ -152,20 +154,21 @@ give gallery's parent container a cursor: pointer.**/
             <div class="col-xs-5">
                 <!-- <img src="../fotos/{{$equipo->id_captura}}" alt="">-->
                 <h5><a href=""><img alt="" />
-                        <p>{{$settings->setting_nombre}}</p>
-                        <p>{{$settings->setting_direccion}}</p>
-                        <p>{{$settings->setting_contacto}}</p>
-                        <p>{{$settings->setting_telefono}}</p>
+                        <p>Nombre: {{$settings->setting_nombre}}</p>
+                        <p>Direccion: {{$settings->setting_direccion}}</p>
+                        <p>RFC: {{$settings->setting_rfc}}</p>
+                        <p>Email: {{$settings->setting_contacto}}</p>
+                        <p>Telefono: {{$settings->setting_telefono}}</p>
                     </a>
                 </h5>
 
             </div>
             <div class="col-xs-1">
                 @if($settings->setting_logo=="")
-                <h6><a href=" "><img width="100px;" height="20%" alt="{{$settings->setting_logo}}"
+                <h6><a href=" "><img  style="border-radius:70%;" width="100px;" height="20%" alt="{{$settings->setting_logo}}"
                             src="{{$settings->setting_logo}}" /></a></h6>
                 @else
-                <h6><a href=" "><img width="100px;" height="20%" alt="{{$settings->setting_logo}}"
+                <h6><a href=" "><img   style="border-radius:70%;" width="100px;" height="20%" alt="{{$settings->setting_logo}}"
                             src="{{$settings->setting_logo}}" /></a></h6>
                 @endif
             </div>
@@ -218,7 +221,7 @@ give gallery's parent container a cursor: pointer.**/
 
                             </h4>
                             <h4>Tecnico :
-                                <a href="#">@if($usuario->id == $equipo->id_user) {{$usuario->name}} @endif</a>
+                                <a href="#">@if($usuario->id == $equipo->id_user) {{$usuario->name}} @endif No disponible</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </h4>
                         </div>
@@ -386,6 +389,9 @@ give gallery's parent container a cursor: pointer.**/
                 <thead>
                     <tr>
                         <th style="text-align: center;">
+                            <h4>Modelo</h4>
+                        </th>
+                        <th style="text-align: center;">
                             <h4>SERIAL/IMEI</h4>
                         </th>
                         <th style="text-align: center;">
@@ -402,6 +408,7 @@ give gallery's parent container a cursor: pointer.**/
                 </thead>
                 <tbody>
                     <tr>
+                        <td class=" text-right "> {{$equipo->modelo}}</td>
                         <td style="text-align: center;">@if($equipo->imei==''){{$equipo->serial}}@else {{$equipo->imei}}
                             @endif</td>
                         <td><a href="#"> {{$equipo->id_comentario}} </a></td>

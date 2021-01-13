@@ -300,7 +300,8 @@ class imprimirController extends Controller
         $pdf->Cell(5, $textypos, '=======================================');
         $textypos += 6;
         $pdf->setX(2);
-        $pdf->Cell(5, $textypos, 'CANT.      EQUIPO          PRECIO               TOTAL A PAGAR');
+        $pdf->Cell(5, $textypos, 'CANT.    MODELO   EQUIPO          PRECIO               TOTAL');
+        $precio->modelo;
         if ($precio->serial == '') {
             $equipo = $precio->imei;
         } else {
@@ -315,6 +316,7 @@ class imprimirController extends Controller
         $off = $textypos + 6;
         $producto = array(
             "q" => 1,
+            "modelo" => $precio->modelo,
             "name" => $equipo,
             "price" => $pago->total
         );
@@ -322,11 +324,13 @@ class imprimirController extends Controller
         foreach ($productos as $pro) {
             $pdf->setX(2);
             $pdf->Cell(5, $off, $pro["q"]);
-            $pdf->setX(6);
+            $pdf->setX(4);
+            $pdf->Cell(35, $off,  strtoupper(substr($pro["modelo"], 0, 12)));
+            $pdf->setX(16);
             $pdf->Cell(35, $off,  strtoupper(substr($pro["name"], 0, 12)));
-            $pdf->setX(20);
+            $pdf->setX(24);
             $pdf->Cell(11, $off,  "$" . number_format($pro["price"], 2, ".", ","), 0, 0, "R");
-            $pdf->setX(32);
+            $pdf->setX(34);
             $pdf->Cell(11, $off,  "$ " . number_format($pro["q"] * $pro["price"], 2, ".", ","), 0, 0, "R");
 
             $total += $pro["q"] * $pro["price"];

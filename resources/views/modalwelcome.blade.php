@@ -1,6 +1,6 @@
   <!-- Modal Privacidad-->
   <div class="modal fade" id="modal_privacidad" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+     <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
               <h5 class="modal-title">Politica de Privacidad</h5>
@@ -121,16 +121,16 @@
                 <div class="modal-body">
                     <div class="card-text">
                         <p class="text-info"> <a
-                        href="https://wego.here.com/directions/mix/mylocation/e-eyJuYW1lIjoiT2RvbnRvbG9nXHUwMGVkYSBNXHUwMGU5ZGljYSBDb3JhbCIsImFkZHJlc3MiOiJBdiBDb3JhbCAxMDIxLCBMYXMgSm95YXMsIFNhbiBMdWlzIFBvdG9zXHUwMGVkIENpdHkiLCJsYXRpdHVkZSI6MjIuMTM2NzMwMzk3NDMyLCJsb25naXR1ZGUiOi0xMDAuOTQ1NTgwMDA1NjUsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MTkyMTMzMDg4MDc4NzA1fQ==?map={{$setting->setting_direccion}},normal&fb_locale=es_LA">Av
+                        href="https://wego.here.com/directions/mix/mylocation/e-eyJuYW1lIjoiT2RvbnRvbG9nXHUwMGVkYSBNXHUwMGU5ZGljYSBDb3JhbCIsImFkZHJlc3MiOiJBdiBDb3JhbCAxMDIxLCBMYXMgSm95YXMsIFNhbiBMdWlzIFBvdG9zXHUwMGVkIENpdHkiLCJsYXRpdHVkZSI6MjIuMTM2NzMwMzk3NDMyLCJsb25naXR1ZGUiOi0xMDAuOTQ1NTgwMDA1NjUsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MTkyMTMzMDg4MDc4NzA1fQ==?map=,normal&fb_locale=es_LA">Av
                                 Coral 1021, Las Joyas, 78399 San Luis Potosí City
                             </a>
                         </p>
                     </div>
-                    <iframe height="500px;" width="100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.719829504153!2d-100.94741348552682!3d22.136655454410327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842aa3d8da3c95df%3A0x618edc7faedcc8cf!2s{{$setting->setting_direccion}}!5e0!3m2!1ses!2smx!4v1566536008522!5m2!1ses!2smx" width="500" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe height="500px;" width="100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.719829504153!2d-100.94741348552682!3d22.136655454410327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842aa3d8da3c95df%3A0x618edc7faedcc8cf!2s !5e0!3m2!1ses!2smx!4v1566536008522!5m2!1ses!2smx" width="500" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary"><a style="color:white;"
-                            href="https://wego.here.com/directions/mix/mylocation/e-eyJuYW1lIjoiT2RvbnRvbG9nXHUwMGVkYSBNXHUwMGU5ZGljYSBDb3JhbCIsImFkZHJlc3MiOiJBdiBDb3JhbCAxMDIxLCBMYXMgSm95YXMsIFNhbiBMdWlzIFBvdG9zXHUwMGVkIENpdHkiLCJsYXRpdHVkZSI6MjIuMTM2NzMwMzk3NDMyLCJsb25naXR1ZGUiOi0xMDAuOTQ1NTgwMDA1NjUsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MTkyMTMzMDg4MDc4NzA1fQ==?map={{$setting->setting_direccion}},normal&fb_locale=es_LA">LLevame</a>
+                            href="https://wego.here.com/directions/mix/mylocation/e-eyJuYW1lIjoiT2RvbnRvbG9nXHUwMGVkYSBNXHUwMGU5ZGljYSBDb3JhbCIsImFkZHJlc3MiOiJBdiBDb3JhbCAxMDIxLCBMYXMgSm95YXMsIFNhbiBMdWlzIFBvdG9zXHUwMGVkIENpdHkiLCJsYXRpdHVkZSI6MjIuMTM2NzMwMzk3NDMyLCJsb25naXR1ZGUiOi0xMDAuOTQ1NTgwMDA1NjUsInByb3ZpZGVyTmFtZSI6ImZhY2Vib29rIiwicHJvdmlkZXJJZCI6MTkyMTMzMDg4MDc4NzA1fQ==?map=,normal&fb_locale=es_LA">LLevame</a>
                     </button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
                 </div>

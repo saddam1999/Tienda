@@ -40,6 +40,7 @@ class ControllerPromocion extends Controller
         $promocion->titulo_banner_principal =  $request->get('titulo_banner_principal');
         $promocion->descripcion_banner_principal = $request->get('descripcion_banner_principal');
         $promocion->descuento_banner_principal = $request->get('descuento_banner_principal');
+        $promocion->bannera = $request->get('bannera');
         $promocion->texto_bannera = $request->get('texto_bannera');
         $promocion->bannerb = $request->get('bannerb');
         $promocion->texto_bannerb = $request->get('texto_bannerb');
