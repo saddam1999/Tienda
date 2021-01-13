@@ -1048,37 +1048,32 @@
                     </div>
                     <div class="tab-pane fade show " id="settings" role="tabpanel" aria-labelledby="settings-tab">
                         <div class="py-12">
-                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                            <div class="max-w-7xl mx-auto sm:px-6 lg:px-12">
                                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg" style=" border: none; border-radius: 40px 10px;">
                                     <div class="card text-left">
                                         <div class="card-body">
                                             <h4 class="card-title">Opciones Sucursal @foreach ($Sucursal as
                                                 $sucursal)@if($sucursal->id==Auth::user()->id_sucursal)
                                                 {{$sucursal->nombre}} @endif @endforeach</h4>
-                                            <div class="wrapper">
                                                 <div class="row">
-                                                    <div class="col-3">
+                                                    <div class="col-4">
                                                         <div class="nav flex-column nav-pills" id="v-pills-tab"
                                                             role="tablist" aria-orientation="vertical">
                                                             <a class="nav-link active" id="v-pills-home-tab"
                                                                 data-toggle="pill" href="#v-pills-home" role="tab"
                                                                 aria-controls="v-pills-home"
-                                                                aria-selected="true">Logotipos/Nombres</a>
+                                                                aria-selected="true">Configura tu Panel <i class="far fa-arrow-alt-circle-right"></i></a>
                                                             <a class="nav-link" id="v-pills-profile-tab"
                                                                 data-toggle="pill" href="#v-pills-profile" role="tab"
                                                                 aria-controls="v-pills-profile"
-                                                                aria-selected="false">Diseño</a>
+                                                                aria-selected="false">Agrega o Edita tus Promociones <i class="far fa-arrow-alt-circle-right"></i></a>
                                                             <a class="nav-link" id="v-pills-messages-tab"
                                                                 data-toggle="pill" href="#v-pills-messages" role="tab"
                                                                 aria-controls="v-pills-messages"
-                                                                aria-selected="false">Promociones</a>
-                                                            <a class="nav-link" id="v-pills-settings-tab"
-                                                                data-toggle="pill" href="#v-pills-settings" role="tab"
-                                                                aria-controls="v-pills-settings"
-                                                                aria-selected="false">Banners</a>
+                                                                aria-selected="false">Configura Redes Sociales <i class="far fa-arrow-alt-circle-right"></i></a>
                                                         </div>
                                                     </div>
-                                                    <div class="col-9">
+                                                    <div class="col-8">
                                                         <div class="tab-content" id="v-pills-tabContent">
                                                             <div class="tab-pane fade show active" id="v-pills-home"
                                                                 role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -1253,8 +1248,8 @@
                                                                                 value="@if($Settings->isEmpty()) @else {{$setting->setting_rfc}}@endif"
                                                                                 required>
 
-                                                                            <label for="setting_rfc">FaceBook
-                                                                                Empresa</label>
+                                                                            <label for="setting_rfc">FaceBook ID(Necesario para el chat y publicaciones)</label>
+                                                                                <a href="" data-toggle="modal" data-target="#modal_obtenerFacebook">Obtener ChatID</a>
                                                                             <input class="form-control" type="text"
                                                                                 name="setting_facebook"
                                                                                 id="setting_facebook"
@@ -1485,7 +1480,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

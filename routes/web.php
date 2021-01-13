@@ -14,7 +14,7 @@ use App\Http\Controllers\ControllerCaptura;
 use App\Http\Controllers\ControllerCaja;
 use App\Http\Controllers\ControllerPago_Equipo;
 use App\Http\Controllers\imprimirController;
-
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Input;
 
 use App\Http\Controllers\FileUploadController;
@@ -97,6 +97,8 @@ Route::get('/QR/{id}', [imprimirController::class, 'QR']);//imprime un codigo de
 Route::get('/orden/{id}', [imprimirController::class, 'orden']);
 //Creditos SMS
 Route::get('/creditos/{id}', [creditosController::class, 'creditos']);
+//Facebook ID
+Route::get('/facebook', [SocialController::class, 'get_FacebookID']);
 
 //ControllerPago Caja
 Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
