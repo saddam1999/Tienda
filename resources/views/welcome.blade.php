@@ -14,7 +14,7 @@
 <head>
 <!-- Website Template designed by www.downloadwebsitetemplates.co.uk -->
 <meta charset="UTF-8">
-<title>Progress - Free Responsive Website Template by Download Website Templates</title>
+<title>HollyStore </title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -37,7 +37,7 @@
 	<div id="topcontainer" class="bodycontainer clearfix" data-uk-scrollspy="{cls:'uk-animation-fade', delay: 300, repeat: true}">
 
 		<p><span class="fa fa-signal"></span></p>
-		<h1><span>Progress</span><br />is coming soon</h1>
+		<h1><span>HollyStore</span><br />is coming soon</h1>
 		<p>It's almost ready ... honest</p>
 
 	</div>

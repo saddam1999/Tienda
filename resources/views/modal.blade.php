@@ -2239,17 +2239,17 @@
                     </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="/">
+                    <form action="/facebook">
                         @csrf
                         @method('POST')
                         <label for="">Introduce tu cuenta de Facebook</label>
                         <input type="text" class="form-control" name="facebook" id="facebook">
-                    </form>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Obten ID</button>
+                <button type="submit" class="btn btn-primary">Obten ID</button>
+            </form>
             </div>
         </div>
     </div>

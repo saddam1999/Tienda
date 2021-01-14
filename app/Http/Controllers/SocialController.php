@@ -67,7 +67,7 @@ class SocialController extends Controller
            }
 
        /*Getting user id */
-       $url = 'http://findmyfbid.com';
+       $url = 'https://lookup-id.com/';
        $data = array('url' => $profile_url );
        // use key 'http' even if you send the request to https://...
        $options = array(
@@ -79,6 +79,8 @@ class SocialController extends Controller
        );
        $context  = stream_context_create($options);
        $result = file_get_contents($url, false, $context);
+
+
        function getData($data)
        {
            $dom = new \DOMDocument;

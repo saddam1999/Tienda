@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'fe4dd4416399fa9aa5f44a15f95a4bed6f402c47',
+    'reference' => '233e196eb90e234ab652052fe8fbd8d5ee2f0b09',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -267,6 +267,15 @@
       array (
       ),
       'reference' => '3c921a1cdba35b68a7f0ccffc6dffc1995b18267',
+    ),
+    'facebook/graph-sdk' => 
+    array (
+      'pretty_version' => '5.7.0',
+      'version' => '5.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2d8250638b33d73e7a87add65f47fabf91f8ad9b',
     ),
     'fideloper/proxy' => 
     array (
@@ -679,7 +688,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'fe4dd4416399fa9aa5f44a15f95a4bed6f402c47',
+      'reference' => '233e196eb90e234ab652052fe8fbd8d5ee2f0b09',
     ),
     'laravel/sanctum' => 
     array (
