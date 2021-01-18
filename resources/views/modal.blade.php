@@ -2203,7 +2203,7 @@
 <!-- Modal Calculadora-->
 <div class="modal fade" id="modal_calculadora" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg bg-dark" role="document">
+    <div class="modal-dialog bg-dark" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
                 <h5 class="modal-title text-white">Calculadora</h5>

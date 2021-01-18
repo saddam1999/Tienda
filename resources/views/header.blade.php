@@ -53,47 +53,18 @@
         </div>
 
         <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+            <h3>Carrito</h3>
         </div>
-
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
-                    <li>
-                        <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Page 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">Portfolio</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
+        <div id="dismiss" class="mt-5">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <form action="results.php" method="POST">
+            <div class="sidebar-header text-dark"
+                style="background-color:white; color:dark; border-radius:20px; "
+                id="smartcart">
+                <h3 class="text-dark"><br> Carrito</h3>
+                <!-- SmartCart element -->
+        </form>
     </nav>
 
     <!-- Page Content -->
