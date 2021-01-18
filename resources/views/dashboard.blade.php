@@ -161,7 +161,7 @@
                     <small class="starter"></small></h3>
             </div>
             <div></div>
-            <div class="sidebar closed"     style="background-image: url('../img/backgrounds.jpeg');">
+            <div class="sidebar closed" style="background-image: url('../img/backgrounds.jpeg');">
                 <header>
                     <img style="border-radius:70%;"
                         src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="80" height="80"
@@ -170,6 +170,7 @@
                             class="entypo-cancel"></span></a>
                     <a class="ml-5" href="#" id="trigger"> Cerrar Menu <i class="fas fa-bars"></i></a>
                 </header>
+
                 <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary mt-1  shadow-lg" id="myTab" role="tablist"
                     id="blurrMe" id="trigger" style=" border: none;  border-radius: 10px;" data-backdrop="static" data-keyboard="false">
                     <!--
@@ -230,8 +231,7 @@
                         </a>
                     </li>
                     <li class="nav-item" id="trigger">
-                        <a class="dropdown-item" id="categoria-tab" id="trigger" data-toggle="tab" href="#categoria"
-                            role="tab" aria-controls="categoria" aria-selected="false">Categorias
+                        <a class="dropdown-item" href=""data-toggle="modal" data-target="#modal_calculadora">Categorias
                         </a>
                     </li>
                     <li class="nav-item" id="trigger">
@@ -250,6 +250,8 @@
                             role="tab" aria-controls="categoria" aria-selected="false">Categorias
                         </a>
                     </li>
+
+
 <!--
                     <li class="nav-item" id="trigger">
                         <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab"
@@ -417,19 +419,19 @@
                         </a>
                     </li>
                     <div class="row">
-             <div class="col-md-4">
-                 @foreach ($Caja as $caja)
-                 @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-                 <div class="input-group-prepend">
-                     <span class="input-group-text face text-secondary" style="border-radius:10px;"><a
-                             class="text-primary" href="" data-toggle="modal" data-target="#modal_caja">Caja:
-                             $ <span class="">@if($Caja->isEmpty()) @else {{$caja->corte}} @endif</span> </a> </span>
-                 </div>
-                 @endif
-                 @endforeach
-             </div>
+             <div class="col-md-3">
+              @foreach ($Caja as $caja)
+              @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+              <div class="input-group-prepend">
+                  <span class="input-group-text face text-secondary" style="border-radius:10px;"><a class="text-primary"
+                          href="" data-toggle="modal" data-target="#modal_caja">Caja:
+                          $ <span class="">@if($Caja->isEmpty()) @else {{$caja->corte}} @endif</span> </a> </span>
+              </div>
+              @endif
+              @endforeach
+          </div>
 
-             <div class="col-md-4">
+             <div class="col-md-3">
 
                  <div class="input-group-prepend">
                      @php $count=0; @endphp
@@ -450,13 +452,16 @@
                      </a>
                  </div>
              </div>
-             <div class="col-md-4">
+             <div class="col-md-3">
                  <div class="input-group-prepend">
                      <span class="input-group-text face text-secondary" style="border-radius:10px;"><a href=""
                              class="text-primary" data-toggle="modal" data-target="#modal_sms">
                              SMS: {{$contador}}</span></a>
                  </div>
              </div>
+             <div class="col-md-2">
+                <span class="input-group-text face text-secondary bg-dark" style="border-radius:10px;"> <a href=""  data-toggle="modal" data-target="#modal_calculadora"><i class="fas fa-calculator display-5 text-white"></i></a> </span>
+              </div>
          </div>
                 </ul>
                     <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
@@ -1486,6 +1491,7 @@
                             </div>
                         </div>
                     </div>
+
 <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
          <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

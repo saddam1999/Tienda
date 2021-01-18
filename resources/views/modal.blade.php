@@ -2161,73 +2161,93 @@
         </div>
     </div>
 </div>
-
 <!-- Modal Ventas-->
 <div class="modal fade" id="modal_ventas" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-                <div class="modal-header  bg-success">
-                        <h5 class="modal-title text-white">Vender Articulos</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header  bg-success">
+                <h5 class="modal-title text-white">Vender Articulos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <table class="table" id="tabla_productos">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Precio</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($Articulo as $productos)
-                                <tr>
-                                    <a href="#">
-                                    <td scope="row">{{$productos->id}}</td>
-                                    <td>{{$productos->nombre}}</td>
-                                    <td><textarea class="form-control" name="" id="" cols="30" rows="10"> {{$productos->descripcion}}</textarea></td>
-                                </a>
+                <div class="container-fluid">
+                    <div class="row">
 
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center active">
-                                Active list item
-                                <span class="badge badge-secondary badge-pill">pill1</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                List item
-                                <span class="badge badge-secondary badge-pill">pill2</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center disabled">
-                                Disabled item
-                                <span class="badge badge-secondary badge-pill">pill3</span>
-                            </li>
-                        </ul>
-
+                                <!-- Elementos generados a partir del JSON -->
+                                <main id="items" class="col-sm-8 row"></main>
+                                <!-- Carrito -->
+                                <aside class="col-sm-4">
+                                    <h2>Carrito</h2>
+                                    <!-- Elementos del carrito -->
+                                    <ul id="carrito" class="list-group"></ul>
+                                    <hr>
+                                    <!-- Precio total -->
+                                    <p class="text-right">Total: <span id="total"></span>&euro;</p>
+                                    <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+                                </aside>
+                            </div>
                     </div>
                 </div>
-            </div>
-        </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary tall" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary equal tall">=</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Calculadora-->
+<div class="modal fade" id="modal_calculadora" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg bg-dark" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h5 class="modal-title text-white">Calculadora</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body bg-dark">
+                <div class="container-fluid">
+                        <div class="calculator">
+                            <div class="screen"></div>
+                            <input type="hidden" value="" class="outcome" />
+                            <ul class="buttons">
+                                <li class="clear"><a>C</a></li>
+                                <li><a href="-" class="val">&plusmn;</a></li>
+                                <li><a href="/" class="val">&divide;</a></li>
+                                <li><a href="*" class="val">&times;</a></li>
+                                <li><a href="7" class="val">7</a></li>
+                                <li><a href="8" class="val">8</a></li>
+                                <li><a href="9" class="val">9</a></li>
+                                <li><a href="-" class="val">-</a></li>
+                                <li><a href="4" class="val">4</a></li>
+                                <li><a href="5" class="val">5</a></li>
+                                <li><a href="6" class="val">6</a></li>
+                                <li><a href="+" class="val">+</a></li>
+                                <li><a href="1" class="val">1</a></li>
+                                <li><a href="2" class="val">2</a></li>
+                                <li><a href="3" class="val">3</a></li>
+                                <li><a class="equal tall">=</a></li>
+                                <li><a href="0" class="val wide shift">0</a></li>
+                                <li><a href="." class="val shift">.</a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-dark">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Facebook -->
 <div class="modal fade" id="modal_obtenerFacebook" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -2255,12 +2275,4 @@
     </div>
 </div>
 
-<script>
-    $('#exampleModal').on('show.bs.modal', event => {
-        var button = $(event.relatedTarget);
-        var modal = $(this);
-        // Use above variables to manipulate the DOM
-
-    });
-</script>
 @section('modal')

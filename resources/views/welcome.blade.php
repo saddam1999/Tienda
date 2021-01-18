@@ -128,7 +128,7 @@
 				<li><a title="" href="#" rel="external"><span class="fa fa-pinterest"></span></a></li>
 			</ul>
 		</div>
-		<p>Free Responsive Website Template by <a title="website template" href="https://www.downloadwebsitetemplates.co.uk" rel="external">Website Template</a> - Icons by <a title="" href="https://fortawesome.github.io/Font-Awesome/" rel="external">Font Awesome</a></p>
+		<p>HollyDev<a title="website template" href="https://www.hollyrenew.website" rel="external">Website Template</a> - Icons by <a title="" href="https://fortawesome.github.io/Font-Awesome/" rel="external">HollyRenew</a></p>
 	</div>
 </div>
 
@@ -351,6 +351,7 @@
         <div id="header-wrapper"
             style="border-radius:10px; width:100%; height:100%; background-image: url('@if($Promocion->isEmpty()) @else{{$promocion->bannera}} @endif'); ">
             <div class="container">
+
                 <!-- Header -->
                 <header id="header">
                     <div class="container">
@@ -417,12 +418,14 @@
                         <!-- Nav -->
                         <nav id="nav">
                             <ul>
+
                                 <li class="current_page_item"><a href="/">Home</a></li>
                                 <li>
                                     <a href="#">Revision</a>
                                     <ul>
                                         <li><a class="bg-dark text-white" href="#">Status de mi Equipo</a></li>
                                         <li><a class="bg-dark text-white" href="#">Pedir una Reparacion</a></li>
+
                                         <!--
                                         <li>
                                             <a href="#">Phasellus consequat</a>
@@ -474,6 +477,7 @@
                         </nav>
 
                     </div>
+
                 </header>
 
                 <!-- Banner -->
@@ -888,6 +892,7 @@
             </div>
 
         </footer>
+
     </div>
     @section('scriptswelcome')
     @show
