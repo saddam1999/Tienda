@@ -56,6 +56,7 @@
                </script>
                <script type="text/javascript">
                    $('#smartcart').smartCart();
+
                </script>
                <div style="margin-bottom:70px;" id="WAButton"></div>
 

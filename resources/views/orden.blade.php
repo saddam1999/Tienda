@@ -5,8 +5,7 @@
 @foreach ($Usuario as $usuario)
 @if($equipo->id==$id && $settings->id==1 && $usuario->id==$equipo->id_cliente)
 <!DOCTYPE html>
-<html lang="en">
-<link href="../css/main.css" rel="stylesheet" type="text/css">
+<html lang="en" class="bg-white">
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -20,8 +19,6 @@
 </script>
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 <script type="text/javascript" src="../dist/js/jquery.smartCart.min.js"></script>
-<link href="../dist/css/smart_cart.min.css" rel="stylesheet" type="text/css">
-<link href="../css/main.css" rel="stylesheet" type="text/css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -70,7 +67,6 @@
 <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-<link href="../css/main.css" rel="stylesheet" type="text/css">
 <!--Floating WhatsApp css-->
 <link rel="stylesheet"
     href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
@@ -148,7 +144,7 @@ give gallery's parent container a cursor: pointer.**/
 
 <head>
 
-<body>
+<body >
     <div class="container">
         <div class="row">
             <div class="col-xs-5">
@@ -234,10 +230,10 @@ give gallery's parent container a cursor: pointer.**/
             <table class="table table-bordered text-white">
                 <thead>
                     <tr>
-                        <th style="text-align: center; border-radius: 2em; background-color:black ;" >
+                        <th style="text-align: center; border-radius: 2em;" >
                             <h4>Revision de componentes :</h4>
                         </th>
-                        <th style="text-align: center; border-radius: 2em; background-color:black ;">
+                        <th style="text-align: center; border-radius: 2em;">
                             <h4>Diagnostico Previo :</h4>
                         </th>
 
