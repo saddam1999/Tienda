@@ -61,10 +61,8 @@
     style="background-image: url('../img/backgrounds.jpeg');">
     <!-- Footer Elements -->
     <div class="container">
-
         <!-- Grid row-->
         <div class="row">
-
             <!-- Grid column -->
             <div class="col-md-12 py-2">
                 <div class="flex-center">
@@ -98,7 +96,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-1 text-white">©Holly Store Pro Copyright 2020 :
-        <a class="text-white"href="https://hollyrenew.website/"> Desarrolado por HollyDev</a>
+        <a class="text-white"href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
     </div>
     <!-- Copyright -->
 

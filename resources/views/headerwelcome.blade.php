@@ -1,6 +1,6 @@
-
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <title>@if($Settings->isEmpty()) @else {{$setting->setting_nombre}}@endif</title>
     <meta charset="utf-8" />

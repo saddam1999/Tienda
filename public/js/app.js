@@ -19819,3 +19819,13 @@ var context = canvas.getContext('2d');
 snap.addEventListener("click", function() {
     context.drawImage(video, 0, 0, 640, 480);
 });
+
+/* Open */
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+/* Close */
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}

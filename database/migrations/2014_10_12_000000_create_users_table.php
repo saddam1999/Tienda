@@ -32,6 +32,9 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->string('photo')->nullable();
             $table->text('profile_photo_path')->nullable();
+            $table->string('Notificacion_SMS')->nullable();
+            $table->string('Notificacion_Whatsapp')->nullable();
+            $table->string('Notificacion_Telegram')->nullable();
             $table->timestamps();
         });
     }

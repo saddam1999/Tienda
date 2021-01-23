@@ -35,6 +35,8 @@ class CreateSettingsTable extends Migration
             $table->float('setting_descuento_2')->nullable();
             $table->float('setting_descuento_3')->nullable();
             $table->float('setting_descuento_4')->nullable();
+            $table->float('setting_meta_diaria')->nullable();//meta de diaria
+            $table->float('setting_meta_mensual')->nullable();//meta de diaria
             $table->string('setting_moneda')->nullable();
             $table->timestamps();
         });
