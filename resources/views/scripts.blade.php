@@ -712,7 +712,7 @@
 </script>
 
 <script>
-    //    $('.toast').toast('show');
+      $('.toast').toast('show');
 </script>
 
 <!--tablas -->

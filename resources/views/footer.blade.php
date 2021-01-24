@@ -101,7 +101,27 @@ quitado temporalmente-->
         <a class="text-white"href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
     </div>
     <!-- Copyright -->
-
+    <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive"
+    aria-atomic="true">
+    <div class="toast-header">
+        <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2"
+            alt="...">
+        <strong class="mr-auto">Pre Orden</strong>
+        <small class="text-muted">hace 11 minutos</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body text-dark">
+        Gracias por tu interes en Holly Store Pro esta es una version Demo y no esta completa
+        pero
+        trabajamos arduamente por tenerlo finalizado proximamente en caso de estar interesado
+        dejamos
+        abierta la posibilidad de pre ordenar este sistema y obtener grandes ventajas en cuando
+        a precios y
+        funciones extras para quien ordene previamente contactame en caso de estar interesado.
+    </div>
+</div>
 </footer>
 
 @section('footer')
