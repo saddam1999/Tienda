@@ -15,16 +15,23 @@
                                 <th>Fecha Recibido</th>
                                 <th>Fecha Entrega</th>
                                 <th>Status</th>
-                                <th>Opciones</th>
                                 <th>Imprimir</th>
+                                <th>Opciones</th>
+
                             </tr>
 
                         </thead>
                         <tbody>
                             @foreach($Equipo->sortByDesc('status') as $equipo)
                             @if($equipo->id_sucursal==Auth::user()->id_sucursal)
-
-                            <tr>
+                            <tr><!--
+                                <td>
+                                    Rounded switch
+                                    <label class="switch">
+                                        <input type="checkbox" id="mostrar-super-contenido">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </td>-->
                                 <td>{{$equipo->modelo}}</td>
 
                                 @foreach ($Usuario as $user)
@@ -88,6 +95,40 @@
 
                                     </a></td>
                                 @if($equipo->status!=2 && $equipo->status !=6)
+
+                                <td>
+                                    <a class="custom-control-inline"
+                                        href="/imprimir/id={{$equipo->id}}&csrf={{ csrf_token() }}" target="_blank"
+                                        data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                        data-id_servicio="{{$equipo->id_servicio}}"
+                                        data-presupuesto="{{$equipo->presupuesto}}"
+                                        data-inversion="{{$equipo->inversion}}" data-precio="{{$equipo->precio}}"
+                                        data-id_sucursal="{{Auth::user()->id_sucursal}}"
+                                        data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
+                                        data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                        data-id_captura="{{$equipo->id_captura}}"
+                                        data-id_comentario="{{$equipo->id_comentario}}"
+                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
+                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
+                                        data-status="{{$equipo->status}}" data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
+                                        data-Centro_Carga="{{$equipo->Centro_Carga}}" data-Señal="{{$equipo->Señal}}"
+                                        data-LectorSD="{{$equipo->LectorSD}}" data-AltaVoz="{{$equipo->AltaVoz}}"
+                                        data-BotonHome="{{$equipo->BotonHome}}" data-Microfono="{{$equipo->Microfono}}"
+                                        data-Lector_SIM="{{$equipo->Lector_SIM}}"
+                                        data-Volumenplus="{{$equipo->Volumenplus}}"
+                                        data-Volumenless="{{$equipo->Volumenless}}"
+                                        data-Encendido="{{$equipo->Encendido}}" data-Auricular="{{$equipo->Auricular}}"
+                                        data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
+                                        data-Enciende="{{$equipo->Enciende}}" data-Memoria="{{$equipo->Memoria}}"
+                                        data-SIM="{{$equipo->SIM}}" data-Golpes="{{$equipo->Golpes}}"
+                                        data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><i
+                                            class="far fa-file-pdf text-warning h1 face"
+                                            alt="Imprime archivo PDF"></i></a>
+                                    <a href="/QR/{{$equipo->id}}" target="_blank">
+                                        <h1><i class="fas fa-qrcode face" alt="Imprime QR"></i>
+                                        </h1>
+                                    </a>
+                                </td>
                                 <td>
                                     <a href="" class="custom-control-inline" data-toggle="modal"
                                         data-target="#modaledittaller" data-id="{{$equipo->id}}"
@@ -220,41 +261,8 @@
                                         data-status="{{$equipo->status}}">Mas
                                         info de {{$equipo->modelo}}</a>
                                 </td>
-                                <td>
-                                    <a class="custom-control-inline"
-                                        href="/imprimir/id={{$equipo->id}}&csrf={{ csrf_token() }}" target="_blank"
-                                        data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
-                                        data-id_servicio="{{$equipo->id_servicio}}"
-                                        data-presupuesto="{{$equipo->presupuesto}}"
-                                        data-inversion="{{$equipo->inversion}}" data-precio="{{$equipo->precio}}"
-                                        data-id_sucursal="{{Auth::user()->id_sucursal}}"
-                                        data-id_user="{{$equipo->id_user}}" data-id_cliente="{{$equipo->id_cliente}}"
-                                        data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
-                                        data-id_captura="{{$equipo->id_captura}}"
-                                        data-id_comentario="{{$equipo->id_comentario}}"
-                                        data-fecha_recibido="{{$equipo->fecha_recibido}}"
-                                        data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                        data-status="{{$equipo->status}}" data-Tiene_Camara="{{$equipo->Tiene_Camara}}"
-                                        data-Centro_Carga="{{$equipo->Centro_Carga}}" data-Señal="{{$equipo->Señal}}"
-                                        data-LectorSD="{{$equipo->LectorSD}}" data-AltaVoz="{{$equipo->AltaVoz}}"
-                                        data-BotonHome="{{$equipo->BotonHome}}" data-Microfono="{{$equipo->Microfono}}"
-                                        data-Lector_SIM="{{$equipo->Lector_SIM}}"
-                                        data-Volumenplus="{{$equipo->Volumenplus}}"
-                                        data-Volumenless="{{$equipo->Volumenless}}"
-                                        data-Encendido="{{$equipo->Encendido}}" data-Auricular="{{$equipo->Auricular}}"
-                                        data-Touch="{{$equipo->Touch}}" data-Bateria="{{$equipo->Bateria}}"
-                                        data-Enciende="{{$equipo->Enciende}}" data-Memoria="{{$equipo->Memoria}}"
-                                        data-SIM="{{$equipo->SIM}}" data-Golpes="{{$equipo->Golpes}}"
-                                        data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><i
-                                            class="far fa-file-pdf text-warning h1 face"
-                                            alt="Imprime archivo PDF"></i></a>
-                                    <a href="/QR/{{$equipo->id}}" target="_blank">
-                                        <h1><i class="fas fa-qrcode face" alt="Imprime QR"></i>
-                                        </h1>
-                                    </a>
-                                </td>
-                                @endif
                             </tr>
+                            @endif
                             @endif
                             @endforeach
                         </tbody>

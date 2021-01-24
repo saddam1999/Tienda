@@ -58,7 +58,7 @@
         location.reload();
     }
 </script>
-<div class="mb-5" id="WAButton"></div>
+<div  id="WAButton" style="margin-bottom: 10%;"></div>
 
 <!--Menu -->
 <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary mt-1  shadow-lg" id="myTab" role="tablist"

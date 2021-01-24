@@ -18,33 +18,80 @@
                         <img class="form-control face" style="height: 50%; width:50%" src="https://wylnux.files.wordpress.com/2013/09/512c.png" alt="">
 
                         @if ($Sucursal->isEmpty())
-                        <a  href="" data-toggle="modal" data-target="#modalagregarsucursal">1.-Agregar una Sucursal (Aqui
-                            defines en donde estas trabajando)</a><br>
+                        <a  href="" data-toggle="modal" data-target="#modalagregarsucursal">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                               1.-Agregar una Sucursal (Aqui
+                                    defines en donde estas trabajando)</a><br>                            </label>
+                          </div>
+
                         @else
-                        <del><a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas
-                                trabajando)</a><br></del>
+                        <div class="form-check">
+                            <input class="form-check-input" disabled type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <a class="text-secondary" disabled>1.-Agregar una Sucursal (Aqui defines en donde estas
+                                    trabajando)</a><br>                            </label>
+                          </div>
+
+
                         @endif
 
                         @if ($Caja->isEmpty())
-                        <a href="" data-toggle="modal" data-target="#modalagregarcaja">2.-Agregar una Caja (Aqui
-                            recibiras los pagos de tu pagina)</a><br>
+                        <a href="" data-toggle="modal" data-target="#modalagregarcaja">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                         2.-Agregar una Caja (Aqui
+                                    recibiras los pagos de tu pagina)</a><br>
+                            </label>
+                          </div>
+
                         @else
-                        <del><a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu
-                                pagina)</a><br></del>
+                        <div class="form-check">
+                            <input class="form-check-input" disabled type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked" >
+                                <a class="text-secondary" disabled>2.-Agregar una Caja (Aqui recibiras los pagos de tu
+                                    pagina)</a><br>                            </label>
+                          </div>
+
                         @endif
 
                         @if($Marca->isEmpty())
-                        <a href="" data-toggle="modal" data-target="#modal_agregarmarca">3.-Agregar tu
-                            primera Marca Comercial</a><br>
+                        <a href="" data-toggle="modal" data-target="#modal_agregarmarca">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                3.-Agregar tu
+                                primera Marca Comercial</a><br>                            </label>
+                          </div>
+
                         @else
-                        <del><a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br></del>
+                        <div class="form-check">
+                            <input class="form-check-input" disabled type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <a class="text-secondary" disabled>3.-Agregar tu primera Marca Comercial</a><br>
+                            </label>
+                          </div>
+
                         @endif
 
                         @if ($Settings->isEmpty())
                         <a id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                            aria-controls="settings" aria-selected="false" data-dismiss="modal" >4.-Configurar Tu Negocio</a><br>
+                        aria-controls="settings" aria-selected="false" data-dismiss="modal" >
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                4.-Configurar Tu Negocio</a><br>                            </label>
+                          </div>
+
                         @else
-                        <del><a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br></del>
+                        <div class="form-check">
+                            <input class="form-check-input"  disabled type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                <a class="text-secondary" disabled>4.-Configurar Tu Negocio</a><br>
+                            </label>
+                          </div>
                         @endif
                         <hr>
                         <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas
@@ -1164,7 +1211,7 @@
     <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                <h5 class="modal-title text-white">Editar Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
                             class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
@@ -1691,28 +1738,29 @@
 </div>
 </div>
 </div>
+
 <!-- Modal Notificacion Success -->
-<div class="modal fade" id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+<div class="modal fade shadow-lg  " id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     style="border-radius:12%;" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-info"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <div class="modal-content border border-primary shadow-xl">
+            <div class="modal-header  text-info"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                 <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                 <circle cx="8" cy="4.5" r="1"/>
               </svg>
-                <h2 class="modal-title text-white ml-5" width="2em" height="2em"> Notificacion</h2>
+                <h2 class="modal-title  ml-5" width="2em" height="2em"> Notificacion</h2>
                 <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body bg-dark">
-                <div class="container-fluid text-white">
+            <div class="modal-body">
+                <div class="container-fluid ">
                     @if (session('success'))
                         <?php echo '<html>'.session('success').'</html>' ?>
                     @endif </div>
             </div>
-            <div class="modal-footer bg-dark">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

@@ -1,4 +1,3 @@
-
 <!-- Scripts Status-->
 <script>
     $('#modal_status').on('show.bs.modal', function(e) {
@@ -15,7 +14,6 @@
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#id').val(id);
         $("#agregarpago").attr("action", '/agregarpago/' + id);
-
         tasa = document.getElementById("iva").value;
         var presupuesto = $(e.relatedTarget).data().presupuesto; //pago a pagar
         var adelanto = $(e.relatedTarget).data().pago; //adelanto
@@ -501,7 +499,6 @@
         $(e.currentTarget).find('#pago2').val(id);
         var id = $(e.relatedTarget).data().modelo;
         $(e.currentTarget).find('#modelo2').val(id);
-
         var id = $(e.relatedTarget).data().anticipo;
         $(e.currentTarget).find('#anticipo2').val(id);
         var id = $(e.relatedTarget).data().presupuesto;
@@ -711,34 +708,30 @@
 <script>
     $(document).ready(function() {
         $(".se-pre-con").fadeOut("slow");
-
     });
 </script>
 
 <script>
-//    $('.toast').toast('show');
+    //    $('.toast').toast('show');
 </script>
 
 <!--tablas -->
 <script>
-$(document).ready(function(){
-  $('#tableventas').dataTable();
-  $('#tablemovimientos').dataTable();
-  $('#tabletaller').dataTable();
-  $('#tablecategoria').dataTable();
-  $('#tablesucursal').dataTable();
-  $('#tableservicios').dataTable();
-  $('#tableusuarios').dataTable();
-  $('#tablemarcas').dataTable();
-  $('#tablearticulos').dataTable();
-  $('#tablecajas').dataTable();
-  $('#tabla_productos').dataTable();
-  $('#tabla_ventas').dataTable();
-
-});
-
+    $(document).ready(function() {
+        $('#tableventas').dataTable();
+        $('#tablemovimientos').dataTable();
+        $('#tabletaller').dataTable();
+        $('#tablecategoria').dataTable();
+        $('#tablesucursal').dataTable();
+        $('#tableservicios').dataTable();
+        $('#tableusuarios').dataTable();
+        $('#tablemarcas').dataTable();
+        $('#tablearticulos').dataTable();
+        $('#tablecajas').dataTable();
+        $('#tabla_productos').dataTable();
+        $('#tabla_ventas').dataTable();
+    });
 </script>
-
 
 <!--modal paypal -->
 
@@ -781,17 +774,18 @@ $(document).ready(function(){
                         },
                         type: 'POST',
                         success: function(response) {
-                             alert(response);
+                            alert(response);
                             location.reload();
                         },
                         statusCode: {
                             404: function() {
-                                 alert('web not found');
+                                alert('web not found');
                             }
                         },
                         error: function(x, xs, xt) {
-                               window.open(JSON.stringify(x));
-                            alert('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+                            window.open(JSON.stringify(x));
+                            alert('error: ' + JSON.stringify(x) + "\n error string: " +
+                                xs + "\n error throwed: " + xt);
                         }
                     });
                 });
@@ -803,91 +797,88 @@ $(document).ready(function(){
 <!--modal info -->
 <script>
     $('#modal_info').on('show.bs.modal', function(e) {
-
-    var id = $(e.relatedTarget).data().id;
-    $(e.currentTarget).find('#info_id').text(id);
-    var id = $(e.relatedTarget).data().id_captura;
-    $(e.currentTarget).find('#info_imagen').val(id);
-    $("#info_imagen").attr("src", './fotos/' + id);
-    var id = $(e.relatedTarget).data().serial;
-    $(e.currentTarget).find('#info_serial').text(id);
-    var id = $(e.relatedTarget).data().uniqueid;
-    $(e.currentTarget).find('#uniqueid').text(id);
-    var id = $(e.relatedTarget).data().imei;
-    $(e.currentTarget).find('#info_imei').text(id);
-    var id = $(e.relatedTarget).data().id_comentario;
-    $(e.currentTarget).find('#info_comentario').val(id);
-        });
+        var id = $(e.relatedTarget).data().id;
+        $(e.currentTarget).find('#info_id').text(id);
+        var id = $(e.relatedTarget).data().id_captura;
+        $(e.currentTarget).find('#info_imagen').val(id);
+        $("#info_imagen").attr("src", './fotos/' + id);
+        var id = $(e.relatedTarget).data().serial;
+        $(e.currentTarget).find('#info_serial').text(id);
+        var id = $(e.relatedTarget).data().uniqueid;
+        $(e.currentTarget).find('#uniqueid').text(id);
+        var id = $(e.relatedTarget).data().imei;
+        $(e.currentTarget).find('#info_imei').text(id);
+        var id = $(e.relatedTarget).data().id_comentario;
+        $(e.currentTarget).find('#info_comentario').val(id);
+    });
 </script>
 
 <script>
     $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
     });
-  </script>
-
-
-  <script>
-        $(document).ready(function(){
-                // Toggle the blurred class
-                function sidebar() {
-                    var trigger = $('#trigger, #close'),
-                        menu = $('.sidebar');
-                    trigger.on('click', function() {
-                        $(this).toggleClass('active');
-                        menu.toggleClass('closed');
-                        $('#blurrMe').toggleClass('blurred'); // just here
-                    });
-                }
-
-                function deploy() {
-                    sidebar();
-                }
-                deploy();
+</script>
+<!--SideBar Blurrd-->
+<script>
+    $(document).ready(function() {
+        // Toggle the blurred class
+        function sidebar() {
+            var trigger = $('#trigger, #close'),
+                menu = $('.sidebar');
+            trigger.on('click', function() {
+                $(this).toggleClass('active');
+                menu.toggleClass('closed');
+                $('#blurrMe').toggleClass('blurred'); // just here
             });
-        </script>
-        <!-- calculadora -->
-        <script>
-            $(function(){
-                $(".val").click(function(e){
-                     e.preventDefault();
-                      var a = $(this).attr("href");
-                      $(".screen").append(a);
-                      $(".outcome").val($(".outcome").val() + a);
-                });
+        }
 
-                 $(".equal").click(function(){
-                      $(".outcome").val(eval($(".outcome").val()));
-                      $(".screen").html(eval($(".outcome").val()));
-                 });
+        function deploy() {
+            sidebar();
+        }
+        deploy();
+    });
+</script>
+<!-- calculadora -->
+<script>
+    $(function() {
+        $(".val").click(function(e) {
+            e.preventDefault();
+            var a = $(this).attr("href");
+            $(".screen").append(a);
+            $(".outcome").val($(".outcome").val() + a);
+        });
+        $(".equal").click(function() {
+            $(".outcome").val(eval($(".outcome").val()));
+            $(".screen").html(eval($(".outcome").val()));
+        });
+        $(".clear").click(function() {
+            $(".outcome").val("");
+            $(".screen").html("");
+        });
+        $(".min").click(function() {
+            $(".cal").stop().animate({
+                width: "0px",
+                height: "0px",
+                marginLeft: "700px",
+                marginTop: "1000px"
+            }, 500);
+            setTimeout(function() {
+                $(".cal").css("display", "none")
+            }, 600);
+        });
+        $(".close").click(function() {
+            $(".cal").css("display", "none");
+        })
+    })
+</script>
 
-                 $(".clear").click(function(){
-                      $(".outcome").val("");
-                      $(".screen").html("");
-                 });
-
-                 $(".min").click(function(){
-                     $(".cal").stop().animate({width: "0px", height: "0px", marginLeft: "700px", marginTop: "1000px"}, 500);
-                    setTimeout(function(){$(".cal").css("display", "none")}, 600);
-                 });
-
-                 $(".close").click(function(){
-                      $(".cal").css("display", "none");
-                 })
-            })
-
-            </script>
-
-            <!-- Carrito v2-->
+<!-- Carrito v2-->
 
 <script>
-    window.onload = function () {
-
+    window.onload = function() {
         // Variables
-        let baseDeDatos = [
-
-            {
+        let baseDeDatos = [{
                 id: 1,
                 nombre: 'Patata',
                 precio: 1,
@@ -911,16 +902,13 @@ $(document).ready(function(){
                 precio: 0.6,
                 imagen: 'https://source.unsplash.com/random/500x500/?burrs&sig=4'
             }
-
         ];
-
         let $items = document.querySelector('#items');
         let carrito = [];
         let total = 0;
         let $carrito = document.querySelector('#carrito');
         let $total = document.querySelector('#total');
         let $botonVaciar = document.querySelector('#boton-vaciar');
-
         // Funciones
         function renderItems() {
             for (let info of baseDeDatos) {
@@ -958,7 +946,7 @@ $(document).ready(function(){
             }
         }
 
-        function anyadirCarrito () {
+        function anyadirCarrito() {
             // Anyadimos el Nodo a nuestro carrito
             carrito.push(this.getAttribute('marcador'))
             // Calculo el total
@@ -973,19 +961,20 @@ $(document).ready(function(){
             // Quitamos los duplicados
             let carritoSinDuplicados = [...new Set(carrito)];
             // Generamos los Nodos a partir de carrito
-            carritoSinDuplicados.forEach(function (item, indice) {
+            carritoSinDuplicados.forEach(function(item, indice) {
                 // Obtenemos el item que necesitamos de la variable base de datos
                 let miItem = baseDeDatos.filter(function(itemBaseDatos) {
                     return itemBaseDatos['id'] == item;
                 });
                 // Cuenta el número de veces que se repite el producto
-                let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
+                let numeroUnidadesItem = carrito.reduce(function(total, itemId) {
                     return itemId === item ? total += 1 : total;
                 }, 0);
                 // Creamos el nodo del item del carrito
                 let miNodo = document.createElement('li');
                 miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-                miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0]['nombre']} - ${miItem[0]['precio']}€`;
+                miNodo.textContent =
+                    `${numeroUnidadesItem} x ${miItem[0]['nombre']} - ${miItem[0]['precio']}€`;
                 // Boton de borrar
                 let miBoton = document.createElement('button');
                 miBoton.classList.add('btn', 'btn-danger', 'mx-5');
@@ -1003,7 +992,7 @@ $(document).ready(function(){
             // Obtenemos el producto ID que hay en el boton pulsado
             let id = this.getAttribute('item');
             // Borramos todos los productos
-            carrito = carrito.filter(function (carritoId) {
+            carrito = carrito.filter(function(carritoId) {
                 return carritoId !== id;
             });
             // volvemos a renderizar
@@ -1036,14 +1025,16 @@ $(document).ready(function(){
             renderizarCarrito();
             calcularTotal();
         }
-
         // Eventos
         $botonVaciar.addEventListener('click', vaciarCarrito);
-
         // Inicio
         renderItems();
     }
 </script>
-<!-- sidebar-->
+<script>
 
+    $("#mostrar-super-contenido").click(function() {
+        $("#mi-super-contenido").toggle();
+    });
+</script>
 @section('scripts')

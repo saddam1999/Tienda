@@ -4,7 +4,7 @@
     (function() {
         var options = {
             facebook: "460755991156675", // Facebook page ID
-            call_to_action: "En que podemos Ayudarte", // Call to action
+            call_to_action: "Contactanos por Messenger!", // Call to action
             position: "right", // Position may be 'right' or 'left'
         };
         var proto = document.location.protocol,
@@ -35,6 +35,7 @@
         });
     });
 </script>
+<!--
     <div class="overlay"></div>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -54,6 +55,7 @@
         });
         // $('#smartcart').smartCart();
     </script>
+quitado temporalmente-->
     <script type="text/javascript">
         $('#smartcart').smartCart();
     </script>
@@ -95,7 +97,7 @@
     <!-- Footer Elements -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-1 text-white">©Holly Store Pro Copyright 2020 :
+    <div class="footer-copyright text-center py-1 text-white" style="border-radius: 20px;">©Holly Store Pro Copyright 2020 :
         <a class="text-white"href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
     </div>
     <!-- Copyright -->

@@ -130,6 +130,20 @@
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio"
                                                                     name="setting_plantilla" id="setting_plantilla"
+                                                                    value="" @if($Settings->isEmpty())
+                                                                checked
+                                                                @else
+                                                                @if($setting->setting_plantilla=='https://hollyrenew.website/demo.jpeg')
+                                                                checked
+                                                                @endif
+                                                                @endif >
+                                                                <label class="form-check-label" for="setting_plantilla"
+                                                                    selected>Template Coming Soon</label>
+                                                            </div>
+
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio"
+                                                                    name="setting_plantilla" id="setting_plantilla"
                                                                     value="../images/template1.png"
                                                                     @if($Settings->isEmpty())
                                                                 @else
@@ -167,7 +181,7 @@
                                                             <img name="template" id="template"
                                                                 class="m-auto border border-secondary shadow-lg"
                                                                 style="border-radius: 10px;"
-                                                                src="@if($Settings->isEmpty()) @else {{$setting->setting_plantilla}}@endif"
+                                                                src="@if($Settings->isEmpty()) https://hollyrenew.website/demo.jpeg @else {{$setting->setting_plantilla}}@endif"
                                                                 alt="">
                                                         </div>
                                                     </div>

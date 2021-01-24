@@ -2,7 +2,7 @@
 @endforeach
 @foreach ($Promocion as $promocion)
 @endforeach
-@if($Settings->isEmpty())
+@if($Settings->isEmpty()||$setting->setting_plantilla=='')
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -48,6 +48,7 @@
             <p><span class="fa fa-signal"></span></p>
             <h1><span>HollyStore</span><br />is coming soon</h1>
             <p>It's almost ready ... honest</p>
+            <img src="https://ingalonsoroa.files.wordpress.com/2012/07/images_bajo_construccion2.gif" alt="" sizes="" srcset="">
 
         </div>
     </div>
