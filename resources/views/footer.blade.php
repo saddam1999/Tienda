@@ -100,7 +100,7 @@ quitado temporalmente-->
     <div class="footer-copyright text-center py-1 text-white" style="border-radius: 20px;">©Holly Store Pro Copyright 2020 :
         <a class="text-white"href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
     </div>
-    <!-- Copyright -->
+    <!-- Copyright
     <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive"
     aria-atomic="true">
     <div class="toast-header">
@@ -120,7 +120,7 @@ quitado temporalmente-->
         abierta la posibilidad de pre ordenar este sistema y obtener grandes ventajas en cuando
         a precios y
         funciones extras para quien ordene previamente contactame en caso de estar interesado.
-    </div>
+    </div>-->
 </div>
 </footer>
 

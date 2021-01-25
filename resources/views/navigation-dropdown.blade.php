@@ -29,7 +29,7 @@
         </div>
 
         <!-- Settings Dropdown -->
-        <div class="hidden sm:flex sm:items-center sm:ml-6 ">
+        <div class="hidden sm:flex sm:items-center sm:ml-6">
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle text-white" href="" data-toggle="modal" data-target="#modal_caja"
                     href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
