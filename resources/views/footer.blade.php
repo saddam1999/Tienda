@@ -1,6 +1,6 @@
 <!-- Footer -->
-   <!-- GetButton.io widget -->
-   <script type="text/javascript">
+<!-- GetButton.io widget -->
+<script type="text/javascript">
     (function() {
         var options = {
             facebook: "460755991156675", // Facebook page ID
@@ -56,9 +56,9 @@
         // $('#smartcart').smartCart();
     </script>
 quitado temporalmente-->
-    <script type="text/javascript">
-        $('#smartcart').smartCart();
-    </script>
+<script type="text/javascript">
+    $('#smartcart').smartCart();
+</script>
 <footer class="page-footer font-small bg-dark text-white rounded"
     style="background-image: url('../img/backgrounds.jpeg');">
     <!-- Footer Elements -->
@@ -97,8 +97,9 @@ quitado temporalmente-->
     <!-- Footer Elements -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-1 text-white" style="border-radius: 20px;">©Holly Store Pro Copyright 2020 :
-        <a class="text-white"href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
+    <div class="footer-copyright text-center py-1 text-white" style="border-radius: 20px;">©Holly Store Pro Copyright
+        2020 :
+        <a class="text-white" href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
     </div>
     <!-- Copyright
     <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive"
@@ -121,7 +122,7 @@ quitado temporalmente-->
         a precios y
         funciones extras para quien ordene previamente contactame en caso de estar interesado.
     </div>-->
-</div>
+    </div>
 </footer>
 
 @section('footer')

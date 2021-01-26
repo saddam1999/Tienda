@@ -362,12 +362,4 @@
 </div>
 
 </nav>
-<div class="row ">
-    <div class="col-12-md  mt-5 fixed-bottom face">
-        <div>
-            <span style="font-size:40px;cursor:pointer margin-top: 15px; display: flex; justify-content: space-around ;"
-                onclick="openNav()"> <i class="fas fa-house-user text-warning"></i> </span>
-        </div>
-    </div>
 
-</div>

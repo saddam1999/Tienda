@@ -912,7 +912,7 @@
 
 <!-- Modal Taller-->
 <div class="modal fade" id="modaltaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-xl " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
                 <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"

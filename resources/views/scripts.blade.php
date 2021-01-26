@@ -877,6 +877,10 @@
 
 <script>
     window.onload = function() {
+        $("#mostrar-super-contenido").click(function() {
+            $('th:nth-child(9), tr td:nth-child(9)').toggle();
+
+    });
         // Variables
         let baseDeDatos = [{
                 id: 1,
@@ -1031,10 +1035,5 @@
         renderItems();
     }
 </script>
-<script>
 
-    $("#mostrar-super-contenido").click(function() {
-        $("#mi-super-contenido").toggle();
-    });
-</script>
 @section('scripts')

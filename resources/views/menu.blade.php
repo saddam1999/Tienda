@@ -59,7 +59,12 @@
     }
 </script>
 <div  id="WAButton" style="margin-bottom: 10%;"></div>
-
+    <div  class="col-12-md   fixed-bottom face align-self-end" style="margin-bottom: 19%; margin-right:18px;">
+        <div class="float-right">
+            <span style="font-size:40px;cursor:pointer  display: flex; justify-content: space-around ;"
+                onclick="openNav()"> <i class="float-right fas fa-house-user text-warning"></i> </span>
+        </div>
+    </div>
 <!--Menu -->
 <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary mt-1  shadow-lg" id="myTab" role="tablist"
     id="blurrMe" id="trigger" style=" border: none;  border-radius: 10px;" data-backdrop="static" data-keyboard="false">
