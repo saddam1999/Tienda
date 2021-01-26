@@ -44,7 +44,6 @@
             <div id="blurrMe">
                 <div class="tab-content bg-black" id="myTabContent"
                     style="background-image: url('https://wallpaperset.com/w/full/d/d/5/462750.jpg'); ">
-
                     @include('tabs')
                     <div class="row">
                         <div class="col-md-4 m-auto">

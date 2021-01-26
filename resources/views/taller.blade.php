@@ -259,7 +259,7 @@
                                         data-fecha_entrega="{{$equipo->fecha_entrega}}"
                                         data-status="{{$equipo->status}}">Mas
                                         info de {{$equipo->modelo}}</a>
-                                    </td>
+                                </td>
                             </tr>
                             @endif
                             @endif
