@@ -34,9 +34,9 @@
                         class="d-inline-block align-top ml-5" alt="">
                     <h2 class="text-white">@if($Settings->isEmpty()) @else{{$setting->setting_nombre}}@endif</h2> <a
                         href="#" id="close"><span class="entypo-cancel"></span></a>
-                        <h5 class="text-info ml-auto mr-auto"> {{Auth::user()->name}}</h5>
+                    <h5 class="text-info ml-auto mr-auto"> {{Auth::user()->name}}</h5>
 
-                        <a class="ml-5" href="#" id="trigger"> Cerrar Menu <i class="fas fa-bars"></i></a>
+                    <a class="ml-5" href="#" id="trigger"> Cerrar Menu <i class="fas fa-bars"></i></a>
                 </header>
                 @include('menu')
                 <!-- Menu de botones-->
@@ -81,6 +81,15 @@
                     @include('settings')
                     @include('taller')
                     @include('ventas')
+
+                    <a class="fixed-bottom face  shadow-xl" style="
+                    width:5%; margin-bottom: 19%; margin-right:18px; font-size:40px; " onclick="openNav()">
+                        <div class="container" onclick="myFunction(this)">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                        </div>
+                    </a>
 
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <filter id="blur">

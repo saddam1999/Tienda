@@ -59,9 +59,6 @@ quitado temporalmente-->
 <script type="text/javascript">
     $('#smartcart').smartCart();
 </script>
-<span class="fixed-bottom face"
-    style=" margin-bottom: 19%; margin-right:18px; font-size:40px; "
-    onclick="openNav()"> <i class="float-right fas fa-house-user text-warning"></i> </span>
 
 <footer class="page-footer font-small bg-dark text-white rounded"
     style="background-image: url('../img/backgrounds.jpeg');">
