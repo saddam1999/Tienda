@@ -46,7 +46,7 @@
                     style="background-image: url('https://wallpaperset.com/w/full/d/d/5/462750.jpg'); ">
                     @include('tabs')
                     <div class="row">
-                        <div class="col-md-4 m-auto">
+                        <div class="col-md-4 m-auto mb-3">
                             <button type="button" data-toggle="modal" data-target="#modal_ventas" data-backdrop="static"
                                 data-keyboard="false" class="btn btn-success btn-lg btn-block mt-3"
                                 style="vertical-align:middle"><span>Punto de Venta<center><svg width="2em" height="2em"
@@ -58,7 +58,7 @@
                                                 d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                                         </svg></center> </span></button>
                         </div>
-                        <div class="col-md-4 m-auto mt-1">
+                        <div class="col-md-4 m-auto mt-1 mb-3">
                             <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
                                 data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3"
                                 style="vertical-align:middle"><span>Reparar<center><svg width="2em" height="2em"

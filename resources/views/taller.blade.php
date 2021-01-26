@@ -1,12 +1,10 @@
 <div class="tab-pane fade show " id="taller" role="tabpanel" aria-labelledby="taller-tab">
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <h4 class="card-title">Equipos Sucursal @foreach ($Sucursal as
                         $sucursal)@if($sucursal->id==Auth::user()->id_sucursal)
                         {{$sucursal->nombre}} @endif @endforeach</h4>
-
                     <table class="table table-striped table-inverse table-responsive display nowrap" id="tabletaller">
                         <thead class="thead-inverse">
                             <tr>
@@ -28,7 +26,7 @@
 
                                 <td>
                                     <button class="btn btn-success accordion">+</button>
-                                    <div class="panel border-left-info shadow">
+                                    <div class="panel border-left-secondary shadow">
                                         <a href="" class="custom-control-inline" data-toggle="modal"
                                             data-target="#modaledittaller" data-id="{{$equipo->id}}"
                                             data-pago="{{$equipo->pago}}" data-presupuesto="{{$equipo->presupuesto}}"
@@ -276,6 +274,5 @@
                     </table>
                 </div>
             </div>
-        </div>
     </div>
 </div>
