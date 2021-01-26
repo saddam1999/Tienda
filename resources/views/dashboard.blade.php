@@ -82,12 +82,10 @@
                     @include('taller')
                     @include('ventas')
 
-                    <a class="fixed-bottom face  shadow-xl" style="
-                    width:5%; margin-bottom: 19%; margin-right:18px; font-size:40px; " onclick="openNav()">
+                    <a class="border border-secondary; fixed-bottom face  shadow-lg" style="
+                    width:5%; margin-bottom: 19%; margin-right:18px; font-size:40px; border-radius:10px 10px" onclick="openNav()">
                         <div class="container" onclick="myFunction(this)">
-                            <div class="bar1"></div>
-                            <div class="bar2"></div>
-                            <div class="bar3"></div>
+                             <i class="fas fa-caret-square-down"></i>
                         </div>
                     </a>
 
