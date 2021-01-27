@@ -1834,7 +1834,7 @@
                     <label for="status">Status</label>
                     <form name="cambio_status" id="cambio_status" action="">
                         @csrf
-                        <select name="status3" id="status3">
+                        <select class="form-control"name="status3" id="status3">
                             <option value="0">Recibido</option>
                             <option value="1">En Revision</option>
                             <option value="2">Cancelado</option>
@@ -1846,8 +1846,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Cambiar</button>
             </div>
             </form>
 
@@ -2204,7 +2204,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -2356,7 +2356,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>

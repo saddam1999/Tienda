@@ -83,11 +83,13 @@
                     @include('ventas')
 
                     <a class="border border-secondary; fixed-bottom face  shadow-lg" style="
-                    width:5%; margin-bottom: 19%; margin-right:18px; font-size:40px; border-radius:10px 10px" onclick="openNav()">
+                    width:5%; margin-bottom: 19%; margin-right:18px; font-size:40px; border-radius:10px 10px"
+                        onclick="openNav()">
                         <div class="container" onclick="myFunction(this)">
-                             <i class="fas fa-caret-square-down"></i>
+                            <i class="fas fa-caret-square-down"></i>
                         </div>
                     </a>
+                    Menu
 
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <filter id="blur">

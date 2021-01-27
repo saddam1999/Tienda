@@ -1,6 +1,6 @@
 <div class="tab-pane fade show " id="articulos" role="tabpanel" aria-labelledby="articulos-tab">
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="">
+        <div class="">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"
                 style=" border: none; border-radius: 40px 10px;">
                 <div class="card text-left">
@@ -43,8 +43,8 @@
                                     <td>{{$articulo->id}}</td>
                                     <td>{{$articulo->nombre}}</td>
                                     <td>
-                                        <textarea name="" id="" cols="30"
-                                            rows="10">{{$articulo->descripcion}}</textarea>
+                                        <textarea class="form-control"name="" id="" cols="30"
+                                            rows="auto">{{$articulo->descripcion}}</textarea>
                                     </td>
                                     @foreach($Marca as $marca)
                                     @if($articulo->id_marca ==$marca->id)

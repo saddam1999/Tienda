@@ -1,6 +1,6 @@
 <div class="tab-pane fade show" id="ventas" role="tabpanel" aria-labelledby="ventas-tab">
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="">
+        <div class="">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"
                 style=" border: none;border-radius: 40px 10px;">
                 <div class="card text-left">
@@ -163,7 +163,7 @@
                                     @endif
                                     @endforeach
 
-                                    <td><textarea name="" id="" cols="auto" rows="auto"
+                                    <td><textarea name="" id="" cols="auto" rows="4"
                                             disabled>{{$MovimientoCaja->comentario}}</textarea>
                                     </td>
                                     @if($MovimientoCaja->status=='deposito')

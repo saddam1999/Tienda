@@ -1067,10 +1067,21 @@ for (i = 0; i < acc.length; i++) {
 function myFunction() {
   var x = document.getElementById("myDIV");
   if (x.style.display === "none") {
+    //$("#ocultar").attr("value","+");
+
     x.style.display = "block";
+
+
   } else {
+    //$("#ocultar").attr("value","-");
+
     x.style.display = "none";
+
   }
 }
+
+
 </script>
+
+
 @section('scripts')
