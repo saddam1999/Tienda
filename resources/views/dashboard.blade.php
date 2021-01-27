@@ -32,8 +32,10 @@
                     <img style="border-radius:70%;"
                         src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="80" height="80"
                         class="d-inline-block align-top ml-5" alt="">
+
                     <h2 class="text-white">@if($Settings->isEmpty()) @else{{$setting->setting_nombre}}@endif</h2> <a
                         href="#" id="close"><span class="entypo-cancel"></span></a>
+
                     <h5 class="text-info ml-auto mr-auto"> {{Auth::user()->name}}</h5>
 
                     <a class="ml-5" href="#" id="trigger"> Cerrar Menu <i class="fas fa-bars"></i></a>
@@ -89,7 +91,11 @@
                             <i class="fas fa-caret-square-down"></i>
                         </div>
                     </a>
-                    Menu
+
+                    <button id="trigger" class="border border-secondary; fixed-bottom face  shadow-lg" style="
+                    width:5%; margin-bottom: 24%; margin-right:18px; font-size:40px; border-radius:10px 10px">
+                        <i class="fas fa-cogs"></i>
+                   </button>
 
                     <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <filter id="blur">

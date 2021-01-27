@@ -2373,5 +2373,10 @@
 </div>
 
 
-
+<!-- Use a button to open the snackbar
+<button onclick="myFunction()">Show Snackbar</button>
+-->
+<!-- The actual snackbar
+<div id="snackbar">Some text some message..</div>
+-->
 @section('modal')

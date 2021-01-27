@@ -60,12 +60,11 @@
 </script>
 <div id="WAButton" style="margin-bottom: 10%;"></div>
 
-
 <!--Menu -->
 <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary mt-1  shadow-lg" id="myTab" role="tablist"
     id="blurrMe" id="trigger" style=" border: none;  border-radius: 10px;" data-backdrop="static" data-keyboard="false">
 
-    <li class="nav-item rounded face" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="nav-link" id="taller-tab" data-toggle="tab" href="#taller" role="tab" aria-controls="taller"
             aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +75,7 @@
             </svg>Equipos a Reparar
         </a>
     </li>
-    <li class="nav-item rounded face" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="nav-link" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab" aria-controls="ventas"
             aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart4"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +84,7 @@
             </svg>Reportes
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="nav-link" id="usuarios-tab" data-toggle="tab" href="#usuarios" role="tab" aria-controls="usuarios"
             aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +93,7 @@
             </svg>Usuarios
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="nav-link" id="sucursal-tab" data-toggle="tab" href="#sucursal" role="tab" aria-controls="sucursal"
             aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -106,38 +105,38 @@
         </a>
     </li>
 
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item" id="articulos-tab" id="trigger" data-toggle="tab" href="#articulos" role="tab"
             aria-controls="articulos" aria-selected="true">Articulos
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item" id="marcas-tab" id="trigger" data-toggle="tab" href="#marcas" role="tab"
             aria-controls="marcas" aria-selected="false">Marcas
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item" href="" data-toggle="modal" data-target="#modal_calculadora">Categorias
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item trigger" id="servicios-tab" data-toggle="tab" href="#servicios" role="tab"
             aria-controls="servicios" aria-selected="false">Area de Servicios
         </a>
     </li>
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item trigger" id="marcas-tab" data-toggle="tab" href="#marcas" role="tab"
             aria-controls="marcas" aria-selected="false">Marcas
         </a>
     </li>
 
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="dropdown-item trigger" id="categoria-tab" data-toggle="tab" href="#categoria" role="tab"
             aria-controls="categoria" aria-selected="false">Categorias
         </a>
     </li>
 
-    <li class="nav-item" id="trigger">
+    <li class="rounded face" id="trigger">
         <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings"
             aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-toggles2"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
