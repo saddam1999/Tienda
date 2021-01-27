@@ -22,7 +22,7 @@
 
                         @foreach($Equipo->sortByDesc('status') as $equipo)
                         @if($equipo->id_sucursal==Auth::user()->id_sucursal)
-                        <tr>
+                        <tr >
 
                             <td>
                                 <button name="ocultar" id="ocultar"

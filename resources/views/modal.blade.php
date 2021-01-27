@@ -1832,6 +1832,14 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <label for="status">Status</label>
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Explicacion Status!</h4>
+                        <hr>
+                        <p>Recibido</p>
+                        <p>Aqui es cuando recien recibes el equipo</p>
+                        <hr>
+                        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                      </div>
                     <form name="cambio_status" id="cambio_status" action="">
                         @csrf
                         <select class="form-control"name="status3" id="status3">
