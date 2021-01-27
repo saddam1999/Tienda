@@ -5,7 +5,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
 </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="face shadow-lg max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top "
     style="background-image: url('../img/backgrounds.jpeg'); ">
@@ -155,7 +154,7 @@
 
                 <x-slot name="trigger">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <button href="#" id="trigger"
+                    <button href="#"
                         class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out">
                         <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
                             alt="{{ Auth::user()->name }}" />
@@ -267,7 +266,7 @@
 
         <!-- Hamburger -->
         <div class="-mr-2 flex items-center sm:hidden">
-            <button href="#" id="trigger" @click="open = ! open"
+            <button href="#"  @click="open = ! open"
                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
@@ -362,4 +361,19 @@
 </div>
 
 </nav>
+
+<a class="border border-secondary; fixed-bottom face  shadow-lg ml-auto mr-auto" style="
+width:5%; margin-right:18px; font-size:40px; border-radius:10px 10px"
+    onclick="openNav()">
+    <div class="container" onclick="myFunction(this)">
+        <i class="fas fa-caret-square-down"></i>
+    </div>
+</a>
+
+<a id="trigger" class="border border-secondary; fixed-bottom face  shadow-lg"
+    style="width:5%; margin-bottom: 30%; margin-right:18px; font-size:40px; border-radius:10px 10px">
+    <div class="container">
+        <i class="fas fa-caret-square-right"></i>
+    </div>
+</a>
 
