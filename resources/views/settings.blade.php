@@ -226,6 +226,25 @@
                                                             value="@if($Settings->isEmpty()) @else {{$setting->setting_iva}} @endif">
                                                     </div>
                                                 </div>
+                                                <label for="meta_diaria">Meta Diaria</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input type="text" class="form-control" name="setting_meta_diaria"
+                                                            id="setting_meta_diaria"
+                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_meta_diaria}} @endif">
+                                                    </div>
+                                                </div>
+                                                <label for="meta_mensual">Meta Mensual</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">$</span>
+                                                        <input type="text" class="form-control" name="setting_meta_mensual"
+                                                            id="setting_meta_mensual"
+                                                            value="@if($Settings->isEmpty()) @else {{$setting->setting_meta_mensual}} @endif">
+                                                    </div>
+                                                </div>
+
 
                                                 <label for="setting_descuento_1">Descuento
                                                     1</label>

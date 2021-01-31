@@ -1,7 +1,7 @@
 <div class="row">
 
     @php $count=0; $numero=0; $total=0;@endphp
-    @if($Equipo->isEmpty()) @php $numero=1; @endphp  @else
+    @if($Equipo->isEmpty()) @php $numero=1; @endphp @else
     @foreach ($Equipo as $equipo)
     @php
     $numero++;
@@ -27,7 +27,8 @@
 
                                 @foreach ($Caja as $caja)
                                 @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-                                $ @if($Caja->isEmpty()) @else {{$caja->corte}} @if($Settings->isEmpty()) 0 @else {{$setting->setting_moneda}} @endif @endif
+                                $ @if($Caja->isEmpty()) @else {{$caja->corte}} @if($Settings->isEmpty()) 0 @else
+                                {{$setting->setting_moneda}} @endif @endif
                                 @endif
                                 @endforeach
 
@@ -49,7 +50,8 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Ganancias (Mes)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000 @if($Settings->isEmpty()) @else  {{ $setting->setting_moneda }}@endif</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000 @if($Settings->isEmpty()) @else
+                            {{ $setting->setting_moneda }}@endif</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

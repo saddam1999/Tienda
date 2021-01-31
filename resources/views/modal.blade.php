@@ -2330,8 +2330,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- Modal Ganancias-->
 <div class="modal fade" id="modal_ganancias" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -2347,31 +2345,84 @@
                 <div class="container-fluid">
                     <!-- Donut Chart -->
                     <div class="col-xl-12 col-lg-12">
-                        <div class="card shadow mb-4">
-                            <!-- Card Header - Dropdown -->
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Ganancias Dia</h6>
-                            </div>
+                        <div class="card shadow">
                             <!-- Card Body -->
                             <div class="card-body">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
+                                <div class="progress progress-sm mr-2 display-5">
+                                    @foreach ($Caja as $caja)
+                                    @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+                                    @if($Caja->isEmpty())
+                                    @else
+                                    @if($Settings->isEmpty())
+
+                                    @else
+                                    @if($setting->setting_meta_diaria=='')
+                                    @php $setting->setting_meta_diaria=1; @endphp
+                                    @else
+                                    @endif
+                                    @php
+                                    $total=$caja->corte/$setting->setting_meta_diaria*100; @endphp
+                                    <div class="progress-bar @if($total<=20) bg-danger @elseif($total>=21&&$total <= 60) bg-warning @elseif($total>=60 && $total <=80) bg-info @else bg-success @endif  "
+                                        role="progressbar" style="width:{{$total}}%" aria-valuenow="50"
+                                        aria-valuemin="0" aria-valuemax="100"></div>
+                                    @endif
+                                    @if($Settings->isEmpty())
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width:0%"
                                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    @else
+                                    @endif
+                                    @endif
+                                    @endif
+                                    @endforeach
                                 </div>
                                 <hr>
+                                <div class="card-footer text-primary"> <br>
+                                    @if($Settings->isEmpty())
+                                    @else
+                                    Progreso = {{$total}}% <br>
+                                    Caja = ${{$caja->corte}} <br>
+                                    Meta = ${{$setting->setting_meta_diaria}}
+                                    @endif
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button>
 
+<!-- Modal  -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    Add rows here
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Use a button to open the snackbar
 <button onclick="myFunction()">Show Snackbar</button>

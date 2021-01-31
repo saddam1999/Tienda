@@ -1,4 +1,4 @@
-<div class="sidebar closed" style="background-image: url('../img/backgrounds.jpeg');">
+<div class="sidebar closed"  style="background-image: url('../img/backgrounds.jpeg');">
     <header>
         <img style="border-radius:10px 10px 10px 10px;"
             src=" @if($Settings->isEmpty()) @else {{$setting->setting_logo}}@endif" width="80" height="80"
@@ -58,18 +58,18 @@
 
     </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("myNav").style.height = "100%";
-        }
 
-        function closeNav() {
-            document.getElementById("myNav").style.height = "0%";
-            location.reload();
-        }
-    </script>
     <div id="WAButton" style="margin-bottom: 10%;"></div>
 
+
+
+
+
+
+
+
+
+<div>
     <!--Menu -->
     <ul class="nav nav-tabs bg-ligth shadow-lg border border-secondary mt-1  shadow-lg" id="myTab" role="tablist"
         id="blurrMe" id="trigger" style=" border: none;  border-radius: 10px;" data-backdrop="static"
@@ -162,3 +162,4 @@
         </li>
 
     </ul>
+</div>
