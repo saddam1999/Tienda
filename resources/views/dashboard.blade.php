@@ -8,6 +8,7 @@
         </h2>
     </x-slot>
     @php
+
     date_default_timezone_set('UTC');
     $contador=0;
     @endphp
@@ -59,7 +60,7 @@
                     </div>
                 </div>
 
-                <div class="icon-bar" style="border-radius:10px; ">
+                <div class="icon-bar" style="border-radius:10px;">
                     <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller" role="tab"
                         aria-controls="taller"><i class="fa fa-home"></i></a>
                     <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller" role="tab"

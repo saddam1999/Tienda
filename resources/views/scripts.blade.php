@@ -1108,4 +1108,22 @@ function myFunction() {
     }
 </script>
 
+<script>
+    /********* Javascript Generated with phpChart **********/
+var _basic_chart_plot_properties;
+$(document).ready(function(){
+_basic_chart_plot_properties = [
+
+]
+
+
+
+$.jqplot.config.enablePlugins = true;
+$.jqplot.config.defaultHeight = 300;
+$.jqplot.config.defaultWidth  = 400;
+ _basic_chart= $.jqplot("basic_chart", [[11,9,5,12,14]], _basic_chart_plot_properties);
+
+
+});
+</script>
 @section('scripts')

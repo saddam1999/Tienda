@@ -2406,7 +2406,8 @@
                     </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    Add rows here
+
+
                 </div>
             </div>
             <div class="modal-footer">
