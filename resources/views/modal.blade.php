@@ -912,7 +912,7 @@
 
 <!-- Modal Taller-->
 <div class="modal fade" id="modaltaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-xl " role="document">
+    <div class="modal-dialog modal-lg " role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
                 <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
@@ -1208,7 +1208,7 @@
 <!-- Modal Edit Taller-->
 <div class="modal fade" id="modaledittaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
                 <h5 class="modal-title text-white">Editar Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
@@ -2342,52 +2342,45 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <!-- Donut Chart -->
-                    <div class="col-xl-12 col-lg-12">
-                        <div class="card shadow">
-                            <!-- Card Body -->
-                            <div class="card-body">
-                                <div class="progress progress-sm mr-2 display-5">
-                                    @foreach ($Caja as $caja)
-                                    @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-                                    @if($Caja->isEmpty())
-                                    @else
-                                    @if($Settings->isEmpty())
+                <div class="container">
 
-                                    @else
-                                    @if($setting->setting_meta_diaria=='')
-                                    @php $setting->setting_meta_diaria=1; @endphp
-                                    @else
-                                    @endif
-                                    @php
-                                    $total=$caja->corte/$setting->setting_meta_diaria*100; @endphp
-                                    <div class="progress-bar @if($total<=20) bg-danger @elseif($total>=21&&$total <= 60) bg-warning @elseif($total>=60 && $total <=80) bg-info @else bg-success @endif  "
-                                        role="progressbar" style="width:{{$total}}%" aria-valuenow="50"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                    @endif
-                                    @if($Settings->isEmpty())
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width:0%"
-                                        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    @else
-                                    @endif
-                                    @endif
-                                    @endif
-                                    @endforeach
-                                </div>
-                                <hr>
-                                <div class="card-footer text-primary"> <br>
-                                    @if($Settings->isEmpty())
-                                    @else
-                                    Progreso = {{$total}}% <br>
-                                    Caja = ${{$caja->corte}} <br>
-                                    Meta = ${{$setting->setting_meta_diaria}}
-                                    @endif
-                                </div>
-                            </div>
+                        <p class="card-footer">Avance</p>
+                        <div class="progress progress-sm mr-2 display-5">
+                            @foreach ($Caja as $caja)
+                            @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+                            @if($Caja->isEmpty())
+                            @else
+                            @if($Settings->isEmpty())
+
+                            @else
+                            @if($setting->setting_meta_diaria=='')
+                            @php $setting->setting_meta_diaria=1; @endphp
+                            @else
+                            @endif
+                            @php
+                            $total=$caja->corte/$setting->setting_meta_diaria*100; @endphp
+                            <div class="progress-bar @if($total<=20) bg-danger @elseif($total>=21&&$total <= 60) bg-warning @elseif($total>=60 && $total <=80) bg-info @else bg-success @endif  "
+                                role="progressbar" style="width:{{$total}}%" aria-valuenow="50" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                            @endif
+                            @if($Settings->isEmpty())
+                            <div class="progress-bar bg-warning" role="progressbar" style="width:0%" aria-valuenow="50"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                            @else
+                            @endif
+                            @endif
+                            @endif
+                            @endforeach
                         </div>
-
-                    </div>
+                        <hr>
+                        <div class="card-footer text-primary"> <br>
+                            @if($Settings->isEmpty())
+                            @else
+                            Progreso = {{$total}}% <br>
+                            Caja = ${{$caja->corte}} <br>
+                            Meta = ${{$setting->setting_meta_diaria}}
+                            @endif
+                        </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
