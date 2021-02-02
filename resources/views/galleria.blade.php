@@ -64,9 +64,6 @@ give gallery's parent container a cursor: pointer.**/
         <div class="row">
             @foreach ($Captura as $captura)
             @if($captura->id_equipo!=$id)
-            <img class="thumbnail zoom" width="70%"
-                src="https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw"
-                style="border-radius:10px;">
             @else
             <div class="col-md-4">
                 @if($captura->id_equipo==$id)
