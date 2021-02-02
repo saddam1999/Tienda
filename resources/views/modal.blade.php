@@ -1198,7 +1198,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="submit"  class="btn btn-primary" id="boton">Agregar</button>
             </div>
             </form>
@@ -1487,8 +1487,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="boton">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="boton">Agregar</button>
             </div>
             </form>
         </div>
@@ -1729,7 +1729,7 @@
                     </svg></button>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
             </form>
@@ -2193,23 +2193,25 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="card text-left">
-                        <img class="card-img-top" class="thumbnail zoom" name="info_imagen" id="info_imagen"
-                            style="border-radius:10px;" src="" alt="">
-                        <div class="card-body">
-                            <label for="info_id">ID</label>
-                            <p class="card-text" name="info_id" id="info_id"></p>
-                            <label for="info_id">UniqueID</label>
-                            <p class="card-text" name="uniqueid" id="uniqueid"></p>
-                            <label for="info_serial">Serial</label>
-                            <p class="card-text" name="info_serial" id="info_serial"></p>
-                            <label for="info_imei">Imei</label>
-                            <p class="card-text" name="info_imei" id="info_imei"></p>
-                            <label for="info_comentario">Comentario</label> <br>
-                            <textarea class="border border-dark" name="info_comentario" id="info_comentario" cols="auto"
-                                rows="auto" disabled></textarea>
+                    <div class="coupon">
+                        <div class="container">
+                            <p>ID:</p>
+                            <h3 name="info_id" id="info_id"></h3>
                         </div>
-                    </div>
+                        <img   name="info_imagen" id="info_imagen"  style="width:100%;">
+                        <div class="container" style="background-color:white">
+                            <p>Unique ID:</p>
+                            <h2><b name="uniqueid" id="uniqueid"></b></h2>
+                            <p>Serial</p>
+                          <p  name="info_serial" id="info_serial"></p>
+                        </div>
+                        <div class="container">
+                            <p>IMEI:</p>
+                          <p><span class="promo"  name="info_imei" id="info_imei"></span></p>
+                          <p>Info:</p>
+                          <textarea class="border border-dark expire form-control" name="info_comentario" id="info_comentario" cols="auto"
+                          rows="auto" disabled></textarea>                        </div>
+                      </div>
                 </div>
             </div>
             <div class="modal-footer">
