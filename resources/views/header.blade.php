@@ -44,4 +44,3 @@
     src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js">
 </script>
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
-<script src="js/demo/chart-pie-demo.js"></script>

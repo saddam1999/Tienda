@@ -1736,8 +1736,9 @@
         </div>
     </div>
 </div>
+<!--
 </div>
-</div>
+</div>-->
 
 <!-- Modal Notificacion Success -->
 <div class="modal fade shadow-lg  " id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
@@ -2389,10 +2390,10 @@
         </div>
     </div>
 </div>
-<!-- Button trigger modal -->
+<!-- Button trigger modal
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
   Launch
-</button>
+</button>-->
 
 <!-- Modal  -->
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

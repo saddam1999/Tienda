@@ -47,8 +47,9 @@
                                     </svg></center> </span></button>
                     </div>
                     <div class="col-md-4 m-auto mt-1 mb-3">
-                        <button type="button" data-toggle="modal" data-target="#modaltaller" data-backdrop="static"
-                            data-keyboard="false" class="btn btn-warning btn-lg btn-block text-white mt-3"
+                        <button name="taller_boton" id="taller_boton" type="button" data-toggle="modal"
+                            data-target="#modaltaller" data-backdrop="static" data-keyboard="false"
+                            class="btn btn-warning btn-lg btn-block text-white mt-3"
                             style="vertical-align:middle"><span>Reparar<center><svg width="2em" height="2em"
                                         viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -61,19 +62,20 @@
                 </div>
 
                 <div class="icon-bar" style="border-radius:10px;">
-                    <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller" role="tab"
-                        aria-controls="taller"><i class="fa fa-home"></i></a>
-                    <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller" role="tab"
-                        aria-controls="taller"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tools"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"
+                        role="tab" aria-controls="taller"><i class="fa fa-home"></i></a>
+                    <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"
+                        role="tab" aria-controls="taller"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                            class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z" />
                             <path fill-rule="evenodd"
                                 d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
                         </svg></a>
-                    <a onclick="closeNav()" class="nav-link face" id="ventas-tab" data-toggle="tab" href="#ventas" role="tab"
-                        aria-controls="ventas" aria-selected="false"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                            class="bi bi-cart4" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <a onclick="closeNav()" class="nav-link face" id="ventas-tab" data-toggle="tab" href="#ventas"
+                        role="tab" aria-controls="ventas" aria-selected="false"><svg width="1em" height="1em"
+                            viewBox="0 0 16 16" class="bi bi-cart4" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                         </svg></a>

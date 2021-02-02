@@ -1,8 +1,7 @@
 <div class="tab-pane fade show " id="settings" role="tabpanel" aria-labelledby="settings-tab">
     <div class="">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-12">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"
-                style=" border: none; border-radius: 40px 10px;">
+                style="border: none; border-radius: 40px 10px;">
                 <div class="card-body">
                     <h4 class="card-title">Opciones Sucursal @foreach ($Sucursal as
                         $sucursal)@if($sucursal->id==Auth::user()->id_sucursal)
@@ -410,7 +409,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 </div>

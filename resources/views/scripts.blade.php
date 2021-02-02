@@ -1112,6 +1112,7 @@ function myFunction() {
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $("#movil").attr("style", "display:none");
         $("#WAButton").attr("style", "display:none")
+        $("#taller_boton").attr("style", "display:none")
 
     }
 </script>
