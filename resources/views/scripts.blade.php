@@ -800,8 +800,12 @@
         var id = $(e.relatedTarget).data().id;
         $(e.currentTarget).find('#info_id').text(id);
         var id = $(e.relatedTarget).data().id_captura;
+
         $(e.currentTarget).find('#info_imagen').val(id);
         $("#info_imagen").attr("src", './fotos/' + id);
+        if(id==''){
+            $("#info_imagen").attr("src", 'https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw' + id);
+        }
         var id = $(e.relatedTarget).data().serial;
         $(e.currentTarget).find('#info_serial').text(id);
         var id = $(e.relatedTarget).data().uniqueid;

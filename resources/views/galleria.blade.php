@@ -70,7 +70,7 @@ give gallery's parent container a cursor: pointer.**/
             @endif
             @endforeach
             <div class="col-md-12">
-                <li><img class="thumbnail zoom " src="../fotos/{{$captura->captura}}" style="border-radius:40px;"></li>
+                <li><img class="thumbnail zoom " src="@if($captura->captura!='')../fotos/{{$captura->captura}}@else https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw @endif" style="border-radius:40px;"></li>
                 <textarea class="form-control mt-2" name="" id="" cols="30"
                     rows="10">{{$captura->descripcion}}</textarea>
             </div>
