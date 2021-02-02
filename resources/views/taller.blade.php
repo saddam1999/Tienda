@@ -27,8 +27,8 @@
                             <td>
                                 <button name="ocultar" id="ocultar"
                                     class="btn btn-success accordion form-control">+</button>
-                                <div class="panel border-left-secondary shadow mt-2">
-                                    <a href="" class="custom-control-inline" data-toggle="modal"
+                                <div class="panel border-left-secondary shadow mt-2" style="border-radius: 8px;">
+                                    <a href="" class="custom-control-inline m-2" data-toggle="modal"
                                         data-target="#modaledittaller" data-id="{{$equipo->id}}"
                                         data-pago="{{$equipo->pago}}" data-presupuesto="{{$equipo->presupuesto}}"
                                         data-inversion="{{$equipo->inversion}}"

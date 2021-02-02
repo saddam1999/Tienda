@@ -230,9 +230,9 @@
                 (function() {
                     // Comenzamos viendo si tiene soporte, si no, nos detenemos
                     if (!tieneSoporteUserMedia()) {
-                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                        alert("Lo siento. Tu navegador no soporta esta caracteristica");
                         $estado.innerHTML =
-                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                            "Parece que tu navegador no soporta esta caracteristica. Intenta actualizarlo.";
                         return;
                     }
                     //AquÃ­ guardaremos el stream globalmente
@@ -325,7 +325,7 @@
                             }, (error) => {
                                 console.log("Permiso denegado o error: ", error);
                                 $estado.innerHTML =
-                                    "No se puede acceder a la cÃ¡mara, o no diste permiso.";
+                                    "No se puede acceder a la Camara, o no diste permiso.";
                             });
                     }
                 })();
@@ -379,9 +379,9 @@
                 (function() {
                     // Comenzamos viendo si tiene soporte, si no, nos detenemos
                     if (!tieneSoporteUserMedia()) {
-                        alert("Lo siento. Tu navegador no soporta esta caracterÃ­stica");
+                        alert("Lo siento. Tu navegador no soporta esta caracteristica");
                         $estado.innerHTML =
-                            "Parece que tu navegador no soporta esta caracterÃ­stica. Intenta actualizarlo.";
+                            "Parece que tu navegador no soporta esta caracteristica. Intenta actualizarlo.";
                         return;
                     }
                     //AquÃ­ guardaremos el stream globalmente
@@ -1074,7 +1074,6 @@ function myFunction() {
 
   } else {
     //$("#ocultar").attr("value","-");
-
     x.style.display = "none";
 
   }
@@ -1086,7 +1085,7 @@ function myFunction() {
 <!--SnackBar-->
 <script>
 
-function myFunction() {
+ function myFunction() {
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
 
@@ -1095,7 +1094,7 @@ function myFunction() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
+ }
 </script>
 <script>
     function openNav() {

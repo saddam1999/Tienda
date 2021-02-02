@@ -912,7 +912,7 @@
 
 <!-- Modal Taller-->
 <div class="modal fade" id="modaltaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
                 <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
@@ -921,7 +921,7 @@
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
                         </svg></center>
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="closeNav()"  data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -1198,8 +1198,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" id="boton">Save</button>
+                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit"  class="btn btn-primary" id="boton">Agregar</button>
             </div>
             </form>
         </div>
@@ -1698,7 +1698,7 @@
                             <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
                         </svg></h5>
                 </center>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="closeNav()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -1729,8 +1729,8 @@
                     </svg></button>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
             </form>
         </div>
