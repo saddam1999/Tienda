@@ -32,7 +32,6 @@
                     <tbody>
                         @foreach($Usuario as $usuario)
                         <tr>
-
                             <td>{{$usuario->id}}</td>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->email}}</td>
