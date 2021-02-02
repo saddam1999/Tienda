@@ -921,7 +921,7 @@
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
                         </svg></center>
                 </h5>
-                <button type="button" class="close" onclick="closeNav()"  data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" onclick="closeNav()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -1137,8 +1137,9 @@
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">$</span>
-                                                            <input class="form-control" name="pago"
-                                                                id="pago" placeholder="Anticipo" pattern="[0-9]" type="number" min="0" value="0">
+                                                            <input class="form-control" name="pago" id="pago"
+                                                                placeholder="Anticipo" pattern="[0-9]" type="number"
+                                                                min="0" value="0">
                                                         </div>
 
                                                     </div>
@@ -1149,8 +1150,9 @@
                                                 <label for="presupuesto">Presupuesto</label>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
-                                                    <input class="form-control" pattern="[0-9]" type="number" min="0" name="presupuesto"
-                                                        id="presupuesto" placeholder="(Cuanto puede Costar)" value="0">
+                                                    <input class="form-control" pattern="[0-9]" type="number" min="0"
+                                                        name="presupuesto" id="presupuesto"
+                                                        placeholder="(Cuanto puede Costar)" value="0">
                                                 </div>
 
                                             </div>
@@ -1158,8 +1160,8 @@
                                                 <label for="inversion">Inversion</label>
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
-                                                    <input class="form-control" pattern="[0-9]" type="number" min="0" name="inversion"
-                                                        id="inversion"
+                                                    <input class="form-control" pattern="[0-9]" type="number" min="0"
+                                                        name="inversion" id="inversion"
                                                         placeholder=" (Cuanto es lo maximo que se puede invertir)"
                                                         value="0">
 
@@ -1188,8 +1190,8 @@
                                 <p id="estado"></p>
                                 <br>
                             </div>
-                            <video muted="muted" id="video"></video>
-                            <canvas id="canvas" style="display: none;"></canvas>
+                            <video class="m-1" style="border-radius: 10px;" muted="muted" id="video"></video>
+                            <canvas id="canvas" style="display: none; border-radius: 10px;"></canvas>
                             <input type="hidden" name="status" id="status" value="0">
                             <input type="hidden" name="id_captura" id="id_captura" value="">
                             <button type="button" class="btn btn-primary" id="boton">
@@ -1198,8 +1200,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="submit"  class="btn btn-primary" id="boton">Agregar</button>
+                <button type="button" onclick="closeNav()" class="btn btn-secondary"
+                    data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="boton">Agregar</button>
             </div>
             </form>
         </div>
@@ -1716,10 +1719,10 @@
                 <input type="hidden" name="id_captura1" id="id_captura1" value="">
                 <input type="hidden" name="id_user1" id="id_user1" value="{{Auth::user()->id}}">
                 <label for="id_descripcion1">Inserte Descripcion de la Foto</label>
-                <textarea class="border border-danger mt-2" name="id_descripcion1" id="id_descripcion1" cols="30"
+                <textarea class="border border-danger mt-2 form-control" name="id_descripcion1" id="id_descripcion1" cols="30"
                     rows="10" placeholder="Inserte la descripcion de la foto aqui"></textarea>
 
-                <button type="button" class="btn btn-primary" id="boton1"><svg width="1em" height="1em"
+                <button type="button" class="btn btn-primary" id="boton1" ><svg width="1em" height="1em"
                         viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
@@ -1730,7 +1733,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="closeNav()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button submit" id="boton1" class="btn btn-primary">Guardar</button>
             </div>
             </form>
         </div>
