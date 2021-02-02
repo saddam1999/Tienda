@@ -2198,20 +2198,21 @@
                             <p>ID:</p>
                             <h3 name="info_id" id="info_id"></h3>
                         </div>
-                        <img   name="info_imagen" id="info_imagen"  style="width:100%;">
+                        <img name="info_imagen" id="info_imagen" style="width:100%; border-radius:10px;">
                         <div class="container" style="background-color:white">
                             <p>Unique ID:</p>
                             <h2><b name="uniqueid" id="uniqueid"></b></h2>
                             <p>Serial</p>
-                          <p  name="info_serial" id="info_serial"></p>
+                            <p name="info_serial" id="info_serial"></p>
                         </div>
                         <div class="container">
                             <p>IMEI:</p>
-                          <p><span class="promo"  name="info_imei" id="info_imei"></span></p>
-                          <p>Info:</p>
-                          <textarea class="border border-dark expire form-control" name="info_comentario" id="info_comentario" cols="auto"
-                          rows="auto" disabled></textarea>                        </div>
-                      </div>
+                            <p><span class="promo" name="info_imei" id="info_imei"></span></p>
+                            <p>Info:</p>
+                            <textarea class="border border-dark expire form-control" name="info_comentario"
+                                id="info_comentario" cols="auto" rows="auto" disabled></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
