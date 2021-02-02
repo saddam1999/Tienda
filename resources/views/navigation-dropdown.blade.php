@@ -20,9 +20,8 @@
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-jet-nav-link href="{{ route('dashboard') }}"
-                    :active="request()->routeIs('dashboard')">
-                   <p class="text-white">Holly Store Pro 🇲🇽</p>
+                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <p class="text-white">Holly Store Pro 🇲🇽</p>
                 </x-jet-nav-link>
             </div>
         </div>
@@ -37,7 +36,7 @@
                 </a>
             </li>
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1" >
+            <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell fa-fw"></i>
@@ -266,7 +265,7 @@
 
         <!-- Hamburger -->
         <div class="-mr-2 flex items-center sm:hidden">
-            <button href="#"  @click="open = ! open"
+            <button @click="open = ! open"
                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                     <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round"
@@ -276,6 +275,7 @@
                 </svg>
             </button>
         </div>
+
     </div>
 </div>
 
@@ -362,18 +362,18 @@
 
 </nav>
 
-<a class="border border-secondary; fixed-bottom face  shadow-lg ml-auto mr-auto" style="
-width:5%; margin-right:18px; font-size:40px; border-radius:10px 10px"
-    onclick="openNav()">
-    <div class="container" onclick="myFunction(this)">
-        <i class="fas fa-caret-square-down"></i>
-    </div>
-</a>
+<div name="movil" id="movil">
+    <a class="border border-secondary; fixed-bottom face  shadow-lg ml-auto mr-auto" style="
+width:5%; margin-right:18px; font-size:40px; border-radius:10px 10px" onclick="openNav()">
+        <div class="container" onclick="myFunction(this)">
+            <i class="fas fa-caret-square-down"></i>
+        </div>
+    </a>
 
-<a id="trigger" class="border border-secondary; fixed-bottom face  shadow-lg"
-    style="width:5%; margin-bottom: 30%; margin-right:18px; font-size:40px; border-radius:10px 10px">
-    <div class="container">
-        <i class="fas fa-caret-square-right"></i>
-    </div>
-</a>
-
+    <a id="trigger" class="border border-secondary; fixed-bottom face  shadow-lg"
+        style="width:5%; margin-bottom: 30%; margin-right:18px; font-size:40px; border-radius:10px 10px">
+        <div class="container">
+            <i class="fas fa-caret-square-right"></i>
+        </div>
+    </a>
+</div>

@@ -100,7 +100,7 @@ quitado temporalmente-->
     <!-- Copyright -->
     <div class="footer-copyright text-center py-1 text-white" style="border-radius: 20px;">©Holly Store Pro Copyright
         2020 :
-        <a class="text-white" href="https://hollyrenew.website/"> Desarrollado por HollyDev</a>
+        <a class="text-white" href="https://hollyrenew.website/"> Desarrollado por HollyDev Version 1.1 Rev. Febrero 2020</a>
     </div>
     <!-- Copyright
     <div class="toast fixed-bottom " role="alert" data-delay="16000" aria-live="assertive"
