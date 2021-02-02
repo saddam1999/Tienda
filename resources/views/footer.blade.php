@@ -4,7 +4,7 @@
     (function() {
         var options = {
             facebook: "460755991156675", // Facebook page ID
-            call_to_action: "Contactanos por Messenger!", // Call to action
+            call_to_action: "", // Call to action
             position: "right", // Position may be 'right' or 'left'
         };
         var proto = document.location.protocol,
@@ -61,7 +61,7 @@ quitado temporalmente-->
 </script>
 
 <footer class="page-footer font-small bg-dark text-white rounded"
-    style="background-image: url('../img/backgrounds.jpeg');">
+    style="background-image: url('../img/backgrounds.jpeg'); ">
     <!-- Footer Elements -->
     <div class="container">
         <!-- Grid row-->

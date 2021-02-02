@@ -25,7 +25,7 @@
                         <tr>
 
                             <td>
-                                <button name="ocultar" id="ocultar"
+                                <button name="ocultar" id="ocultar"  data-bs-toggle="tooltip" data-bs-placement="top" title="@if($equipo->serial=='')IMEI: {{$equipo->imei}} @else SERIAL: {{$equipo->serial}} @endif"
                                     class="btn btn-success accordion form-control">+</button>
                                 <div class="panel border-left-secondary shadow mt-2" style="border-radius: 8px;">
                                     <a href="" class="custom-control-inline m-2" data-toggle="modal"

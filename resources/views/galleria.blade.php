@@ -56,26 +56,38 @@ give gallery's parent container a cursor: pointer.**/
         }
     }
 </style>
-
+@include('header')
 <ul class="list-inline gallery">
 
     <div class="container">
         <h1>Orden : # {{$id}}</h1>
         <div class="row">
             @foreach ($Captura as $captura)
-            @if($captura->id_equipo==$id)
-            @foreach ($Usuario as $usuario)
-            @if($usuario->id==$captura->id_user)
-            <h3>Tecnico:{{$usuario->name}}</h3>
-            @endif
-            @endforeach
-            <div class="col-md-12">
-                <li><img class="thumbnail zoom " src="@if($captura->captura!='')../fotos/{{$captura->captura}}@else https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw @endif" style="border-radius:40px;"></li>
+            @if($captura->id_equipo!=$id)
+            <img class="thumbnail zoom" width="70%"
+                src="https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw"
+                style="border-radius:10px;">
+            @else
+            <div class="col-md-4">
+                @if($captura->id_equipo==$id)
+                @foreach ($Usuario as $usuario)
+                @if($usuario->id==$captura->id_user)
+                <h3 class="card-footer">Tecnico:{{$usuario->name}}</h3>
+                @endif
+                @endforeach
+                <li><img class="thumbnail zoom" width="70%"
+                        src="@if($captura->captura!='')../fotos/{{$captura->captura}}@else https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw @endif"
+                        style="border-radius:10px;"></li>
                 <textarea class="form-control mt-2" name="" id="" cols="30"
                     rows="10">{{$captura->descripcion}}</textarea>
+                @endif
             </div>
             @endif
             @endforeach
         </div>
     </div>
 </ul>
+<div class="icon-bar fixed-bottom mb-5" style="border-radius:10px; margin-bottom:18%;">
+    <a href="/dashboard" role="tab" aria-controls="taller"><i class="fa fa-home"></i></a>
+</div>
+@extends('footer')

@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="icon-bar" style="border-radius:10px;">
+                <div class="icon-bar fixed-bottom mb-5" style="border-radius:10px; margin-bottom:18%;">
                     <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"
                         role="tab" aria-controls="taller"><i class="fa fa-home"></i></a>
                     <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"

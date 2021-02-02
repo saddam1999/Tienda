@@ -1742,7 +1742,6 @@
 <!--
 </div>
 </div>-->
-
 <!-- Modal Notificacion Success -->
 <div class="modal fade shadow-lg  " id="modal_notificacion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     style="border-radius:12%;" aria-hidden="true">
