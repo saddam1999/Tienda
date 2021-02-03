@@ -1722,7 +1722,7 @@
                 <textarea class="border border-danger mt-2 form-control" name="id_descripcion1" id="id_descripcion1" cols="30"
                     rows="10" placeholder="Inserte la descripcion de la foto aqui"></textarea>
 
-                <button type="button" class="btn btn-primary" id="boton1" ><svg width="1em" height="1em"
+                <button type="button" onclick="myFunction()" class="btn btn-primary" id="boton1" ><svg width="1em" height="1em"
                         viewBox="0 0 16 16" class="bi bi-camera" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z" />
@@ -2426,7 +2426,6 @@
 <!-- Use a button to open the snackbar
 <button onclick="myFunction()">Show Snackbar</button>
 -->
-<!-- The actual snackbar
-<div id="snackbar">Some text some message..</div>
--->
+<!-- The actual snackbar-->
+<div name="snackbar" id="snackbar">Foto Tomada</div>
 @section('modal')

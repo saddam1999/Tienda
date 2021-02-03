@@ -44,3 +44,4 @@
     src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js">
 </script>
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
