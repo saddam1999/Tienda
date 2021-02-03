@@ -1027,7 +1027,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <input class="form-control" type="text" name="modelo" id="modelo"
                                         placeholder="Modelo del aparato" required>
@@ -1035,7 +1035,7 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
                                         @foreach ($Marca as $marca)
@@ -1045,16 +1045,19 @@
                                     <label for="descripcion">Marca</label>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-floating mb-3">
 
-                                    <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
-                                        rows="30"
-                                        placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
-                                    <label for="descripcion">Descripcion:</label>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
+                                            rows="30"
+                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                        <label for="descripcion">Descripcion:</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-6-md">
                             <div class="form-floating mb-3">
                                 <div class="card text-left">
@@ -1217,20 +1220,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6-md">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_recibido"
-                                    id="fecha_recibido" value="<?php echo date('Y-m-d'); ?>">
-                                <label for="marca">Dia de Equipo Recibido</label>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" data-provide="datepicker" type="date"
+                                        name="fecha_recibido" id="fecha_recibido" value="<?php echo date('Y-m-d'); ?>">
+                                    <label for="marca">Dia de Equipo Recibido</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" data-provide="datepicker" type="date"
+                                        name="fecha_entrega" id="fecha_entrega">
+                                    <label for="marca">Dia Entrega Aproximado</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6-md">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_entrega"
-                                    id="fecha_entrega">
-                                <label for="marca">Dia Entrega Aproximado</label>
-                            </div>
-                        </div>
+
                         <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
                         <p id="estado"></p>
                         <br>
@@ -1330,6 +1337,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="marca2" id="marca2" required>
+                                    <label for="marca">Marca</label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
                                     <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
                                         rows="10"
                                         placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
@@ -1338,6 +1355,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" name="status2" id="status2">
+                                        <option value="0">Recibido</option>
+                                        <option value="1">En Revision</option>
+                                        <option value="2">Cancelado</option>
+                                        <option value="3">Espera</option>
+                                        <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
+                                        <option value="5">Listo(Para entregar)</option>
+                                        <option value="6">Entregado</option>
+
+                                    </select>
+                                    <label for="status2">Status</label>
+
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-6-md">
                             <div class="form-group">
                                 <div class="card text-left">
@@ -1458,22 +1495,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6-md">
-                            <div class="form-floating mb-3">
-                                <select class="form-control" name="status2" id="status2">
-                                    <option value="0">Recibido</option>
-                                    <option value="1">En Revision</option>
-                                    <option value="2">Cancelado</option>
-                                    <option value="3">Espera</option>
-                                    <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
-                                    <option value="5">Listo(Para entregar)</option>
-                                    <option value="6">Entregado</option>
-
-                                </select>
-                                <label for="status2">Status</label>
-
-                            </div>
-                        </div>
 
                         <div class="card text-left  border border-info">
                             <div class="card-body">
@@ -1515,18 +1536,22 @@
                             </div>
                         </div>
 
-                        <div class="col-6-md">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_recibido2"
-                                    id="fecha_recibido2" value="<?php echo date('Y-m-d'); ?>">
-                                <label for="marca">Tiempo Recibido</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" data-provide="datepicker" type="date"
+                                        name="fecha_recibido2" id="fecha_recibido2"
+                                        value="<?php echo date('Y-m-d'); ?>">
+                                    <label for="marca">Tiempo Recibido</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6-md">
-                            <div class="form-floating mb-3">
-                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_entrega2"
-                                    id="fecha_entrega2">
-                                <label for="marca">Tiempo Entrega</label>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" data-provide="datepicker" type="date"
+                                        name="fecha_entrega2" id="fecha_entrega2">
+                                    <label for="marca">Tiempo Entrega</label>
+                                </div>
                             </div>
                         </div>
                 </div>
@@ -1539,7 +1564,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
