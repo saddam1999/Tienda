@@ -120,7 +120,7 @@
                     <form action="/agregarcaja">
                         @method('POST')
                         @csrf
-                        <label for="nombre">Nombre</label>
+                        <div class="form-floating mb-3">
                         <select class="form-control" name="id_user" id="id_user">
                             @foreach($Usuario as $usuario)
                             @if($usuario->rol=="tecnico"||$usuario->rol=="admin")
@@ -128,26 +128,29 @@
                             @endif
                             @endforeach
                         </select>
+                        <label for="nombre">Nombre</label>
+                        </div>
                         <input type="hidden" name="corte" id="corte" value="0">
                         <input type="hidden" name="id_corte" id="id_corte" value="Activo">
 
-                        <label for="id_sucursal">Sucursal</label>
+                        <div class="form-floating mb-3">
                         <select class="form-control" name="id_sucursal" id="id_sucursal">
                             @foreach ($Sucursal as $sucursal)
                             <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
                             @endforeach
                         </select>
+                        <label for="id_sucursal">Sucursal</label>
+                        </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <!-- Modal Agregar Articulo -->
 <div class="modal fade" id="modal_agregararticulo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
@@ -167,34 +170,44 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="IDlocal">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal" id="IDlocal"
-                                        placeholder="Agrega el codigo que usas localmente para indentificar el producto">
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre"
-                                        placeholder="Agrega el nombre del articulo" value="" required>
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="descripcion">Descripcion</label>
-                                    <textarea class="form-control" rows="10" cols="50" name="descripcion"
-                                        id="descripcion" placeholder="Agrega la descripcion del Articulo"
-                                        required></textarea>
-
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="precio">Precio Neto</label>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">$</span>
-                                        <input type="text" class="form-control" name="precio" id="precio"
-                                            placeholder="Precio" value="" required>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="IDlocal" id="IDlocal"
+                                            placeholder="Agrega el codigo que usas localmente para indentificar el producto">
+                                        <label for="IDlocal">Codigo Local</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="existencia">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia" id="existencia"
-                                        placeholder="Existencia" value="" required>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="nombre" id="nombre"
+                                            placeholder="Agrega el nombre del articulo" value="" required>
+                                        <label for="nombre">Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" rows="10" cols="50" name="descripcion"
+                                            id="descripcion" placeholder="Agrega la descripcion del Articulo"
+                                            required></textarea>
+                                        <label for="descripcion">Descripcion</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group mb-3">
+                                        <label for="precio">Precio</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">$</span>
+                                            <input type="text" class="form-control" name="precio" id="precio"
+                                                placeholder="Precio" value="" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="existencia" id="existencia"
+                                            placeholder="Existencia" value="" required>
+                                        <label for="existencia">Existencia</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="alert alert-warning" role="alert">
@@ -204,85 +217,97 @@
                                             aplicado,si no seleccionas esta opcion el precio final sera sin descuento
                                         </p>
                                         <hr>
-                                        <label for="descuento">Descuento</label>
-                                        <div class="inputDiv">
-                                            <div id="etiqueta"></div>
-                                            <input id="descuento" name="descuento" type="range" value="0" min="0"
-                                                max="100" autocomplete="off">
+                                        <div class="form-floating mb-3">
+                                            <label for="descuento">Descuento</label>
+                                            <div class="inputDiv">
+                                                <div id="etiqueta"></div>
+                                                <input id="descuento" name="descuento" type="range" value="0" min="0"
+                                                    max="100" autocomplete="off">
+                                            </div>
                                         </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="imagen1">Imagen Principal</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <input class="form-control" type="file" name="imagena" name="imagena"
-                                            accept-charset="UTF-8" enctype="multipart/form-data" >
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="imagen1">Imagen Galleria #1</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <input class="form-control" type="file" name="imagenb" id="imagenb"
-                                            accept-charset="UTF-8" enctype="multipart/form-data">
-
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="imagen1">Imagen Galleria #2</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <input class="form-control" type="file" name="imagenc" id="imagenc"
-                                            accept-charset="UTF-8" enctype="multipart/form-data">
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <label for="imagen1">Imagen Galleria #3</label>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
-                                        <input class="form-control" type="file" name="imagend" id="imagend"
-                                            accept-charset="UTF-8" enctype="multipart/form-data">
 
                                     </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
-                                        <label for="marca">Marca</label>
+                                        <label for="imagen1">Imagen Principal</label>
+                                        <div class="input-group ">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                            <input class="form-control" type="file" name="imagena" name="imagena"
+                                                accept-charset="UTF-8" enctype="multipart/form-data">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="imagen1">Imagen Galleria #1</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                            <input class="form-control" type="file" name="imagenb" id="imagenb"
+                                                accept-charset="UTF-8" enctype="multipart/form-data">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="imagen1">Imagen Galleria #2</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                            <input class="form-control" type="file" name="imagenc" id="imagenc"
+                                                accept-charset="UTF-8" enctype="multipart/form-data">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-group">
+                                        <label for="imagen1">Imagen Galleria #3</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                            <input class="form-control" type="file" name="imagend" id="imagend"
+                                                accept-charset="UTF-8" enctype="multipart/form-data">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="id_marca" name="id_marca" required>
                                             <option value="0" selected>Seleciona una Marca</option>
                                             @foreach($Marca as $marca)
-                                            <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                                            <option value="{{$marca->id}}">{{$marca->nombre}}
+                                            </option>
                                             @endforeach
                                         </select>
+                                        <label for="marca">Marca</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Categoria</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="categoria" name="categoria" required>
-                                            <option value="N/A" selected>Seleciona una Categoria</option>
+                                            <option value="N/A" selected>Seleciona una Categoria
+                                            </option>
                                             @foreach($Categoria as $categoria)
                                             <option value="{{$categoria->nombre_categoria}}">
                                                 {{$categoria->nombre_categoria}}</option>
                                             @endforeach
                                         </select>
+                                        <label for="marca">Categoria</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Talla</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="talla" name="talla" required>
-                                            <option value="N/A" selected>Seleciona una Talla</option>
+                                            <option value="N/A" selected>Seleciona una Talla
+                                            </option>
                                             <option value="xs">XS</option>
                                             <option value="s">S</option>
                                             <option value="m">M</option>
@@ -290,6 +315,7 @@
                                             <option value="xl">XL</option>
                                             <option value="xxl">XXL</option>
                                         </select>
+                                        <label for="marca">Talla</label>
                                     </div>
                                 </div>
                             </div>
@@ -297,8 +323,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
             </form>
         </div>
@@ -323,31 +349,39 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="IDlocal1">Codigo Local</label>
-                                    <input type="text" class="form-control" name="IDlocal1" id="IDlocal1">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="IDlocal1" id="IDlocal1" value="">
+                                        <label for="IDlocal1">Codigo Local</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
+                                        <label for="nombre">Nombre</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="descripcion">Descripcion</label>
-                                    <textarea class="form-control" rows="10" cols="50" name="descripcion1"
-                                        id="descripcion1" required></textarea>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" rows="10" cols="50" name="descripcion1"
+                                            id="descripcion1" required></textarea>
+                                        <label for="descripcion">Descripcion</label>
+                                    </div>
+                                </div>
+                                <div class="col-6-md">
 
-                                </div>
-                                <div class="col-6-md">
                                     <label for="precio1">Precio Neto</label>
 
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">$</span>
                                         <input type="text" class="form-control" name="precio1" id="precio1" value="">
                                     </div>
-                                </div>
+                                </div><br>
                                 <div class="col-6-md">
-                                    <label for="existencia1">Existencia</label>
-                                    <input type="text" class="form-control" name="existencia1" id="existencia1"
-                                        value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="existencia1" id="existencia1"
+                                            value="">
+                                        <label for="existencia1">Existencia</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="alert alert-warning" role="alert">
@@ -415,19 +449,18 @@
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Marca</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="id_marca1" name="id_marca1" required>
                                             <option value="0" selected>Seleciona una Marca</option>
                                             @foreach($Marca as $marca)
                                             <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                                             @endforeach
                                         </select>
+                                        <label for="marca">Marca</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Categoria</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="categoria1" name="categoria1" required>
                                             <option value="N/A" selected>Seleciona una Categoria</option>
                                             @foreach($Categoria as $categoria)
@@ -435,11 +468,11 @@
                                                 {{$categoria->nombre_categoria}}</option>
                                             @endforeach
                                         </select>
+                                        <label for="marca">Categoria</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Talla</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="talla1" name="talla1" required>
                                             <option value="N/A">Seleciona una Talla</option>
                                             <option value="xs">XS</option>
@@ -449,6 +482,7 @@
                                             <option value="xl">XL</option>
                                             <option value="xxl">XXL</option>
                                         </select>
+                                        <label for="marca">Talla</label>
                                     </div>
                                 </div>
                             </div>
@@ -456,8 +490,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </div>
             </form>
         </div>
@@ -482,13 +516,17 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                        <label for="nombre">Nombre</label>
+                                    </div>
                                 </div>
                                 <div class="col-4-md">
-                                    <label for="descripcion">Descripcion</label>
-                                    <textarea name="descripcion" class="form-control" rows="10" cols="50"
-                                        name="descripcion" id="descripcion" required></textarea>
+                                    <div class="form-floating mb-3">
+                                        <textarea name="descripcion" class="form-control" rows="10" cols="50"
+                                            name="descripcion" id="descripcion" required></textarea>
+                                        <label for="descripcion">Descripcion</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
                                     <label for="imagen1">Logo</label>
@@ -507,8 +545,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
             </form>
         </div>
@@ -527,8 +565,7 @@
                         @method('POST')
                         @csrf
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Name</label>
+                            <div class="form-floating mb-3">
                                 <input type="text" name="name1" id="name1"
                                     class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
                                     value="{{ old('name') }}" autofocus>
@@ -537,14 +574,16 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+                                <label for="name1">Name</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Email</label>
+                            <div class="form-floating mb-3">
                                 <input type="email" placeholder="Email"
                                     class="form-control  @error('email') is-invalid @enderror" name="email1" id="email1"
                                     value="{{ old('email') }}" required autocomplete="email">
+                                <label for="email">Email</label>
+
                             </div>
                         </div>
                         <!--
@@ -562,51 +601,48 @@
                             -->
 
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Status</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-control" name="estatus1" id="estatus1">
                                     <option value="1" selected>Active</option>
                                     <option value="0">No Active</option>
                                 </select>
+                                <label for="estatus1">Status</label>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Sucursal</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-control" name="id_sucursal1" id="id_sucursal1">
                                     @foreach ($Sucursal as $sucursal)
                                     <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
                                     </option>
                                     @endforeach
                                 </select>
+                                <label for="id_sucursal1">Sucursal</label>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Rol</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-control" name="rol1" id="rol1">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
                                     <option value="cliente" selected>Cliente</option>
                                 </select>
+                                <label for="rol1">Rol</label>
                             </div>
                         </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Edit User</button>
-                        </div>
-                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
                 </div>
                 </form>
             </div>
-
         </div>
     </div>
-</div>
 <!-- Modal  Agregar usuario-->
 <div class="modal fade" id="modalagregar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white">Agregar Usuario</h5>
@@ -615,72 +651,76 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <form action="/addusuario">
-                        @csrf
+                <div class="container">
+                    <div class="row">
+                            <div class="col-md-4">
+                                <form action="/addusuario">
+                                    @csrf
+                                <div class="form-floating mb-3">
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" id="name"
-                                    class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
-                                    value="{{ old('name') }}" autofocus>
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                                    <input type="text" name="name" id="name"
+                                        class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
+                                        value="{{ old('name') }}" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    <label for="name">Nombre</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" placeholder="Email"
-                                    class="form-control  @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" required autocomplete="email">
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="email" placeholder="Email"
+                                        class="form-control  @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email">
+                                    <label for="email">Email</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" placeholder="Password"
-                                    class="form-control @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="new-password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="password" placeholder="Password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    <label for="password">Password</label>
+                                </div>
                             </div>
-                        </div>
-                        <input type="hidden" name="status" id="status" value="1">
+                            <input type="hidden" name="status" id="status" value="1">
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Sucursal</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-control" name="id_sucursal" id="id_sucursal">
                                     @foreach ($Sucursal as $sucursal)
                                     <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
                                     </option>
                                     @endforeach
                                 </select>
+                                <label for="id_sucursal">Sucursal</label>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Rol</label>
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
                                 <select class="form-control" name="rol">
                                     <option value="admin">Admin</option>
                                     <option value="tecnico">Tecnico</option>
                                     <option value="cliente" selected>Cliente</option>
                                 </select>
+                                <label for="rol">Rol</label>
                             </div>
                         </div>
-                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary pull-right">Add User</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary pull-right">Agregar</button>
             </div>
             </form>
 
@@ -705,24 +745,27 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="nombre1" id="nombre1" required>
+                                    <label for="nombre">Nombre</label>
+                                </div>
                                 </div>
                                 <div class="col-4-md">
-                                    <label for="descripcion">Descripcion</label>
+                                    <div class="form-floating mb-3">
                                     <textarea name="descripcion1" class="form-control" rows="10" cols="50"
                                         name="descripcion1" id="descripcion1" required></textarea>
-                                </div>
-                                <div class="col-4-md">
+                                        <label for="descripcion">Descripcion</label>
+                                    </div>
+                                    </div>
+                                    <div class="col-4-md mb-3">
+                                        <label for="precio1">Precio</label>
                                     <div class="input-group-prepend">
-                                        <label for="precio1">Precio</label><br>
                                         <span class="input-group-text" id="basic-addon1">$</span>
                                         <input type="text" class="form-control" name="precio1" id="precio1" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="tiempo1">Tiempo</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="tiempo1" name="tiempo1" required>
                                             <option value="Null" selected>Tiempo Estimado</option>
                                             <option value="Instantaneo">Instantaneo</option>
@@ -736,6 +779,7 @@
                                             <option value="Se notificara cuando este listo">Notificar cuando este listo
                                             </option>
                                         </select>
+                                        <label for="tiempo1">Tiempo</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -755,8 +799,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </div>
             </form>
         </div>
@@ -780,24 +824,27 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="nombre" id="nombre" required>
+                                    <label for="nombre">Nombre</label>
+                                    </div>
                                 </div>
                                 <div class="col-4-md">
-                                    <label for="descripcion">Descripcion</label>
+                                    <div class="form-floating mb-3">
                                     <textarea name="descripcion" class="form-control" rows="10" cols="50"
                                         name="descripcion" id="descripcion" required></textarea>
+                                        <label for="descripcion">Descripcion</label>
+                                    </div>
                                 </div>
-                                <div class="col-4-md">
+                                <div class="col-4-md mb-3">
+                                    <label for="precio">Precio</label>
                                     <div class="input-group-prepend">
-                                        <label for="precio">Precio</label><br>
                                         <span class="input-group-text" id="basic-addon1">$</span>
                                         <input type="text" class="form-control" name="precio" id="precio" required>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="tiempo" name="tiempo" required>
                                             <option value="Null" selected>Tiempo Estimado</option>
                                             <option value="Instantaneo">Instantaneo</option>
@@ -811,6 +858,7 @@
                                             <option value="Se notificara cuando este listo">Notificar cuando
                                                 este listo</option>
                                         </select>
+                                        <label for="marca">Tiempo</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
@@ -831,8 +879,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
             </form>
         </div>
@@ -933,8 +981,7 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Cliente</label>
-                                    <div class="input-group-append">
+                                    <div class="form-floating mb-3">
                                         <select class="form-control" id="id_cliente" name="id_cliente" required>
                                             @foreach ($Usuario as $user)
                                             @if($user->rol=='cliente')
@@ -942,63 +989,70 @@
                                             @endif
                                             @endforeach
                                         </select>
+                                        <label for="nombre">Nombre Cliente</label>
+                                        <!---
                                         <a href="" data-toggle="modal" data-target="#modalagregar"><span
-                                                class="input-group-text">Agregar Cliente</span></a>
+                                                class="input-group-text">Agregar Cliente</span></a>-->
                                     </div>
                                 </div>
                                 <input type="hidden" name="id_sucursal" id="id_sucursal"
                                     value="{{Auth::user()->id_sucursal}}">
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Tecnico</label>
-                                    <select class="form-control" id="id_user" name="id_user" required>
-                                        @foreach ($Usuario as $user)
-                                        @if($user->rol=="tecnico")
-                                        <option value="{{$user->id}}">{{$user->name}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
+                                    <div class="form-floating mb-3">
+                                        <select class="form-control" id="id_user" name="id_user" required>
+                                            @foreach ($Usuario as $user)
+                                            @if($user->rol=="tecnico")
+                                            <option value="{{$user->id}}">{{$user->name}}</option>
+                                            @endif
+                                            @endforeach
+                                        </select>
+                                        <label for="nombre">Nombre Tecnico</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">IMEI</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="imei" id="imei"
                                             placeholder="IMEI">
+                                        <label for="marca">IMEI</label>
                                     </div>
+
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">SERIAL</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="serial" id="serial"
                                             placeholder="Serial">
+                                            <label for="marca">Serial</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">MODELO</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="modelo" id="modelo"
                                             placeholder="Modelo del aparato" required>
+                                            <label for="marca">Modelo</label>
+
                                     </div>
                                 </div>
                                 <div class="col-4-md">
-                                    <label for="descripcion">Marca</label>
+                                    <div class="form-floating mb-3">
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
                                         @foreach ($Marca as $marca)
                                         <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="descripcion">Descripcion <br>(En caso de tener Contraseña el equipo
-                                            escribir aqui junto con los detalles por que motivo se ingresa el
-                                            equipo)</label><br>
-                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
-                                            rows="10"
-                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    <label for="descripcion">Marca</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
+                                    <div class="form-floating mb-3">
+
+                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
+                                            rows="30"
+                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                            <label for="descripcion">Descripcion:</label>
+                                        </div>
+                                </div>
+                                <div class="col-6-md">
+                                    <div class="form-floating mb-3">
                                         <div class="card text-left">
                                             <div class="card-body">
                                                 <p class="card-title">Revision de componentes</p>
@@ -1172,18 +1226,18 @@
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Dia de Equipo Recibido</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_recibido" id="fecha_recibido"
                                             value="<?php echo date('Y-m-d'); ?>">
+                                            <label for="marca">Dia de Equipo Recibido</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Dia Entrega Aproximado</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_entrega" id="fecha_entrega">
+                                            <label for="marca">Dia Entrega Aproximado</label>
                                     </div>
                                 </div>
                                 <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
@@ -1233,7 +1287,7 @@
                             <div class="container">
 
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Cliente</label>
+                                    <div class="form-floating mb-3">
                                     <select class="form-control" id="id_cliente2" name="id_cliente2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
@@ -1241,12 +1295,15 @@
                                         @endif
                                         @endforeach
                                     </select>
+                                    <label for="nombre">Nombre Cliente</label>
+
+                                    </div>
                                 </div>
                                 <input type="hidden" name="id_sucursal2" id="id_sucursal2"
                                     value="{{Auth::user()->id_sucursal}}">
 
                                 <div class="col-4-md">
-                                    <label for="nombre">Nombre Tecnico</label>
+                                    <div class="form-floating mb-3">
                                     <select class="form-control" id="id_user2" name="id_user2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=="tecnico")
@@ -1254,33 +1311,39 @@
                                         @endif
                                         @endforeach
                                     </select>
+                                    <label for="nombre">Nombre Tecnico</label>
+                                    </div>
                                 </div>
 
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">IMEI</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="imei2" id="imei2">
+                                        <label for="marca">IMEI</label>
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">SERIAL</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="serial2" id="serial2">
+                                        <label for="marca">SERIAL</label>
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">MODELO</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" type="text" name="modelo2" id="modelo2" required>
+                                        <label for="marca">MODELO</label>
+
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="descripcion">Descripcion</label><br>
+                                    <div class="form-floating mb-3">
                                         <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
                                             rows="10"
                                             placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
-                                    </div>
+                                            <label for="descripcion">Descripcion</label><br>
+
+                                        </div>
                                 </div>
                                 <div class="col-6-md">
                                     <div class="form-group">
@@ -1414,8 +1477,7 @@
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="status2">Status</label>
+                                    <div class="form-floating mb-3">
                                         <select class="form-control"  name="status2" id="status2">
                                             <option value="0">Recibido</option>
                                             <option value="1">En Revision</option>
@@ -1424,7 +1486,10 @@
                                             <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
                                             <option value="5">Listo(Para entregar)</option>
                                             <option value="6">Entregado</option>
+
                                         </select>
+                                        <label for="status2">Status</label>
+
                                     </div>
                                 </div>
 
@@ -1470,18 +1535,18 @@
                                 </div>
 
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Recibido</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_recibido2" id="fecha_recibido2"
                                             value="<?php echo date('Y-m-d'); ?>">
+                                            <label for="marca">Tiempo Recibido</label>
                                     </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <div class="form-group">
-                                        <label for="marca">Tiempo Entrega</label>
+                                    <div class="form-floating mb-3">
                                         <input class="form-control" data-provide="datepicker" type="date"
                                             name="fecha_entrega2" id="fecha_entrega2">
+                                            <label for="marca">Tiempo Entrega</label>
                                     </div>
                                 </div>
                                 <br>
@@ -1516,30 +1581,43 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value="">
+                                        <label for="nombre">Nombre</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="descripcion">Direccion</label>
-                                    <textarea class="form-control" rows="10" cols="50" name="direccion" id="direccion"
-                                        required></textarea>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" rows="10" cols="50" name="direccion"
+                                            id="direccion" required></textarea>
+                                        <label for="descripcion">Direccion</label>
+                                    </div>
 
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="email" id="email" value="">
+                                        <label for="email">Email</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="telefono">Telefono</label>
-                                    <input type="telephone" class="form-control" name="telefono" id="telefono" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="telephone" class="form-control" name="telefono" id="telefono"
+                                            value="">
+                                        <label for="telefono">Telefono</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="telegram">Telegram</label>
-                                    <input type="text" class="form-control" name="telegram" id="telegram" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="telegram" id="telegram" value="">
+                                        <label for="telegram">Telegram</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="whatsapp">Whatsapp</label>
-                                    <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" name="whatsapp" id="whatsapp" value="">
+                                        <label for="whatsapp">Whatsapp</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1547,8 +1625,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
             </div>
             </form>
         </div>
@@ -1574,31 +1652,44 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="nombre">Nombre</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="nombre1" id="nombre1" value="">
+                                    <label for="nombre">Nombre</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="descripcion">Direccion</label>
+                                    <div class="form-floating mb-3">
                                     <textarea class="form-control" rows="10" cols="50" name="direccion1" id="direccion1"
                                         required></textarea>
+                                        <label for="descripcion">Direccion</label>
+                                    </div>
 
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="email">Email</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="email1" id="email1" value="">
+                                    <label for="email">Email</label>
+
+                                </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="telefono">Telefono</label>
+                                    <div class="form-floating mb-3">
                                     <input type="telephone" class="form-control" name="telefono1" id="telefono1"
                                         value="">
+                                        <label for="telefono">Telefono</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="telegram">Telegram</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="telegram1" id="telegram1" value="">
+                                    <label for="telegram">Telegram</label>
+                                    </div>
                                 </div>
                                 <div class="col-6-md">
-                                    <label for="whatsapp">Whatsapp</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="whatsapp1" id="whatsapp1" value="">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1606,8 +1697,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </div>
             </form>
         </div>
@@ -1633,15 +1724,17 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="nombre">Nombre Categoria</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="nombre_categoria"
                                         id="nombre_categoria" value="" required>
+                                        <label for="nombre">Nombre Categoria</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
                         </div>
                     </form>
                 </div>
@@ -1669,15 +1762,17 @@
                         <div class="row">
                             <div class="container">
                                 <div class="col-6-md">
-                                    <label for="nombre">Nombre Categoria</label>
+                                    <div class="form-floating mb-3">
                                     <input type="text" class="form-control" name="nombre_categoria1"
                                         id="nombre_categoria1" value="" required>
+                                        <label for="nombre">Nombre Categoria</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Editar</button>
                         </div>
                     </form>
                 </div>
@@ -2323,8 +2418,10 @@
                     <form action="/facebook">
                         @csrf
                         @method('POST')
-                        <label for="">Introduce tu cuenta de Facebook</label>
+                        <div class="form-floating mb-3">
                         <input type="text" class="form-control" name="facebook" id="facebook">
+                        <label for="">Introduce tu cuenta de Facebook</label>
+                        </div>
                 </div>
             </div>
             <div class="modal-footer">

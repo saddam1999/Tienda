@@ -156,7 +156,7 @@
         $(e.currentTarget).find('#precio1').val(id);
         var id = $(e.relatedTarget).data().descuento;
         $(e.currentTarget).find('#descuento1').val(id);
-        var id = $(e.relatedTarget).data().IDlocal;
+        var id = $(e.relatedTarget).data().local;
         $(e.currentTarget).find('#IDlocal1').val(id);
         var id = $(e.relatedTarget).data().categoria;
         $(e.currentTarget).find('#categoria1').val(id);

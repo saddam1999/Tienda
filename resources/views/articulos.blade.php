@@ -74,7 +74,7 @@
                                             data-id="{{$articulo->id}}" data-nombre="{{$articulo->nombre}}"
                                             data-id_marca="{{$articulo->id_marca}}"
                                             data-categoria="{{$articulo->categoria}}" data-talla="{{$articulo->talla}}"
-                                            data-IDlocal="{{$articulo->IDlocal}}" data-precio="{{$articulo->precio}}"
+                                            data-local="{{$articulo->IDlocal}}" data-precio="{{$articulo->precio}}"
                                             data-descuento="{{$articulo->descuento}}"
                                             data-descripcion="{{$articulo->descripcion}}"
                                             data-existencia="{{$articulo->existencia}}"
