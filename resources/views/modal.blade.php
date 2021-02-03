@@ -973,284 +973,273 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
                 <div class="container-fluid">
                     <form action="/agregarequipo">
                         @csrf
                         @method('POST')
                         <div class="row">
-                            <div class="container">
-                                <div class="col-4-md">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-control" id="id_cliente" name="id_cliente" required>
-                                            @foreach ($Usuario as $user)
-                                            @if($user->rol=='cliente')
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                            @endif
-                                            @endforeach
-                                        </select>
-                                        <label for="nombre">Nombre Cliente</label>
-                                        <!---
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" id="id_cliente" name="id_cliente" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=='cliente')
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <label for="nombre">Nombre Cliente</label>
+                                    <!---
                                         <a href="" data-toggle="modal" data-target="#modalagregar"><span
                                                 class="input-group-text">Agregar Cliente</span></a>-->
-                                    </div>
                                 </div>
-                                <input type="hidden" name="id_sucursal" id="id_sucursal"
-                                    value="{{Auth::user()->id_sucursal}}">
-                                <div class="col-4-md">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-control" id="id_user" name="id_user" required>
-                                            @foreach ($Usuario as $user)
-                                            @if($user->rol=="tecnico")
-                                            <option value="{{$user->id}}">{{$user->name}}</option>
-                                            @endif
-                                            @endforeach
-                                        </select>
-                                        <label for="nombre">Nombre Tecnico</label>
-                                    </div>
+                            </div>
+                            <input type="hidden" name="id_sucursal" id="id_sucursal"
+                                value="{{Auth::user()->id_sucursal}}">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" id="id_user" name="id_user" required>
+                                        @foreach ($Usuario as $user)
+                                        @if($user->rol=="tecnico")
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <label for="nombre">Nombre Tecnico</label>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="imei" id="imei"
-                                            placeholder="IMEI">
-                                        <label for="marca">IMEI</label>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
+                                    <label for="marca">IMEI</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="serial" id="serial"
+                                        placeholder="Serial">
+                                    <label for="marca">Serial</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="modelo" id="modelo"
+                                        placeholder="Modelo del aparato" required>
+                                    <label for="marca">Modelo</label>
 
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="serial" id="serial"
-                                            placeholder="Serial">
-                                            <label for="marca">Serial</label>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="modelo" id="modelo"
-                                            placeholder="Modelo del aparato" required>
-                                            <label for="marca">Modelo</label>
-
-                                    </div>
-                                </div>
-                                <div class="col-4-md">
-                                    <div class="form-floating mb-3">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
                                     <select class="form-control" id="id_servicio" name="id_servicio" required>
                                         @foreach ($Marca as $marca)
                                         <option value="{{$marca->id}}">{{$marca->nombre}}</option>
                                         @endforeach
                                     </select>
                                     <label for="descripcion">Marca</label>
-                                    </div>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-
-                                        <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
-                                            rows="30"
-                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
-                                            <label for="descripcion">Descripcion:</label>
-                                        </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <div class="card text-left">
-                                            <div class="card-body">
-                                                <p class="card-title">Revision de componentes</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Tiene_Camara"
-                                                        name="Tiene_Camara" value="Tiene_Camara">
-                                                    <label class="form-check-label" for="inlineCheckbox1">Camara</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Centro_Carga"
-                                                        name="Centro_Carga" value="Centro_Carga">
-                                                    <label class="form-check-label" for="inlineCheckbox2">Centro
-                                                        Carga</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Señal"
-                                                        name="Señal" value="Señal">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Señal</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="LectorSD"
-                                                        name="LectorSD" value="LectorSD">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">LectorSD</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="AltaVoz"
-                                                        name="AltaVoz" value="AltaVoz">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">AltaVoz</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="BotonHome"
-                                                        name="BotonHome" value="BotonHome">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">BotonHome</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Microfono"
-                                                        name="Microfono" value="Microfono">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Microfono</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Lector_SIM"
-                                                        name="Lector_SIM" value="Lector_SIM">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Lector
-                                                        SIM</label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Volumenplus"
-                                                        name="Volumenplus" value="volumenplus">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                        +</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Volumenless"
-                                                        name="Volumenless" value="Volumenless">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                        -</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Encendido"
-                                                        name="Encendido" value="Encendido">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Encendido</label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Auricular"
-                                                        name="Auricular" value="Auricular">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Auricular</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Touch"
-                                                        name="Touch" value="Touch">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Touch</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria"
-                                                        name="Bateria" value="Bateria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Bateria</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <div class="card text-left">
-                                            <div class="card-body">
-                                                <p class="card-title">Detalles del equipo</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende"
-                                                        name="Enciende" value="Enciende">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Enciende?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria"
-                                                        name="Memoria" value="Memoria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Memoria?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
-                                                        value="SIM">
-                                                    <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes"
-                                                        name="Golpes" value="golpes">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Golpes?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria"
-                                                        name="Bateria" value="Tiene_Bateria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Bateria?</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card text-left  border border-info">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="marca">Anticipo</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">$</span>
-                                                            <input class="form-control" name="pago" id="pago"
-                                                                placeholder="Anticipo" pattern="[0-9]" type="number"
-                                                                min="0" value="0">
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label for="presupuesto">Presupuesto</label>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                    <input class="form-control" pattern="[0-9]" type="number" min="0"
-                                                        name="presupuesto" id="presupuesto"
-                                                        placeholder="(Cuanto puede Costar)" value="0">
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="inversion">Inversion</label>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                    <input class="form-control" pattern="[0-9]" type="number" min="0"
-                                                        name="inversion" id="inversion"
-                                                        placeholder=" (Cuanto es lo maximo que se puede invertir)"
-                                                        value="0">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido" id="fecha_recibido"
-                                            value="<?php echo date('Y-m-d'); ?>">
-                                            <label for="marca">Dia de Equipo Recibido</label>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_entrega" id="fecha_entrega">
-                                            <label for="marca">Dia Entrega Aproximado</label>
-                                    </div>
-                                </div>
-                                <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
-                                <p id="estado"></p>
-                                <br>
                             </div>
-                            <video class="m-1" style="border-radius: 10px;" muted="muted" id="video"></video>
-                            <canvas id="canvas" style="display: none; border-radius: 10px;"></canvas>
-                            <input type="hidden" name="status" id="status" value="0">
-                            <input type="hidden" name="id_captura" id="id_captura" value="">
-                            <button type="button" class="btn btn-primary" id="boton">
-                                <i class="fas fa-camera-retro"></i></button>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+
+                                    <textarea class="form-control" name="descripcion" id="descripcion" cols="20"
+                                        rows="30"
+                                        placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    <label for="descripcion">Descripcion:</label>
+                                </div>
+                            </div>
                         </div>
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <div class="card text-left">
+                                    <div class="card-body">
+                                        <p class="card-title">Revision de componentes</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara"
+                                                name="Tiene_Camara" value="Tiene_Camara">
+                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga"
+                                                name="Centro_Carga" value="Centro_Carga">
+                                            <label class="form-check-label" for="inlineCheckbox2">Centro
+                                                Carga</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Señal" name="Señal"
+                                                value="Señal">
+                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD"
+                                                name="LectorSD" value="LectorSD">
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz" name="AltaVoz"
+                                                value="AltaVoz">
+                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="BotonHome"
+                                                name="BotonHome" value="BotonHome">
+                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Microfono"
+                                                name="Microfono" value="Microfono">
+                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM"
+                                                name="Lector_SIM" value="Lector_SIM">
+                                            <label class="form-check-label" for="inlineCheckbox3">Lector
+                                                SIM</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus"
+                                                name="Volumenplus" value="volumenplus">
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                +</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenless"
+                                                name="Volumenless" value="Volumenless">
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                -</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Encendido"
+                                                name="Encendido" value="Encendido">
+                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auricular"
+                                                name="Auricular" value="Auricular">
+                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Touch" name="Touch"
+                                                value="Touch">
+                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria"
+                                                value="Bateria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-group">
+                                <div class="card text-left">
+                                    <div class="card-body">
+                                        <p class="card-title">Detalles del equipo</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Enciende"
+                                                name="Enciende" value="Enciende">
+                                            <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Memoria" name="Memoria"
+                                                value="Memoria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
+                                                value="SIM">
+                                            <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Golpes" name="Golpes"
+                                                value="golpes">
+                                            <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria"
+                                                value="Tiene_Bateria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card text-left  border border-info">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="marca">Anticipo</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" name="pago" id="pago"
+                                                        placeholder="Anticipo" pattern="[0-9]" type="number" min="0"
+                                                        value="0">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label for="presupuesto">Presupuesto</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <input class="form-control" pattern="[0-9]" type="number" min="0"
+                                                name="presupuesto" id="presupuesto" placeholder="(Cuanto puede Costar)"
+                                                value="0">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="inversion">Inversion</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <input class="form-control" pattern="[0-9]" type="number" min="0"
+                                                name="inversion" id="inversion"
+                                                placeholder=" (Cuanto es lo maximo que se puede invertir)" value="0">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_recibido"
+                                    id="fecha_recibido" value="<?php echo date('Y-m-d'); ?>">
+                                <label for="marca">Dia de Equipo Recibido</label>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_entrega"
+                                    id="fecha_entrega">
+                                <label for="marca">Dia Entrega Aproximado</label>
+                            </div>
+                        </div>
+                        <select name="listaDeDispositivos" id="listaDeDispositivos"></select>
+                        <p id="estado"></p>
+                        <br>
+                        <video class="m-1" style="border-radius: 10px;" muted="muted" id="video"></video>
+                        <canvas id="canvas" style="display: none; border-radius: 10px;"></canvas>
+                        <input type="hidden" name="status" id="status" value="0">
+                        <input type="hidden" name="id_captura" id="id_captura" value="">
+                        <button type="button" class="btn btn-primary" id="boton">
+                            <i class="fas fa-camera-retro"></i></button>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1268,8 +1257,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Editar Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
-                            class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <h5 class="modal-title text-white">Editar Reparar<center><svg width="2em" height="2em"
+                            viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
                                 d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
                         </svg></center>
@@ -1278,16 +1268,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
                 <div class="container-fluid">
                     <form name="editequipo" id="editequipo" action="/editequipo">
                         @csrf
                         @method('POST')
                         <div class="row">
-                            <div class="container">
-
-                                <div class="col-4-md">
-                                    <div class="form-floating mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
                                     <select class="form-control" id="id_cliente2" name="id_cliente2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
@@ -1297,13 +1285,13 @@
                                     </select>
                                     <label for="nombre">Nombre Cliente</label>
 
-                                    </div>
                                 </div>
-                                <input type="hidden" name="id_sucursal2" id="id_sucursal2"
-                                    value="{{Auth::user()->id_sucursal}}">
+                            </div>
+                            <input type="hidden" name="id_sucursal2" id="id_sucursal2"
+                                value="{{Auth::user()->id_sucursal}}">
 
-                                <div class="col-4-md">
-                                    <div class="form-floating mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
                                     <select class="form-control" id="id_user2" name="id_user2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=="tecnico")
@@ -1312,244 +1300,233 @@
                                         @endforeach
                                     </select>
                                     <label for="nombre">Nombre Tecnico</label>
-                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="imei2" id="imei2">
+                                    <label for="marca">IMEI</label>
 
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="imei2" id="imei2">
-                                        <label for="marca">IMEI</label>
-
-                                    </div>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="serial2" id="serial2">
-                                        <label for="marca">SERIAL</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="serial2" id="serial2">
+                                    <label for="marca">SERIAL</label>
 
-                                    </div>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" type="text" name="modelo2" id="modelo2" required>
-                                        <label for="marca">MODELO</label>
+                            </div>
+                        </div>
+                        <div class="row">
 
-                                    </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="modelo2" id="modelo2" required>
+                                    <label for="marca">MODELO</label>
+
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
-                                            rows="10"
-                                            placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
-                                            <label for="descripcion">Descripcion</label><br>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" name="descripcion2" id="descripcion2" cols="20"
+                                        rows="10"
+                                        placeholder="Describe el problema que tiene el equipo en caso de ser necesario aqui o deja comentarios en caso de ser necesario"></textarea>
+                                    <label for="descripcion">Descripcion</label><br>
 
-                                        </div>
                                 </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <div class="card text-left">
-                                            <div class="card-body">
-                                                <p class="card-title">Revision de componentes</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Tiene_Camara2"
-                                                        name="Tiene_Camara2" value="Tiene_Camara">
-                                                    <label class="form-check-label" for="inlineCheckbox1">Camara</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Centro_Carga2"
-                                                        name="Centro_Carga2" value="Centro_Carga">
-                                                    <label class="form-check-label" for="inlineCheckbox2">Centro
-                                                        Carga</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Señal2"
-                                                        name="Señal2" value="Señal">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Señal</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="AltaVoz2"
-                                                        name="AltaVoz2" value="AltaVoz">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">AltaVoz</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="BotonHome2"
-                                                        name="BotonHome2" value="BotonHome">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">BotonHome</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Microfono2"
-                                                        name="Microfono2" value="Microfono">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Microfono</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Lector_SIM2"
-                                                        name="Lector_SIM2" value="Lector_SIM">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Lector
-                                                        SIM</label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Volumenplus2"
-                                                        name="Volumenplus2" value="volumenplus">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                        +</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Volumenless2"
-                                                        name="Volumenless2" value="Volumenless">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                        -</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Encendido2"
-                                                        name="Encendido2" value="Encendido">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Encendido</label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="LectorSD2"
-                                                        name="LectorSD2" value="LectorSD">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">LectorSD</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Auricular2"
-                                                        name="Auricular2" value="Auricular">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Auricular</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Touch2"
-                                                        name="Touch2" value="Touch">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Touch</label>
-                                                </div>
-
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Bateria2"
-                                                        name="Bateria2" value="Bateria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Bateria</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-group">
-                                        <div class="card text-left">
-                                            <div class="card-body">
-                                                <p class="card-title">Detalles del equipo</p>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Enciende2"
-                                                        name="Enciende2" value="Enciende">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Enciende?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Memoria2"
-                                                        name="Memoria2" value="Memoria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Memoria?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="SIM2"
-                                                        name="SIM2" value="SIM">
-                                                    <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Golpes2"
-                                                        name="Golpes2" value="Golpes">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Golpes?</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="Tiene_Bateria2"
-                                                        name="Tiene_Bateria2" value="Tiene_Bateria">
-                                                    <label class="form-check-label"
-                                                        for="inlineCheckbox3">Bateria?</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-control"  name="status2" id="status2">
-                                            <option value="0">Recibido</option>
-                                            <option value="1">En Revision</option>
-                                            <option value="2">Cancelado</option>
-                                            <option value="3">Espera</option>
-                                            <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
-                                            <option value="5">Listo(Para entregar)</option>
-                                            <option value="6">Entregado</option>
-
-                                        </select>
-                                        <label for="status2">Status</label>
-
-                                    </div>
-                                </div>
-
-                                <div class="card text-left  border border-info">
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-group">
+                                <div class="card text-left">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="marca">Anticipo</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">$</span>
-                                                            <input class="form-control" type="text" name="pago2"
-                                                                id="pago2" placeholder="Anticipo" disabled>
-                                                        </div>
+                                        <p class="card-title">Revision de componentes</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara2"
+                                                name="Tiene_Camara2" value="Tiene_Camara">
+                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Centro_Carga2"
+                                                name="Centro_Carga2" value="Centro_Carga">
+                                            <label class="form-check-label" for="inlineCheckbox2">Centro
+                                                Carga</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Señal2" name="Señal2"
+                                                value="Señal">
+                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="AltaVoz2"
+                                                name="AltaVoz2" value="AltaVoz">
+                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="BotonHome2"
+                                                name="BotonHome2" value="BotonHome">
+                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Microfono2"
+                                                name="Microfono2" value="Microfono">
+                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Lector_SIM2"
+                                                name="Lector_SIM2" value="Lector_SIM">
+                                            <label class="form-check-label" for="inlineCheckbox3">Lector
+                                                SIM</label>
+                                        </div>
 
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenplus2"
+                                                name="Volumenplus2" value="volumenplus">
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                +</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Volumenless2"
+                                                name="Volumenless2" value="Volumenless">
+                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
+                                                -</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Encendido2"
+                                                name="Encendido2" value="Encendido">
+                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                        </div>
 
-                                            <div class="col-md-4">
-                                                <label for="presupuesto">Presupuesto</label>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                    <input class="form-control" type="text" name="presupuesto2"
-                                                        id="presupuesto2" placeholder="(Cuanto puede Costar)" disabled>
-                                                </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="LectorSD2"
+                                                name="LectorSD2" value="LectorSD">
+                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Auricular2"
+                                                name="Auricular2" value="Auricular">
+                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Touch2" name="Touch2"
+                                                value="Touch">
+                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                        </div>
 
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label for="inversion">Inversion</label>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">$</span>
-                                                    <input class="form-control" type="text" name="inversion2"
-                                                        id="inversion2"
-                                                        placeholder=" (Cuanto es lo maximo que se puede invertir)">
-
-                                                </div>
-                                            </div>
-
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Bateria2"
+                                                name="Bateria2" value="Bateria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-group">
+                                <div class="card text-left">
+                                    <div class="card-body">
+                                        <p class="card-title">Detalles del equipo</p>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Enciende2"
+                                                name="Enciende2" value="Enciende">
+                                            <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Memoria2"
+                                                name="Memoria2" value="Memoria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="SIM2" name="SIM2"
+                                                value="SIM">
+                                            <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Golpes2" name="Golpes2"
+                                                value="Golpes">
+                                            <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="Tiene_Bateria2"
+                                                name="Tiene_Bateria2" value="Tiene_Bateria">
+                                            <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <select class="form-control" name="status2" id="status2">
+                                    <option value="0">Recibido</option>
+                                    <option value="1">En Revision</option>
+                                    <option value="2">Cancelado</option>
+                                    <option value="3">Espera</option>
+                                    <option value="4">A espera de Cliente(Contactarse a Sucursal)</option>
+                                    <option value="5">Listo(Para entregar)</option>
+                                    <option value="6">Entregado</option>
 
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_recibido2" id="fecha_recibido2"
-                                            value="<?php echo date('Y-m-d'); ?>">
-                                            <label for="marca">Tiempo Recibido</label>
+                                </select>
+                                <label for="status2">Status</label>
+
+                            </div>
+                        </div>
+
+                        <div class="card text-left  border border-info">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="marca">Anticipo</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">$</span>
+                                                    <input class="form-control" type="text" name="pago2" id="pago2"
+                                                        placeholder="Anticipo" disabled>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6-md">
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" data-provide="datepicker" type="date"
-                                            name="fecha_entrega2" id="fecha_entrega2">
-                                            <label for="marca">Tiempo Entrega</label>
+
+                                    <div class="col-md-4">
+                                        <label for="presupuesto">Presupuesto</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <input class="form-control" type="text" name="presupuesto2"
+                                                id="presupuesto2" placeholder="(Cuanto puede Costar)" disabled>
+                                        </div>
+
                                     </div>
+                                    <div class="col-md-4">
+                                        <label for="inversion">Inversion</label>
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                            <input class="form-control" type="text" name="inversion2" id="inversion2"
+                                                placeholder=" (Cuanto es lo maximo que se puede invertir)">
+
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <br>
+                            </div>
+                        </div>
+
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_recibido2"
+                                    id="fecha_recibido2" value="<?php echo date('Y-m-d'); ?>">
+                                <label for="marca">Tiempo Recibido</label>
+                            </div>
+                        </div>
+                        <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                                <input class="form-control" data-provide="datepicker" type="date" name="fecha_entrega2"
+                                    id="fecha_entrega2">
+                                <label for="marca">Tiempo Entrega</label>
                             </div>
                         </div>
                 </div>
@@ -1562,6 +1539,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal Agregar Sucursal -->
 <div class="modal fade" id="modalagregarsucursal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">
