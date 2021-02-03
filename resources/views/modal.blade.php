@@ -1996,6 +1996,7 @@
                                     disabled></div>
                             </div>
                         </div>
+
                         <label for="metodo">Metodo de Pago</label>
                         <select class="form-control" name="pago_id4" id="pago_id4">
                             <option value="1">Efectivo</option>
@@ -2150,8 +2151,10 @@
                         @csrf
                         @method('POST')
                         <div class="col-6-md">
+                            <div class="form-floating mb-3">
+                            <input class="form-control" pattern="[0-9]" type="number" min="0" name="monto6" id="monto6" placeholder="$0.0" required>
                             <label for="monto">Monto</label>
-                            <input class="form-control" pattern="[0-9]" type="number" min="0" name="monto6" id="monto6" placeholder="0.0" required>
+                        </div>
                         </div>
                         <input type="hidden" name="id_user6" id="id_user6" value="{{Auth::user()->id}}">
                         <input type="hidden" name="id_sucursal6" id="id_sucursal6"
@@ -2166,16 +2169,20 @@
                         @endforeach
                         @endforeach
                         <div class="col-6-md">
-                            <label for="motivo">Motivo</label>
+                            <div class="form-floating mb-3">
                             <textarea name="descripcion6" class="form-control" id="descripcion6" cols="10"
                                 rows="10"></textarea>
+                                <label for="motivo">Motivo</label>
+                            </div>
                         </div>
 
                         <div class="col-6-md">
+                            <div class="form-floating mb-3">
                             <select class="form-control mt-2" name="status6" id="status6">
                                 <option value="deposito">Deposito +</option>
                                 <option value="retiro">Retiro -</option>
                             </select>
+                            </div>
                         </div>
 
                 </div>

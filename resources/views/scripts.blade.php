@@ -513,6 +513,9 @@
         $(e.currentTarget).find('#imei2').val(id);
         var id = $(e.relatedTarget).data().id_captura;
         $(e.currentTarget).find('#id_captura2').val(id);
+        var id = $(e.relatedTarget).data().marca;
+        $(e.currentTarget).find('#marca2').val(id);
+
         var id = $(e.relatedTarget).data().id_comentario;
         $(e.currentTarget).find('#descripcion2').val(id);
         var id = $(e.relatedTarget).data().fecha_recibido;
