@@ -1,7 +1,16 @@
+@include('header')
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="ml-auto mr-auto">
+                            <x-jet-authentication-card-logo />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </x-slot>
 
         <div x-data="{ recovery: false }">
@@ -20,12 +29,12 @@
 
                 <div class="mt-4" x-show="! recovery">
                     <x-jet-label value="{{ __('Code') }}" />
-                    <x-jet-input class="block mt-1 w-full" type="text" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
+                    <x-jet-input class="block mt-1 w-full form-control" type="text" name="code" autofocus x-ref="code" autocomplete="one-time-code" />
                 </div>
 
                 <div class="mt-4" x-show="recovery">
                     <x-jet-label value="{{ __('Recovery Code') }}" />
-                    <x-jet-input class="block mt-1 w-full" type="text" name="recovery_code" x-ref="recovery_code" autocomplete="one-time-code" />
+                    <x-jet-input class="block mt-1 w-full form-control" type="text" name="recovery_code" x-ref="recovery_code" autocomplete="one-time-code" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
@@ -54,4 +63,5 @@
             </form>
         </div>
     </x-jet-authentication-card>
+    @include('footer')
 </x-guest-layout>
