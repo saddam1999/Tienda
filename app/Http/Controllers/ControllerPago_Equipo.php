@@ -98,6 +98,7 @@ class ControllerPago_Equipo extends Controller
                 }
                 $calculaiva = ($pago->total * $pago->iva) / 100;
                 $debiendo = $pago->total + $calculaiva; //lo que se debe en total
+                $pago->pagado=$debiendo;
                 $pagado = $request->get('final4'); //lo que acaba de mandar 1060
                 $adelanto = $pago->adelanto; //lo que dio de adelanto 100
                 $pendiente = $debiendo - $adelanto; //1060

@@ -65,19 +65,17 @@
                                     @if($pago_equipo->iva=='')
                                     <td class="price">${{$pago_equipo->total}}</td>
                                     @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
-                                    <td class="price">${{$pago_equipo->total}} +
-                                        {{$pago_equipo->iva}} IVA </td>
+                                    <td class="price">${{$pago_equipo->total}} </td>
                                     @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
                                     <td class="price">${{$pago_equipo->total}}</td>
                                     @endif
 
                                     @if($pago_equipo->iva=='')
-                                    <td class="price">${{$pago_equipo->total}}</td>
+                                    <td class="price">${{$pago_equipo->pagado}}</td>
                                     @elseif($pago_equipo->iva!=''&&$pago_equipo->total!=0)
-                                    <td class="price">${{$pago_equipo->total}} +
-                                        {{$pago_equipo->iva}} IVA </td>
+                                    <td class="price">${{$pago_equipo->pagado}}</td>
                                     @elseif($pago_equipo->iva!=''&&$pago_equipo->total==0)
-                                    <td class="price">${{$pago_equipo->totals}}</td>
+                                    <td class="price">${{$pago_equipo->pagado}}</td>
                                     @endif
 
                                     <td class="price">{{$pago_equipo->created_at->format('d/m/y')}}
