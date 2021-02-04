@@ -111,6 +111,7 @@ class ControllerEquipo extends Controller
             // $temporal = $pago->monto - $pago->adelanto; se quito aqui quite primero el adelanto y luego aplique el iva WRONG
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
+            dd($iva);
             //900*16=144
             $total = ($pago->monto + $iva) - $pago->adelanto; //aqui calculo el total mas el iva y luego remuevo el adelanto es lo que falta a pagar
             $pago->total = $total;

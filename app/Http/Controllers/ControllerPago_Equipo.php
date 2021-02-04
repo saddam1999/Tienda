@@ -91,6 +91,7 @@ class ControllerPago_Equipo extends Controller
                 $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
                 $caja = \App\Models\Caja::find($sucursal->id);
                 $setting=\App\Models\Settings::all();
+                
                 $totalsiniva = $pago->monto; //monto completo sin iva
                 if ($pago->iva == null) {
                     $pago->iva= $setting->settings_iva;
@@ -99,9 +100,9 @@ class ControllerPago_Equipo extends Controller
                 $debiendo = $pago->total + $calculaiva; //lo que se debe en total
                 $pagado = $request->get('final4'); //lo que acaba de mandar 1060
                 $adelanto = $pago->adelanto; //lo que dio de adelanto 100
-                $pendiente = $debiendo - $pagado; //1060
+                $pendiente = $debiendo - $adelanto; //1060
                 $iva = $pago->iva; //
-                $totaldefinitivo = $pendiente - $adelanto; //1060-1060=0
+                $totaldefinitivo = $pendiente - $pagado; //1060-1060=0
                 //dd( $pago->adelanto."pagado".$totaldefinitivo);
                 //dd($pago->total = $pago->monto);
                 //dd("ID PAGO: ".$pago->id."ID Equipo".$equipo->id, "Total: ". $pago->total." pagado: ".$pagado." debiendo: ".$debiendo." Resta :".$totaldefinitivo );
@@ -120,7 +121,7 @@ class ControllerPago_Equipo extends Controller
                     $pago->save();
                     return back()->with('success', "Equipo: #" . $pago->id . " Pagado " . " Monto Total: " . $pagado);
                 } elseif ($pagado >= $pendiente) {
-                    $pago->total = $pago->monto;
+                    $pago->total = $pendiente;
                     $pago->status = 1;
                     $equipo->status = 4;
                     $cajaTemp = $pago->total + $caja->corte;
@@ -137,6 +138,26 @@ class ControllerPago_Equipo extends Controller
                 //hay un problema entre cambio y debiendo.. ambos son numeros negativos cuando llegan ala condicioon  $totaldefinitivo <= $pagado marca error
             }
         }
+    }
+
+    /**
+     * UpdateCajaManual a newly created resource in storage.
+     *
+     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function UpdateCajaManual(Request $request)
+    {
+        $busquedapago = \App\Models\Pago_Equipo::all();
+        //$pago = \App\Models\Pago_Equipo::find($id); // 9 null
+        //ID es id de equipo entonces buscamos el id del pago con id_equipo dentro de pago_equipo
+        $caja = \App\Models\Caja::find(1);
+        $caja->corte = 0;
+
+        $caja->save();
+        return back()->with('success', "Caja actualizada: $0");
+        
     }
 
 

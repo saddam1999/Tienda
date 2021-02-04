@@ -1258,6 +1258,55 @@
         </div>
     </div>
 </div>
+<!--Modal Reinicio Caja--->
+<div class="modal fade" id="modalReinicio" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title text-white">Reiniciar Caja<center><svg width="2em" height="2em" viewBox="0 0 16 16"
+                            class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                        </svg></center>
+                </h5>
+                <button type="button" class="close" onclick="closeNav()" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form action="/agregarpagoManual">
+                        @csrf
+                        @method('POST')
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
+                                    <label for="marca">Valor en que quiere colocar la caja</label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                      
+                        <video class="m-1" style="border-radius: 10px;" muted="muted" id="video"></video>
+                        <canvas id="canvas" style="display: none; border-radius: 10px;"></canvas>
+                        <input type="hidden" name="status" id="status" value="0">
+                        <input type="hidden" name="id_captura" id="id_captura" value="">
+                        <button type="button" class="btn btn-primary" id="boton">
+                            <i class="fas fa-camera-retro"></i></button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" onclick="closeNav()" class="btn btn-secondary"
+                    data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="boton">Agregar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Modal Edit Taller-->
 <div class="modal fade" id="modaledittaller" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
     aria-hidden="true">

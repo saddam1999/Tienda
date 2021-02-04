@@ -86,10 +86,12 @@ Route::get('/cambio_status/{id}', [ControllerEquipo::class, 'status']);
 Route::get('/agregarcaja', [ControllerCaja::class, 'store']);
 Route::get('/editcaja/{id}', [ControllerCaja::class, 'update']);
 Route::get('/deletecaja/{id}', [ControllerCaja::class, 'destroy']);
-//ControllerPagoEquipo( EQUIPO)
+
+//ControllerPagoEquipo( EQUIPO) UpdateCajaManual
 Route::get('/agregarpago/{id}', [ControllerPago_Equipo::class, 'store']);
 Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
+Route::get('/agregarpagoManual', [ControllerPago_Equipo::class, 'UpdateCajaManual']);
 //imprimirController Ticket
 Route::get('/imprimir/id={id}&csrf={csrf}', [imprimirController::class, 'update']);//para pagar un equipo ticket
 Route::get('/QR/{id}', [imprimirController::class, 'QR']);//imprime un codigo de seguimiento  equipo QR
