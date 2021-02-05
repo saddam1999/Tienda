@@ -212,11 +212,7 @@
                             <td>{{$user->name}}</td>
                             @endif
                             @endforeach
-                            @foreach ($Usuario as $user)
-                            @if($user->id==$equipo->id_cliente)
-                            <td>{{$user->name}}</td>
-                            @endif
-                            @endforeach
+                            <td>{{$equipo->id_cliente }}</td>
                             <td><input class="text-secondary form-control" type="date"
                                     value="{{$equipo->fecha_recibido}}"></td>
                             <td>
