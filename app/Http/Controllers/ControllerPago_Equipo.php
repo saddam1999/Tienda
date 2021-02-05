@@ -97,14 +97,15 @@ class ControllerPago_Equipo extends Controller
                 if ($pago->iva == null) {
                     $pago->iva= $setting->settings_iva;
                 }
-                $calculaiva = ($pago->total * $pago->iva) / 100;
-                $debiendo = $pago->total + $calculaiva; //lo que se debe en total
-                $pago->pagado=$debiendo;
+                $calculaiva = ($totalsiniva * $pago->iva) / 100;
+                $debiendo = $totalsiniva + $calculaiva; //lo que se debe en total
+                $pago->pagado=$debiendo;//total con todo e iva
                 $pagado = $request->get('final4'); //lo que acaba de mandar 1060
                 $adelanto = $pago->adelanto; //lo que dio de adelanto 100
                 $pendiente = $debiendo - $adelanto; //1060
                 $iva = $pago->iva; //
                 $totaldefinitivo = $pendiente - $pagado; //1060-1060=0
+                //dd($pago->iva);
                 //dd( $pago->adelanto."pagado".$totaldefinitivo);
                 //dd($pago->total = $pago->monto);
                 //dd("ID PAGO: ".$pago->id."ID Equipo".$equipo->id, "Total: ". $pago->total." pagado: ".$pagado." debiendo: ".$debiendo." Resta :".$totaldefinitivo );
