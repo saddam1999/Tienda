@@ -36,7 +36,7 @@
                                     @endif
                                     @endforeach
 
-                                    <td>{{$equipo->id_cliente}}</td>
+                                    <td>{{$pago_equipo->id_cliente}}</td>
 
                                     @foreach ($Equipo as $equipo)
                                     @if($equipo->id==$pago_equipo->id_equipo)
