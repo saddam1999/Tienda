@@ -811,10 +811,12 @@
         }
         var id = $(e.relatedTarget).data().serial;
         $(e.currentTarget).find('#info_serial').text(id);
-        var id = $(e.relatedTarget).data().uniqueid;
-        $(e.currentTarget).find('#uniqueid').text(id);
+
         var id = $(e.relatedTarget).data().imei;
         $(e.currentTarget).find('#info_imei').text(id);
+        var id = $(e.relatedTarget).data().uniqueid;
+        $(e.currentTarget).find('#uniqueid').text(id);
+
         var id = $(e.relatedTarget).data().id_comentario;
         $(e.currentTarget).find('#info_comentario').val(id);
     });

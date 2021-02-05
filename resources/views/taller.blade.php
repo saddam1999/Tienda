@@ -20,7 +20,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach($Equipo->sortByDesc('status') as $equipo)
+                        @foreach($Equipo->sortByDesc('id') as $equipo)
                         @if($equipo->id_sucursal==Auth::user()->id_sucursal)
                         <tr>
                             <td>
@@ -45,7 +45,8 @@
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}"
+                                                    data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-modelo="{{$equipo->modelo}}"
                                                     data-uniqueid="{{$equipo->uniqueid}}"
@@ -93,7 +94,8 @@
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-servicio="{{$equipo->id_servicio}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}"
+                                                     data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -189,6 +191,7 @@
                                                     data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
+                                                    
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"

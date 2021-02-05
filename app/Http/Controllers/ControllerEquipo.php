@@ -52,7 +52,7 @@ class ControllerEquipo extends Controller
         $equipo = new \App\Models\Equipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
-        $equipo->id_servicio = null;
+        $equipo->id_servicio =  $request->get('id_servicio');//marca
         $equipo->inversion = $request->get('inversion');
         $equipo->presupuesto = $request->get('presupuesto');
         $equipo->pago = $request->get('pago');

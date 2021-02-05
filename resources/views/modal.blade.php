@@ -1015,11 +1015,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="number" name="imei" id="imei" placeholder="IMEI">
+                                    <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
                                     <label for="marca">IMEI</label>
-                                    <div class="invalid-feedback">
-                                        Please provide a valid IMEI.
-                                      </div>
+
                                 </div>
 
                             </div>
@@ -1394,7 +1392,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" name="marca2" id="marca2" required>
+                                    <input class="form-control" type="text" name="id_servicio2" id="id_servicio2" required>
                                     <label for="marca">Marca</label>
 
                                 </div>
