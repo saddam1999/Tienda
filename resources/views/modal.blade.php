@@ -1007,6 +1007,7 @@
                                         @endforeach
                                     </select>
                                     <label for="nombre">Nombre Tecnico</label>
+
                                 </div>
                             </div>
                         </div>
@@ -1014,8 +1015,11 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" name="imei" id="imei" placeholder="IMEI">
+                                    <input class="form-control" type="number" name="imei" id="imei" placeholder="IMEI">
                                     <label for="marca">IMEI</label>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid IMEI.
+                                      </div>
                                 </div>
 
                             </div>

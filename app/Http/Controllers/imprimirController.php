@@ -260,11 +260,11 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, $setting->setting_nombre);
+                $pdf->Cell(5, $textypos, utf8_decode($setting->setting_nombre));
                 $pdf->SetFont('Arial', '', 4);    //Letra Arial, negrita (Bold), tam. 20
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Direccion: ' . $setting->setting_direccion);
+                $pdf->Cell(5, $textypos, 'Direccion: ' . utf8_decode($setting->setting_direccion));
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Telefono: ' . $setting->setting_telefono);
@@ -279,16 +279,16 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Cliente: ' . $equipo->id_cliente);
+                $pdf->Cell(5, $textypos, 'Cliente: ' .utf8_decode($equipo->id_cliente));
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Tecnico: ' . $tecnico->name);
+                $pdf->Cell(5, $textypos, 'Tecnico: ' . utf8_decode($tecnico->name));
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Equipo: ' . $datoequipo);
+                $pdf->Cell(5, $textypos, 'Equipo: ' . utf8_decode($datoequipo));
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Diagnostico: ' . $equipo->id_comentario);
+                $pdf->Cell(5, $textypos, 'Diagnostico: ' .utf8_decode($equipo->id_comentario));
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Adelanto: ' . $equipo->pago . ' - ' . ' Cotizado: ' . $equipo->presupuesto);
@@ -297,25 +297,13 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'CANT.    MODELO   EQUIPO          PRECIO               TOTAL');
+                $pdf->Cell(5, $textypos, 'CANT.    MODELO   EQUIPO                         ');
                 $precio->modelo;
-                if ($precio->serial == '') {
-                    $equipo = $precio->imei;
-                } else {
-                    $equipo = $precio->serial;
-                }
-                if ($precio->pago == '') {
-                    $total2 =  $precio->presupuesto;
-                } else {
-                    $total2 = $precio->presupuesto - $precio->pago;
-                }
-                $total = 0;
+
                 $off = $textypos + 6;
                 $producto = array(
                     "q" => 1,
-                    "modelo" => $precio->modelo,
-                    "name" => $equipo,
-                    "price" => $pago->total
+                    "modelo" => utf8_decode($precio->modelo),
                 );
                 $productos = array($producto);
                 foreach ($productos as $pro) {
@@ -324,21 +312,11 @@ class imprimirController extends Controller
                     $pdf->setX(4);
                     $pdf->Cell(35, $off,  strtoupper(substr($pro["modelo"], 0, 12)));
                     $pdf->setX(16);
-                    $pdf->Cell(35, $off,  strtoupper(substr($pro["name"], 0, 12)));
-                    $pdf->setX(24);
-                    $pdf->Cell(11, $off,  "$" . number_format($pro["price"], 2, ".", ","), 0, 0, "R");
-                    $pdf->setX(34);
-                    $pdf->Cell(11, $off,  "$ " . number_format($pro["q"] * $pro["price"], 2, ".", ","), 0, 0, "R");
-
-                    $total += $pro["q"] * $pro["price"];
                     $off += 6;
                 }
                 $textypos = $off + 6;
 
-                $pdf->setX(2);
-                $pdf->Cell(5, $textypos, "TOTAL : ");
-                $pdf->setX(38);
-                $pdf->Cell(5, $textypos, "$ " . number_format($total, 2, ".", ","), 0, 0, "R");
+
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos + 6, 'Gracias por su preferencia');
                 $textypos += 6;
