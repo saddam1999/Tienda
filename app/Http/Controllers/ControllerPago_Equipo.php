@@ -77,6 +77,7 @@ class ControllerPago_Equipo extends Controller
      */
     public function store(Request $request, $id)
     {
+        //dd($id);
         $equipo = \App\Models\Equipo::find($id); //id 10
         $busquedapago = \App\Models\Pago_Equipo::all();
         //$pago = \App\Models\Pago_Equipo::find($id); // 9 null
@@ -91,7 +92,7 @@ class ControllerPago_Equipo extends Controller
                 $sucursal = \App\Models\Sucursal::find($equipo->id_sucursal);
                 $caja = \App\Models\Caja::find($sucursal->id);
                 $setting=\App\Models\Settings::all();
-                
+
                 $totalsiniva = $pago->monto; //monto completo sin iva
                 if ($pago->iva == null) {
                     $pago->iva= $setting->settings_iva;
@@ -158,7 +159,7 @@ class ControllerPago_Equipo extends Controller
 
         $caja->save();
         return back()->with('success', "Caja actualizada: $0");
-        
+
     }
 
 

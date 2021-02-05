@@ -1181,7 +1181,7 @@
                         <div class="card text-left  border border-info">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="marca">Anticipo</label>
                                             <div class="input-group">
@@ -1196,7 +1196,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="presupuesto">Presupuesto</label>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
@@ -1205,7 +1205,7 @@
                                                 value="0">
                                         </div>
 
-                                    </div>
+                                    <!--
                                     <div class="col-md-4">
                                         <label for="inversion">Inversion</label>
                                         <div class="input-group-prepend">
@@ -1214,7 +1214,7 @@
                                                 name="inversion" id="inversion"
                                                 placeholder=" (Cuanto es lo maximo que se puede invertir)" value="0">
 
-                                        </div>
+                                        </div>-->
                                     </div>
 
                                 </div>
@@ -1289,7 +1289,7 @@
                             </div>
 
                         </div>
-                      
+
                         <video class="m-1" style="border-radius: 10px;" muted="muted" id="video"></video>
                         <canvas id="canvas" style="display: none; border-radius: 10px;"></canvas>
                         <input type="hidden" name="status" id="status" value="0">
@@ -1548,7 +1548,7 @@
                         <div class="card text-left  border border-info">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="marca">Anticipo</label>
                                             <div class="input-group">
@@ -1562,7 +1562,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="presupuesto">Presupuesto</label>
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
@@ -1571,6 +1571,7 @@
                                         </div>
 
                                     </div>
+                                    <!--
                                     <div class="col-md-4">
                                         <label for="inversion">Inversion</label>
                                         <div class="input-group-prepend">
@@ -1579,7 +1580,7 @@
                                                 placeholder=" (Cuanto es lo maximo que se puede invertir)">
 
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                 </div>
                             </div>
