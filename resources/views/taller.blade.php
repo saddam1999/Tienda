@@ -8,14 +8,15 @@
                 <table class="table table-striped table-inverse table-responsive display nowrap" id="tabletaller">
                     <thead class="thead-inverse">
                         <tr>
-                            <th>Opciones</th>
-                            <th>Modelo/Info</th>
-                            <th>Tecnico</th>
-                            <th>Cliente</th>
-                            <th>Fecha Recibido</th>
-                            <th>Fecha Entrega</th>
-                            <th>Status</th>
-                            <th>Imprimir</th>
+                            <th><small>Opciones</small>
+                                </th>
+                            <th><small class="text-muted">Modelo/Serial o IMEI</small></th>
+                            <th><small>Tecnico</small></th>
+                            <th><small>Cliente</small> </th>
+                            <th><small>Fecha Recibido</small></th>
+                            <th><small>Fecha Entrega</small></th>
+                            <th><small>Status</small></th>
+                            <th><small>Imprimir</small> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,8 +25,7 @@
                         @if($equipo->id_sucursal==Auth::user()->id_sucursal)
                         <tr>
                             <td>
-
-                                <div class="accordion" id="accordionExample">
+                             <div class="accordion" id="accordionExample">
                                     <div class="accordion-item text-white">
                                         <button class="bg-white text-white accordion-button" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne{{$equipo->id}}"
@@ -191,7 +191,7 @@
                                                     data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
-                                                    
+
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
@@ -209,13 +209,15 @@
                                 </div>
 
                             </td>
-                            <td>{{$equipo->modelo}}</td>
+                            <td><small>
+                                {{$equipo->modelo}}</small><br> <small class="text-muted">@if($equipo->serial==''){{$equipo->imei}}@else{{$equipo->serial}}@endif</small></td>
                             @foreach ($Usuario as $user)
                             @if($user->id==$equipo->id_user)
-                            <td>{{$user->name}}</td>
+                            <td><small>
+                                {{$user->name}}</small></td>
                             @endif
                             @endforeach
-                            <td>{{$equipo->id_cliente }}</td>
+                            <td><small>{{$equipo->id_cliente }}</small></td>
                             <td><input class="text-secondary form-control" type="date"
                                     value="{{$equipo->fecha_recibido}}"></td>
                             <td>
