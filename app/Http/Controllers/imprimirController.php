@@ -279,7 +279,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Cliente: ' . $usuario->name);
+                $pdf->Cell(5, $textypos, 'Cliente: ' . $equipo->id_cliente);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Tecnico: ' . $tecnico->name);
