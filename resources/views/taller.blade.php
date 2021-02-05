@@ -9,7 +9,7 @@
                     <thead class="thead-inverse">
                         <tr>
                             <th><small>Opciones</small>
-                                </th>
+                            </th>
                             <th><small class="text-muted">Modelo/Serial o IMEI</small></th>
                             <th><small>Tecnico</small></th>
                             <th><small>Cliente</small> </th>
@@ -25,7 +25,7 @@
                         @if($equipo->id_sucursal==Auth::user()->id_sucursal)
                         <tr>
                             <td>
-                             <div class="accordion" id="accordionExample">
+                                <div class="accordion" id="accordionExample">
                                     <div class="accordion-item text-white">
                                         <button class="bg-white text-white accordion-button" type="button"
                                             data-bs-toggle="collapse" data-bs-target="#collapseOne{{$equipo->id}}"
@@ -45,8 +45,7 @@
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}"
-                                                    data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-modelo="{{$equipo->modelo}}"
                                                     data-uniqueid="{{$equipo->uniqueid}}"
@@ -94,8 +93,7 @@
                                                     data-id_user="{{$equipo->id_user}}"
                                                     data-servicio="{{$equipo->id_servicio}}"
                                                     data-id_cliente="{{$equipo->id_cliente}}"
-                                                    data-serial="{{$equipo->serial}}"
-                                                     data-imei="{{$equipo->imei}}"
+                                                    data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
                                                     data-id_comentario="{{$equipo->id_comentario}}"
                                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
@@ -191,7 +189,6 @@
                                                     data-precio="{{$equipo->precio}}"
                                                     data-id_sucursal="{{Auth::user()->id_sucursal}}"
                                                     data-id_user="{{$equipo->id_user}}"
-
                                                     data-id_cliente="{{$equipo->id_cliente}}"
                                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
                                                     data-id_captura="{{$equipo->id_captura}}"
@@ -209,12 +206,11 @@
                                 </div>
 
                             </td>
-                            <td><small>
-                                {{$equipo->modelo}}</small><br> <small class="text-muted">@if($equipo->serial==''){{$equipo->imei}}@else{{$equipo->serial}}@endif</small></td>
+                            <td><small>{{$equipo->modelo}}</small><br> <small class="text-muted">@if($equipo->serial==''){{$equipo->imei}}@else{{$equipo->serial}}@endif</small></td>
                             @foreach ($Usuario as $user)
                             @if($user->id==$equipo->id_user)
                             <td><small>
-                                {{$user->name}}</small></td>
+                                    {{$user->name}}</small></td>
                             @endif
                             @endforeach
                             <td><small>{{$equipo->id_cliente }}</small></td>
@@ -224,6 +220,7 @@
                                 @php
                                 $date1 = new DateTime("now");
                                 $date2 = new DateTime($equipo->fecha_entrega);
+                                $diff = $date1->diff($date2);
                                 @endphp
 
                                 @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
@@ -237,8 +234,12 @@
                                         </svg><input class="text-danger" type="date" value="{{$equipo->fecha_entrega}}">
                                     </span>
                                 </div>
+                                @elseif($date1->format("Y-m-d") >= $equipo->fecha_entrega )
+                                <input class="text-danger form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
+                                <small class="text-danger">faltan: {{$diff->days .' dias'}}</small>
                                 @else
-                                <input class="text-info form-control" type="date" value="{{$equipo->fecha_entrega}}">
+                                <input class="text-info form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
+                                <small class="text-success">faltan: {{$diff->days .' dias'}}</small>
                                 @endif
                             </td>
                             <td>
