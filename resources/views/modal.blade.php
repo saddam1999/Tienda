@@ -981,16 +981,17 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
+                                    <!--
                                     <select class="form-control" id="id_cliente" name="id_cliente" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                         @endif
                                         @endforeach
-                                    </select>
+                                    </select>-->
+                                    <input class="form-control" type="text"  id="id_cliente" name="id_cliente">
                                     <label for="nombre">Nombre Cliente</label>
-                                    <!---
-                                        <a href="" data-toggle="modal" data-target="#modalagregar"><span
+                                    <!---<a href="" data-toggle="modal" data-target="#modalagregar"><span
                                                 class="input-group-text">Agregar Cliente</span></a>-->
                                 </div>
                             </div>
@@ -1332,6 +1333,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
+                                    <!--
                                     <select class="form-control" id="id_cliente2" name="id_cliente2" required>
                                         @foreach ($Usuario as $user)
                                         @if($user->rol=='cliente')
@@ -1339,6 +1341,8 @@
                                         @endif
                                         @endforeach
                                     </select>
+                                -->
+                                    <input class="form-control" type="text" name="id_cliente2" id="id_cliente2">
                                     <label for="nombre">Nombre Cliente</label>
 
                                 </div>
