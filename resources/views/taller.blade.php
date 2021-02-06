@@ -225,7 +225,8 @@
                                 $diff = $date1->diff($date2);
                                 @endphp
 
-                                @if($equipo->status==1 || $equipo->status==3 || $equipo->status==4 || $equipo->status==5|| $equipo->status==0)
+                                @if($equipo->status==1 || $equipo->status==3 || $equipo->status==4 ||
+                                $equipo->status==5|| $equipo->status==0)
                                 @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
                                 @php $contador++; @endphp
                                 <div class="input-group-prepend ">
@@ -251,7 +252,8 @@
                                     {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @endif
                                 @elseif($equipo->status==6)
-                                <pre class="text-success">Entregado</pre>
+                                <pre class="text-success">Entregado
+                                 </pre>
                                 @elseif($equipo->status==2)
                                 <pre class="text-danger">Cancelado</pre>
                                 @endif

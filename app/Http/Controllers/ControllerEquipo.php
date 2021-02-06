@@ -52,7 +52,7 @@ class ControllerEquipo extends Controller
         $equipo = new \App\Models\Equipo();
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
-        $equipo->id_servicio =  $request->get('id_servicio');//marca
+        $equipo->id_servicio =  $request->get('id_servicio'); //marca
         $equipo->inversion = $request->get('inversion');
         $equipo->presupuesto = $request->get('presupuesto');
         $equipo->pago = $request->get('pago');
@@ -111,15 +111,15 @@ class ControllerEquipo extends Controller
             // $temporal = $pago->monto - $pago->adelanto; se quito aqui quite primero el adelanto y luego aplique el iva WRONG
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
-           // dd($iva);
+            // dd($iva);
             //900*16=144
-            $pago->pagado=$pago->monto + $iva;
+            $pago->pagado = $pago->monto + $iva;
             $total = ($pago->monto + $iva) - $pago->adelanto; //aqui calculo el total mas el iva y luego remuevo el adelanto es lo que falta a pagar
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
             $caja->corte = $cajaTemp;
         } else if ($pago->adelanto != 0 && $pago->iva == '' && $pago->monto != 0) {
-            $pago->pagado=$pago->monto;
+            $pago->pagado = $pago->monto;
             $temporal = $pago->monto - $pago->adelanto;
             $total = $temporal;
             $pago->total = $total;
@@ -130,7 +130,7 @@ class ControllerEquipo extends Controller
             //1000 - 100=900
             $iva = ($pago->monto * $pago->iva) / 100;
             //900*16=144
-            $pago->pagado=$pago->monto + $iva;
+            $pago->pagado = $pago->monto + $iva;
             $total = $pago->monto + $iva;
             $pago->total = $total;
             $cajaTemp = $pago->adelanto + $caja->corte;
@@ -250,8 +250,57 @@ class ControllerEquipo extends Controller
     public function status(Request $request, $id)
     {
         $equipo = \App\Models\Equipo::find($id);
+
         if ($equipo != null) {
             $equipo->status = $request->get('status3');
+
+            if ($equipo->status == 0) {
+                $stat = "Recibido";
+            } elseif ($equipo->status == 1) {
+                $stat = "En Revision";
+            } elseif ($equipo->status == 2) {
+                $stat = "Cancelado";
+            } elseif ($equipo->status == 3) {
+                $stat = "Espera";
+            } elseif ($equipo->status == 4) {
+                $stat = " A espera de Cliente(Contactarse a Sucursal)";
+            } elseif ($equipo->status == 5) {
+                $stat = 'Listo(Para entregar)';
+            } elseif ($equipo->status == 6) {
+                $stat = " Entregado";
+            }
+            if ($equipo->status == 2 || $equipo->status == 6) {
+                $equipo->fecha_entrega = new \DateTime("now");
+                $dia1 = $equipo->fecha_entrega->format("d");
+                $mes = $equipo->fecha_entrega->format("m");
+                $ano = $equipo->fecha_entrega->format("Y");
+                if ($mes == 1) {
+                    $mes1 = 'Enero';
+                } elseif ($mes == 2) {
+                    $mes1 = 'Febrero';
+                } elseif ($mes == 3) {
+                    $mes1 = 'Marzo';
+                } elseif ($mes == 4) {
+                    $mes1 = 'Abril';
+                } elseif ($mes == 5) {
+                    $mes1 = 'Mayo';
+                } elseif ($mes == 6) {
+                    $mes1 = 'Junio';
+                } elseif ($mes == 7) {
+                    $mes1 = 'Julio';
+                } elseif ($mes == 8) {
+                    $mes1 = 'Agosto';
+                } elseif ($mes == 9) {
+                    $mes1 = 'Septiembre';
+                } elseif ($mes == 10) {
+                    $mes1 = 'Octubre';
+                } elseif ($mes == 11) {
+                    $mes1 = 'Noviembre';
+                } elseif ($mes == 12) {
+                    $mes1 = 'Diciembre';
+                }
+                return back()->with('success', "Status Cambiado: " . $stat . ' el ' . $dia1 . '-' . $mes1 . '-' . $ano);
+            }
             $equipo->save();
             return back()->with('success', "Status Cambiado");
         } else {
