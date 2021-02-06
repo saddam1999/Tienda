@@ -805,10 +805,11 @@
         var id = $(e.relatedTarget).data().id_captura;
 
         $(e.currentTarget).find('#info_imagen').val(id);
-        $("#info_imagen").attr("src", './fotos/' + id);
         if(id==''){
-            $("#info_imagen").attr("src", 'https://lh3.googleusercontent.com/proxy/htWKAVbUuq_0ht9Wogmp83pDKRoqWmJZLRla17E2NDywVdpsjrtHTJGse9f49Y8mEMJjsVaifU8zBbZaECFBWzxniVuQZjDcAw' + id);
-        }
+            $("#info_imagen").attr("src", 'https://static.wikia.nocookie.net/animated_inanimate_battle/images/a/a3/Image-not-found.png' + id);
+        }else{
+        $("#info_imagen").attr("src", './fotos/' + id);
+    }
         var id = $(e.relatedTarget).data().serial;
         $(e.currentTarget).find('#info_serial').text(id);
 

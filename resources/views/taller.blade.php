@@ -206,7 +206,9 @@
                                 </div>
 
                             </td>
-                            <td><small>{{$equipo->modelo}}</small><br> <small class="text-muted">@if($equipo->serial==''){{$equipo->imei}}@else{{$equipo->serial}}@endif</small></td>
+                            <td><small>{{$equipo->modelo}}</small><br> <small
+                                    class="text-muted">@if($equipo->serial==''){{$equipo->imei}}@else{{$equipo->serial}}@endif</small>
+                            </td>
                             @foreach ($Usuario as $user)
                             @if($user->id==$equipo->id_user)
                             <td><small>
@@ -238,11 +240,15 @@
                                 </div>
 
                                 @elseif($date1->format("Y-m-d") >= $equipo->fecha_entrega )
-                                <input class="text-danger form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
-                                <small class="text-danger card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
+                                <input class="text-danger form-control" type="date"
+                                    value="{{$equipo->fecha_entrega}}"><br>
+                                <small class="text-danger card-footer">faltan: @if($diff->days>=1)
+                                    {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @else
-                                <input class="text-info form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
-                                <small class="text-success card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
+                                <input class="text-info form-control" type="date"
+                                    value="{{$equipo->fecha_entrega}}"><br>
+                                <small class="text-success card-footer">faltan: @if($diff->days>=1)
+                                    {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @endif
                             </td>
                             <td>
