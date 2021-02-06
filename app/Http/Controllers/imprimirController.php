@@ -223,6 +223,38 @@ class imprimirController extends Controller
                 if ($setting->setting_logo == "") {
                     $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";
                 }
+                $date1 = new \DateTime("now");
+
+                $dia1 = $equipo->created_at->format("d");
+                $mes = $equipo->created_at->format("m");
+                $ano = $equipo->created_at->format("Y");
+                if ($mes == 1) {
+                    $mes1 = 'Enero';
+                } elseif ($mes == 2) {
+                    $mes1 = 'Febrero';
+                } elseif ($mes == 3) {
+                    $mes1 = 'Marzo';
+                } elseif ($mes == 4) {
+                    $mes1 = 'Abril';
+                } elseif ($mes == 5) {
+                    $mes1 = 'Mayo';
+                } elseif ($mes == 6) {
+                    $mes1 = 'Junio';
+                } elseif ($mes == 7) {
+                    $mes1 = 'Julio';
+                } elseif ($mes == 8) {
+                    $mes1 = 'Agosto';
+                } elseif ($mes == 9) {
+                    $mes1 = 'Septiembre';
+                } elseif ($mes == 10) {
+                    $mes1 = 'Octubre';
+                } elseif ($mes == 11) {
+                    $mes1 = 'Noviembre';
+                } elseif ($mes == 12) {
+                    $mes1 = 'Diciembre';
+                }
+
+
                 $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
                 $size = isset($_GET['size']) ? $_GET['size'] : '200x200';
                 $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
@@ -273,13 +305,13 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Fecha: ' . $equipo->created_at);
+                $pdf->Cell(5, $textypos, 'Fecha: ' . $dia1 . '-' . $mes1 . '-' . $ano);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Cliente: ' .utf8_decode($equipo->id_cliente));
+                $pdf->Cell(5, $textypos, 'Cliente: ' . utf8_decode($equipo->id_cliente));
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Tecnico: ' . utf8_decode($tecnico->name));
@@ -288,7 +320,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Equipo: ' . utf8_decode($datoequipo));
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Diagnostico: ' .utf8_decode($equipo->id_comentario));
+                $pdf->Cell(5, $textypos, 'Diagnostico: ' . utf8_decode($equipo->id_comentario));
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Adelanto: ' . $equipo->pago . ' - ' . ' Cotizado: ' . $equipo->presupuesto);
