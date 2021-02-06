@@ -224,7 +224,7 @@
                                 $date2 = new DateTime($equipo->fecha_entrega);
                                 $diff = $date1->diff($date2);
                                 @endphp
-
+                                @if($equipo->status!=6)
                                 @if($date1->format("Y-m-d") == $equipo->fecha_entrega )
                                 @php $contador++; @endphp
                                 <div class="input-group-prepend ">
@@ -238,7 +238,6 @@
                                     </span>
 
                                 </div>
-
                                 @elseif($date1->format("Y-m-d") >= $equipo->fecha_entrega )
                                 <input class="text-danger form-control" type="date"
                                     value="{{$equipo->fecha_entrega}}"><br>
@@ -249,6 +248,9 @@
                                     value="{{$equipo->fecha_entrega}}"><br>
                                 <small class="text-success card-footer">faltan: @if($diff->days>=1)
                                     {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
+                                @endif
+                                @else
+                                <pre>Entregado</pre>
                                 @endif
                             </td>
                             <td>
