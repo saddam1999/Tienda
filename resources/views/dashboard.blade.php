@@ -76,9 +76,10 @@
                     </div>
                 </div>
 
-                <div class="icon-bar fixed-bottom mb-5" style="border-radius:10px; margin-bottom:18%;">
-                    <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"
-                        role="tab" aria-controls="taller"><i class="fa fa-home"></i></a>
+                <div class="icon-bar fixed-bottom mb-5" style="border-radius:10px; margin-bottom:18%;" name="ocultar"
+                    id="ocultar">
+                    <a class="nav-link face" role="tab" onclick="ocultar('ocultar')" data-toggle="tab"><i
+                            class="fas fa-ellipsis-v"></i></a>
                     <a onclick="closeNav()" class="nav-link face" id="taller-tab" data-toggle="tab" href="#taller"
                         role="tab" aria-controls="taller"><svg width="1em" height="1em" viewBox="0 0 16 16"
                             class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -5,7 +5,7 @@
         var options = {
             facebook: "460755991156675", // Facebook page ID
             call_to_action: "", // Call to action
-            position: "right", // Position may be 'right' or 'left'
+            position: "left", // Position may be 'right' or 'left'
         };
         var proto = document.location.protocol,
             host = "getbutton.io",

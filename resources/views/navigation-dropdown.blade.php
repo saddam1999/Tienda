@@ -31,6 +31,13 @@
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle text-white" href="" data-toggle="modal" data-target="#modal_caja"
                     href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @php $date1 = new DateTime("now")@endphp<i class="far fa-calendar-alt"></i>
+                    {{$date1->format("d-m-Y") }}
+                </a>
+            </li>
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle text-white" href="" data-toggle="modal" data-target="#modal_caja"
+                    href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Caja -> <i class="fas fa-money-check-alt"></i>
                     <!-- Counter - Alerts -->
                 </a>

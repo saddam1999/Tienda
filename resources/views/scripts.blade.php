@@ -1124,4 +1124,11 @@ function myFunction() {
 
     }
 </script>
+<!--Ocultar -->
+<script>
+    function ocultar(id){
+    var elemento = document.getElementById(id);
+    elemento.style.display = "none";
+}
+</script>
 @section('scripts')

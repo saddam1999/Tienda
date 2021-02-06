@@ -239,10 +239,10 @@
 
                                 @elseif($date1->format("Y-m-d") >= $equipo->fecha_entrega )
                                 <input class="text-danger form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
-                                <small class="text-danger card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}  @endif</small>
+                                <small class="text-danger card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @else
                                 <input class="text-info form-control" type="date" value="{{$equipo->fecha_entrega}}"><br>
-                                <small class="text-success card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}  @endif</small>
+                                <small class="text-success card-footer">faltan: @if($diff->days>=1) {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @endif
                             </td>
                             <td>
