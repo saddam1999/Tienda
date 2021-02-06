@@ -28,7 +28,7 @@
             headerTitle: 'Contactanos por Whatsapp!', //Popup Title
             popupMessage: 'Hola como podemos ayudarte?', //Popup Message
             showPopup: true, //Enables popup display
-            buttonImage: '<img src="https://i.pinimg.com/originals/57/93/fa/5793fa77a347969c747ecf703c2aee90.png" />', //Button Image
+            buttonImage: '<img src="https://i1.wp.com/muyskatrajestipicos.co/wp-content/uploads/2020/06/png-transparent-whatsapp-icon-whatsapp-logo-computer-icons-zubees-halal-foods-whatsapp-text-circle-unified-payments-interface.png?fit=750%2C750&ssl=1" />', //Button Image
             headerColor: 'black', //Custom header color
             backgroundColor: 'white', //Custom background button color
             position: "right" //Position: left | right

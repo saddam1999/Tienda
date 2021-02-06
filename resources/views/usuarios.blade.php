@@ -48,7 +48,39 @@
                             @else
                             <td class="text-secondary">Sin status</td>
                             @endif
-                            <td>{{$usuario->created_at}}</td>
+                            <td>
+                                @php
+                                $dia1 = $usuario->created_at->format("d");
+                                $mes = $usuario->created_at->format("m");
+                                $ano = $usuario->created_at->format("Y");
+                                if ($mes == 1) {
+                                $mes1 = 'Enero';
+                                } elseif ($mes == 2) {
+                                $mes1 = 'Febrero';
+                                } elseif ($mes == 3) {
+                                $mes1 = 'Marzo';
+                                } elseif ($mes == 4) {
+                                $mes1 = 'Abril';
+                                } elseif ($mes == 5) {
+                                $mes1 = 'Mayo';
+                                } elseif ($mes == 6) {
+                                $mes1 = 'Junio';
+                                } elseif ($mes == 7) {
+                                $mes1 = 'Julio';
+                                } elseif ($mes == 8) {
+                                $mes1 = 'Agosto';
+                                } elseif ($mes == 9) {
+                                $mes1 = 'Septiembre';
+                                } elseif ($mes == 10) {
+                                $mes1 = 'Octubre';
+                                } elseif ($mes == 11) {
+                                $mes1 = 'Noviembre';
+                                } elseif ($mes == 12) {
+                                $mes1 = 'Diciembre';
+                                }@endphp
+
+                                {{$dia1.'-'.$mes1.'-'.$ano}}
+                            </td>
                             <td><a href="" data-toggle="modal" data-target="#modaleditar" data-id="{{$usuario->id}}"
                                     data-id_sucursal="{{$usuario->id_sucursal}}" data-name="{{$usuario->name}}"
                                     data-email="{{$usuario->email}}" data-rol="{{$usuario->rol}}"

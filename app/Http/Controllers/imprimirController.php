@@ -329,7 +329,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'CANT.    MODELO   EQUIPO                         ');
+                $pdf->Cell(5, $textypos, 'CANT.    MODELO                          ');
                 $precio->modelo;
 
                 $off = $textypos + 6;
