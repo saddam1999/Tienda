@@ -31,8 +31,56 @@
             <li class="nav-item dropdown no-arrow mx-1">
                 <a class="nav-link dropdown-toggle text-white" href="" data-toggle="modal" data-target="#modal_caja"
                     href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @php $date1 = new DateTime("now")@endphp<i class="far fa-calendar-alt"></i>
-                    {{$date1->format("d-m-Y") }}
+                    @php
+
+                    $date1 = new DateTime("now")@endphp<i class="far fa-calendar-alt"></i>
+
+                    @php
+                    $dia1=$date1->format("d");
+                    $mes=$date1->format("m");
+                    $ano=$date1->format("Y");
+                
+
+                    if($mes==1){
+                    $mes1= 'Enero';
+                    }elseif($mes==2){
+                    $mes1= 'Febrero';
+
+                    }elseif($mes==3){
+                    $mes1= 'Marzo';
+
+                    }elseif($mes==4){
+                    $mes1= 'Abril';
+
+                    }elseif($mes==5){
+                    $mes1= 'Mayo';
+
+                    }elseif($mes==6){
+                    $mes1= 'Junio';
+
+                    }elseif($mes==7){
+                    $mes1= 'Julio';
+
+                    }elseif($mes==8){
+                    $mes1= 'Agosto';
+
+                    }elseif($mes==9){
+                    $mes1= 'Septiembre';
+
+                    }elseif($mes==10){
+                    $mes1= 'Octubre';
+
+                    }elseif($mes==11){
+                    $mes1= 'Noviembre';
+
+                    }elseif($mes==12){
+                    $mes1= 'Diciembre';
+
+                    }
+
+                    @endphp
+                    {{$dia1}} de {{$mes1}} del {{$ano}}
+
                 </a>
             </li>
             <li class="nav-item dropdown no-arrow mx-1">
