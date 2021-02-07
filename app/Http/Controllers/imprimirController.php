@@ -318,6 +318,10 @@ class imprimirController extends Controller
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Telefono: ' . $setting->setting_telefono);
+
+                $textypos += 6;
+                $pdf->setX(2);
+                $pdf->Cell(5, $textypos, 'Horario: ' . $setting->setting_abierto);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(8, $textypos, 'Fecha: ' . $dia1 . '-' . $mes1 . '-' . $ano);
@@ -350,7 +354,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'MODELO   SERIAL/IMEI ');
+                $pdf->Cell(5, $textypos, 'MODELO                        SERIAL/IMEI ');
                 $precio->modelo;
                 $off = $textypos + 6;
                 $producto = array(
@@ -420,13 +424,13 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Enfoca con tu telefono este codigo y sigue tu orden por internet');
+                $pdf->Cell(5, $textypos, 'Escanea con tu telefono este codigo y sigue tu orden por internet');
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Entra aqui: ' . $setting->setting_url . '/orden/' . $id);
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Image("$id.png", 10, 126, 20, 20, "png");
+                $pdf->Image("$id.png", 10, 130, 20, 20, "png");
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Output();
