@@ -220,6 +220,8 @@ class imprimirController extends Controller
                 }
                 $adelanto = $tecnico->monto;
                 $final = $precio->presupuesto - $adelanto;
+                $tamaño = getimagesize($setting->setting_logo);
+                //dd($tamaño);
                 if ($setting->setting_logo == "") {
                     $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";
                 }
@@ -256,7 +258,7 @@ class imprimirController extends Controller
 
 
                 $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
-                $size = isset($_GET['size']) ? $_GET['size'] : '200x200';
+                $size = isset($_GET['size']) ? $_GET['size'] : '400x400';
                 $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
 
                 header('Content-type: image/png');
@@ -274,9 +276,24 @@ class imprimirController extends Controller
                     $logo_qr_width = $QR_width / 3;
                     $scale = $logo_width / $logo_qr_width;
                     $logo_qr_height = $logo_height / $scale;
-
                     imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
                 }
+                if ($equipo->pago == 0) {
+                    $temporal = 0;
+                } else {
+                    $temporal = $equipo->pago;
+                };
+                if ($equipo->presupuesto == 0) {
+                    $temporal1 = 0;
+                } else {
+                    $temporal1 = $equipo->presupuesto;
+                };
+
+                if ($equipo->serial == '') {
+                    $temporal3 = $equipo->imei;
+                } else {
+                    $temporal3 = $equipo->serial;
+                };
 
                 imagepng($QR, "$id.png");
                 // $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
@@ -284,14 +301,15 @@ class imprimirController extends Controller
 
                 $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(45, 350));
                 $pdf->AddPage();
-                $pdf->SetFont('Arial', 'B', 8);    //Letra Arial, negrita (Bold), tam. 20
+                $pdf->SetFont('Arial', 'B', 4);    //Letra Arial, negrita (Bold), tam. 20
                 $textypos = 5;
                 $pdf->Image($setting->setting_logo, 10, 1, -800);
-                $textypos += 14;
+                $textypos += 20;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
+                $pdf->SetFont('Arial', '', 9);    //Titulo
                 $pdf->Cell(5, $textypos, utf8_decode($setting->setting_nombre));
                 $pdf->SetFont('Arial', '', 4);    //Letra Arial, negrita (Bold), tam. 20
                 $textypos += 6;
@@ -302,13 +320,16 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Telefono: ' . $setting->setting_telefono);
                 $textypos += 6;
                 $pdf->setX(2);
+                $pdf->Cell(8, $textypos, 'Fecha: ' . $dia1 . '-' . $mes1 . '-' . $ano);
+
+                $textypos += 6;
+                $pdf->setX(2);
                 $pdf->Cell(5, $textypos, '=======================================');
+
+
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Fecha: ' . $dia1 . '-' . $mes1 . '-' . $ano);
-                $textypos += 6;
-                $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Orden: #' . $equipo->id);
+                $pdf->Cell(5, $textypos, 'Orden: # ' . $equipo->id);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Cliente: ' . utf8_decode($equipo->id_cliente));
@@ -323,33 +344,32 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Diagnostico: ' . utf8_decode($equipo->id_comentario));
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'Adelanto: ' . $equipo->pago . ' - ' . ' Cotizado: ' . $equipo->presupuesto);
+                $pdf->Cell(5, $textypos, 'Adelanto: ' . $temporal . ' - ' . ' Cotizado: ' . $temporal1);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, 'CANT.    MODELO                          ');
+                $pdf->Cell(5, $textypos, 'MODELO   SERIAL/IMEI ');
                 $precio->modelo;
-
                 $off = $textypos + 6;
                 $producto = array(
-                    "q" => 1,
                     "modelo" => utf8_decode($precio->modelo),
+                    "SERIAL/IMEI" => utf8_decode($temporal3),
                 );
                 $productos = array($producto);
                 foreach ($productos as $pro) {
+
                     $pdf->setX(2);
-                    $pdf->Cell(5, $off, $pro["q"]);
-                    $pdf->setX(4);
                     $pdf->Cell(35, $off,  strtoupper(substr($pro["modelo"], 0, 12)));
+                    $pdf->setX(16);
+                    $pdf->Cell(35, $off,  strtoupper(substr($pro["SERIAL/IMEI"], 0, 12)));
                     $pdf->setX(16);
                     $off += 6;
                 }
                 $textypos = $off + 6;
-
-
                 $pdf->setX(2);
+                $pdf->Cell(5, $textypos, '=======================================');
                 $pdf->Cell(5, $textypos + 6, 'Gracias por su preferencia');
                 $textypos += 6;
                 $pdf->setX(2);
@@ -397,7 +417,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, '        Nombre y Firma de conformidad');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, '===================================================');
+                $pdf->Cell(5, $textypos, '=======================================');
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Cell(5, $textypos, 'Enfoca con tu telefono este codigo y sigue tu orden por internet');

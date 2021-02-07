@@ -252,10 +252,10 @@
                                     {{$diff->days .' dias'}} @else {{$diff->days .' dia'}}@endif</small>
                                 @endif
                                 @elseif($equipo->status==6)
-                                <pre class="text-success">Entregado
-                                 </pre>
+                                <small><pre class="text-success">Entregado</pre></small>
                                 @elseif($equipo->status==2)
-                                <pre class="text-danger">Cancelado</pre>
+                                <small> <pre class="text-danger">Cancelado</pre></small>
+                               
                                 @endif
                             </td>
                             <td>

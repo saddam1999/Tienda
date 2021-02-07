@@ -29,11 +29,12 @@
         <!-- Settings Dropdown -->
         <div class="hidden sm:flex sm:items-center sm:ml-6">
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle text-white" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
                     @php
 
-                    $date1 = new DateTime("now")@endphp<i class="far fa-calendar-alt"></i>
-
+                    $date1 = new DateTime("now", new DateTimeZone('America/New_York'))@endphp<i
+                        class="far fa-calendar-alt"></i>
                     @php
                     $dia1=$date1->format("d");
                     $mes=$date1->format("m");
