@@ -423,7 +423,7 @@ class imprimirController extends Controller
                 $pdf->Cell(5, $textypos, 'Enfoca con tu telefono este codigo y sigue tu orden por internet');
                 $textypos += 6;
                 $pdf->setX(2);
-                $pdf->Cell(5, $textypos, $setting->setting_url . '/orden/' . $id);
+                $pdf->Cell(5, $textypos, 'Entra aqui: ' . $setting->setting_url . '/orden/' . $id);
                 $textypos += 6;
                 $pdf->setX(2);
                 $pdf->Image("$id.png", 10, 126, 20, 20, "png");
