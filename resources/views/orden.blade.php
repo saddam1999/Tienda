@@ -3,7 +3,58 @@
 @foreach ($Equipo as $equipo)
 @foreach ($Settings as $settings)
 @foreach ($Usuario as $usuario)
-@if($equipo->id==$id && $settings->id==1 && $usuario->id==$equipo->id_cliente)
+@if($equipo->id==$id && $settings->id==1)
+@php
+$id=$equipo->id;
+$id_captura=$equipo->id_captura;
+$setting_direccion=$settings->setting_direccion;
+$setting_nombre=$settings->setting_nombre;
+$setting_rfc=$settings->setting_rfc;
+$setting_contacto=$settings->setting_contacto;
+$setting_telefono=$settings->setting_telefono;
+$setting_logo=$settings->setting_logo;
+$setting_abierto=$settings->setting_abierto;
+$setting_moneda=$settings->setting_moneda;
+$setting_email=$settings->setting_email;
+$fecha_recibido=$equipo->fecha_recibido;
+$fecha_entrega=$equipo->fecha_entrega;
+$status=$equipo->status;
+$id_cliente=$equipo->id_cliente;
+$Tiene_Camara=$equipo->Tiene_Camara;
+$Centro_Carga=$equipo->Centro_Carga;
+$Señal=$equipo->Señal;
+$LectorSD=$equipo->LectorSD;
+$AltaVoz=$equipo->AltaVoz;
+$BotonHome=$equipo->BotonHome;
+$Microfono=$equipo->Microfono;
+$Lector_SIM=$equipo->Lector_SIM;
+$Volumenplus=$equipo->Volumenplus;
+$Volumenless=$equipo->Volumenless;
+$Encendido=$equipo->Encendido;
+$Auricular=$equipo->Auricular;
+$Touch=$equipo->Touch;
+$Bateria=$equipo->Bateria;
+$Enciende=$equipo->Enciende;
+$Memoria=$equipo->Memoria;
+$SIM=$equipo->SIM;
+$Golpes=$equipo->Golpes;
+$Bateria=$equipo->Bateria;
+$modelo=$equipo->modelo;
+$imei=$equipo->imei;
+$serial=$equipo->serial;
+$id_comentario=$equipo->id_comentario;
+$pago=$equipo->pago;
+$presupuesto=$equipo->presupuesto;
+$moneda=$settings->moneda;
+$pago=$equipo->pago;
+@endphp
+@else
+@php echo header('HTTP/1.0 404 Not Found'); @endphp
+@endif
+@endforeach
+@endforeach
+@endforeach
+
 <!DOCTYPE html>
 <html lang="en" class="bg-white">
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -30,6 +81,32 @@
 <link rel="stylesheet"
     href="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.css">
 <!--Floating WhatsApp javascript-->
+<style>
+    .container {
+        position: relative;
+        max-width: 800px;
+        /* Maximum width */
+        margin: 0 auto;
+        /* Center it */
+    }
+
+    .container .content {
+        position: absolute;
+        /* Position the background text */
+        bottom: 0;
+        /* At the bottom. Use top:0 to append it to the top */
+        background: rgb(0, 0, 0);
+        /* Fallback color */
+        background: rgba(0, 0, 0, 0.5);
+        /* Black background with 0.5 opacity */
+        color: #f1f1f1;
+        /* Grey text */
+        width: 100%;
+        /* Full width */
+        padding: 20px;
+        /* Some padding */
+    }
+</style>
 <script type="text/javascript"
     src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
 </script>
@@ -63,7 +140,7 @@
     }
 </style>
 <meta charset="UTF-8">
-<title>ORDEN #{{$equipo->id}}</title>
+<title>ORDEN #{{$id}}</title>
 <!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -127,7 +204,6 @@ give gallery's parent container a cursor: pointer.**/
         }
     }
 </style>
-
 <style>
     @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 
@@ -144,34 +220,33 @@ give gallery's parent container a cursor: pointer.**/
 
 <head>
 
-<body >
+<body>
     <div class="container">
         <div class="row">
             <div class="col-xs-5">
-                <!-- <img src="../fotos/{{$equipo->id_captura}}" alt="">-->
+                <!-- <img src="../fotos/{{$id_captura}}" alt="">-->
                 <h5><a href=""><img alt="" />
-                        <p>Nombre: {{$settings->setting_nombre}}</p>
-                        <p>Direccion: {{$settings->setting_direccion}}</p>
-                        <p>RFC: {{$settings->setting_rfc}}</p>
-                        <p>Email: {{$settings->setting_contacto}}</p>
-                        <p>Telefono: {{$settings->setting_telefono}}</p>
+                        <p>Nombre: {{$setting_nombre}}</p>
+                        <p>Direccion: {{$setting_direccion}}</p>
+                        <p>RFC: {{$setting_rfc}}</p>
+                        <p>Email: {{$setting_contacto}}</p>
+                        <p>Telefono: {{$setting_telefono}}</p>
                     </a>
                 </h5>
 
             </div>
             <div class="col-xs-1">
                 @if($settings->setting_logo=="")
-                <h6><a href=" "><img  style="border-radius:70%;" width="100px;" height="20%" alt="{{$settings->setting_logo}}"
-                            src="{{$settings->setting_logo}}" /></a></h6>
+                <h6><a href=" "><img style="border-radius:70%;" width="100px;" height="20%" alt="{{$setting_logo}}"
+                            src="{{$setting_logo}}" /></a></h6>
                 @else
-                <h6><a href=" "><img   style="border-radius:70%;" width="100px;" height="20%" alt="{{$settings->setting_logo}}"
-                            src="{{$settings->setting_logo}}" /></a></h6>
+                <h6><a href=" "><img style="border-radius:70%;" width="100px;" height="20%" alt="{{$setting_logo}}"
+                            src="{{$setting_logo}}" /></a></h6>
                 @endif
             </div>
             <div class="col-xs-6 text-right">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-
 
                     </div>
                     <div class="panel-body">
@@ -183,28 +258,28 @@ give gallery's parent container a cursor: pointer.**/
             <hr />
 
             <h1 style="text-align: center;">Revision de Orden Nº :
-                #{{$equipo->id}}
+                #{{$id}}
             </h1>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Fecha Alta Orden : {{$equipo->fecha_recibido}} </h4>
-                            <h4>Fecha Posible Entrega Orden : {{$equipo->fecha_entrega}}</h4>
+                            <h4>Fecha Alta Orden : {{$fecha_recibido}} </h4>
+                            <h4>Fecha Posible Entrega Orden : {{$fecha_entrega}}</h4>
                             <h4>Status :
-                                @if($equipo->status==0)
+                                @if($status==0)
                                 Recibido
-                                @elseif($equipo->status==1)
+                                @elseif($status==1)
                                 En Revision
-                                @elseif($equipo->status==2)
+                                @elseif($status==2)
                                 Cancelado
-                                @elseif($equipo->status==3)
+                                @elseif($status==3)
                                 Espera
-                                @elseif($equipo->status==4)
+                                @elseif($status==4)
                                 A espera de Cliente(Contactarse a Sucursal)
-                                @elseif($equipo->status==5)
+                                @elseif($status==5)
                                 Listo(Para entregar)
-                                @elseif($equipo->status==6)
+                                @elseif($status==6)
                                 Entregado
                                 @endif</h4>
 
@@ -212,12 +287,14 @@ give gallery's parent container a cursor: pointer.**/
                         <div class="panel-body">
 
                             <h4>Cliente :
-                                <a href="#">{{$equipo->id_cliente}}</a>
+                                <a href="#">{{$id_cliente}}</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                             </h4>
                             <h4>Tecnico :
-                                <a href="#">@if($usuario->id == $equipo->id_user) {{$usuario->name}} @endif No disponible</a>
+                                <a href="#">@if($usuario->id == $equipo->id_user&&$usuario->rol =='Tecnico')
+                                    {{$usuario->name}} @endif No
+                                    disponible</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </h4>
                         </div>
@@ -230,7 +307,7 @@ give gallery's parent container a cursor: pointer.**/
             <table class="table table-bordered text-white">
                 <thead>
                     <tr>
-                        <th style="text-align: center; border-radius: 2em;" >
+                        <th style="text-align: center; border-radius: 2em;">
                             <h4>Revision de componentes :</h4>
                         </th>
                         <th style="text-align: center; border-radius: 2em;">
@@ -248,84 +325,77 @@ give gallery's parent container a cursor: pointer.**/
                                         <div class="card-body">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Tiene_Camara"
-                                                    name="Tiene_Camara" @if($equipo->Tiene_Camara !='') checked @endif
-                                                disabled>
+                                                    name="Tiene_Camara" @if($Tiene_Camara !='' ) checked @endif
+                                                    disabled>
                                                 <label class="form-check-label" for="inlineCheckbox1">Camara</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Centro_Carga"
-                                                    name="Centro_Carga" @if($equipo->Centro_Carga !='') checked @endif
-                                                disabled>
+                                                    name="Centro_Carga" @if($Centro_Carga !='' ) checked @endif
+                                                    disabled>
                                                 <label class="form-check-label" for="inlineCheckbox2">Centro
                                                     Carga</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Señal" name="Señal"
-                                                    @if($equipo->Señal !='') checked @endif disabled >
+                                                    @if($Señal !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Señal</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="LectorSD"
-                                                    name="LectorSD" @if($equipo->LectorSD !='') checked @endif disabled>
+                                                    name="LectorSD" @if($LectorSD !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="AltaVoz"
-                                                    name="AltaVoz" @if($equipo->AltaVoz !='') checked @endif disabled>
+                                                    name="AltaVoz" @if($AltaVoz !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="BotonHome"
-                                                    name="BotonHome" @if($equipo->BotonHome !='') checked @endif
-                                                disabled>
+                                                    name="BotonHome" @if($BotonHome !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Microfono"
-                                                    name="Microfono" @if($equipo->Microfono !='') checked @endif
-                                                disabled>
+                                                    name="Microfono" @if($Microfono !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Lector_SIM"
-                                                    name="Lector_SIM" @if($equipo->Lector_SIM !='') checked @endif
-                                                disabled>
+                                                    name="Lector_SIM" @if($Lector_SIM !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Lector SIM</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Volumenplus"
-                                                    name="Volumenplus" @if($equipo->Volumenplus !='') checked @endif
-                                                disabled>
+                                                    name="Volumenplus" @if($Volumenplus !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Volumen +</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Volumenless"
-                                                    name="Volumenless" @if($equipo->Volumenless !='') checked @endif
-                                                disabled>
+                                                    name="Volumenless" @if($Volumenless !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Volumen -</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Encendido"
-                                                    name="Encendido" @if($equipo->Encendido !='') checked @endif
-                                                disabled>
+                                                    name="Encendido" @if($Encendido !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
                                             </div>
 
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Auricular"
-                                                    name="Auricular" @if($equipo->Auricular !='') checked @endif
-                                                disabled>
+                                                    name="Auricular" @if($Auricular !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Touch" name="Touch"
-                                                    @if($equipo->Touch !='') checked @endif disabled>
+                                                    @if($Touch !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Touch</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Bateria"
-                                                    name="Bateria" @if($equipo->Bateria !='') checked @endif disabled>
+                                                    name="Bateria" @if($Bateria !='' ) checked @endif disabled>
                                                 <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
                                             </div>
                                         </div>
@@ -342,33 +412,30 @@ give gallery's parent container a cursor: pointer.**/
 
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="Enciende"
-                                                        name="Enciende" @if($equipo->Enciende !='') checked @endif
-                                                    disabled>
+                                                        name="Enciende" @if($Enciende !='' ) checked @endif disabled>
                                                     <label class="form-check-label"
                                                         for="inlineCheckbox3">Enciende?</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="Memoria"
-                                                        name="Memoria" @if($equipo->Memoria !='') checked @endif
-                                                    disabled>
+                                                        name="Memoria" @if($Memoria !='' ) checked @endif disabled>
                                                     <label class="form-check-label"
                                                         for="inlineCheckbox3">Memoria?</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
-                                                        @if($equipo->SIM !='') checked @endif disabled>
+                                                        @if($SIM !='' ) checked @endif disabled>
                                                     <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="Golpes"
-                                                        name="Golpes" @if($equipo->Golpes !='') checked @endif disabled>
+                                                        name="Golpes" @if($Golpes !='' ) checked @endif disabled>
                                                     <label class="form-check-label"
                                                         for="inlineCheckbox3">Golpes?</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="Bateria"
-                                                        name="Bateria" @if($equipo->Bateria !='') checked @endif
-                                                    disabled>
+                                                        name="Bateria" @if($Bateria !='' ) checked @endif disabled>
                                                     <label class="form-check-label"
                                                         for="inlineCheckbox3">Bateria?</label>
                                                 </div>
@@ -404,17 +471,17 @@ give gallery's parent container a cursor: pointer.**/
                 </thead>
                 <tbody>
                     <tr>
-                        <td class=" text-right "> {{$equipo->modelo}}</td>
-                        <td style="text-align: center;">@if($equipo->imei==''){{$equipo->serial}}@else {{$equipo->imei}}
+                        <td class=" text-right "> {{$modelo}}</td>
+                        <td style="text-align: center;">@if($imei==''){{$serial}}@else {{$imei}}
                             @endif</td>
-                        <td><a href="#"> {{$equipo->id_comentario}} </a></td>
-                        <td class=" text-right "> {{$equipo->pago}}</td>
-                        <td class=" text-right "> {{$equipo->presupuesto}}</td>
+                        <td><a href="#"> {{$id_comentario}} </a></td>
+                        <td class=" text-right "> {{$pago}}</td>
+                        <td class=" text-right "> {{$presupuesto}}</td>
 
                     </tr>
                     <tr>
-                        <td colspan="3" style="text-align: right;">Total {{$settings->moneda}}</td>
-                        <td style="text-align: right;"><a href="#"> @php $temporal= $equipo->presupuesto-$equipo->pago;
+                        <td colspan="3" style="text-align: right;">Total {{$moneda}}</td>
+                        <td style="text-align: right;"><a href="#"> @php $temporal= $presupuesto-$pago;
                                 @endphp {{$temporal}}</a></td>
 
                     </tr>
@@ -445,61 +512,62 @@ give gallery's parent container a cursor: pointer.**/
         </div>
     </div>
     </head>
-    <ul class="list-inline gallery">
-        <div class="container">
-            <h5>{{ csrf_token() }}</h5>
-            <div class="row">
-                @foreach ($Captura as $captura)
-                @if($captura->id_equipo==$id)
-                @foreach ($Usuario as $usuario)
-                @if($usuario->id==$captura->id_user)
+    <div class="container mb-5">
+        <div class="row">
+            @foreach ($Captura as $captura)
+            @if($captura->id_equipo==$id)
+            @foreach ($Usuario as $usuario)
+            @if($usuario->id==$captura->id_user)
+            <div class="col-md-6 mb-1">
                 <h3>Tecnico:{{$usuario->name}}</h3>
-                @endif
-                @endforeach
-                <div class="col-md-12">
-                    <li><img class="thumbnail zoom " src="../fotos/{{$captura->captura}}" style="border-radius:40px;">
-                    </li>
-                    <textarea class="form-control mt-2" name="" id="" cols="30"
-                        rows="10">{{$captura->descripcion}}</textarea>
+                @if($captura->captura=='')
+                <img src="https://cocesna.org/repuestos/img/imgnofound.png" alt="" width="100%" height="100%">
+                @elseif($captura->captura!='')
+                <img src="../fotos/{{$captura->captura}}" alt="{{$captura->descripcion}}">
+                <div class="content">
+                    <h1>Tecnico:{{$usuario->name}}</h1>
+                    <p>{{$captura->descripcion}}</p>
                 </div>
                 @endif
-                @endforeach
             </div>
+            @endif
+            @endforeach
+            @endif
+            @endforeach
         </div>
-    </ul>
+    </div>
+
     <div class="toast fixed-bottom " role="alert" data-delay="986000" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Estimado @if($equipo->id_cliente==$usuario->id){{$usuario->name}}@endif</a></strong>
+            <strong class="mr-auto">Estimado @if($id_cliente==$usuario->id){{$usuario->name}}@endif</a></strong>
             <small class="text-muted">hace 11 minutos</small>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="toast-body">
-            <h5>El status de su orden es:   @if($equipo->status==0)
+            <h5>El status de su orden es: @if($status==0)
                 Recibido
-                @elseif($equipo->status==1)
+                @elseif($status==1)
                 En Revision
-                @elseif($equipo->status==2)
+                @elseif($status==2)
                 Cancelado
-                @elseif($equipo->status==3)
+                @elseif($status==3)
                 Espera
-                @elseif($equipo->status==4)
+                @elseif($status==4)
                 A espera de Cliente(Contactarse a Sucursal)
-                @elseif($equipo->status==5)
+                @elseif($status==5)
                 Listo(Para entregar)
-                @elseif($equipo->status==6)
+                @elseif($status==6)
                 Entregado
                 @endif </h5>
         </div>
     </div>
     <div id="WAButton"></div>
     <script>
-          $('.toast').toast('show');
-
-        </script>
-
+        $('.toast').toast('show');
+    </script>
     @extends('footer')
 </body>
 
@@ -508,7 +576,11 @@ give gallery's parent container a cursor: pointer.**/
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">
-                <h5 class="modal-title text-white">Atencion</h5>
+                <h5 class="modal-title text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                    </svg> Atencion </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -523,8 +595,8 @@ give gallery's parent container a cursor: pointer.**/
                                 REPRESENTA LA INFORMACION ACERCA DEL EQUIPO HASTA EL MOMENTO Y PUEDE SER CAMBIADA DE UN
                                 MOMENTO A OTRO LE PEDIMOS DE LA MANERA MAS ATENTA QUE ESTA INFORMACION SOLO LA TOME PARA
                                 CONSULTAR COMO VA SU EQUIPO Y CON NINGUN MOTIVO MAS SI REQUIERE MAS INFORMACION ACERCA
-                                DE SU EQUIPO PUEDE CONTACTARSE A {{$settings->setting_telefono}} en un horario de
-                                {{$settings->setting_abierto}}</p>
+                                DE SU EQUIPO PUEDE CONTACTARSE A {{$setting_telefono}} en un horario de
+                                {{$setting_abierto}}</p>
                         </div>
                     </div>
                 </div>
@@ -535,13 +607,8 @@ give gallery's parent container a cursor: pointer.**/
         </div>
     </div>
 </div>
-
 <script>
     $('#modal_info').modal('show');
 </script>
 
 </html>
-@endif
-@endforeach
-@endforeach
-@endforeach
