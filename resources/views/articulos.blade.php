@@ -29,11 +29,12 @@
                             <tbody>
                                 @foreach($Articulo as $articulo)
                                 <tr>
+
                                     <td>{{$articulo->id}}</td>
                                     <td>{{$articulo->nombre}}</td>
                                     <td>
-                                        <textarea class="form-control" name="" id="" cols="30"
-                                            rows="auto">{{$articulo->descripcion}}</textarea>
+                                        <textarea class="form-control" name="" id="" cols="100%"
+                                            rows="100%">{{$articulo->descripcion}}</textarea>
                                     </td>
                                     @foreach($Marca as $marca)
                                     @if($articulo->id_marca ==$marca->id)

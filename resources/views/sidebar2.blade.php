@@ -62,9 +62,9 @@ $url_actual = $_SERVER["REQUEST_URI"];
                 </a>
             </li>
             <li class="active-pro">
-                <a href="/upgrade">
+                <a href=""  data-toggle="modal" data-target="#modal_planes" >
                     <i class="nc-icon nc-spaceship"></i>
-                    <p>Upgrade to PRO</p>
+                    <p>Actualiza tu Plan</p>
                 </a>
             </li>
         </ul>

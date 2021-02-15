@@ -2690,29 +2690,150 @@
     </div>
 </div>
 <!-- Button trigger modal
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_planes">
   Launch
 </button>-->
-
 <!-- Modal  -->
-<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="modal_planes" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-                <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                    </div>
+            <div class="modal-header bg-success">
+                <h5 class="modal-title text-white">Planes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <div class="container-fluid">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 my-4 mx-auto">
+                                <h2 class="text-center">Actualiza tu licencia al siguiente plan</h2>
 
-
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover table-dark ">
+                                                <thead class="thead-inverse">
+                                                    <tr>
+                                                        <th class="w-25"></th>
+                                                        <th class="">Demo</th>
+                                                        <th class="">Basica</th>
+                                                        <th class="">Estandar</th>
+                                                        <th class="">Pro</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="w-25 option">Usuarios</td>
+                                                        <td class="">1</td>
+                                                        <td class="">3</td>
+                                                        <td class="">6</td>
+                                                        <td class="">Ilimitado</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-25 option">Sucursales</td>
+                                                        <td class="">1</td>
+                                                        <td class="">2</td>
+                                                        <td class="">3</td>
+                                                        <td class="">Ilimitado</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option"> Recibos en formato A4</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Reportes</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Consulta reparación online</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Notificación (Whatsapp,Telegram,SMS)</td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Gastos</td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Ventas</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Inventarios</td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Etiquetar Equipos/Productos</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Redes Sociales</td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr class="text-uppercase font-weight-bold">
+                                                        <td></td>
+                                                        <td><a href>Contact us</a></td>
+                                                        <td>Free</td>
+                                                        <td>$99/mo</td>
+                                                        <td>$179/mo</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot class="thead-inverse">
+                                                    <tr>
+                                                        <th class="w-25"></th>
+                                                        <th class=""><button class="btn btn-primary">Sign-up</button>
+                                                        </th>
+                                                        <th class=""><button class="btn btn-primary">Buy Now</button>
+                                                        </th>
+                                                        <th class=""><button class="btn btn-primary">Buy Now</button>
+                                                        </th>
+                                                        <th class=""></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Pagar</button>
             </div>
         </div>
     </div>
