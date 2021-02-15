@@ -10,10 +10,10 @@
                             <thead class="thead-inverse">
                                 <tr>
                                     <th><button type="button" data-toggle="modal" data-target="#modal_agregararticulo"
-                                        data-backdrop="static" data-keyboard="false"
-                                        class="btn btn-success btn-lg btn-block">
-                                        <i class="fas fa-cart-plus"></i>
-                                    </button></th>
+                                            data-backdrop="static" data-keyboard="false"
+                                            class="btn btn-success btn-lg btn-block">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button></th>
                                     <th>Nombre</th>
                                     <th>Descripcion</th>
                                     <th>Marca</th>
