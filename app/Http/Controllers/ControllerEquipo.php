@@ -299,6 +299,8 @@ class ControllerEquipo extends Controller
                 } elseif ($mes == 12) {
                     $mes1 = 'Diciembre';
                 }
+                $equipo->save();
+
                 return back()->with('success', "Status Cambiado: " . $stat . ' el ' . $dia1 . '-' . $mes1 . '-' . $ano);
             }
             $equipo->save();

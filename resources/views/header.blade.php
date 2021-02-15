@@ -28,16 +28,16 @@
 <!--Floating WhatsApp javascript-->
 <script type="text/javascript"
     src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/floating-wpp.min.js">
-    < link data - require = "datatables@1.10.12"
-    data - semver = "1.10.12"
+    < link data-require = "datatables@1.10.12"
+    data-semver = "1.10.12"
     rel = "stylesheet"
-    href = "//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" / >
+    href = "//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
         <link rel = "stylesheet"
     type = "text/css"
-    href = "https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" / >
+    href = "https://cdn.datatables.net/responsive/2.1.0/css/responsive.dataTables.min.css" />
         //<script src = "Scripts/jquery-3.3.1.js">/*
-        <script data - require = "datatables@1.10.12"
-    data - semver = "1.10.12"
+        <script data-require = "datatables@1.10.12"
+    data-semver = "1.10.12"
     src = "//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js" >
 </script>
 <script data-require="datatables-responsive@*" data-semver="2.1.0"

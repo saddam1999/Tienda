@@ -963,19 +963,19 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Reparar<center><svg width="2em" height="2em" viewBox="0 0 16 16"
-                            class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
-                        </svg></center>
-                </h5>
+                <h5 class="modal-title text-white"><svg width="2em" height="2em" viewBox="0 0 16 16"
+                        class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                    </svg>Nueva Orden a Reparar @php foreach($Equipo as $equipo){$numero=$equipo->id;} @endphp Orden #
+                    {{$numero+1}}</h5>
                 <button type="button" class="close" onclick="closeNav()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form action="/agregarequipo">
+                    <form action="/agregarequipo" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
                         <div class="row">
@@ -989,7 +989,7 @@
                                         @endif
                                         @endforeach
                                     </select>-->
-                                    <input class="form-control" type="text"  id="id_cliente" name="id_cliente">
+                                    <input class="form-control" type="text" id="id_cliente" name="id_cliente">
                                     <label for="nombre">Nombre Cliente</label>
                                     <!---<a href="" data-toggle="modal" data-target="#modalagregar"><span
                                                 class="input-group-text">Agregar Cliente</span></a>-->
@@ -1067,80 +1067,132 @@
                                     <div class="card-body">
                                         <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Tiene_Camara"
-                                                name="Tiene_Camara" value="Tiene_Camara">
-                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Centro_Carga"
-                                                name="Centro_Carga" value="Centro_Carga">
-                                            <label class="form-check-label" for="inlineCheckbox2">Centro
-                                                Carga</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Señal" name="Señal"
-                                                value="Señal">
-                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="LectorSD"
-                                                name="LectorSD" value="LectorSD">
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="AltaVoz" name="AltaVoz"
-                                                value="AltaVoz">
-                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="BotonHome"
-                                                name="BotonHome" value="BotonHome">
-                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Microfono"
-                                                name="Microfono" value="Microfono">
-                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Lector_SIM"
-                                                name="Lector_SIM" value="Lector_SIM">
-                                            <label class="form-check-label" for="inlineCheckbox3">Lector
-                                                SIM</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Tiene_Camara"
+                                                    name="Tiene_Camara" value="Tiene_Camara">Camara
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenplus"
-                                                name="Volumenplus" value="volumenplus">
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                +</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check" type="checkbox" id="Centro_Carga"
+                                                    name="Centro_Carga" value="Centro_Carga">Centro
+                                                Carga
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Volumenless"
-                                                name="Volumenless" value="Volumenless">
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                -</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Encendido"
-                                                name="Encendido" value="Encendido">
-                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Señal" name="Señal"
+                                                    value="Señal">Señal <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Auricular"
-                                                name="Auricular" value="Auricular">
-                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="LectorSD"
+                                                    name="LectorSD" value="LectorSD">LectorSD
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Touch" name="Touch"
-                                                value="Touch">
-                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="AltaVoz"
+                                                    name="AltaVoz" value="AltaVoz">AltaVoz
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria"
-                                                value="Bateria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="BotonHome"
+                                                    name="BotonHome" value="BotonHome">Boton Home<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Microfono"
+                                                    name="Microfono" value="Microfono">Microfono
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Lector_SIM"
+                                                    name="Lector_SIM" value="Lector_SIM">Lector SIM<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Volumenplus"
+                                                    name="Volumenplus" value="volumenplus">Volumen +<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Volumenless"
+                                                    name="Volumenless" value="Volumenless">Volumen -<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Encendido"
+                                                    name="Encendido" value="Encendido">Encendido<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Auricular"
+                                                    name="Auricular" value="Auricular">Auricular<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Touch" name="Touch"
+                                                    value="Touch">Touch<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Bateria"
+                                                    name="Bateria" value="Bateria">Bateria<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -1152,29 +1204,46 @@
                                     <div class="card-body">
                                         <p class="card-title">Detalles del equipo</p>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Enciende"
-                                                name="Enciende" value="Enciende">
-                                            <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Enciende"
+                                                    name="Enciende" value="Enciende">Enciende<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Memoria" name="Memoria"
-                                                value="Memoria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Memoria"
+                                                    name="Memoria" value="Memoria">Memoria<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
-                                                value="SIM">
-                                            <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="SIM" name="SIM"
+                                                    value="SIM">SIM<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Golpes" name="Golpes"
-                                                value="golpes">
-                                            <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Golpes"
+                                                    name="Golpes" value="golpes">Golpes<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="Bateria" name="Bateria"
-                                                value="Tiene_Bateria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" id="Bateria"
+                                                    name="Bateria" value="Tiene_Bateria">Bateria<span
+                                                    class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -1208,7 +1277,7 @@
                                                 value="0">
                                         </div>
 
-                                    <!--
+                                        <!--
                                     <div class="col-md-4">
                                         <label for="inversion">Inversion</label>
                                         <div class="input-group-prepend">
@@ -1250,6 +1319,17 @@
                         <input type="hidden" name="id_captura" id="id_captura" value="">
                         <button type="button" class="btn btn-primary" id="boton">
                             <i class="fas fa-camera-retro"></i></button>
+
+                        <div>
+                                <h2>Tomar im&aacute;gen desde la c&aacute;mara en tel&eacute;fono m&oacute;vil</h2>
+                                  Seleccionar fuente de la im&aacute;gen:
+                                  <br/><br/><br/>
+                                  Abrir directamente la camara del tel&eacute;fono m&oacute;vil:
+                                  <input  id="video" type="file" accept="image/*" capture="camera"/>
+
+                                <br/><br/><br/>
+                              </div>
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -1316,12 +1396,12 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-warning">
-                <h5 class="modal-title text-white">Editar Reparar<center><svg width="2em" height="2em"
-                            viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
-                        </svg></center>
+                <h5 class="modal-title text-white"><svg width="2em" height="2em"
+                    viewBox="0 0 16 16" class="bi bi-wrench" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
+                </svg> Editar Reparar
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -1436,81 +1516,119 @@
                                     <div class="card-body">
                                         <p class="card-title">Revision de componentes</p>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Tiene_Camara2"
-                                                name="Tiene_Camara2" value="Tiene_Camara">
-                                            <label class="form-check-label" for="inlineCheckbox1">Camara</label>
+                                                name="Tiene_Camara2" value="Tiene_Camara">Tiene Camara<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Centro_Carga2"
-                                                name="Centro_Carga2" value="Centro_Carga">
-                                            <label class="form-check-label" for="inlineCheckbox2">Centro
-                                                Carga</label>
+                                                name="Centro_Carga2" value="Centro_Carga">Centro Carga<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Señal2" name="Señal2"
-                                                value="Señal">
-                                            <label class="form-check-label" for="inlineCheckbox3">Señal</label>
+                                                value="Señal"><span class="form-check-sign">Señal
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="AltaVoz2"
-                                                name="AltaVoz2" value="AltaVoz">
-                                            <label class="form-check-label" for="inlineCheckbox3">AltaVoz</label>
+                                                name="AltaVoz2" value="AltaVoz"> AltaVoz<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="BotonHome2"
-                                                name="BotonHome2" value="BotonHome">
-                                            <label class="form-check-label" for="inlineCheckbox3">BotonHome</label>
+                                                name="BotonHome2" value="BotonHome">Boton Home<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Microfono2"
-                                                name="Microfono2" value="Microfono">
-                                            <label class="form-check-label" for="inlineCheckbox3">Microfono</label>
+                                                name="Microfono2" value="Microfono">Microfono<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Lector_SIM2"
-                                                name="Lector_SIM2" value="Lector_SIM">
-                                            <label class="form-check-label" for="inlineCheckbox3">Lector
-                                                SIM</label>
+                                                name="Lector_SIM2" value="Lector_SIM">Lector SIM<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Volumenplus2"
-                                                name="Volumenplus2" value="volumenplus">
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                +</label>
+                                                name="Volumenplus2" value="volumenplus">Volumen +<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Volumenless2"
-                                                name="Volumenless2" value="Volumenless">
-                                            <label class="form-check-label" for="inlineCheckbox3">Volumen
-                                                -</label>
+                                                name="Volumenless2" value="Volumenless">Volumen -<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Encendido2"
-                                                name="Encendido2" value="Encendido">
-                                            <label class="form-check-label" for="inlineCheckbox3">Encendido</label>
+                                                name="Encendido2" value="Encendido">Encendido<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="LectorSD2"
-                                                name="LectorSD2" value="LectorSD">
-                                            <label class="form-check-label" for="inlineCheckbox3">LectorSD</label>
+                                                name="LectorSD2" value="LectorSD">LectorSD<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Auricular2"
-                                                name="Auricular2" value="Auricular">
-                                            <label class="form-check-label" for="inlineCheckbox3">Auricular</label>
+                                                name="Auricular2" value="Auricular">Auricular<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Touch2" name="Touch2"
-                                                value="Touch">
-                                            <label class="form-check-label" for="inlineCheckbox3">Touch</label>
+                                                value="Touch">Touch<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
 
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Bateria2"
-                                                name="Bateria2" value="Bateria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria</label>
+                                                name="Bateria2" value="Bateria">Bateria<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -1522,29 +1640,44 @@
                                     <div class="card-body">
                                         <p class="card-title">Detalles del equipo</p>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Enciende2"
-                                                name="Enciende2" value="Enciende">
-                                            <label class="form-check-label" for="inlineCheckbox3">Enciende?</label>
+                                                name="Enciende2" value="Enciende">Enciende?<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Memoria2"
-                                                name="Memoria2" value="Memoria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Memoria?</label>
+                                                name="Memoria2" value="Memoria">Memoria?<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="SIM2" name="SIM2"
-                                                value="SIM">
-                                            <label class="form-check-label" for="inlineCheckbox3">SIM?</label>
+                                                value="SIM">SIM?<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Golpes2" name="Golpes2"
-                                                value="Golpes">
-                                            <label class="form-check-label" for="inlineCheckbox3">Golpes?</label>
+                                                value="Golpes">Golpes?<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                         <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
                                             <input class="form-check-input" type="checkbox" id="Tiene_Bateria2"
-                                                name="Tiene_Bateria2" value="Tiene_Bateria">
-                                            <label class="form-check-label" for="inlineCheckbox3">Bateria?</label>
+                                                name="Tiene_Bateria2" value="Tiene_Bateria">Tiene Bateria?<span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -2361,7 +2494,7 @@
                         </div>
                         <img name="info_imagen" id="info_imagen" style="width:100%; border-radius:10px;">
                         <div class="container" style="background-color:white">
-                            <p>Unique ID:</p>
+                            <p>Token:</p>
                             <h2><b name="uniqueid" id="uniqueid"></b></h2>
                             <p>Serial</p>
                             <p name="info_serial" id="info_serial"></p>
@@ -2589,5 +2722,8 @@
 <button onclick="myFunction()">Show Snackbar</button>
 -->
 <!-- The actual snackbar-->
-<div name="snackbar" id="snackbar">Foto Tomada</div>
+<div name="snackbar" id="snackbar">
+ @if (session('success'))
+    <?php echo '<html>'.session('success').'</html>' ?>
+@endif </div>
 @section('modal')

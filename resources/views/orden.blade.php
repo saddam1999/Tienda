@@ -223,7 +223,7 @@ give gallery's parent container a cursor: pointer.**/
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-5">
+            <div class="col-md-5">
                 <!-- <img src="../fotos/{{$id_captura}}" alt="">-->
                 <h5><a href=""><img alt="" />
                         <p>Nombre: {{$setting_nombre}}</p>
@@ -235,7 +235,7 @@ give gallery's parent container a cursor: pointer.**/
                 </h5>
 
             </div>
-            <div class="col-xs-1">
+            <div class="col-md-1">
                 @if($settings->setting_logo=="")
                 <h6><a href=" "><img style="border-radius:70%;" width="100px;" height="20%" alt="{{$setting_logo}}"
                             src="{{$setting_logo}}" /></a></h6>
@@ -537,7 +537,7 @@ give gallery's parent container a cursor: pointer.**/
         </div>
     </div>
 
-    <div class="toast fixed-bottom " role="alert" data-delay="986000" aria-live="assertive" aria-atomic="true">
+    <div class="toast fixed-bottom ml-auto " role="alert" data-delay="986000" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
             <img width="40px;" src="https://iunlock.store/unlock-2.png" class="rounded mr-2" alt="...">
             <strong class="mr-auto">Estimado @if($id_cliente==$usuario->id){{$usuario->name}}@endif</a></strong>

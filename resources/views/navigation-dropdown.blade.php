@@ -7,7 +7,7 @@
 </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="face shadow-lg max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-dark rounded  fixed-top "
-    style="background-image: url('../img/backgrounds.jpeg'); ">
+    >
 
     <div class="flex justify-between h-16 ">
         <div class="flex">
@@ -28,180 +28,8 @@
 
         <!-- Settings Dropdown -->
         <div class="hidden sm:flex sm:items-center sm:ml-6">
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle text-white" href="" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    @php
 
-                    $date1 = new DateTime("now", new DateTimeZone('America/New_York'))@endphp<i
-                        class="far fa-calendar-alt"></i>
-                    @php
-                    $dia1=$date1->format("d");
-                    $mes=$date1->format("m");
-                    $ano=$date1->format("Y");
 
-                    if($mes==1){
-                    $mes1= 'Enero';
-                    }elseif($mes==2){
-                    $mes1= 'Febrero';
-
-                    }elseif($mes==3){
-                    $mes1= 'Marzo';
-
-                    }elseif($mes==4){
-                    $mes1= 'Abril';
-
-                    }elseif($mes==5){
-                    $mes1= 'Mayo';
-
-                    }elseif($mes==6){
-                    $mes1= 'Junio';
-
-                    }elseif($mes==7){
-                    $mes1= 'Julio';
-
-                    }elseif($mes==8){
-                    $mes1= 'Agosto';
-
-                    }elseif($mes==9){
-                    $mes1= 'Septiembre';
-
-                    }elseif($mes==10){
-                    $mes1= 'Octubre';
-
-                    }elseif($mes==11){
-                    $mes1= 'Noviembre';
-
-                    }elseif($mes==12){
-                    $mes1= 'Diciembre';
-
-                    }
-
-                    @endphp
-                    {{$dia1}} de {{$mes1}} del {{$ano}}
-
-                </a>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle text-white" href="" data-toggle="modal" data-target="#modal_caja"
-                    href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Caja -> <i class="fas fa-money-check-alt"></i>
-                    <!-- Counter - Alerts -->
-                </a>
-            </li>
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">0</span>
-                </a>
-
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header">
-                        Alerts Center
-                    </h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-primary">
-                                <i class="fas fa-file-alt text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 12, 2019</div>
-                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-success">
-                                <i class="fas fa-donate text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 7, 2019</div>
-                            $290.29 has been deposited into your account!
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="mr-3">
-                            <div class="icon-circle bg-warning">
-                                <i class="fas fa-exclamation-triangle text-white"></i>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="small text-gray-500">December 2, 2019</div>
-                            Spending Alert: We've noticed unusually high spending for your account.
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
-                    <!-- Counter - Messages -->
-                    <span class="badge badge-danger badge-counter">7</span>
-                </a>
-                <!-- Dropdown - Messages -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="messagesDropdown">
-                    <h6 class="dropdown-header">
-                        Message Center
-                    </h6>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="">
-                            <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div class="font-weight-bold">
-                            <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                problem I've been having.</div>
-                            <div class="small text-gray-500">Emily Fowler · 58m</div>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="">
-                            <div class="status-indicator"></div>
-                        </div>
-                        <div>
-                            <div class="text-truncate">I have the photos that you ordered last month, how
-                                would you like them sent to you?</div>
-                            <div class="small text-gray-500">Jae Chun · 1d</div>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="">
-                            <div class="status-indicator bg-warning"></div>
-                        </div>
-                        <div>
-                            <div class="text-truncate">Last month's report looks great, I am very happy with
-                                the progress so far, keep up the good work!</div>
-                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                        </div>
-                    </a>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
-                        <div class="dropdown-list-image mr-3">
-                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                            <div class="status-indicator bg-success"></div>
-                        </div>
-                        <div>
-                            <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                told me that people say this to all dogs, even if they aren't good...</div>
-                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                        </div>
-                    </a>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                </div>
-            </li>
 
             <x-jet-dropdown align="right" width="48">
 
@@ -416,18 +244,4 @@
 
 </nav>
 
-<div name="movil" id="movil">
-    <a class="border border-secondary; fixed-bottom face  shadow-lg ml-auto mr-auto" style="
-width:5%; margin-right:18px; font-size:40px; border-radius:10px 10px" onclick="openNav()">
-        <div class="container" onclick="myFunction(this)">
-            <i class="fas fa-caret-square-down"></i>
-        </div>
-    </a>
 
-    <a id="trigger" class="border border-secondary; fixed-bottom face  shadow-lg"
-        style="width:5%; margin-bottom: 30%; margin-right:18px; font-size:40px; border-radius:10px 10px">
-        <div class="container">
-            <i class="fas fa-caret-square-right"></i>
-        </div>
-    </a>
-</div>
