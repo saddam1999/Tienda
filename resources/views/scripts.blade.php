@@ -1132,4 +1132,5 @@ function myFunction() {
     elemento.style.display = "none";
 }
 </script>
+
 @section('scripts')

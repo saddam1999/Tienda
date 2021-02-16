@@ -4,9 +4,54 @@
 date_default_timezone_set('UTC');
 $contador=0;
 @endphp
-
-
-<body class="">
+@php
+$fecha = new DateTime("now");
+$pendiente=0;
+$revision=0;
+$cancelado=0;
+$espera=0;
+$cliente=0;
+$listo=0;
+$entregado=0;
+@endphp
+@foreach($Equipo as $contador)
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==0&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$pendiente++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==1&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$revision++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==2&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$cancelado++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==3&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$espera++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==4&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$cliente++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==5&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$listo++;
+@endphp
+@endif
+@if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==6&&$fecha->format("Y-m-d")==$contador->fecha_entrega)
+@php
+$entregado++;
+@endphp
+@endif
+@endforeach
+<body>
     <div class="wrapper ">
         @include('sidebar2')
         <div class="main-panel">
@@ -27,8 +72,9 @@ $contador=0;
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
-                                            <p class="card-category">Equipos</p>
-                                            <p class="card-title">150GB<p>
+                                            <p class="card-category">Equipos Listos</p>
+                                            <p class="card-title">{{$listo}}
+                                                <p>
                                         </div>
                                     </div>
                                 </div>
@@ -55,11 +101,11 @@ $contador=0;
                                         <div class="numbers">
                                             <p class="card-category">Venta Diaria</p>
                                             <p class="card-title"><small>
-                                                @foreach ($Caja as $caja)
-                                                @if(Auth::user()->id_sucursal==$caja->id_sucursal)
-                                                $ @if($Caja->isEmpty()) @else {{$caja->corte}} @endif
-                                                @endif
-                                                @endforeach</small>
+                                                    @foreach ($Caja as $caja)
+                                                    @if(Auth::user()->id_sucursal==$caja->id_sucursal)
+                                                    $ @if($Caja->isEmpty()) @else {{$caja->corte}} @endif
+                                                    @endif
+                                                    @endforeach</small>
                                                 <p>
                                         </div>
                                     </div>
@@ -87,7 +133,8 @@ $contador=0;
                                         <div class="numbers">
                                             <p class="card-category">Venta Producto</p>
                                             <p class="card-title">23 <small>@if($Settings->isEmpty()) @else
-                                                {{ $setting->setting_moneda }}@endif</small><p>
+                                                    {{ $setting->setting_moneda }}@endif</small>
+                                                <p>
                                         </div>
                                     </div>
                                 </div>

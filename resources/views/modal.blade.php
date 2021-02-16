@@ -2801,6 +2801,20 @@
                                                         <td>-</td>
                                                         <td><i class="fa fa-check"></i></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td class="option">Respaldo en la Nube</td>
+                                                        <td>-</td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                        <td><i class="fa fa-check"></i></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="option">Plantillas web</td>
+                                                        <td>1</td>
+                                                        <td>2</td>
+                                                        <td>2</td>
+                                                        <td>3</td>
+                                                    </tr>
                                                     <tr class="text-uppercase font-weight-bold">
                                                         <td></td>
                                                         <td><a href>Contact us</a></td>
