@@ -3,7 +3,7 @@
         var options = {
             facebook: "460755991156675", // Facebook page ID
             call_to_action: "", // Call to action
-            position: "right", // Position may be 'right' or 'left'
+            position: "left", // Position may be 'right' or 'left'
         };
         var proto = document.location.protocol,
             host = "getbutton.io",
@@ -31,9 +31,9 @@
             </nav>
             <div class="credits ml-auto">
                 <span class="copyright">
-                    © <script>
+                    Copyrigth © <script>
                         document.write(new Date().getFullYear())
-                    </script>, made with <i class="text-danger fa fa-heart heart"></i> by  HollyDev
+                    </script>, made with <i class="text-danger fa fa-heart heart"></i> by HollyDev version 1.0a
                 </span>
             </div>
         </div>

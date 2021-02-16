@@ -61,7 +61,7 @@ $url_actual = $_SERVER["REQUEST_URI"];
                     <p>Configurar</p>
                 </a>
             </li>
-            <li class="active-pro">
+            <li class="active-pro mb-5">
                 <a href=""  data-toggle="modal" data-target="#modal_planes" >
                     <i class="nc-icon nc-spaceship"></i>
                     <p>Actualiza tu Plan</p>
