@@ -1,8 +1,7 @@
 <div class="tab-pane fade show " id="sucursal" role="tabpanel" aria-labelledby="sucursal-tab">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg"
-                style=" border: none;border-radius: 40px 10px;">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="card text-left">
                     <div class="card-body">
                         <h4 class="card-title">Sucursales</h4>

@@ -18,8 +18,8 @@ $contador=0;
                     <h4 class="card-title">Opciones Sucursal @foreach ($Sucursal as
                         $sucursal)@if($sucursal->id==Auth::user()->id_sucursal)
                         {{$sucursal->nombre}} @endif @endforeach</h4>
-                    <div class="col-md-2">
-                        <div class="nav flex-column nav-pills bg-white" id="v-pills-tab" role="tablist"
+                    <div class="col-md-3">
+                        <div class="nav flex-column nav-pills bg-white" style="border-radius: 10px;" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
                             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
                                 role="tab" aria-controls="v-pills-home" aria-selected="true">Personalizar </a>
@@ -33,7 +33,7 @@ $contador=0;
                                 aria-controls="v-pills-caja" aria-selected="false">Cajas</a>
                         </div>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                         <div class="tab-content" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                 aria-labelledby="v-pills-home-tab">
