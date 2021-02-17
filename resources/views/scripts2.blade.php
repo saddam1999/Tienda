@@ -75,6 +75,8 @@
           $(e.currentTarget).find('#name1').val(id);
           var id = $(e.relatedTarget).data().email;
           $(e.currentTarget).find('#email1').val(id);
+          var id = $(e.relatedTarget).data().telefono;
+          $(e.currentTarget).find('#telefono1').val(id);
           var id = $(e.relatedTarget).data().password;
           $(e.currentTarget).find('#password1').val(id);
           var id = $(e.relatedTarget).data().rol;
@@ -1157,44 +1159,17 @@
           demo.initChartsPages();
       });
   </script>
-<script>
-  jQuery(document).ready(function() {
-        jQuery('a[data-toggle="myTab"]').on('show.bs.tab', function(e) {
-            localStorage.setItem('activeTab', jQuery(e.target).attr('href'));
-        });
+  <script>
+$(function() {
 
-        // Here, save the index to which the tab corresponds. You can see it
-        // in the chrome dev tool.
-        var activeTab = localStorage.getItem('activeTab');
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    localStorage.setItem('lastTab', $(this).attr('href'));
+  });
+  var lastTab = localStorage.getItem('lastTab');
 
-        // In the console you will be shown the tab where you made the last
-        // click and the save to "activeTab". I leave the console for you to
-        // see. And when you refresh the browser, the last one where you
-        // clicked will be active.
-        console.log(activeTab);
+  if (lastTab) {
+    $('[href="' + lastTab + '"]').tab('show');
+  }
 
-        if (activeTab) {
-           jQuery('a[href="' + activeTab + '"]').tab('show');
-        }
-    });
-
-    jQuery(document).ready(function() {
-        jQuery('a[data-toggle="pill"]').on('show.bs.tab', function(e) {
-            localStorage.setItem('activeTab', jQuery(e.target).attr('href'));
-        });
-
-        // Here, save the index to which the tab corresponds. You can see it
-        // in the chrome dev tool.
-        var activeTab = localStorage.getItem('activeTab');
-
-        // In the console you will be shown the tab where you made the last
-        // click and the save to "activeTab". I leave the console for you to
-        // see. And when you refresh the browser, the last one where you
-        // clicked will be active.
-        console.log(activeTab);
-
-        if (activeTab) {
-           jQuery('a[href="' + activeTab + '"]').tab('show');
-        }
-    });
-    </script>
+});
+  </script>

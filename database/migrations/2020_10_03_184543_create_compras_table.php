@@ -16,7 +16,6 @@ class CreateComprasTable extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->integer('id_usuario')->nullable();
-            $table->integer('id_articulo')->nullable();
             $table->integer('id_metodo')->nullable();
             $table->integer('id_pago')->nullable();
             $table->integer('id_sucursal')->nullable();

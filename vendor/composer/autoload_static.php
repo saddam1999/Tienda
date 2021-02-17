@@ -834,6 +834,7 @@ class ComposerStaticInit2b56c1b93e8b658f81195614012c7e5b
         'App\\Models\\Settings' => __DIR__ . '/../..' . '/app/Models/Settings.php',
         'App\\Models\\Sucursal' => __DIR__ . '/../..' . '/app/Models/Sucursal.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\detalleventa' => __DIR__ . '/../..' . '/app/Models/detalleventa.php',
         'App\\Notifications\\Notificacion' => __DIR__ . '/../..' . '/app/Notifications/Notificacion.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

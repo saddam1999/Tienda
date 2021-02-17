@@ -564,29 +564,30 @@
                     <form name="modaledit" id="modaledit" action="">
                         @method('POST')
                         @csrf
-                        <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="name1" id="name1"
-                                    class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
-                                    value="{{ old('name') }}" autofocus>
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                                <label for="name1">Name</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" name="name1" id="name1"
+                                        class="form-control  @error('name') is-invalid @enderror" placeholder="Name"
+                                        value="{{ old('name') }}" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    <label for="name1">Name</label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <input type="email" placeholder="Email"
-                                    class="form-control  @error('email') is-invalid @enderror" name="email1" id="email1"
-                                    value="{{ old('email') }}" required autocomplete="email">
-                                <label for="email">Email</label>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="email" placeholder="Email"
+                                        class="form-control  @error('email') is-invalid @enderror" name="email1"
+                                        id="email1" value="{{ old('email') }}" required autocomplete="email">
+                                    <label for="email">Email</label>
 
+                                </div>
                             </div>
-                        </div>
-                        <!--
+                            <!--
                             <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Password</label>
@@ -600,46 +601,58 @@
                                 </div>
                             -->
 
-                        <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <select class="form-control" name="estatus1" id="estatus1">
-                                    <option value="1" selected>Active</option>
-                                    <option value="0">No Active</option>
-                                </select>
-                                <label for="estatus1">Status</label>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" name="estatus1" id="estatus1">
+                                        <option value="1" selected>Active</option>
+                                        <option value="0">No Active</option>
+                                    </select>
+                                    <label for="estatus1">Status</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-control" name="id_sucursal1" id="id_sucursal1">
-                                    @foreach ($Sucursal as $sucursal)
-                                    <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
-                                    </option>
-                                    @endforeach
-                                </select>
-                                <label for="id_sucursal1">Sucursal</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" name="id_sucursal1" id="id_sucursal1">
+                                        @foreach ($Sucursal as $sucursal)
+                                        <option class="form-control" value="{{$sucursal->id}}">{{$sucursal->nombre}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    <label for="id_sucursal1">Sucursal</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" placeholder="telefono"
+                                        class="form-control  @error('telefono') is-invalid @enderror" name="telefono1"
+                                        id="telefono1" value="{{ old('telefono') }}" required autocomplete="telefono">
+                                    <label for="telefono">Telefono</label>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3">
+                                    <select class="form-control" name="rol1" id="rol1">
+                                        <option value="admin">Admin</option>
+                                        <option value="tecnico">Tecnico</option>
+                                        <option value="cliente" selected>Cliente</option>
+                                    </select>
+                                    <label for="rol1">Rol</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <select class="form-control" name="rol1" id="rol1">
-                                    <option value="admin">Admin</option>
-                                    <option value="tecnico">Tecnico</option>
-                                    <option value="cliente" selected>Cliente</option>
-                                </select>
-                                <label for="rol1">Rol</label>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Agregar</button>
-                </div>
-                </form>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 <!-- Modal  Agregar usuario-->
 <div class="modal fade" id="modalagregar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -693,7 +706,7 @@
                             <input type="hidden" name="status" id="status" value="1">
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-floating mb-3">
                                 <select class="form-control" name="id_sucursal" id="id_sucursal">
                                     @foreach ($Sucursal as $sucursal)
@@ -704,7 +717,15 @@
                                 <label for="id_sucursal">Sucursal</label>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="form-floating mb-3">
+                                <input type="telefono" placeholder="Telefono"
+                                    class="form-control  @error('telefono') is-invalid @enderror" name="telefono"
+                                    value="telefono" required autocomplete="telefono">
+                                <label for="telefono">Telefono</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="form-floating mb-3">
                                 <select class="form-control" name="rol">
                                     <option value="admin">Admin</option>
@@ -2689,6 +2710,7 @@
         </div>
     </div>
 </div>
+
 <!-- Button trigger modal
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal_planes">
   Launch
@@ -2739,7 +2761,7 @@
                                                         <td class="">Ilimitado</td>
                                                     </tr>
                                                     <tr>
-                                                        <td class="option"> Recibos en formato A4</td>
+                                                        <td class="option"> Recibos en formato A4 y A2</td>
                                                         <td><i class="fa fa-check"></i></td>
                                                         <td><i class="fa fa-check"></i></td>
                                                         <td><i class="fa fa-check"></i></td>
