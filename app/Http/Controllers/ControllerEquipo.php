@@ -39,7 +39,9 @@ class ControllerEquipo extends Controller
      */
     public function store(Request $request)
     {
+           $token = $request->session()->token();
 
+            $token = csrf_token();
         $chars = '0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
         $charsLength = (strlen($chars) - 1);
         $r = null;
@@ -153,7 +155,7 @@ class ControllerEquipo extends Controller
         $caja->save();
 
 
-        return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=dZxP8hEU4nc33TJfl4iTu32Q5cDrmWjzf39ZVW0m">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
+        return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 
     /**
@@ -186,7 +188,9 @@ class ControllerEquipo extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   $token = $request->session()->token();
+
+        $token = csrf_token();
         $equipo = \App\Models\Equipo::find($id);
         $equipo->id_user = $request->get('id_user2');
         $equipo->id_cliente = $request->get('id_cliente2');
@@ -222,7 +226,7 @@ class ControllerEquipo extends Controller
         $equipo->Golpes = $request->get('Golpes2');
         $equipo->Tiene_Bateria = $request->get('Tiene_Bateria2');
         $equipo->save();
-        return back()->with('success', '<a target="_blank" href="/imprimir/' . $equipo->id . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
+        return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
 
 

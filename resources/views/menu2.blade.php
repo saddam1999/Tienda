@@ -65,9 +65,12 @@ $mes1= 'Diciembre';
         <div class="collapse navbar-collapse justify-content-end bg-white" id="navigation" style="border-radius: 10px;">
             <a class="navbar-brand ml-auto mr-auto" href="javascript:;">
                 <p class="text-footer">
+                    @if(Auth::check())
                     Sucursal @foreach ($Sucursal as
                     $sucursal)@if($sucursal->id==Auth::user()->id_sucursal)
-                    {{$sucursal->nombre}} @endif @endforeach</p>
+                    {{$sucursal->nombre}} @endif @endforeach
+                    @endif</p>
+
             </a><br>
             <form>
                 <div class="input-group no-border">
@@ -110,7 +113,8 @@ $mes1= 'Diciembre';
                             <small>
                                 <div>
                                     <div class="font-small text-base text-gray-800 ml-auto mr-auto">
-                                        <p class="card-footer">{{ Auth::user()->name }}</p>
+                                        <p class="card-footer">@if(Auth::check())
+                                            {{ Auth::user()->name }} @endif</p>
                                         @php
 
                                         $date1 = new DateTime("now", new DateTimeZone('America/New_York'))@endphp

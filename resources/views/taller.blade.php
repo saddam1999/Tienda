@@ -45,12 +45,13 @@ $contador=0;
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                @if(Auth::check()==true)
+                                @if(Auth::check())
                                 <h4 class="card-title">Equipos Sucursal @foreach ($Sucursal as
                                     $sucursal) @if($sucursal->id==Auth::user()->id_sucursal)
                                     {{$sucursal->nombre}} @endif @endforeach</h4> @else @php Auth::logout(); @endphp
                                 @endif
                             </div>
+
                             <div class="card-body">
                                 @php
                                 $pendiente=0;
@@ -60,8 +61,8 @@ $contador=0;
                                 $cliente=0;
                                 $listo=0;
                                 $entregado=0;
-
                                 @endphp
+                                @if(Auth::check())
                                 @foreach($Equipo as $contador)
                                 @if($contador->id_sucursal==Auth::user()->id_sucursal&&$contador->status==0)
                                 @php
@@ -99,6 +100,7 @@ $contador=0;
                                 @endphp
                                 @endif
                                 @endforeach
+                                @endif
                                 <nav>
                                     <small>
                                         <div class="nav nav-tabs" id="myTab" name="myTab" role="tablist">
@@ -193,6 +195,7 @@ $contador=0;
                     <th><small>Imprimir</small></th>
                 </thead>
                 <tbody>
+                    @if(Auth::check())
                     @foreach($Equipo->sortByDesc('id') as $equipo)
                     @if($equipo->id_sucursal==Auth::user()->id_sucursal&&$equipo->status==6)
                     <tr>
@@ -814,6 +817,7 @@ $contador=0;
     </tr>
     @endif
     @endforeach
+    @endif
     </tbody>
     </table>
     </div>

@@ -31,11 +31,12 @@ use App\Http\Controllers\FileUploadController;
 */
 
 Route::get('/', function () {
-    return view('welcome', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all(),'Usuario' => App\Models\User::all()
-    ,'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all(),
-    'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all(),'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()]);
+    return view('welcome', [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(),
+        'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all()
+    ]);
 });
-Route::get('/galleria/{id}', [ControllerCaptura::class, 'galleria']);
+Route::get('/galleria/{id}', [ControllerCaptura::class, 'galleria'])->middleware('auth');
 //Usuario
 Route::get('/addusuario', [ControllerUsuario::class, 'store']);
 Route::get('/editusuario/{id}', [ControllerUsuario::class, 'update']);
@@ -93,8 +94,8 @@ Route::get('/editpago/{id}', [ControllerPago_Equipo::class, 'update']);
 Route::get('/deletepago/{id}', [ControllerPago_Equipo::class, 'destroy']);
 Route::get('/agregarpagoManual', [ControllerPago_Equipo::class, 'UpdateCajaManual']);
 //imprimirController Ticket
-Route::get('/imprimir/id={id}&csrf={csrf}', [imprimirController::class, 'update']);//para pagar un equipo ticket
-Route::get('/QR/{id}', [imprimirController::class, 'QR']);//imprime un codigo de seguimiento  equipo QR
+Route::get('/imprimir/id={id}&csrf={csrf}', [imprimirController::class, 'update']); //para pagar un equipo ticket
+Route::get('/QR/{id}', [imprimirController::class, 'QR']); //imprime un codigo de seguimiento  equipo QR
 //mostrarEquipo
 Route::get('/orden/{id}', [imprimirController::class, 'orden']);
 //Creditos SMS
@@ -106,56 +107,42 @@ Route::get('/facebook', [SocialController::class, 'get_FacebookID']);
 Route::get('/agregarpagocaja', [ControllerPago_Equipo::class, 'caja']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard', ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-})->name('dashboard');
+    return view('dashboard', [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->name('dashboard')->middleware('auth');
 
-Route::get('file-upload', [ FileUploadController::class, 'fileUpload' ])->name('file.upload');
-Route::post('file-upload', [ FileUploadController::class, 'fileUploadPost' ])->name('file.upload.post');
+Route::get('file-upload', [FileUploadController::class, 'fileUpload'])->name('file.upload');
+Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
 Route::get('/imprimir', 'imprimirController@imprimir')->name('imprimir');
 Route::get('/carrito', function () {
-    return view('carrito',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('carrito',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
 
 Route::get('/taller', function () {
-    return view('taller',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('taller',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
 Route::get('/reportes', function () {
-    return view('reportes',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('reportes',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
 Route::get('/settings', function () {
-    return view('settings',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('settings',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
 Route::get('/tienda', function () {
-    return view('tienda',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('tienda',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
 Route::get('/perfil', function () {
-    return view('perfil',  ['Articulo' => App\Models\Articulo::all(),'Marca' => App\Models\Marca::all()
-    ,'Usuario' => App\Models\User::all(),'Servicio' => App\Models\Servicio::all(),'Sucursal' => App\Models\Sucursal::all()
-    ,'Settings' => App\Models\Settings::all(),'Categoria' => App\Models\Categoria::all(),'Promocion' => App\Models\Promocion::all()
-    ,'Equipo' => App\Models\Equipo::all(),'Captura' => App\Models\Captura::all()
-    ,'Galeria' => App\Models\Captura::all(),'Caja' => App\Models\Caja::all(),'Pago' => App\Models\Pago::all(),'Corte' => App\Models\Corte::all(),'Pago_Equipo' => App\Models\Pago_Equipo::all(),'MovimientoCaja' => App\Models\MovimientoCaja::all()]);
-});
+    return view('perfil',  [
+        'Articulo' => App\Models\Articulo::all(), 'Marca' => App\Models\Marca::all(), 'Usuario' => App\Models\User::all(), 'Servicio' => App\Models\Servicio::all(), 'Sucursal' => App\Models\Sucursal::all(), 'Settings' => App\Models\Settings::all(), 'Categoria' => App\Models\Categoria::all(), 'Promocion' => App\Models\Promocion::all(), 'Equipo' => App\Models\Equipo::all(), 'Captura' => App\Models\Captura::all(), 'Galeria' => App\Models\Captura::all(), 'Caja' => App\Models\Caja::all(), 'Pago' => App\Models\Pago::all(), 'Corte' => App\Models\Corte::all(), 'Pago_Equipo' => App\Models\Pago_Equipo::all(), 'MovimientoCaja' => App\Models\MovimientoCaja::all()
+    ]);
+})->middleware('auth');
