@@ -19,8 +19,10 @@ class CreateInventariosTable extends Migration
             $table->integer('id_sucursal');
             $table->integer('id_almacen');
             $table->integer('id_producto');
+            /*
             $table->boolean('movimiento');//sale / entra
-            $table->integer('tipo_movimiento');//
+            $table->integer('tipo_movimiento');
+            */
             $table->integer('existencia');
             $table->timestamps();
         });

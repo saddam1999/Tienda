@@ -22,6 +22,7 @@ class CreateArticulosTable extends Migration
             $table->string('talla')->nullable();//talla
             $table->string('descripcion')->nullable();
             $table->string('existencia')->nullable();
+            //descuento e iva... se borraran
             $table->float('precio')->nullable();
             $table->integer('precioOriginal')->nullable();
             $table->string('imagena')->nullable();

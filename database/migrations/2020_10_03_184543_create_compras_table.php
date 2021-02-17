@@ -14,7 +14,7 @@ class CreateComprasTable extends Migration
     public function up()
     {
         Schema::create('compras', function (Blueprint $table) {
-            $table->id();
+            $table->id();//ventas 
             $table->integer('id_usuario')->nullable();
             $table->integer('id_metodo')->nullable();
             $table->integer('id_pago')->nullable();

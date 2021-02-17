@@ -86,6 +86,7 @@ return array(
     'App\\Models\\Settings' => $baseDir . '/app/Models/Settings.php',
     'App\\Models\\Sucursal' => $baseDir . '/app/Models/Sucursal.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\detalleinventario' => $baseDir . '/app/Models/detalleinventario.php',
     'App\\Models\\detalleventa' => $baseDir . '/app/Models/detalleventa.php',
     'App\\Notifications\\Notificacion' => $baseDir . '/app/Notifications/Notificacion.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
