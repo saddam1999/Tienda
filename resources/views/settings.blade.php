@@ -20,7 +20,7 @@ $contador=0;
                     <h4 class="card-title">Opciones</h4>
 
                     <div class="container">
-                        <ul class="nav nav-pills">
+                        <ul class="nav nav-tabs">
                             <li class="nav-item"><a class="nav-link" href="#personalizar" data-target="#personalizar"
                                     data-toggle="tab">Personalizar</a></li>
                             <li class="nav-item"><a class="nav-link" href="#promociones"
