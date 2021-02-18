@@ -39,9 +39,9 @@ class ControllerEquipo extends Controller
      */
     public function store(Request $request)
     {
-           $token = $request->session()->token();
+        $token = $request->session()->token();
 
-            $token = csrf_token();
+        $token = csrf_token();
         $chars = '0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz';
         $charsLength = (strlen($chars) - 1);
         $r = null;
@@ -188,7 +188,8 @@ class ControllerEquipo extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   $token = $request->session()->token();
+    {
+        $token = $request->session()->token();
 
         $token = csrf_token();
         $equipo = \App\Models\Equipo::find($id);

@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '233e196eb90e234ab652052fe8fbd8d5ee2f0b09',
+    'reference' => 'a1a31a0b124580420f1e0592f497cc1b8ead8d2a',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -337,12 +337,12 @@ private static $installed = array (
     ),
     'google/apiclient' => 
     array (
-      'pretty_version' => 'v2.8.1',
-      'version' => '2.8.1.0',
+      'pretty_version' => 'v2.9.1',
+      'version' => '2.9.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c8f6d09f50f859fa9457104bb0fb72c893804ede',
+      'reference' => '2fb6e702aca5d68203fa737f89f6f774022494c6',
     ),
     'google/apiclient-services' => 
     array (
@@ -701,7 +701,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '233e196eb90e234ab652052fe8fbd8d5ee2f0b09',
+      'reference' => 'a1a31a0b124580420f1e0592f497cc1b8ead8d2a',
     ),
     'laravel/sanctum' => 
     array (
