@@ -93,6 +93,8 @@ class ControllerEquipo extends Controller
         $equipo->save();
 
         $user = \App\Models\User::all();
+        //$usuario = \App\Models\User::find(1);
+
         $setting = \App\Models\Settings::find(1);
         $pago = new \App\Models\Pago_Equipo();
         //$cajaT = \App\Models\Caja::all();
@@ -157,7 +159,7 @@ class ControllerEquipo extends Controller
         $pago->save();
         $caja->save();
 
-        Mail::to($request->user())->send(new notificacionEmail($equipo));
+        Mail::to($request->user())->send(new notificacionEmail($equipo,$setting));
 
         return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
