@@ -17,12 +17,11 @@
                 <img class="card-img-top ml-auto mr-auto " style="width:80px; height:80px;"
                     src="{{ $setting->setting_logo}}" alt="">
                 <div class="card-body">
-                    <h4 class="card-title">Hola! {{ $equipo->id_cliente }}.</h4>
+                    <h4 class="card-title text-success">Hola! {{ $equipo->id_cliente }}.</h4>
                     <p class="card-text">Recibimos tu {{ $equipo->modelo }}</p>
                     <ul>
                         <li>IMEI / Serial: {{ $equipo->serial }}</li>
                         <li>Observacion: {{ $equipo->id_comentario}}</li>
-                        <li>Status: {{ $equipo->status }}</li>
                         <li>Ticket: <a
                                 href="{{$setting->setting_url}}/imprimir/id={{$equipo->id}}&csrf=lcHDliCnQA1Xoidbfz7zkeGHtItt4WHW4J4aJiJA">Ticket</a>
                         </li>
@@ -32,9 +31,9 @@
 
                     </ul>
                     <ul class="card-footer">
-                        <li>Horario:{{$setting->setting_abierto}}</li>
-                        <li>Direccion:{{$setting->setting_direccion}}</li>
-                        <li>Contacto:{{$setting->setting_contacto}}</li>
+                        <li>Horario: {{$setting->setting_abierto}}</li>
+                        <li>Direccion: {{$setting->setting_direccion}}</li>
+                        <li>Contacto: {{$setting->setting_contacto}}</li>
                         <li>Website: <a href="{{$setting->setting_url}}">{{$setting->setting_nombre}}</a></li>
                     </ul>
                 </div>
