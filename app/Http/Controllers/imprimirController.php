@@ -213,6 +213,9 @@ class imprimirController extends Controller
                 $tecnico = \App\Models\User::find($equipo->id_user);
                 $precio = \App\Models\Equipo::find($id);
                 $setting = \App\Models\Settings::find(1);
+                if ($setting->setting_logo == '') {
+                    return back()->with('warning', 'No se puede generar un ticket si no tienes un logo de empresa asignado,configuralo en tu empresa antes de tratar de generar un Ticket');
+                }
                 if ($equipo->imei != '') {
                     $datoequipo = $equipo->imei;
                 } else {
@@ -220,7 +223,10 @@ class imprimirController extends Controller
                 }
                 $adelanto = $tecnico->monto;
                 $final = $precio->presupuesto - $adelanto;
+
                 $tamaño = getimagesize($setting->setting_logo);
+
+
                 //dd($tamaño);
                 if ($setting->setting_logo == "") {
                     $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";

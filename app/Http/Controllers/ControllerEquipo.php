@@ -159,8 +159,9 @@ class ControllerEquipo extends Controller
         $pago->fecha =  $equipo->created_at;
         $pago->save();
         $caja->save();
-
-        Mail::to($request->user())->send(new notificacionEmail($equipo, $setting));
+        if ($equipo->email != '') {
+            Mail::to($request->user())->cc($equipo->email)->send(new notificacionEmail($equipo, $setting));
+        }
 
         return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
@@ -339,5 +340,19 @@ class ControllerEquipo extends Controller
         } else {
             return back()->with('warning', 'Equipo no se pudo Borrar ');
         }
+    }
+
+    public function enviar_SMS(int $number,$message)
+    {
+        $number = "+destinario";
+        $message = "mensaje";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://ghostunlock.com/smsapinew2.php");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "number=" . $number . "&message=" . $message . "&user=jasms&apikey=chotita");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        return $server_output;
     }
 }
