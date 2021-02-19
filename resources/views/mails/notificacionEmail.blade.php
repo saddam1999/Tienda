@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-    <title>Llamado de emergencia</title>
+    <title>Holly Store</title>
 </head>
 <body>
-    <p>Hola! Se ha reportado un nuevo caso de emergencia a las {{ $user->created_at }}.</p>
-    <p>Estos son los datos del usuario que ha realizado la denuncia:</p>
+    <p>Hola!  {{ $equipo->id_cliente }}.</p>
+    <p>Recibimos tu {{ $equipo->modelo }}:</p>
     <ul>
-        <li>Nombre: {{ $user->user->name }}</li>
-        <li>Teléfono: {{ $user->user->phone }}</li>
-        <li>DNI: {{ $user->user->dni }}</li>
+        <li>IMEI / Serial: {{ $equipo->serial }}</li>
+        <li>Observacion: {{ $equipo->id_comentario}}</li>
+        <li>Status: {{ $equipo->status }}</li>
     </ul>
+    <!--
     <p>Y esta es la posición reportada:</p>
     <ul>
-        <li>Latitud: {{ $distressCall->lat }}</li>
-        <li>Longitud: {{ $distressCall->lng }}</li>
+        <li>Latitud:</li>
+        <li>Longitud: </li>
         <li>
             <a href="https://www.google.com/maps/dir/">
                 Ver en Google Maps
             </a>
         </li>
-    </ul>
+    </ul>-->
 </body>
 </html>

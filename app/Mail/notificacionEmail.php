@@ -6,19 +6,21 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use \App\Models\User;
+use \App\Models\Equipo;
 
 class notificacionEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $equipo;
     /**
-     * Create a new message instance.
+     * The order instance.
      *
-     * @return void
+     * @var Equipo
      */
-    public function __construct()
+    public function __construct(Equipo $equipo)
     {
-        //
+        $this->equipo = $equipo;
     }
 
     /**
