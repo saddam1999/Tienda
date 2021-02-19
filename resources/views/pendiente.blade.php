@@ -24,7 +24,8 @@
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body" style="width: 200px;">
                                 <a href="" class=" d-inline " data-toggle="modal" data-target="#modaledittaller"
-                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                    data-id="{{$equipo->id}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-pago="{{$equipo->pago}}"
                                     data-presupuesto="{{$equipo->presupuesto}}" data-inversion="{{$equipo->inversion}}"
                                     data-id_servicio="{{$equipo->id_servicio}}" data-precio="{{$equipo->precio}}"
                                     data-id_sucursal="{{Auth::user()->id_sucursal}}" data-id_user="{{$equipo->id_user}}"

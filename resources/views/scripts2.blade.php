@@ -542,6 +542,13 @@
           $(e.currentTarget).find('#fecha_entrega2').val(id);
           var id = $(e.relatedTarget).data().status;
           $(e.currentTarget).find('#status2').val(id);
+
+          var id = $(e.relatedTarget).data().email;
+          $(e.currentTarget).find('#email_contacto1').val(id);
+
+          var id = $(e.relatedTarget).data().telefono;
+        $(e.currentTarget).find('#telefono_contacto1').val(id);
+
           var id = $(e.relatedTarget).data().tiene_camara;
           $(e.currentTarget).find('Tiene_Camara2').val(id);
           if (id == 'Tiene_Camara') {

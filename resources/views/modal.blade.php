@@ -11,9 +11,9 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Gracias por tu Compra</h4>
-                        <p>Antes de comenzar necesitamos configurar algunas cosas importantes para el buen
+                    <div class="alert alert-white" role="alert">
+                        <h4 class="alert-heading text-primary">Gracias por tu Compra</h4>
+                        <p class="text-dark">Antes de comenzar necesitamos configurar algunas cosas importantes para el buen
                             funcionamiento de la plataforma.</p>
                         <img class="form-control face" style="height: 50%; width:50%" src="https://wylnux.files.wordpress.com/2013/09/512c.png" alt="">
 
@@ -77,8 +77,7 @@
                         @endif
 
                         @if ($Settings->isEmpty())
-                        <a id="settings-tab" data-toggle="tab" href="#settings" role="tab"
-                        aria-controls="settings" aria-selected="false" data-dismiss="modal" >
+                        <a href="/settings" aria-controls="settings" aria-selected="false" data-dismiss="modal" >
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
@@ -94,8 +93,8 @@
                           </div>
                         @endif
                         <hr>
-                        <p class="mb-0">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas
-                            contactame en twitter por @hollydev3</p>
+                        <p class="mb-0 text-dark">Agradecemos que te tomes tu tiempo para este paso en caso de tener dudas
+                            contactame en twitter por @hollydev2</p>
                     </div>
                 </div>
             </div>
@@ -988,8 +987,8 @@
                         class="bi bi-wrench" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019L13 11l-.471.242-.529.026-.287.445-.445.287-.026.529L11 13l.242.471.026.529.445.287.287.445.529.026L13 15l.471-.242.529-.026.287-.445.445-.287.026-.529L15 13l-.242-.471-.026-.529-.445-.287-.287-.445-.529-.026z" />
-                    </svg>Nueva Orden a Reparar @php foreach($Equipo as $equipo){$numero=$equipo->id;} @endphp Orden #
-                    {{$numero+1}}</h5>
+                    </svg>Nueva Orden a Reparar  @if($Equipo->isEmpty()) @else @php foreach($Equipo as $equipo){$numero=$equipo->id;} @endphp Orden #
+                    {{$numero+1}}</h5> @endif
                 <button type="button" class="close" onclick="closeNav()" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1029,6 +1028,20 @@
                                     </select>
                                     <label for="nombre">Nombre Tecnico</label>
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="email_contacto" id="email_contacto">
+                                    <label for="marca">Email Contacto Cliente</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="telefono_contacto" id="telefono_contacto">
+                                    <label for="marca">Telefono Contacto Cliente(SMS)</label>
                                 </div>
                             </div>
                         </div>
@@ -1463,6 +1476,20 @@
                                         @endforeach
                                     </select>
                                     <label for="nombre">Nombre Tecnico</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="email_contacto1" id="email_contacto1">
+                                    <label for="marca">Email Contacto Cliente</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" type="text" name="telefono_contacto1" id="telefono_contacto1">
+                                    <label for="marca">Telefono Contacto Cliente(SMS)</label>
                                 </div>
                             </div>
                         </div>

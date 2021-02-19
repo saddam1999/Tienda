@@ -492,6 +492,12 @@
         var id = $(e.relatedTarget).data().id_user;
         $(e.currentTarget).find('#id_user2').val(id);
         var id = $(e.relatedTarget).data().id_sucursal;
+
+        $(e.currentTarget).find('#email_contacto1').val(id);
+        var id = $(e.relatedTarget).data().email;
+        $(e.currentTarget).find('#telefono_contacto1').val(id);
+        var id = $(e.relatedTarget).data().telefono;
+
         $(e.currentTarget).find('#id_sucursal2').val(id);
         var id = $(e.relatedTarget).data().id_servicio;
         $(e.currentTarget).find('#id_servicio2').val(id);

@@ -58,7 +58,8 @@ class ControllerEquipo extends Controller
         $equipo->id_user = $request->get('id_user');
         $equipo->id_cliente = $request->get('id_cliente');
         $equipo->id_servicio =  $request->get('id_servicio'); //marca
-        $equipo->inversion = $request->get('inversion');
+        $equipo->email = $request->get('email_contacto');
+        $equipo->telefono = $request->get('telefono_contacto');
         $equipo->presupuesto = $request->get('presupuesto');
         $equipo->pago = $request->get('pago');
         $equipo->uniqueid = $r;
@@ -159,7 +160,7 @@ class ControllerEquipo extends Controller
         $pago->save();
         $caja->save();
 
-        Mail::to($request->user())->send(new notificacionEmail($equipo,$setting));
+        Mail::to($request->user())->send(new notificacionEmail($equipo, $setting));
 
         return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }
@@ -206,6 +207,8 @@ class ControllerEquipo extends Controller
         $equipo->serial = $request->get('serial2');
         $equipo->imei = $request->get('imei2');
         $equipo->pago = $request->get('pago2');
+        $equipo->email = $request->get('email_contacto1');
+        $equipo->telefono = $request->get('email_telefono1');
         $equipo->inversion = $request->get('inversion2');
         $equipo->presupuesto = $request->get('presupuesto2');
         //$equipo->id_captura=$request->get('id_captura2');

@@ -40,7 +40,8 @@
                                     data-lector_sim="{{$equipo->Lector_SIM}}"
                                     data-volumenplus="{{$equipo->Volumenplus}}"
                                     data-volumenless="{{$equipo->Volumenless}}" data-encendido="{{$equipo->Encendido}}"
-                                    data-auricular="{{$equipo->Auricular}}" data-touch="{{$equipo->Touch}}"
+                                    data-auricular="{{$equipo->Auricular}}"       data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}"data-touch="{{$equipo->Touch}}"
                                     data-bateria="{{$equipo->Bateria}}" data-enciende="{{$equipo->Enciende}}"
                                     data-memoria="{{$equipo->Memoria}}" data-sim="{{$equipo->SIM}}"
                                     data-golpes="{{$equipo->Golpes}}"
@@ -78,7 +79,8 @@
                                     data-Volumenless="{{$equipo->Volumenless}}" data-Encendido="{{$equipo->Encendido}}"
                                     data-Auricular="{{$equipo->Auricular}}" data-Touch="{{$equipo->Touch}}"
                                     data-Bateria="{{$equipo->Bateria}}" data-Enciende="{{$equipo->Enciende}}"
-                                    data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
+                                    data-Memoria="{{$equipo->Memoria}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-SIM="{{$equipo->SIM}}"
                                     data-Golpes="{{$equipo->Golpes}}" data-modelo="{{$equipo->modelo}}"
                                     data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
                                         viewBox="0 0 16 16" class="bi bi-camera text-success" fill="currentColor"
@@ -106,7 +108,8 @@
                                     data-Volumenplus="{{$equipo->Volumenplus}}"
                                     data-Volumenless="{{$equipo->Volumenless}}" data-Encendido="{{$equipo->Encendido}}"
                                     data-Auricular="{{$equipo->Auricular}}" data-Touch="{{$equipo->Touch}}"
-                                    data-Bateria="{{$equipo->Bateria}}" data-Enciende="{{$equipo->Enciende}}"
+                                    data-Bateria="{{$equipo->Bateria}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-Enciende="{{$equipo->Enciende}}"
                                     data-Memoria="{{$equipo->Memoria}}" data-SIM="{{$equipo->SIM}}"
                                     data-Golpes="{{$equipo->Golpes}}" data-modelo="{{$equipo->modelo}}"
                                     data-Tiene_Bateria="{{$equipo->Tiene_Bateria}}"><svg width="2em" height="2em"
@@ -117,7 +120,8 @@
                                     </svg></a>
 
                                 <a class=" d-inline " href="" data-toggle="modal" data-target="#modal_pago"
-                                    data-id="{{$equipo->id}}" data-presupuesto="{{$equipo->presupuesto}}"
+                                    data-id="{{$equipo->id}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}"  data-presupuesto="{{$equipo->presupuesto}}"
                                     data-inversion="{{$equipo->inversion}}" data-pago="{{$equipo->pago}}"
                                     data-adelanto="{{$equipo->adelanto}}" data-modelo="{{$equipo->modelo}}"
                                     data-id_servicio="{{$equipo->id_servicio}}" data-id_user="{{$equipo->id_user}}"
@@ -142,7 +146,8 @@
                                     data-uniqueid="{{$equipo->uniqueid}}"
                                     data-fecha_recibido="{{$equipo->fecha_recibido}}"
                                     data-fecha_entrega="{{$equipo->fecha_entrega}}"
-                                    data-status="{{$equipo->status}}">Mas
+                                    data-status="{{$equipo->status}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}">Mas
                                     info de {{$equipo->modelo}}</a>
                             </div>
                         </div>
@@ -264,7 +269,8 @@
                     data-id_comentario="{{$equipo->id_comentario}}" data-fecha_recibido="{{$equipo->fecha_recibido}}"
                     data-fecha_entrega="{{$equipo->fecha_entrega}}" data-status="{{$equipo->status}}"
                     data-Tiene_Camara="{{$equipo->Tiene_Camara}}" data-Centro_Carga="{{$equipo->Centro_Carga}}"
-                    data-Señal="{{$equipo->Señal}}" data-LectorSD="{{$equipo->LectorSD}}"
+                    data-Señal="{{$equipo->Señal}}" data-LectorSD="{{$equipo->LectorSD}}"      data-email="{{$equipo->email}}"
+                    data-telefono="{{$equipo->telefono}}"
                     data-AltaVoz="{{$equipo->AltaVoz}}" data-BotonHome="{{$equipo->BotonHome}}"
                     data-Microfono="{{$equipo->Microfono}}" data-Lector_SIM="{{$equipo->Lector_SIM}}"
                     data-Volumenplus="{{$equipo->Volumenplus}}" data-Volumenless="{{$equipo->Volumenless}}"

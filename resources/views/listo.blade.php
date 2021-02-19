@@ -23,7 +23,8 @@
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body" style="width: 200px;">
                                 <a href="" class=" d-inline " data-toggle="modal" data-target="#modaledittaller"
-                                    data-id="{{$equipo->id}}" data-pago="{{$equipo->pago}}"
+                                    data-id="{{$equipo->id}}"     data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}"  data-pago="{{$equipo->pago}}"
                                     data-presupuesto="{{$equipo->presupuesto}}" data-inversion="{{$equipo->inversion}}"
                                     data-id_servicio="{{$equipo->id_servicio}}" data-precio="{{$equipo->precio}}"
                                     data-id_sucursal="{{Auth::user()->id_sucursal}}" data-id_user="{{$equipo->id_user}}"
@@ -61,7 +62,8 @@
                                             d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
                                     </svg></a>
                                 <a class=" d-inline " href="" data-toggle="modal" data-target="#modal_foto"
-                                    data-id="{{$equipo->id}}" data-presupuesto="{{$equipo->presupuesto}}"
+                                    data-id="{{$equipo->id}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-presupuesto="{{$equipo->presupuesto}}"
                                     data-inversion="{{$equipo->inversion}}" data-id_user="{{$equipo->id_user}}"
                                     data-servicio="{{$equipo->id_servicio}}" data-id_cliente="{{$equipo->id_cliente}}"
                                     data-serial="{{$equipo->serial}}" data-imei="{{$equipo->imei}}"
@@ -91,7 +93,8 @@
                                     </svg></a>
 
                                 <a class=" d-inline " href="/galleria/{{$equipo->id}} " target="_blank"
-                                    data-id="{{$equipo->id}}" data-presupuesto="{{$equipo->presupuesto}}"
+                                    data-id="{{$equipo->id}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-presupuesto="{{$equipo->presupuesto}}"
                                     data-inversion="{{$equipo->inversion}}" data-id_user="{{$equipo->id_user}}"
                                     data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
                                     data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
@@ -119,7 +122,8 @@
                                 <a class=" d-inline " href="" data-toggle="modal" data-target="#modal_pago"
                                     data-id="{{$equipo->id}}" data-presupuesto="{{$equipo->presupuesto}}"
                                     data-inversion="{{$equipo->inversion}}" data-pago="{{$equipo->pago}}"
-                                    data-adelanto="{{$equipo->adelanto}}" data-modelo="{{$equipo->modelo}}"
+                                    data-adelanto="{{$equipo->adelanto}}"     data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-modelo="{{$equipo->modelo}}"
                                     data-id_servicio="{{$equipo->id_servicio}}" data-id_user="{{$equipo->id_user}}"
                                     data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
                                     data-imei="{{$equipo->imei}}" data-id_sucursal="{{$equipo->id_sucursal}}"><svg
@@ -136,7 +140,8 @@
                                     data-presupuesto="{{$equipo->presupuesto}}" data-inversion="{{$equipo->inversion}}"
                                     data-id_servicio="{{$equipo->id_servicio}}" data-precio="{{$equipo->precio}}"
                                     data-id_sucursal="{{Auth::user()->id_sucursal}}" data-id_user="{{$equipo->id_user}}"
-                                    data-id_cliente="{{$equipo->id_cliente}}" data-serial="{{$equipo->serial}}"
+                                    data-id_cliente="{{$equipo->id_cliente}}"      data-email="{{$equipo->email}}"
+                                    data-telefono="{{$equipo->telefono}}" data-serial="{{$equipo->serial}}"
                                     data-imei="{{$equipo->imei}}" data-id_captura="{{$equipo->id_captura}}"
                                     data-id_comentario="{{$equipo->id_comentario}}" data-modelo="{{$equipo->modelo}}"
                                     data-uniqueid="{{$equipo->uniqueid}}"

@@ -31,6 +31,8 @@ class CreateEquiposTable extends Migration
             $table->date('fecha_recibido')->nullable();
             $table->date('fecha_entrega')->nullable();
             $table->string('status')->nullable();
+            $table->string('email')->nullable();//email de contacto
+            $table->string('telefono')->nullable();//telefono de contacto
             $table->string('modelo')->nullable();
             $table->string('uniqueid')->nullable();
             $table->string('Tiene_Camara')->nullable();

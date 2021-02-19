@@ -39,7 +39,6 @@ class CreateSettingsTable extends Migration
             $table->float('setting_meta_mensual')->nullable();//meta de diaria
             $table->string('setting_licencia')->nullable();
             $table->string('setting_moneda')->nullable();
-            $table->string('setting_timezone')->nullable();
             $table->string('setting_plan')->nullable();
             $table->timestamps();
         });
