@@ -20,28 +20,28 @@ class ComposerStaticInit2b56c1b93e8b658f81195614012c7e5b
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
+        'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
-        'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -104,6 +104,7 @@ class ComposerStaticInit2b56c1b93e8b658f81195614012c7e5b
             'Symfony\\Component\\Console\\' => 26,
             'Svg\\' => 4,
             'Spipu\\Html2Pdf\\' => 15,
+            'Spatie\\GoogleCalendar\\' => 22,
             'Seld\\PharUtils\\' => 15,
             'Seld\\JsonLint\\' => 14,
         ),
@@ -388,6 +389,10 @@ class ComposerStaticInit2b56c1b93e8b658f81195614012c7e5b
         'Spipu\\Html2Pdf\\' => 
         array (
             0 => __DIR__ . '/..' . '/spipu/html2pdf/src',
+        ),
+        'Spatie\\GoogleCalendar\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src',
         ),
         'Seld\\PharUtils\\' => 
         array (
@@ -19100,6 +19105,12 @@ class ComposerStaticInit2b56c1b93e8b658f81195614012c7e5b
         'Seld\\PharUtils\\Linter' => __DIR__ . '/..' . '/seld/phar-utils/src/Linter.php',
         'Seld\\PharUtils\\Timestamps' => __DIR__ . '/..' . '/seld/phar-utils/src/Timestamps.php',
         'SessionUpdateTimestampHandlerInterface' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/SessionUpdateTimestampHandlerInterface.php',
+        'Spatie\\GoogleCalendar\\Event' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/Event.php',
+        'Spatie\\GoogleCalendar\\Exceptions\\InvalidConfiguration' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/Exceptions/InvalidConfiguration.php',
+        'Spatie\\GoogleCalendar\\GoogleCalendar' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/GoogleCalendar.php',
+        'Spatie\\GoogleCalendar\\GoogleCalendarFacade' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/GoogleCalendarFacade.php',
+        'Spatie\\GoogleCalendar\\GoogleCalendarFactory' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/GoogleCalendarFactory.php',
+        'Spatie\\GoogleCalendar\\GoogleCalendarServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-google-calendar/src/GoogleCalendarServiceProvider.php',
         'Spipu\\Html2Pdf\\CssConverter' => __DIR__ . '/..' . '/spipu/html2pdf/src/CssConverter.php',
         'Spipu\\Html2Pdf\\Debug\\Debug' => __DIR__ . '/..' . '/spipu/html2pdf/src/Debug/Debug.php',
         'Spipu\\Html2Pdf\\Debug\\DebugInterface' => __DIR__ . '/..' . '/spipu/html2pdf/src/Debug/DebugInterface.php',

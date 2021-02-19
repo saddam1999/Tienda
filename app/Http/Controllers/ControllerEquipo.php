@@ -8,6 +8,9 @@ use App\Models\Servicio;
 use Illuminate\Support\Facades\Notification;
 use App\Message;
 use App\Events\NewMessageNotification;
+use App\Mail\MailSender;
+use App\Mail\notificacionEmail;
+use Illuminate\Support\Facades\Mail;
 
 class ControllerEquipo extends Controller
 {
@@ -154,6 +157,7 @@ class ControllerEquipo extends Controller
         $pago->save();
         $caja->save();
 
+        Mail::to($request->user())->send(new notificacionEmail($equipo));
 
         return back()->with('success', '<a target="_blank" href="/imprimir/id=' . $equipo->id . '&csrf=' . $token . '">Ticket Generado con exito <br> Imprime Esta Orden dando Click aqui</a>');
     }

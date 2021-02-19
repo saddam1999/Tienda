@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a1a31a0b124580420f1e0592f497cc1b8ead8d2a',
+    'reference' => '04dcd21dd84c5b1fd3af7378cf27bfb53e692328',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -688,7 +688,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a1a31a0b124580420f1e0592f497cc1b8ead8d2a',
+      'reference' => '04dcd21dd84c5b1fd3af7378cf27bfb53e692328',
     ),
     'laravel/sanctum' => 
     array (
@@ -1373,6 +1373,15 @@
       array (
       ),
       'reference' => '2b5fb811c04f937ef257ef3f798cebeded33c136',
+    ),
+    'spatie/laravel-google-calendar' => 
+    array (
+      'pretty_version' => '3.2.1',
+      'version' => '3.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1e499555e85bfeeab92f1ecf2e9912404837e54b',
     ),
     'spipu/html2pdf' => 
     array (
