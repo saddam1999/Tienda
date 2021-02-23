@@ -30,8 +30,8 @@ $url_actual = $_SERVER["REQUEST_URI"];
                     <p>Taller</p>
                 </a>
             </li>
-            <li @if($url_actual=='/ventas' ) class="active" @else @endif>
-                <a href="/ventas">
+            <li  @if($url_actual=='/ventas' ) class="active" @else @endif>
+                <a href="/ventas" hidden>
                     <i class="nc-icon nc-shop"></i>
                     <p>Ventas</p>
                 </a>

@@ -209,7 +209,7 @@ class ControllerEquipo extends Controller
         $equipo->imei = $request->get('imei2');
         $equipo->pago = $request->get('pago2');
         $equipo->email = $request->get('email_contacto1');
-        $equipo->telefono = $request->get('email_telefono1');
+        $equipo->telefono = $request->get('telefono_contacto1');
         $equipo->inversion = $request->get('inversion2');
         $equipo->presupuesto = $request->get('presupuesto2');
         //$equipo->id_captura=$request->get('id_captura2');

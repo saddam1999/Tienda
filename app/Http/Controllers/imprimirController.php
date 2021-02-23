@@ -462,7 +462,7 @@ class imprimirController extends Controller
      */
     public function QR(Request $request, $id)
     {
-
+        /*
         $setting = \App\Models\Settings::find(1);
         if ($setting->setting_logo == "") {
             $setting->setting_logo = "https://iunlock.store/unlock-2.png";
@@ -496,7 +496,161 @@ class imprimirController extends Controller
         // imagedestroy($QR);
 
 
-        return back()->with('success', 'Archivo a Imprimir generado');
+        return back()->with('success', 'Archivo a Imprimir generado');*/
+
+        $equipo = \App\Models\Equipo::find($id); //id 10
+        $busquedapago = \App\Models\Pago_Equipo::all();
+        //$pago = \App\Models\Pago_Equipo::find($id); // 9 null
+        //ID es id de equipo entonces buscamos el id del pago con id_equipo dentro de pago_equipo
+        foreach ($busquedapago as $pago) {
+            if ($pago->id_equipo == $id) {
+                $usuario = \App\Models\User::find($equipo->id_cliente);
+                $tecnico = \App\Models\User::find($equipo->id_user);
+                $precio = \App\Models\Equipo::find($id);
+                $setting = \App\Models\Settings::find(1);
+                if ($setting->setting_logo == '') {
+                    return back()->with('warning', 'No se puede generar un ticket si no tienes un logo de empresa asignado,configuralo en tu empresa antes de tratar de generar un Ticket');
+                }
+                if ($equipo->imei != '') {
+                    $datoequipo = $equipo->imei;
+                } else {
+                    $datoequipo = $equipo->serial;
+                }
+                $adelanto = $tecnico->monto;
+                $final = $precio->presupuesto - $adelanto;
+
+                $tamaño = getimagesize($setting->setting_logo);
+
+
+                //dd($tamaño);
+                if ($setting->setting_logo == "") {
+                    $setting->setting_logo = "https://www.creativefabrica.com/wp-content/uploads/2018/09/Phone-repair-Logo-Designs-by-yahyaanasatokillah-580x387.jpg";
+                }
+                $date1 = new \DateTime("now");
+
+                $dia1 = $equipo->created_at->format("d");
+                $mes = $equipo->created_at->format("m");
+                $ano = $equipo->created_at->format("Y");
+                if ($mes == 1) {
+                    $mes1 = 'Enero';
+                } elseif ($mes == 2) {
+                    $mes1 = 'Febrero';
+                } elseif ($mes == 3) {
+                    $mes1 = 'Marzo';
+                } elseif ($mes == 4) {
+                    $mes1 = 'Abril';
+                } elseif ($mes == 5) {
+                    $mes1 = 'Mayo';
+                } elseif ($mes == 6) {
+                    $mes1 = 'Junio';
+                } elseif ($mes == 7) {
+                    $mes1 = 'Julio';
+                } elseif ($mes == 8) {
+                    $mes1 = 'Agosto';
+                } elseif ($mes == 9) {
+                    $mes1 = 'Septiembre';
+                } elseif ($mes == 10) {
+                    $mes1 = 'Octubre';
+                } elseif ($mes == 11) {
+                    $mes1 = 'Noviembre';
+                } elseif ($mes == 12) {
+                    $mes1 = 'Diciembre';
+                }
+
+
+                $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+                $size = isset($_GET['size']) ? $_GET['size'] : '400x400';
+                $logo = isset($_GET['logo']) ? $_GET['logo'] : $setting->setting_logo;
+
+                header('Content-type: image/png');
+                // Get QR Code image from Google Chart API
+                // http://code.google.com/apis/chart/infographics/docs/qr_codes.html
+                $QR = imagecreatefrompng('https://chart.googleapis.com/chart?cht=qr&chld=H|1&chs=' . $size . '&chl=' . urlencode($data));
+
+                if ($logo !== FALSE) {
+                    $logo = imagecreatefromstring(file_get_contents($logo));
+                    $QR_width = imagesx($QR);
+                    $QR_height = imagesy($QR);
+                    $logo_width = imagesx($logo);
+                    $logo_height = imagesy($logo);
+                    // Scale logo to fit in the QR Code
+                    $logo_qr_width = $QR_width / 3;
+                    $scale = $logo_width / $logo_qr_width;
+                    $logo_qr_height = $logo_height / $scale;
+                    imagecopyresampled($QR, $logo, $QR_width / 3, $QR_height / 3, 0, 0, $logo_qr_width, $logo_qr_height, $logo_width, $logo_height);
+                }
+                if ($equipo->pago == 0) {
+                    $temporal = 0;
+                } else {
+                    $temporal = $equipo->pago;
+                };
+                if ($equipo->presupuesto == 0) {
+                    $temporal1 = 0;
+                } else {
+                    $temporal1 = $equipo->presupuesto;
+                };
+
+                if ($equipo->serial == '') {
+                    $temporal3 = $equipo->imei;
+                } else {
+                    $temporal3 = $equipo->serial;
+                };
+
+                imagepng($QR, "$id.png");
+                // $data = isset($_GET['data']) ? $_GET['data'] : $setting->setting_url . '/orden/' . $id;
+                //\QRcode::png($data, "$id.png");
+
+                $pdf = new \FPDF($orientation = 'L', $unit = 'mm', array(45, 200));
+                $pdf->AddPage();
+                $pdf->SetFont('Arial', 'B', 4);    //Letra Arial, negrita (Bold), tam. 20
+                $textypos = 2;
+                $pdf->Image("$id.png", 4, 1, -300);
+                //$pdf->Image($setting->setting_logo, 4, 1, -800);
+                $pdf->SetFont('Times', 'B', 3);    //Letra Arial, negrita (Bold), tam. 20
+                $pdf->setX(36);
+                $pdf->Cell(2, $textypos, 'Nombre: ' . utf8_decode($equipo->id_cliente));
+                $pdf->SetFont('Times', '', 4);    //Letra Arial, negrita (Bold), tam. 20
+
+                $textypos += 3;
+                $pdf->setX(36);
+                $pdf->Cell(5, $textypos, 'Telefono: ' . utf8_decode($equipo->telefono));
+                $textypos += 3;
+                $pdf->setX(36);
+                $pdf->Cell(5, $textypos, 'Modelo: ' . utf8_decode($equipo->modelo));
+                $textypos += 3;
+                $pdf->setX(36);
+                if ($equipo->serial != '') {
+                    $pdf->Cell(5, $textypos, 'Serial: ' . utf8_decode($equipo->serial));
+                } else if($equipo->imei != '')
+                {
+                    $pdf->Cell(5, $textypos, 'IMEI: ' . utf8_decode($equipo->imei));
+                }else if($equipo->imei == ''){
+                    $pdf->Cell(5, $textypos, 'Sin SN ni IMEI');
+
+                }
+                $textypos += 3;
+                $pdf->setX(36);
+                $pdf->SetFont('Times', 'B', 6);    //Letra Arial, negrita (Bold), tam. 20
+                $pdf->Cell(5, $textypos, 'Orden: # ' . utf8_decode($equipo->id));
+                $textypos -= 6;
+                $pdf->setX(60);
+                $pdf->SetFont('Times', '', 3);    //Letra Arial, negrita (Bold), tam. 20
+                $pdf->Cell(5, $textypos, 'Diagnostico: ' . utf8_decode($equipo->id_comentario));
+                $textypos -= 6;
+                $pdf->setX(60);
+                $pdf->SetFont('Times', 'B', 3);    //Letra Arial, negrita (Bold), tam. 20
+                $pdf->Cell(5, $textypos, 'Tecnico: ' . utf8_decode($tecnico->name));
+                $pdf->Output();
+                //$pdf->AddPage();
+                //$pdf->Image(imagepng($QR), 10, 10, 20, 20, "png");
+                //imagepng($QR);
+                //imagedestroy($QR);
+                //$pdf->Output();
+                //  header('Content-Disposition: Attachment;filename=image.png');
+
+                return back()->with('success', 'Archivo a Imprimir generado');
+            }
+        }
     }
 
 
