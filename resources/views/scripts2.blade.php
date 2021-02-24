@@ -1183,9 +1183,12 @@ $(function() {
       <script>
         ClassicEditor
             .create( document.querySelector( '#texto_bannera' ) )
+
             .catch( error => {
                 console.error( error );
+
             } );
+
     </script>
      <script>
         ClassicEditor
@@ -1208,3 +1211,7 @@ $(function() {
                 console.error( error );
             } );
     </script>
+
+<script>
+
+</script>

@@ -401,9 +401,8 @@ $contador=0;
                                         <label for="texto_bannerc">Texto del tercer
                                             Banner</label>
 
-                                                                 <textarea name="texto_bannerc" id="texto_bannerc" cols="30"
+                                        <textarea name="texto_bannerc" id="texto_bannerc" cols="30"
                                             rows="10">@if($Promocion->isEmpty()) @else {{$promocion->texto_bannerc}}@endif</textarea>
-
 
                                         <label for="fecha_inicio">Fecha Inicio
                                             Promocion</label>
