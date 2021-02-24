@@ -1180,3 +1180,31 @@ $(function() {
 
 });
   </script>
+      <script>
+        ClassicEditor
+            .create( document.querySelector( '#texto_bannera' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+     <script>
+        ClassicEditor
+            .create( document.querySelector( '#texto_bannerb' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+     <script>
+        ClassicEditor
+            .create( document.querySelector( '#texto_bannerc' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+     <script>
+        ClassicEditor
+            .create( document.querySelector( '#texto_bannerd' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>

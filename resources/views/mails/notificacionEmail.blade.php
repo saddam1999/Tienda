@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="card text-left">
-                <img class="card-img-top ml-auto mr-auto " style="width:80px; height:80px;"
+                <img class="card-img-top ml-auto mr-auto " style="width:100px; height:100px;"
                     src="{{ $setting->setting_logo}}" alt="">
                 <div class="card-body">
                     <h4 class="card-title text-success">Hola! {{ $equipo->id_cliente }}.</h4>

@@ -541,7 +541,7 @@
                     <section>
                         <a href="#" class="image featured">
                             <img src="@if($Promocion->isEmpty()) @else{{$promocion->bannerb}} @endif" alt="" /></a>
-                        <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerb}} @endif</h3>
+                            <h3>@if($Promocion->isEmpty()) @else @php echo '<html>'.$promocion->texto_bannerb.'</html>'@endphp @endif</h3>
                         <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
                             {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                     </section>
@@ -550,7 +550,7 @@
                     <section>
                         <a href="#" class="image featured"> <img
                                 src="@if($Promocion->isEmpty()) @else{{$promocion->bannerc}} @endif" alt="" /></a>
-                        <h3>@if($Promocion->isEmpty()) @else{{$promocion->texto_bannerc}} @endif</h3>
+                        <h3>@if($Promocion->isEmpty()) @else @php echo '<html>'.$promocion->texto_bannerc.'</html>'@endphp @endif</h3>
                         <p>@if($Promocion->isEmpty()) @else @if($Promocion->isEmpty())
                             {{$promocion->fecha_inicio}} a {{$promocion->fecha_final}} @endif @endif</p>
                     </section>
